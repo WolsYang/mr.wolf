@@ -66,7 +66,7 @@ class ChatbotController < ApplicationController
 			        {
 			        "type": "吹牛",
 			        "label": "View detail",
-			        "text": "http://example.com/page/123"
+			        "uri": "http://example.com/page/123"
 			        },
 			        {
 			        "type": "殺手",
