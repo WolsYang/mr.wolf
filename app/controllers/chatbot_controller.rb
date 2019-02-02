@@ -55,8 +55,7 @@ class ChatbotController < ApplicationController
           			{
             		"type": "postback",
            			"label": "終極密碼",
-            		"data": "action=buy&itemid=123",
-            		"displayText" : "displayText"
+            		"data": "action=buy&itemid=123"
           			},
           			{
 			        "type": "postback",
