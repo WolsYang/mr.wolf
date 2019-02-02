@@ -1,0 +1,2106 @@
+Started GET "/" for 127.0.0.1 at 2018-11-12 22:30:48 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (3.0ms)
+Completed 200 OK in 79ms (Views: 40.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-13 19:58:27 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (10.0ms)
+Completed 200 OK in 112ms (Views: 61.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-13 19:58:29 +0800
+Processing by ChatbotController#eat as HTML
+Completed 406 Not Acceptable in 1127ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (ChatbotController#eat is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.1) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.1) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.1) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.1) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+actionpack (5.2.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-13 20:03:31 +0800
+Processing by ChatbotController#eat as HTML
+  Rendering chatbot/eat.html within layouts/application
+  Rendered chatbot/eat.html within layouts/application (0.0ms)
+Completed 200 OK in 904ms (Views: 887.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-13 20:04:25 +0800
+Processing by ChatbotController#eat as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-14 00:35:35 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (7.0ms)
+Completed 200 OK in 108ms (Views: 56.1ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (28.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (25.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKeywordMappings (20181113180332)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "keyword_mappings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "keyword" varchar, "message" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181113180332_create_keyword_mappings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181113180332"]]
+  ↳ bin/rails:4
+  [1m[35m (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-13 18:06:28.159878"], ["updated_at", "2018-11-13 18:06:28.159878"]]
+  ↳ bin/rails:4
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKeywordMappings (20181113180332)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE "keyword_mappings"[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20181113180332"]]
+  ↳ bin/rails:4
+  [1m[35m (15.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKeywordMappings (20181113180332)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181113180332_create_keyword_mappings.rb:3
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "keyword_mappings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "keyword" varchar, "message" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181113180332_create_keyword_mappings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181113180332"]]
+  ↳ bin/rails:4
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mKeywordMapping Load (1.0ms)[0m  [1m[34mSELECT  "keyword_mappings".* FROM "keyword_mappings" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mKeywordMapping Create (2.3ms)[0m  [1m[32mINSERT INTO "keyword_mappings" ("keyword", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["keyword", "Q"], ["message", "A"], ["created_at", "2018-11-14 08:01:33.703443"], ["updated_at", "2018-11-14 08:01:33.703443"]]
+  [1m[35m (11.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mKeywordMapping Load (0.0ms)[0m  [1m[34mSELECT  "keyword_mappings".* FROM "keyword_mappings" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mKeywordMapping Create (3.2ms)[0m  [1m[32mINSERT INTO "keyword_mappings" ("keyword", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["keyword", "Q2"], ["message", "A2"], ["created_at", "2018-11-14 08:04:25.215255"], ["updated_at", "2018-11-14 08:04:25.215255"]]
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mKeywordMapping Load (0.0ms)[0m  [1m[34mSELECT  "keyword_mappings".* FROM "keyword_mappings" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mKeywordMapping Load (0.0ms)[0m  [1m[34mSELECT  "keyword_mappings".* FROM "keyword_mappings" WHERE "keyword_mappings"."keyword" = ? LIMIT ?[0m  [["keyword", "Q2"], ["LIMIT", 11]]
+  [1m[36mKeywordMapping Load (1.0ms)[0m  [1m[34mSELECT  "keyword_mappings".* FROM "keyword_mappings" WHERE "keyword_mappings"."keyword" = ? ORDER BY "keyword_mappings"."id" DESC LIMIT ?[0m  [["keyword", "Q2"], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2018-11-14 16:19:27 +0800
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 82ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:28:40 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:29:17 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 153ms (Views: 152.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:30:15 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:31:00 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:31:35 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:35:32 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/app/controllers/chatbot_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
++ ": " + value.class.to_s}sort.join("\n")
+                              ^):
+  
+app/controllers/chatbot_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:36:59 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/app/controllers/chatbot_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
++ ": " + value.class.to_s}sort.join("\n")
+                              ^):
+  
+app/controllers/chatbot_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:37:59 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/app/controllers/chatbot_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting keyword_end
++ ": " + value.class.to_s}sort.join("\n")
+                              ^):
+  
+app/controllers/chatbot_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:39:15 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/app/controllers/chatbot_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
++ ': ' + value.class.to_s}sort.join("\n")
+                              ^):
+  
+app/controllers/chatbot_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:42:35 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/app/controllers/chatbot_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+y +": "+ value.class.to_s}sort.join("\n")
+                              ^):
+  
+app/controllers/chatbot_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:43:47 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/app/controllers/chatbot_controller.rb:8: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+		}sort.join("\n")
+		     ^):
+  
+app/controllers/chatbot_controller.rb:8: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:44:23 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:45:58 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:50:47 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:51:26 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_headers" for 127.0.0.1 at 2018-11-14 16:52:07 +0800
+Processing by ChatbotController#request_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_body" for 127.0.0.1 at 2018-11-14 23:48:38 +0800
+  
+AbstractController::ActionNotFound (The action 'request__body' could not be found for ChatbotController):
+  
+actionpack (5.2.1) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+actionpack (5.2.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/kamigo/request_body" for 127.0.0.1 at 2018-11-14 23:49:43 +0800
+Processing by ChatbotController#request_body as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/request_body" for 127.0.0.1 at 2018-11-14 23:58:17 +0800
+Processing by ChatbotController#request_body as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/response" for 127.0.0.1 at 2018-11-14 23:58:36 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/kamigo/response"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/kamigo/response_headers" for 127.0.0.1 at 2018-11-14 23:58:53 +0800
+Processing by ChatbotController#response_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/response_headers" for 127.0.0.1 at 2018-11-15 00:00:22 +0800
+Processing by ChatbotController#response_headers as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-15 00:02:55 +0800
+Processing by ChatbotController#show_response_body as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-15 00:04:06 +0800
+Processing by ChatbotController#show_response_body as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-15 00:05:59 +0800
+Processing by ChatbotController#show_response_body as HTML
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 01:44:06 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/config/routes.rb:8: syntax error, unexpected ':'
+  post '/kamigo/webhook'. to: 'chat#webhook'
+                             ^):
+  
+config/routes.rb:8: syntax error, unexpected ':'
+Started GET "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 01:44:30 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/config/routes.rb:8: syntax error, unexpected ':'
+  post '/kamigo/webhook'. to: 'chatbot#webhook'
+                             ^):
+  
+config/routes.rb:8: syntax error, unexpected ':'
+Started GET "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 01:45:00 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/kamigo/webhook"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 01:53:47 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/kamigo/webhook"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started POST "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 01:56:39 +0800
+Processing by ChatbotController#webhook as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (5.2.1) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
+actionpack (5.2.1) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
+actionpack (5.2.1) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
+activesupport (5.2.1) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.1) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.2.1) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.1) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.1) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+actionpack (5.2.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started POST "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 15:19:35 +0800
+Processing by ChatbotController#webhook as */*
+Can't verify CSRF token authenticity.
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 15:19:58 +0800
+Processing by ChatbotController#webhook as */*
+Can't verify CSRF token authenticity.
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 15:27:45 +0800
+Processing by ChatbotController#webhook as */*
+  Parameters: {"message"=>{"type"=>"text", "text"=>"您好"}, "chatbot"=>{"message"=>{"type"=>"text", "text"=>"您好"}}}
+Can't verify CSRF token authenticity.
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/chatbot_controller.rb:35:in `webhook'
+Started POST "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 15:28:53 +0800
+Processing by ChatbotController#webhook as */*
+  Parameters: {"message"=>{"type"=>"text", "text"=>"您好"}, "chatbot"=>{"message"=>{"type"=>"text", "text"=>"您好"}}}
+Can't verify CSRF token authenticity.
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 15:29:01 +0800
+Processing by ChatbotController#webhook as */*
+  Parameters: {"message"=>{"type"=>"text", "text"=>"您好"}, "chatbot"=>{"message"=>{"type"=>"text", "text"=>"您好"}}}
+Can't verify CSRF token authenticity.
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kamigo/webhook" for 127.0.0.1 at 2018-11-15 15:30:05 +0800
+Processing by ChatbotController#webhook as */*
+  Parameters: {"message"=>{"type"=>"text", "text"=>"您好"}, "chatbot"=>{"message"=>{"type"=>"text", "text"=>"您好"}}}
+Can't verify CSRF token authenticity.
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:42:03 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/kamigo/sent_request"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:44:07 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/kamigo/sent_request"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:44:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/kamigo/sent_request"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:45:00 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/app/controllers/chatbot_controller.rb:39: syntax error, unexpected ':', expecting keyword_end
+		response = Net: :HTTP.get(uri)
+		               ^):
+  
+app/controllers/chatbot_controller.rb:39: syntax error, unexpected ':', expecting keyword_end
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:46:20 +0800
+Processing by ChatbotController#sent_request as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant ChatbotController::Net):
+  
+app/controllers/chatbot_controller.rb:39:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:50:13 +0800
+Processing by ChatbotController#sent_request as HTML
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant ChatbotController::Net):
+  
+app/controllers/chatbot_controller.rb:39:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:54:51 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-15 15:54:52 +0800
+Completed 500 Internal Server Error in 122012ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:57:00 +0800
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-15 15:57:00 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#sent_request as HTML
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-15 15:57:01 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1059ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-15 15:57:57 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-15 15:57:58 +0800
+Completed 500 Internal Server Error in 122009ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-15 16:00:06 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 01:43:08 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 01:43:10 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1062ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 01:48:09 +0800
+  
+SyntaxError (C:/git/ChatBot/ironman/app/controllers/chatbot_controller.rb:30: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+		render plain: all money back my home
+		                       ^):
+  
+app/controllers/chatbot_controller.rb:30: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 01:48:33 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 01:48:34 +0800
+Completed 500 Internal Server Error in 122008ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 01:50:41 +0800
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 01:50:41 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#sent_request as HTML
+Processing by ChatbotController#show_response_body as */*
+Completed 500 Internal Server Error in 516ms (ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 503ms (ActiveRecord: 0.0ms)
+
+
+  
+  
+ActionView::MissingTemplate (Missing template chatbot/plain: all money back my home, application/plain: all money back my home with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :vtt, :png, :jpeg, :gif, :bmp, :tiff, :svg, :mpeg, :mp3, :ogg, :m4a, :webm, :mp4, :otf, :ttf, :woff, :woff2, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :gzip], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "C:/git/ChatBot/ironman/app/views"
+):
+ActionView::MissingTemplate (Missing template chatbot/plain: all money back my home, application/plain: all money back my home with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :vtt, :png, :jpeg, :gif, :bmp, :tiff, :svg, :mpeg, :mp3, :ogg, :m4a, :webm, :mp4, :otf, :ttf, :woff, :woff2, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :gzip], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "C:/git/ChatBot/ironman/app/views"
+):
+  
+  
+app/controllers/chatbot_controller.rb:30:in `show_response_body'
+app/controllers/chatbot_controller.rb:30:in `show_response_body'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 01:50:45 +0800
+Processing by ChatbotController#show_response_body as */*
+Completed 500 Internal Server Error in 1089ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::MissingTemplate (Missing template chatbot/plain: all money back my home, application/plain: all money back my home with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :vtt, :png, :jpeg, :gif, :bmp, :tiff, :svg, :mpeg, :mp3, :ogg, :m4a, :webm, :mp4, :otf, :ttf, :woff, :woff2, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :gzip], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "C:/git/ChatBot/ironman/app/views"
+):
+  
+app/controllers/chatbot_controller.rb:30:in `show_response_body'
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 19825ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 01:51:52 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 01:51:53 +0800
+Completed 500 Internal Server Error in 122005ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 01:54:00 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 01:55:08 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 01:55:09 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1048ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 01:57:54 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 01:57:56 +0800
+Completed 500 Internal Server Error in 122009ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:00:03 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:00:13 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:00:14 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1048ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:00:20 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:00:21 +0800
+Completed 500 Internal Server Error in 122012ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:02:29 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:03:21 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:03:22 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1061ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:04:28 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:04:29 +0800
+Completed 500 Internal Server Error in 122010ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:06:36 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:08:03 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:08:04 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 1184ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `message' for #<ChatbotController:0x00000000094985a0>):
+  
+app/controllers/chatbot_controller.rb:41:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:08:51 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:08:52 +0800
+Completed 500 Internal Server Error in 122009ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:10:59 +0800
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:10:59 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#sent_request as HTML
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:11:00 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 1149ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `message' for #<ChatbotController:0x0000000009337328>):
+  
+app/controllers/chatbot_controller.rb:41:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:11:37 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:11:38 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 1170ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `message' for #<ChatbotController:0x00000000071fdcc0>):
+  
+app/controllers/chatbot_controller.rb:41:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:12:07 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:12:08 +0800
+Completed 500 Internal Server Error in 122010ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:14:16 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:18:28 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:18:29 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1049ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:19:08 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:19:09 +0800
+Completed 500 Internal Server Error in 122009ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:21:16 +0800
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:21:16 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#sent_request as HTML
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:21:17 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 1059ms (ActiveRecord: 0.0ms)
+
+
+  
+Encoding::CompatibilityError (incompatible character encodings: ASCII-8BIT and UTF-8):
+  
+app/controllers/chatbot_controller.rb:45:in `translate_to_korean'
+app/controllers/chatbot_controller.rb:41:in `sent_request'
+Started PUT "/__web_console/repl_sessions/208cea5b2f3e7bb9c859dc2fa6036e20" for 127.0.0.1 at 2018-11-16 02:25:23 +0800
+Started PUT "/__web_console/repl_sessions/208cea5b2f3e7bb9c859dc2fa6036e20" for 127.0.0.1 at 2018-11-16 02:25:25 +0800
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 02:26:51 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:26:53 +0800
+Completed 500 Internal Server Error in 122007ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:40:in `sent_request'
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 02:29:00 +0800
+Processing by ChatbotController#show_response_body as */*
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 12:35:54 +0800
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/response_body" for 127.0.0.1 at 2018-11-16 12:35:56 +0800
+Processing by ChatbotController#show_response_body as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1088ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 12:46:28 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-16 12:46:39 +0800
+Completed 500 Internal Server Error in 122005ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:42:in `sent_request'
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-16 12:48:47 +0800
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 12:48:47 +0800
+Processing by ChatbotController#eat as */*
+Processing by ChatbotController#sent_request as HTML
+Processing by ChatbotController#eat as */*
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-16 12:48:48 +0800
+Processing by ChatbotController#eat as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 1047ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant ChatbotController::JASON):
+  
+app/controllers/chatbot_controller.rb:44:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 12:49:20 +0800
+Processing by ChatbotController#sent_request as HTML
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-16 12:49:21 +0800
+Completed 500 Internal Server Error in 122006ms (ActiveRecord: 0.0ms)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout):
+  
+app/controllers/chatbot_controller.rb:42:in `sent_request'
+Started GET "/kamigo/sent_request" for 127.0.0.1 at 2018-11-16 12:51:28 +0800
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-16 12:51:28 +0800
+Processing by ChatbotController#eat as */*
+Processing by ChatbotController#eat as */*
+Processing by ChatbotController#sent_request as HTML
+  Rendering text template
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kamigo/eat" for 127.0.0.1 at 2018-11-16 12:51:29 +0800
+Processing by ChatbotController#eat as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1057ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateReceiveds (20181121054056)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181121054056_create_receiveds.rb:3
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "receiveds" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_in" varchar, "text" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121054056_create_receiveds.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121054056"]]
+  ↳ bin/rails:4
+  [1m[35m (23.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateReplies (20181121055530)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181121055530_create_replies.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "replies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "text" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121055530_create_replies.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121055530"]]
+  ↳ bin/rails:4
+  [1m[35m (18.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddChannelIdToKeywordReply (20181121070335)
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddChannelIdToKeywordReply (20181121070335)
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddChannelIdToKeywordReply (20181121070335)
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddChannelIdToKeywordReply (20181121070335)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "keyword_mappings" ADD "channel_id" varchar[0m
+  ↳ db/migrate/20181121070335_add_channel_id_to_keyword_reply.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121070335"]]
+  ↳ bin/rails:4
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/keyword_mappings" for 127.0.0.1 at 2018-11-23 14:11:23 +0800
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by KeywordMappingsController#index as HTML
+  Rendering keyword_mappings/index.html.erb within layouts/application
+  [1m[36mKeywordMapping Load (1.0ms)[0m  [1m[34mSELECT "keyword_mappings".* FROM "keyword_mappings"[0m
+  ↳ app/views/keyword_mappings/index.html.erb:16
+  Rendered keyword_mappings/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 1005ms (Views: 973.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/keyword_mappings/new" for 127.0.0.1 at 2018-11-23 14:11:44 +0800
+Processing by KeywordMappingsController#new as HTML
+  Rendering keyword_mappings/new.html.erb within layouts/application
+  Rendered keyword_mappings/_form.html.erb (126.6ms)
+  Rendered keyword_mappings/new.html.erb within layouts/application (144.5ms)
+Completed 200 OK in 253ms (Views: 235.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/keyword_mappings" for 127.0.0.1 at 2018-11-23 14:12:05 +0800
+Processing by KeywordMappingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hLsE6K7oix90R4mgROfdG07x9QIinu2a6h8L8bNY+PW23Cj4G7JCyIS4nuKmnX0aItjF8N6McM2wRT5oRRroGw==", "keyword_mapping"=>{"channel_id"=>"不是我", "keyword"=>"就是你", "message"=>"不可能"}, "commit"=>"Create Keyword mapping"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/keyword_mappings_controller.rb:30
+  [1m[36mKeywordMapping Create (0.0ms)[0m  [1m[32mINSERT INTO "keyword_mappings" ("keyword", "message", "created_at", "updated_at", "channel_id") VALUES (?, ?, ?, ?, ?)[0m  [["keyword", "就是你"], ["message", "不可能"], ["created_at", "2018-11-23 06:12:05.421267"], ["updated_at", "2018-11-23 06:12:05.421267"], ["channel_id", "不是我"]]
+  ↳ app/controllers/keyword_mappings_controller.rb:30
+  [1m[35m (17.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/keyword_mappings_controller.rb:30
+Redirected to http://localhost:3000/keyword_mappings/3
+Completed 302 Found in 25ms (ActiveRecord: 17.0ms)
+
+
+Started GET "/keyword_mappings/3" for 127.0.0.1 at 2018-11-23 14:12:05 +0800
+Processing by KeywordMappingsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mKeywordMapping Load (1.0ms)[0m  [1m[34mSELECT  "keyword_mappings".* FROM "keyword_mappings" WHERE "keyword_mappings"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/keyword_mappings_controller.rb:67
+  Rendering keyword_mappings/show.html.erb within layouts/application
+  Rendered keyword_mappings/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 118ms (Views: 88.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/keyword_mappings" for 127.0.0.1 at 2018-11-23 14:13:23 +0800
+Processing by KeywordMappingsController#index as HTML
+  Rendering keyword_mappings/index.html.erb within layouts/application
+  [1m[36mKeywordMapping Load (1.0ms)[0m  [1m[34mSELECT "keyword_mappings".* FROM "keyword_mappings"[0m
+  ↳ app/views/keyword_mappings/index.html.erb:16
+  Rendered keyword_mappings/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 115ms (Views: 94.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/keyword_mappings/3" for 127.0.0.1 at 2018-11-23 14:13:26 +0800
+Processing by KeywordMappingsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mKeywordMapping Load (0.0ms)[0m  [1m[34mSELECT  "keyword_mappings".* FROM "keyword_mappings" WHERE "keyword_mappings"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/keyword_mappings_controller.rb:67
+  Rendering keyword_mappings/show.html.erb within layouts/application
+  Rendered keyword_mappings/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 113ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-11-23 14:20:46 +0800
+  
+NoMethodError (undefined method `devise_for' for #<ActionDispatch::Routing::Mapper:0x000000000ca91738>):
+  
+config/routes.rb:2:in `block in <top (required)>'
+config/routes.rb:1:in `<top (required)>'
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-11-23 14:21:52 +0800
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.1) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/keyword_mappings" for 127.0.0.1 at 2018-11-23 14:29:18 +0800
+  
+NoMethodError (undefined method `devise_for' for #<ActionDispatch::Routing::Mapper:0x0000000009eb8918>):
+  
+config/routes.rb:2:in `block in <top (required)>'
+config/routes.rb:1:in `<top (required)>'
+Started GET "/keyword_mappings" for 127.0.0.1 at 2018-11-23 14:48:33 +0800
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.1) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.1) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to DeviseCreateUsers (20181123061934)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:5
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:5
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:39
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123061934"]]
+  ↳ bin/rails:4
+  [1m[35m (19.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/keyword_mappings" for 127.0.0.1 at 2018-11-23 14:49:35 +0800
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by KeywordMappingsController#index as HTML
+Completed 401 Unauthorized in 13ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-11-23 14:49:37 +0800
+Processing by Devise::SessionsController#new as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (83.0ms)
+Completed 200 OK in 473ms (Views: 461.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/keyword_mappings" for 127.0.0.1 at 2018-11-23 14:50:09 +0800
+Processing by KeywordMappingsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-11-23 14:50:09 +0800
+Processing by Devise::SessionsController#new as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (0.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (48.0ms)
+Completed 200 OK in 227ms (Views: 225.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-23 16:35:01 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VuL8SXShI/Acn3Xf6DMjsLS3QlxCqHpsFLpzJSiCUmaYR7XccKwX01dYP+HNvtXAxKkAKktTF1BvAe0WgZ4A6g==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "caniculawolf@hotmail.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 6ms (ActiveRecord: 1.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VuL8SXShI/Acn3Xf6DMjsLS3QlxCqHpsFLpzJSiCUmaYR7XccKwX01dYP+HNvtXAxKkAKktTF1BvAe0WgZ4A6g==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (0.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (47.0ms)
+Completed 200 OK in 365ms (Views: 236.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123153538)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181123153538_create_channels.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123153538_create_channels.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123153538"]]
+  ↳ bin/rails:4
+  [1m[35m (19.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123160713)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181123160713_create_channels.rb:3
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123160713_create_channels.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123162745)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181123162745_create_channels.rb:3
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123162745_create_channels.rb:3
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123162745)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181123162745_create_channels.rb:3
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123162745_create_channels.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123162745)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123162745)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123162745"]]
+  ↳ bin/rails:4
+  [1m[35m (12.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (18.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKeywordMappings (20181113180332)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "keyword_mappings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "keyword" varchar, "message" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181113180332_create_keyword_mappings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181113180332"]]
+  ↳ bin/rails:4
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateReceiveds (20181121054056)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "receiveds" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "text" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121054056_create_receiveds.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121054056"]]
+  ↳ bin/rails:4
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateReplies (20181121055530)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "replies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "text" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121055530_create_replies.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121055530"]]
+  ↳ bin/rails:4
+  [1m[35m (25.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to AddChannelIdToKeywordReply (20181121070335)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "keyword_mappings" ADD "channel_id" varchar[0m
+  ↳ db/migrate/20181121070335_add_channel_id_to_keyword_reply.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121070335"]]
+  ↳ bin/rails:4
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to DeviseCreateUsers (20181123061934)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:5
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:39
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123061934"]]
+  ↳ bin/rails:4
+  [1m[35m (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123162745)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123162745"]]
+  ↳ bin/rails:4
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-23 18:25:37.488265"], ["updated_at", "2018-11-23 18:25:37.488265"]]
+  ↳ bin/rails:4
+  [1m[35m (23.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKeywordMappings (20181113180332)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "keyword_mappings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "keyword" varchar, "message" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181113180332_create_keyword_mappings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181113180332"]]
+  ↳ bin/rails:4
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateReceiveds (20181121054056)
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "receiveds" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "text" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121054056_create_receiveds.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121054056"]]
+  ↳ bin/rails:4
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateReplies (20181121055530)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "replies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "text" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181121055530_create_replies.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121055530"]]
+  ↳ bin/rails:4
+  [1m[35m (16.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to AddChannelIdToKeywordReply (20181121070335)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[35mALTER TABLE "keyword_mappings" ADD "channel_id" varchar[0m
+  ↳ db/migrate/20181121070335_add_channel_id_to_keyword_reply.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181121070335"]]
+  ↳ bin/rails:4
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to DeviseCreateUsers (20181123061934)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:5
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:39
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123061934"]]
+  ↳ bin/rails:4
+  [1m[35m (23.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123182754)
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123182754_create_channels.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123182754"]]
+  ↳ bin/rails:4
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-23 18:29:09.874665"], ["updated_at", "2018-11-23 18:29:09.874665"]]
+  ↳ bin/rails:4
+  [1m[35m (17.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-11-24 12:16:41 +0800
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Devise::SessionsController#new as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (2.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (217.9ms)
+Completed 200 OK in 1409ms (Views: 1373.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 12:16:44 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:16:45 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-24 12:17:07 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XwEQuW8VypFHMvy2cOx2IgJ/C5K7+Bh3qSknQP+6Vf6RpFksaxj+sgz1tohVYYBScmFJ5LIDdUvSkrlzVqYHcg==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "caniculawolf@hotmail.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 10ms (ActiveRecord: 1.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XwEQuW8VypFHMvy2cOx2IgJ/C5K7+Bh3qSknQP+6Vf6RpFksaxj+sgz1tohVYYBScmFJ5LIDdUvSkrlzVqYHcg==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 417ms (Views: 254.6ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:17:07 +0800
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 12:17:08 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:17:08 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-24 12:17:15 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DgddyOuI+aF5yFWams2DK60HU9Sp0USFiqnB8HW8WKXAohRd74XNgjIPH6S/QHVb3RkRoqAqKbnxEl/D3KAKKQ==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "caniculawolf@hotmail.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 3ms (ActiveRecord: 1.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DgddyOuI+aF5yFWams2DK60HU9Sp0USFiqnB8HW8WKXAohRd74XNgjIPH6S/QHVb3RkRoqAqKbnxEl/D3KAKKQ==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 383ms (Views: 260.9ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:17:15 +0800
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 12:17:15 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:17:15 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-24 12:17:28 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"i8W6OpShuwUKCuAtPua7+rbkYWCDMDXSZNzXYKdQMGJFYPOvkKyPJkHNqhMba02KxvojForLWO4fZ0lTDkxi7g==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "caniculawolf@hotmail.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 3ms (ActiveRecord: 1.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"i8W6OpShuwUKCuAtPua7+rbkYWCDMDXSZNzXYKdQMGJFYPOvkKyPJkHNqhMba02KxvojForLWO4fZ0lTDkxi7g==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (8.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (56.0ms)
+Completed 200 OK in 361ms (Views: 237.6ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:17:29 +0800
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 12:17:29 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:17:29 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:25:33 +0800
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-11-24 12:27:37 +0800
+Processing by Devise::SessionsController#new as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (48.0ms)
+Completed 200 OK in 240ms (Views: 238.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 12:27:37 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:27:37 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-24 12:27:43 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"q8Y8Pgxr+Ff27HGQ94ewtOJn0il6oKF8101oNisJBhRlY3WrCGbMdL0rO67SCkbEknmQX3NbzECs9vYFghVUmA==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "caniculawolf@hotmail.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 4ms (ActiveRecord: 1.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"q8Y8Pgxr+Ff27HGQ94ewtOJn0il6oKF8101oNisJBhRlY3WrCGbMdL0rO67SCkbEknmQX3NbzECs9vYFghVUmA==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (46.0ms)
+Completed 200 OK in 351ms (Views: 228.2ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:27:43 +0800
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 12:27:43 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 12:27:43 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-24 13:08:08 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"T4CaPzT2G/CBoPPiYYQqDIbaYHQ8OUdQs0a7BRANwSqBJdOqMPsv08pnudxECdx89sQiAjXCKmzI/SU2uRGTpg==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "caniculawolf@hotmail.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"T4CaPzT2G/CBoPPiYYQqDIbaYHQ8OUdQs0a7BRANwSqBJdOqMPsv08pnudxECdx89sQiAjXCKmzI/SU2uRGTpg==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (46.0ms)
+Completed 200 OK in 353ms (Views: 232.7ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 13:08:08 +0800
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 13:08:08 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 13:08:08 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-24 13:08:29 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MV608pKB7Sl7WsYfAmJypesDptfydrMfRNoIFfwXvlT/+/1nlozZCjCdjCEn74TVmx3kofuN3iM/YZYmVQvs2A==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MV608pKB7Sl7WsYfAmJypesDptfydrMfRNoIFfwXvlT/+/1nlozZCjCdjCEn74TVmx3kofuN3iM/YZYmVQvs2A==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (47.0ms)
+Completed 200 OK in 225ms (Views: 224.3ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 13:08:29 +0800
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 13:08:29 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 13:08:29 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-24 13:27:52 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v8CYQvvFZV39vd7suEH6dRmolQtwZOJ63UqkBeigwU1xZdHX/8hRfrZ6lNKdzAwFabbXfXmfj0am8To2QbyTwQ==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "caniculawolf@hotmail.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v8CYQvvFZV39vd7suEH6dRmolQtwZOJ63UqkBeigwU1xZdHX/8hRfrZ6lNKdzAwFabbXfXmfj0am8To2QbyTwQ==", "user"=>{"email"=>"caniculawolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 344ms (Views: 224.0ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 13:27:53 +0800
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 13:27:53 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 13:27:53 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-11-24 13:28:10 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/CokF29Kco73AUSD/pIdsEj65lcBbBGJwhwUSGEdatgyj22Ca0dGrbzGDr3bH+vAOOSkIQiXfLW5p4p7yAE4VA==", "user"=>{"email"=>"wolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "wolf@hotmail.com"], ["LIMIT", 1]]
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 3ms (ActiveRecord: 1.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/CokF29Kco73AUSD/pIdsEj65lcBbBGJwhwUSGEdatgyj22Ca0dGrbzGDr3bH+vAOOSkIQiXfLW5p4p7yAE4VA==", "user"=>{"email"=>"wolf@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/devise-4.5.0/app/views/devise/sessions/new.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 344ms (Views: 225.6ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 13:28:10 +0800
+Started GET "/cable" for 127.0.0.1 at 2018-11-24 13:28:10 +0800
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 13:28:10 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChannelIdChannel is transmitting the subscription confirmation
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-11-24 23:24:37 +0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
