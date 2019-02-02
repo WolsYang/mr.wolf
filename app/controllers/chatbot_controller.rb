@@ -27,6 +27,17 @@ class ChatbotController < ApplicationController
 		end
 	end
 
+	# 取得對方說的話
+	def received_text(event)
+		message = event['message']
+		message['text'] unless message.nil?	
+		#if message.nil?
+		#	nil
+		#else
+		#	message['text']
+		#end
+	end
+	
 	# 頻道ID
 	def channel_id
 		source = params['events'][0]['source']
