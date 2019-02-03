@@ -21,7 +21,7 @@ class ChatbotController < ApplicationController
 		params['events'].each do |event|
 			text = received_text(event)
 				#記錄頻道
-				Channel.find_or_create_by(channel_id: channel_id(event))
+				Channel.find_or_create_by(channel_id: channel_id)
 
 				reply_text = keyword_reply(channel_id, text)
 				puts "2222"
@@ -44,8 +44,8 @@ class ChatbotController < ApplicationController
 	end
 
 	# 頻道ID
-	def channel_id(event)
-		source = event['source']
+	def channel_id
+		source = params['event'][0]['source']
 		source['groupId'] ||source['roomId'] ||source['userId']
 		#原始長這樣
 		#return source['groupID'] unless source['groupID'].nil?
