@@ -44,7 +44,7 @@ class ChatbotController < ApplicationController
 	end
 
 	# 頻道ID
-	def channel_id
+	def channel_id(event)
 		source = event['source']
 		source['groupId'] ||source['roomId'] ||source['userId']
 		#原始長這樣
