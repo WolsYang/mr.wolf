@@ -21,7 +21,7 @@ class ChatbotController < ApplicationController
 		params['events'].each do |event|
 			text = received_text(event)
 				#記錄頻道
-				Channel.find_or_create_by(channel_id: channel_id)
+				Channel.find_or_create_by(channel_id: channel_id(event))
 
 				reply_text = keyword_reply(channel_id, text)
 				puts "2222"
