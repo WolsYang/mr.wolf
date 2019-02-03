@@ -23,9 +23,10 @@ class ChatbotController < ApplicationController
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				puts channel.bomb
-				reply_text = received_text(event, channel_id)
+				
 				puts "00000000000000"
 				reply_text = keyword_reply(channel_id, text)
+				reply_text = received_text(event, channel_id)
 				puts "2222"
 				response = reply_to_line(reply_text)
 				puts "333"
