@@ -26,10 +26,9 @@ class ChatbotController < ApplicationController
 				reply_text = game(channel_id, text)
 				puts "2222"
 				response = reply_to_line(reply_text)
-				puts "3333"
+				puts "333"
 				# 回應200
 				head :ok
-
 		end
 	end
 
@@ -76,10 +75,9 @@ class ChatbotController < ApplicationController
 		# 設定回覆訊息
 		message = {
   			"type": "template",
-		 	"altText": "This is a buttons template",
+		 	"altText": "不支援時的文字",
 			"template": {
 			    "type": "buttons",
-			    "title": "Menu",
 			    "text": reply_text,
       			"actions": [
           			{
