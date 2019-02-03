@@ -64,7 +64,7 @@ class ChatbotController < ApplicationController
 		return nil if reply_text.nil?
 		puts "555"
 		# 取得reply token
-		reply_token = event['replyToken']
+		reply_token = params['events'][0]['replyToken']
 		puts "666"		
 		# 設定回覆訊息
 		message = {
