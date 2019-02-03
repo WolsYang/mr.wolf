@@ -67,42 +67,13 @@ class ChatbotController < ApplicationController
 		reply_token = params['events'][0]['replyToken']
 		puts "666"		
 		# 設定回覆訊息
-		#message = {
-		#	type: 'text',
-		#	text: reply_text
-		#}
+		message = {
+			type: 'text',
+			text: reply_text
+		}
 
 		# 設定回覆訊息
-		message = {
-  			"type": "template",
-		 	"altText": "不支援時的文字",
-			"template": {
-			    "type": "buttons",
-			    "text": reply_text,
-      			"actions": [
-          			{
-            		"type": "postback",
-           			"label": "終極密碼",
-            		"data": "action=buy&itemid=123"
-          			},
-          			{
-			        "type": "postback",
-			        "label": "射龍門",
-			        "data": "action=add&itemid=123"
-			        },
-			        {
-			        "type": "吹牛",
-			        "label": "View detail",
-			        "uri": "http://example.com/page/123"
-			        },
-			        {
-			        "type": "殺手",
-			        "label": "View detail",
-			        "uri": "http://example.com/page/123"
-			        }
-      			]
-  			}
-		}
+
 	puts "888"
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
 		line.reply_message(reply_token, message)

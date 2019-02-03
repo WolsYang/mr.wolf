@@ -271,3 +271,35 @@ class ChatbotController < ApplicationController
 
 
 end
+
+
+		message = {
+  			"type": "template",
+		 	"altText": "不支援時的文字",
+			"template": {
+			    "type": "buttons",
+			    "text": reply_text,
+      			"actions": [
+          			{
+            		"type": "postback",
+           			"label": "終極密碼",
+            		"data": "action=buy&itemid=123"
+          			},
+          			{
+			        "type": "postback",
+			        "label": "射龍門",
+			        "data": "action=add&itemid=123"
+			        },
+			        {
+			        "type": "吹牛",
+			        "label": "View detail",
+			        "uri": "http://example.com/page/123"
+			        },
+			        {
+			        "type": "殺手",
+			        "label": "View detail",
+			        "uri": "http://example.com/page/123"
+			        }
+      			]
+  			}
+		}
