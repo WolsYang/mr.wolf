@@ -45,7 +45,7 @@ class ChatbotController < ApplicationController
 
 	# 頻道ID
 	def channel_id
-		source = params['event'][0]['source']
+		source = params['events'][0]['source']
 		source['groupId'] ||source['roomId'] ||source['userId']
 		#原始長這樣
 		#return source['groupID'] unless source['groupID'].nil?
