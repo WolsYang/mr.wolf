@@ -19,10 +19,12 @@ class ChatbotController < ApplicationController
 	#	記錄對話 save_to_received(channel_id, received_text), save_to_reply(channel_id, reply_text)
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
-			text = received_text(event)
+			text = received_text(event, channel_id)
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				puts channel.bomb
+				reply_text = text
+				puts "00000000000000"
 				reply_text = keyword_reply(channel_id, text)
 				puts "2222"
 				response = reply_to_line(reply_text)
@@ -33,7 +35,7 @@ class ChatbotController < ApplicationController
 	end
 
 	# 取得對方說的話
-	def received_text(event)
+	def received_text(event, channel_id)
 		if event['type'] == "message"
 			message = event['message']
 			message['text'] unless message.nil?	
