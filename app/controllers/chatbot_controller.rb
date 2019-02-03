@@ -42,9 +42,9 @@ class ChatbotController < ApplicationController
 			channel = Channel.find_by(channel_id: channel_id)
 			case chooise
 				when "porker"
-					if channel()
-				
-				channel.update(pork: true) 
+					if channel.porker == false
+						channel.update(porker: true) 
+					end
 				when "bomb"
 			end
 		end
