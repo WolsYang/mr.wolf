@@ -24,8 +24,9 @@ class ChatbotController < ApplicationController
 				Channel.find_or_create_by(channel_id: channel_id)
 
 				reply_text = game(channel_id, text)
-
+				puts "2222"
 				response = reply_to_line(reply_text)
+				puts "3333"
 				# 回應200
 				head :ok
 
@@ -78,7 +79,7 @@ class ChatbotController < ApplicationController
 			"template": {
 			    "type": "buttons",
 			    "title": "Menu",
-			    "text": "請選擇您要玩的遊戲",
+			    "text": reply_text,
       			"actions": [
           			{
             		"type": "postback",
