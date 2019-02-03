@@ -39,7 +39,7 @@ class ChatbotController < ApplicationController
 			message['text'] unless message.nil?	
 		elsif event['type'] == postback
 			chooise = event['postback']['data']
-
+		end
 	end
 
 	# 頻道ID
