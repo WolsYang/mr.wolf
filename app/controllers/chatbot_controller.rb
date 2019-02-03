@@ -61,11 +61,12 @@ class ChatbotController < ApplicationController
 
 	#傳送訊息到LINE
 	def reply_to_line(reply_text)
+		puts "444"
 		return nil if reply_text.nil?
-		
+		puts "555"
 		# 取得reply token
 		reply_token = params['events'][0]['replyToken']
-				
+		puts "666"		
 		# 設定回覆訊息
 		#message = {
 		#	type: 'text',
@@ -104,9 +105,10 @@ class ChatbotController < ApplicationController
       			]
   			}
 		}
-	
+	puts "888"
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
 		line.reply_message(reply_token, message)
+	puts "999"
 	end			
 	# Line bot api 初始化
 	def line
