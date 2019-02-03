@@ -40,6 +40,7 @@ class ChatbotController < ApplicationController
 			message = event['message']
 			message['text'] unless message.nil?	
 		elsif event['type'] == "postback"
+			puts "in postback"
 			chooise = event['postback']['data']
 			channel = Channel.find_by(channel_id: channel_id)
 			case chooise
@@ -48,6 +49,7 @@ class ChatbotController < ApplicationController
 						channel.update(porker: true) 
 					end
 				when "bomb"
+					"成功拉~~"
 			end
 		end
 	end
