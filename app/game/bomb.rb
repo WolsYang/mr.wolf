@@ -20,5 +20,6 @@ class Bomb
     else
       puts user_number
       puts "請輸入範圍內的數字" + now_min.to_s + "~" + now_max.to_s
-    end  
+    end 
+  end 
 end
