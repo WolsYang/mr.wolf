@@ -23,7 +23,7 @@ class ChatbotController < ApplicationController
 				#記錄頻道
 				Channel.find_or_create_by(channel_id: channel_id)
 
-				reply_text = game(channel_id, text)
+				reply_text = keyword_reply(channel_id, text)
 				puts "2222"
 				response = reply_to_line(reply_text)
 				puts "333"
@@ -34,18 +34,17 @@ class ChatbotController < ApplicationController
 
 	# 取得對方說的話
 	def received_text(event)
-		message = event['message']
-		message['text'] unless message.nil?	
-		#if message.nil?
-		#	nil
-		#else
-		#	message['text']
-		#end
+		if event['type'] == message
+			message = event['message']
+			message['text'] unless message.nil?	
+		elsif event['type'] == postback
+			chooise = event['postback']['data']
+
 	end
 
 	# 頻道ID
 	def channel_id
-		source = params['events'][0]['source']
+		source = event['source']
 		source['groupId'] ||source['roomId'] ||source['userId']
 		#原始長這樣
 		#return source['groupID'] unless source['groupID'].nil?
@@ -53,9 +52,9 @@ class ChatbotController < ApplicationController
 		#source['userID']
 	end
 
-	def game(channel_id, received_text)
-		return "什麼東西" unless received_text[0...6] == '我要玩遊戲'
-		"玩遊戲囉"			
+	def keyword_reply(channel_id, received_text)
+		return "什麼東西" unless received_text[0...6] == '我要玩遊戲'	
+		"玩遊戲囉"	
 	end
 
 	#傳送訊息到LINE
@@ -64,7 +63,7 @@ class ChatbotController < ApplicationController
 		return nil if reply_text.nil?
 		puts "555"
 		# 取得reply token
-		reply_token = params['events'][0]['replyToken']
+		reply_token = event['replyToken']
 		puts "666"		
 		# 設定回覆訊息
 		message = {
