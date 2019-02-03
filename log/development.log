@@ -2120,3 +2120,229 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 106ms (Views: 45.7ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190203122012"]]
+  ↳ bin/rails:4
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190203122012"]]
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "channels" ADD "bomb" boolean[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "channels" ADD "dice" boolean[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "channels" ADD "porker" boolean[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "channels" ADD "wolf" boolean[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190203122012"]]
+  ↳ bin/rails:4
+  [1m[35m (20.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achannels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "bomb" boolean DEFAULT NULL, "dice" boolean DEFAULT NULL, "porker" boolean DEFAULT NULL, "wolf" boolean DEFAULT NULL)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achannels" ("id","channel_id","created_at","updated_at","bomb","dice","porker","wolf")
+                     SELECT "id","channel_id","created_at","updated_at","bomb","dice","porker","wolf" FROM "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (3.1ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "bomb" boolean DEFAULT NULL, "dice" boolean DEFAULT NULL, "porker" boolean DEFAULT NULL)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "channels" ("id","channel_id","created_at","updated_at","bomb","dice","porker")
+                     SELECT "id","channel_id","created_at","updated_at","bomb","dice","porker" FROM "achannels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "achannels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achannels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "bomb" boolean DEFAULT NULL, "dice" boolean DEFAULT NULL, "porker" boolean DEFAULT NULL)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achannels" ("id","channel_id","created_at","updated_at","bomb","dice","porker")
+                     SELECT "id","channel_id","created_at","updated_at","bomb","dice","porker" FROM "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "bomb" boolean DEFAULT NULL, "dice" boolean DEFAULT NULL)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "channels" ("id","channel_id","created_at","updated_at","bomb","dice")
+                     SELECT "id","channel_id","created_at","updated_at","bomb","dice" FROM "achannels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "achannels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achannels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "bomb" boolean DEFAULT NULL, "dice" boolean DEFAULT NULL)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achannels" ("id","channel_id","created_at","updated_at","bomb","dice")
+                     SELECT "id","channel_id","created_at","updated_at","bomb","dice" FROM "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "bomb" boolean DEFAULT NULL)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "channels" ("id","channel_id","created_at","updated_at","bomb")
+                     SELECT "id","channel_id","created_at","updated_at","bomb" FROM "achannels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "achannels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achannels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "bomb" boolean DEFAULT NULL)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achannels" ("id","channel_id","created_at","updated_at","bomb")
+                     SELECT "id","channel_id","created_at","updated_at","bomb" FROM "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "channels" ("id","channel_id","created_at","updated_at")
+                     SELECT "id","channel_id","created_at","updated_at" FROM "achannels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "achannels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20190203122012"]]
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+Migrating to CreateChannels (20181123182754)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (3.0ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20181123182754"]]
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (25.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123182754)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181123182754_create_channels.rb:3
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "channel_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181123182754_create_channels.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181123182754"]]
+  ↳ bin/rails:4
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "channels" ADD "bomb" boolean DEFAULT 0[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "channels" ADD "dice" boolean DEFAULT 0[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "channels" ADD "porker" boolean DEFAULT 0[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "channels" ADD "wolf" boolean DEFAULT 0[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190203122012"]]
+  ↳ bin/rails:4
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mChannel Load (5.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" LIMIT ?[0m  [["LIMIT", 11]]

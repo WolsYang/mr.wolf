@@ -21,8 +21,8 @@ class ChatbotController < ApplicationController
 		params['events'].each do |event|
 			text = received_text(event)
 				#記錄頻道
-				Channel.find_or_create_by(channel_id: channel_id)
-
+				channel = Channel.find_or_create_by(channel_id: channel_id)
+				puts channel.bomb
 				reply_text = keyword_reply(channel_id, text)
 				puts "2222"
 				response = reply_to_line(reply_text)
@@ -39,11 +39,18 @@ class ChatbotController < ApplicationController
 			message['text'] unless message.nil?	
 		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
-			puts chooise
+			channel = Channel.find_by(channel_id: channel_id)
+			case chooise
+				when "porker"
+					if channel()
+				
+				channel.update(pork: true) 
+				when "bomb"
+
 		end
 	end
 
-	# 頻道ID
+	# 訊息來源ID
 	def channel_id
 		source = params['events'][0]['source']
 		source['groupId'] ||source['roomId'] ||source['userId']
@@ -54,7 +61,7 @@ class ChatbotController < ApplicationController
 	end
 
 	def keyword_reply(channel_id, received_text)
-		return "什麼東西" unless received_text[0...6] == '我要玩遊戲'	
+		return nil unless received_text[0...6] == '我要玩遊戲'	
 		"玩遊戲囉"	
 	end
 
@@ -77,12 +84,12 @@ class ChatbotController < ApplicationController
           			{
             		"type": "postback",
            			"label": "終極密碼",
-            		"data": "action=buy&itemid=123",
-            		"text": "玩玩玩玩玩玩玩"
+            		"data": "bomb",
+            		"dataText": "玩玩玩玩玩玩玩"
           			},
           			{
 			        "type": "postback",
-			        "label": "射龍門",
+			        "label": "porker",
 			        "data": "action=add&itemid=123"
 			        }
       			]
