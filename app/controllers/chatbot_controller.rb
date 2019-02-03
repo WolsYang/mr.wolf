@@ -22,8 +22,13 @@ class ChatbotController < ApplicationController
 			text = received_text(event)
 				#記錄頻道
 				Channel.find_or_create_by(channel_id: channel_id)
+
+				reply_text = game(channel_id, text)
+
+				response = reply_to_line(reply_text)
 				# 回應200
 				head :ok
+
 		end
 	end
 
@@ -37,7 +42,7 @@ class ChatbotController < ApplicationController
 		#	message['text']
 		#end
 	end
-	
+
 	# 頻道ID
 	def channel_id
 		source = params['events'][0]['source']
@@ -49,11 +54,22 @@ class ChatbotController < ApplicationController
 	end
 
 	def game(channel_id, received_text)
-		return nil unless received_text[0...6] == '我要玩遊戲'
+		return nil unless received_text[0...6] == '我要玩遊戲'			
+	end
+
+	#傳送訊息到LINE
+	def reply_to_line(reply_text)
+		return nil if reply_text.nil?
 		
 		# 取得reply token
 		reply_token = params['events'][0]['replyToken']
 				
+		# 設定回覆訊息
+		#message = {
+		#	type: 'text',
+		#	text: reply_text
+		#}
+
 		# 設定回覆訊息
 		message = {
   			"type": "template",
@@ -86,23 +102,7 @@ class ChatbotController < ApplicationController
       			]
   			}
 		}
-		# 傳送訊息 一個方法的回傳值是最後一行的結果
-		line.reply_message(reply_token, message)
-	end
-
-	#傳送訊息到LINE
-	def reply_to_line(reply_text)
-		return nil if reply_text.nil?
-		
-		# 取得reply token
-		reply_token = params['events'][0]['replyToken']
-				
-		# 設定回覆訊息
-		message = {
-			type: 'text',
-			text: reply_text
-		}
-		
+	
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
 		line.reply_message(reply_token, message)
 	end			
