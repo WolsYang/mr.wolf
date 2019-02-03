@@ -83,16 +83,6 @@ class ChatbotController < ApplicationController
 			        "type": "postback",
 			        "label": "射龍門",
 			        "data": "action=add&itemid=123"
-			        },
-			        {
-			        "type": "postback",
-			        "label": "吹牛",
-			        "uri": "http://example.com/page/123"
-			        },
-			        {
-			        "type": "postback",
-			        "label": "殺手",
-			        "uri": "http://example.com/page/123"
 			        }
       			]
   			}
