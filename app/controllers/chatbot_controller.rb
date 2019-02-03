@@ -54,7 +54,7 @@ class ChatbotController < ApplicationController
 	end
 
 	def game(channel_id, received_text)
-		return nil unless received_text[0...6] == '我要玩遊戲'
+		return "什麼東西" unless received_text[0...6] == '我要玩遊戲'
 		"玩遊戲囉"			
 	end
 
