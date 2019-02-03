@@ -34,11 +34,12 @@ class ChatbotController < ApplicationController
 
 	# 取得對方說的話
 	def received_text(event)
-		if event['type'] == message
+		if event['type'] == "message"
 			message = event['message']
 			message['text'] unless message.nil?	
-		elsif event['type'] == postback
+		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
+			puts chooise
 		end
 	end
 
