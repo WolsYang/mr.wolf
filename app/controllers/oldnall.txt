@@ -291,13 +291,13 @@ end
 			        "data": "action=add&itemid=123"
 			        },
 			        {
-			        "type": "吹牛",
-			        "label": "View detail",
+			        "type": "postback",
+			        "label": "吹牛",
 			        "uri": "http://example.com/page/123"
 			        },
 			        {
-			        "type": "殺手",
-			        "label": "View detail",
+			        "type": "postback",
+			        "label": "殺手",
 			        "uri": "http://example.com/page/123"
 			        }
       			]
