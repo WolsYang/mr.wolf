@@ -43,6 +43,7 @@ class ChatbotController < ApplicationController
 			puts "in postback"
 			chooise = event['postback']['data']
 			channel = Channel.find_by(channel_id: channel_id)
+			puts chooise
 			case chooise
 				when "porker"
 					if channel.porker == false
