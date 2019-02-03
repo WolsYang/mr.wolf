@@ -52,7 +52,8 @@ class ChatbotController < ApplicationController
 						channel.update(porker: true) 
 					end
 				when "bomb"
-					"成功拉~~"
+					puts "in here"
+					return "成功拉~~"
 			end
 		end
 	end
