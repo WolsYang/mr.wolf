@@ -46,7 +46,7 @@ class ChatbotController < ApplicationController
 				
 				channel.update(pork: true) 
 				when "bomb"
-
+			end
 		end
 	end
 
