@@ -25,7 +25,7 @@ class ChatbotController < ApplicationController
 				puts channel.bomb
 				
 				puts "00000000000000"
-				reply_text = keyword_reply(channel_id, text)
+				reply_text = game_keyword_reply(channel_id, text)
 				reply_text = received_text(event, channel_id)
 				puts "2222"
 				response = reply_to_line(reply_text)
@@ -40,22 +40,25 @@ class ChatbotController < ApplicationController
 		if event['type'] == "message"
 			message = event['message']
 			message['text'] unless message.nil?	
+		#回傳按鈕
 		elsif event['type'] == "postback"
 			puts "in postback"
 			chooise = event['postback']['data']
 			channel = Channel.find_by(channel_id: channel_id)
-			if chooise == "bomb"
-				puts chooise
-			end
-			case chooise
-				when "porker"
-					if channel.porker == false
-						channel.update(porker: true) 
-					end
-				when "bomb"
-					puts "in here"
-					return "成功拉~~"
-			end
+			if channel.now_gaming == "no"
+				channel.update(now_gaming: event['postback']['data'])
+				if chooise == "bomb"
+					puts chooise
+				end
+				case chooise
+					when "porker"
+					when "bomb"
+						bomb = Bomb.new(channel_id)
+						bomb.save
+				end
+			else
+			"您還有遊戲進行中"
+			end	
 		end
 	end
 
@@ -69,9 +72,16 @@ class ChatbotController < ApplicationController
 		#source['userID']
 	end
 
-	def keyword_reply(channel_id, received_text)
-		return nil unless received_text[0...6] == '我要玩遊戲'	
-		"玩遊戲囉"	
+	def game_keyword_reply(channel_id, received_text)
+		if received_text[0...6] == '我要玩遊戲'	
+			"玩遊戲囉"
+		elsif received_text[0...1] == '我猜' 
+			bomb = Bomb.find_by(channel_id: channel_id)
+			user_number = bomb.guess(received_text)
+			result = bomb.play(user_number)
+		else
+			return nil
+		end	
 	end
 
 	#傳送訊息到LINE
