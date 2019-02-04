@@ -7,7 +7,7 @@ class Bomb < ApplicationRecord
     	@channel_id = channel_id
   	end
 
-	def channel_id
+	def c
     	@channel_id 
   	end
 

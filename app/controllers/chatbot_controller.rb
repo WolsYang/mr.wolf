@@ -52,7 +52,7 @@ class ChatbotController < ApplicationController
 					when "porker"
 					when "bomb"
 						bomb = Bomb.new
-						puts bomb.channel_id
+						puts bomb.c
 						bomb.save
 				end
 			#else
