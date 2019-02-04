@@ -56,7 +56,7 @@ class ChatbotController < ApplicationController
 						bomb.save
 				end
 			#else
-			#"您還有遊戲進行中"
+			"您還有遊戲進行中"
 			#end	
 		end
 	end
@@ -72,6 +72,7 @@ class ChatbotController < ApplicationController
 	end
 
 	def game_keyword_reply(channel_id, received_text)
+		channel = Channel.find_by(channel_id: channel_id)
 		if received_text[0...6] == '我要玩遊戲'	
 			"玩遊戲囉"
 		elsif channel.now_gaming == "bomb" && received_text[0...2] == '我猜'
