@@ -22,17 +22,16 @@ class Bomb < ApplicationRecord
           if user_number == code
             bomb.destroy
             channel.update(now_gaming: "no")
-            puts "恭喜你!!爆爆爆了"
+            "恭喜你!!爆爆爆了"
           elsif user_number > code 
             channel.update(now_max: user_number)
-            puts "#{now_min.to_s}~#{now_max.to_s}"
+            now_min.to_s + " ~ " + now_max.to_s
           elsif user_number < code
             channel.update(now_min: user_number)
-            puts "#{now_min.to_s}~#{now_max.to_s}"
+            now_min.to_s + " ~ " + now_max.to_s
           end
       else
-          puts "您猜的數字不在範圍內 "
-          puts "請輸入範圍內的數字   " + now_min.to_s + " ~ " + now_max.to_s
+          "您猜的數字不在範圍內\n" '輸入範圍內的數字     ' + now_min.to_s + " ~ " + now_max.to_s
       end 
     end
 
