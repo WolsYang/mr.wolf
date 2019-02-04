@@ -1,4 +1,4 @@
-class Bomb
+class Bomb < ApplicationController
     def initialize(channel_id)
         @now_max = 10000
       @now_min = 1
