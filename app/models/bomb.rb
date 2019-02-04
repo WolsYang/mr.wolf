@@ -1,7 +1,8 @@
 class Bomb < ApplicationRecord
     def initialize(channel_id)
+    	super
         @now_max = 10000
-      @now_min = 1
+      	@now_min = 1
         @code = rand(1..@now_max-1)
         @user_number = 0
         @channel_id = channel_id
