@@ -51,7 +51,8 @@ class ChatbotController < ApplicationController
 				case chooise
 					when "porker"
 					when "bomb"
-						bomb = Bomb.new(id)
+						bomb = Bomb.new
+						puts bomb.channel_id
 						bomb.save
 				end
 			#else
