@@ -2435,3 +2435,12 @@ Migrating to RemoveGameColumAndAddGameStatus (20190204133956)
   ↳ bin/rails:4
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
+Started GET "/" for 127.0.0.1 at 2019-02-04 22:49:44 +0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 95ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
