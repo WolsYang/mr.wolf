@@ -24,10 +24,10 @@ class Bomb < ApplicationRecord
             channel.update(now_gaming: "no")
             puts "恭喜你!!爆爆爆了"
           elsif user_number > code 
-            channel.update (now_max: user_number)
+            channel.update(now_max: user_number)
             puts "#{now_min.to_s}~#{now_max.to_s}"
           elsif user_number < code
-            channel.update (now_min: user_number)
+            channel.update(now_min: user_number)
             puts "#{now_min.to_s}~#{now_max.to_s}"
           end
       else
