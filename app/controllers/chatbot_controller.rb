@@ -42,8 +42,10 @@ class ChatbotController < ApplicationController
 		elsif event['type'] == "postback"
 			puts "in postback"
 			chooise = event['postback']['data']
+			puts chooise.to_s
 			channel = Channel.find_by(channel_id: channel_id)
-			if channel.now_gaming == "no"
+			puts channel_id.to_s
+			#if channel.now_gaming == "no"
 				channel.update(now_gaming: event['postback']['data'])
 				if chooise == "bomb"
 					puts chooise
@@ -54,9 +56,9 @@ class ChatbotController < ApplicationController
 						bomb = Bomb.new(channel_id)
 						bomb.save
 				end
-			else
-			"您還有遊戲進行中"
-			end	
+			#else
+			#"您還有遊戲進行中"
+			#end	
 		end
 	end
 
