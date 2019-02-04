@@ -74,7 +74,7 @@ class ChatbotController < ApplicationController
 	def game_keyword_reply(channel_id, received_text)
 		if received_text[0...6] == '我要玩遊戲'	
 			"玩遊戲囉"
-		elsif received_text[0...2] == '我猜'
+		elsif channel.now_gaming == "bomb" && received_text[0...2] == '我猜'
 			puts "in 我猜" 
 			bomb = Bomb.find(channel_id: channel_id)
 			puts bomb.code
