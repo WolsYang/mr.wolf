@@ -7,8 +7,8 @@ class Bomb < ApplicationRecord
     	@channel_id = channel_id
   	end
 
-	def code
-    	@code 
+	def channel_id
+    	@channel_id 
   	end
 
   	def play(user_number = @user_number, now_max = @now_max, now_min = @now_min)
