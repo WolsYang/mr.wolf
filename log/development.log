@@ -2349,3 +2349,89 @@ Migrating to AddGameStatusTochenelId (20190203122012)
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
 Migrating to CreateBombsAndAddGameStatus (20190203172323)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateBombs (20190203172323)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190203172323_create_bombs.rb:3
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "bombs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "now_min" integer DEFAULT 0, "now_max" integer, "user_number" integer DEFAULT 0, "code" integer, "channel_id" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190203172323_create_bombs.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190203172323"]]
+  ↳ bin/rails:4
+  [1m[35m (11.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to RemoveGameColumAndAddGameStatus (20190204133956)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achannels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "bomb" boolean DEFAULT 0, "dice" boolean DEFAULT 0, "porker" boolean DEFAULT 0, "wolf" boolean DEFAULT 0)[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achannels" ("id","channel_id","created_at","updated_at","bomb","dice","porker","wolf")
+                     SELECT "id","channel_id","created_at","updated_at","bomb","dice","porker","wolf" FROM "channels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "dice" boolean DEFAULT 0, "porker" boolean DEFAULT 0, "wolf" boolean DEFAULT 0)[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "channels" ("id","channel_id","created_at","updated_at","dice","porker","wolf")
+                     SELECT "id","channel_id","created_at","updated_at","dice","porker","wolf" FROM "achannels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:3
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE "achannels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achannels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "dice" boolean DEFAULT 0, "porker" boolean DEFAULT 0, "wolf" boolean DEFAULT 0)[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achannels" ("id","channel_id","created_at","updated_at","dice","porker","wolf")
+                     SELECT "id","channel_id","created_at","updated_at","dice","porker","wolf" FROM "channels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:4
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "porker" boolean DEFAULT 0, "wolf" boolean DEFAULT 0)[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "channels" ("id","channel_id","created_at","updated_at","porker","wolf")
+                     SELECT "id","channel_id","created_at","updated_at","porker","wolf" FROM "achannels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "achannels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achannels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "porker" boolean DEFAULT 0, "wolf" boolean DEFAULT 0)[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:5
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achannels" ("id","channel_id","created_at","updated_at","porker","wolf")
+                     SELECT "id","channel_id","created_at","updated_at","porker","wolf" FROM "channels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "wolf" boolean DEFAULT 0)[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:5
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "channels" ("id","channel_id","created_at","updated_at","wolf")
+                     SELECT "id","channel_id","created_at","updated_at","wolf" FROM "achannels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "achannels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:5
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achannels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "wolf" boolean DEFAULT 0)[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:6
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achannels" ("id","channel_id","created_at","updated_at","wolf")
+                     SELECT "id","channel_id","created_at","updated_at","wolf" FROM "channels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "channels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "channels" ("id" integer NOT NULL PRIMARY KEY, "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:6
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "channels" ("id","channel_id","created_at","updated_at")
+                     SELECT "id","channel_id","created_at","updated_at" FROM "achannels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "achannels"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "channels" ADD "now_gaming" varchar DEFAULT 'no'[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:7
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190204133956"]]
+  ↳ bin/rails:4
+  [1m[35m (22.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4

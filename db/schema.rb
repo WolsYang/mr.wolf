@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_122012) do
+ActiveRecord::Schema.define(version: 2019_02_04_133956) do
+
+  create_table "bombs", force: :cascade do |t|
+    t.integer "now_min", default: 0
+    t.integer "now_max"
+    t.integer "user_number", default: 0
+    t.integer "code"
+    t.string "channel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "channels", force: :cascade do |t|
     t.string "channel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "bomb", default: false
-    t.boolean "dice", default: false
-    t.boolean "porker", default: false
-    t.boolean "wolf", default: false
+    t.string "now_gaming", default: "no"
   end
 
   create_table "keyword_mappings", force: :cascade do |t|
