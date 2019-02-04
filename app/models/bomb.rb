@@ -7,13 +7,17 @@ class Bomb < ApplicationRecord
         @channel_id = channel_id
     end
 
-    def c
+    def channal_id
       @channel_id 
+    end
+
+    def code
+    	@code
     end
 
     def play(user_number = @user_number, now_max = @now_max, now_min = @now_min)
       bomb = Bomb.find_by(channel_id: @channel_id)
-      channel = Channel.find_by(channel_id: channel_id)
+      channel = Channel.find_by(channel_id: @channel_id)
       if now_min < user_number && user_number < now_max
           if user_number == @code
             bomb.destroy

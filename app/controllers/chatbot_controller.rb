@@ -77,6 +77,7 @@ class ChatbotController < ApplicationController
 		elsif received_text[0...1] == '我猜' 
 			bomb = Bomb.find_by(channel_id: channel_id)
 			user_number = bomb.guess(received_text)
+			puts bomb.code
 			result = bomb.play(user_number)
 		else
 			return nil
