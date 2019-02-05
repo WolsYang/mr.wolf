@@ -73,7 +73,7 @@ class ChatbotController < ApplicationController
 		channel = Channel.find_by(channel_id: channel_id)
 		if received_text[0...6] == '我要玩遊戲'	
 			"玩遊戲囉"
-		elsif channel.now_gaming == "bomb" && received_text[0...2] == '我猜'
+		elsif channel.now_gaming == "Bomb" && received_text[0...2] == '我猜'
 			puts "in 我猜" 
 			bomb = Bomb.find_by(channel_id: channel_id)
 			puts bomb.channel_id
