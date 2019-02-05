@@ -22,7 +22,6 @@ class ChatbotController < ApplicationController
 			text = received_text(event, channel_id)
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
-				reply_text = return received_text(event, channel_id) unless condition
 				reply_text = game_keyword_reply(channel_id, text)
 				response = reply_to_line(reply_text)
 				# 回應200
