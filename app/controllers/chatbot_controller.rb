@@ -41,7 +41,6 @@ class ChatbotController < ApplicationController
 		#回傳按鈕
 		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
-			puts id
 			channel = Channel.find_by(channel_id: channel_id)
 			puts channel_id.to_s
 			#if channel.now_gaming == "no"
