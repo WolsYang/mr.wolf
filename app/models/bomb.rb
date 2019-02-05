@@ -10,7 +10,7 @@ class Bomb < ApplicationRecord
 
     def self.play(user_number, channel_id)
       bomb = Bomb.find_by(channel_id: channel_id)
-      if bomb.now_min < user_number && user_number < bomb.now_max
+      if bomb.now_min.to_s < user_number && user_number < bomb.now_max
           if user_number == bomb.code
             bomb.destroy
             Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
@@ -39,6 +39,6 @@ class Bomb < ApplicationRecord
             break
           end
         end
-      number
+      number.to_i
     end 
 end
