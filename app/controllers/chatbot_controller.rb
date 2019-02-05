@@ -76,9 +76,8 @@ class ChatbotController < ApplicationController
 			"玩遊戲囉"
 		elsif channel.now_gaming == "Bomb" && received_text[0...2] == '我猜'
 			puts "in 我猜" 
-			@bomb = Bomb.find_by(channel_id: channel_id)
-			user_number = @bomb.guess(received_text)
-		    @bomb.play(channel_id, user_number)
+			user_number = Bomb.guess(received_text)
+			Bomb.play(user_number, channel_id)
 		else
 			return nil
 		end	
