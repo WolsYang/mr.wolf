@@ -26,7 +26,7 @@ class ChatbotController < ApplicationController
 				reply_text = game_keyword_reply(channel_id, text)
 				#reply_text = received_text(event, channel_id)
 				puts "2222"
-				response = reply_to_line(reply_text)
+				response = reply_to_line_with_text(reply_text)
 				puts "333"
 				# 回應200
 				head :ok
@@ -38,25 +38,22 @@ class ChatbotController < ApplicationController
 		if event['type'] == "message"
 			message = event['message']
 			message['text'] unless message.nil?	
-		#回傳按鈕
+		#按鈕回傳的訊息
 		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
 			channel = Channel.find_by(channel_id: channel_id)
-			puts channel_id.to_s
-			#if channel.now_gaming == "no"
+			#檢查是否有其他遊戲進行中
+			if channel.now_gaming == "No"
 				channel.update(now_gaming: event['postback']['data'])
-				puts channel.now_gaming
 				case chooise
 					when "porker"
 					when "bomb"
 						bomb = Bomb.new
 						bomb.start(channel_id)
-						puts bomb.channel_id.to_s
-						puts "存檔成功"
 				end
-			#else
+			else
 			"您還有遊戲進行中"
-			#end	
+			end	
 		end
 	end
 
@@ -75,7 +72,6 @@ class ChatbotController < ApplicationController
 		if received_text[0...6] == '我要玩遊戲'	
 			"玩遊戲囉"
 		elsif channel.now_gaming == "Bomb" && received_text[0...2] == '我猜'
-			puts "in 我猜" 
 			user_number = Bomb.guess(received_text)
 			Bomb.play(user_number, channel_id)
 		else
@@ -85,38 +81,36 @@ class ChatbotController < ApplicationController
 
 	#傳送訊息到LINE
 	def reply_to_line(reply_text)
-		puts "444"
 		return nil if reply_text.nil?
-		puts "555"
 		# 取得reply token
-		reply_token = params['events'][0]['replyToken']
-		puts "666"		
-		# 設定回覆訊息
-		message = {
-  			"type": "template",
-		 	"altText": "不支援時的文字",
-			"template": {
-			    "type": "buttons",
-			    "text": reply_text,
-      			"actions": [
-          			{
-            		"type": "postback",
-           			"label": "終極密碼",
-            		"data": "bomb",
-            		"dataText": "玩玩玩玩玩玩玩"
-          			},
-          			{
-			        "type": "postback",
-			        "label": "porker",
-			        "data": "action=add&itemid=123"
-			        }
-      			]
-  			}
-		}
-	puts "888"
+		reply_token = params['events'][0]['replyToken']	
+		# 設定回覆訊息類型
+		if reply_text == '玩遊戲囉'			
+			message = {
+  				"type": "template",
+		 		"altText": "不支援時的文字",
+				"template": {
+			    	"type": "buttons",
+				    "text": reply_text,
+    	  			"actions": [
+        	  			{
+            			"type": "postback",
+           				"label": "終極密碼",
+            			"data": "bomb",
+            			"dataText": "玩玩玩玩玩玩玩"
+          				}
+      				]
+  				}
+			}
+		else
+			message = {
+				type: 'text',
+				text: reply_text
+			}
+		end	
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
 		line.reply_message(reply_token, message)
-	puts "999"
+
 	end			
 	# Line bot api 初始化
 	def line
