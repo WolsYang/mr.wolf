@@ -17,13 +17,13 @@ class Bomb < ApplicationRecord
                 "恭喜你!!爆爆爆了"
             elsif user_number > bomb.code 
             	bomb.update(now_max: user_number)
-            	bomb.now_min + " ~ " + bomb.now_max
+            	bomb.now_min.to_s + " ~ " + bomb.now_max.to_s
             elsif user_number < bomb.code
             	bomb.update(now_min: user_number)
-            	bomb.now_min + " ~ " + bomb.now_max
+            	bomb.now_min.to_s + " ~ " + bomb.now_max.to_s
           	end
       	else
-          	"您猜的數字不在範圍內\n" '輸入範圍內的數字     ' + bomb.now_min + " ~ " + bomb.now_max
+          	"您猜的數字不在範圍內\n" '輸入範圍內的數字     ' + bomb.now_min.to_s + " ~ " + bomb.now_max.to_s
       	end 
     end
 
