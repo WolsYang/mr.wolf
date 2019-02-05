@@ -14,7 +14,7 @@ class Bomb < ApplicationRecord
             if user_number == bomb.code
                 bomb.destroy
                 Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
-                "恭喜你!!爆爆爆了"
+                "恭喜你!!爆爆爆了\n不如請我喝一杯飲料吧:)"
             elsif user_number > bomb.code 
             	bomb.update(now_max: user_number)
             	bomb.now_min.to_s + " ~ " + bomb.now_max.to_s
@@ -41,4 +41,6 @@ class Bomb < ApplicationRecord
         end
   	  	number.to_i
   	end 
+
+  	der
 end

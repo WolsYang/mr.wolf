@@ -23,7 +23,7 @@ class ChatbotController < ApplicationController
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
-				#reply_text = received_text(event, channel_id)
+				reply_text = received_text(event, channel_id)
 				response = reply_to_line(reply_text)
 				# 回應200
 				head :ok
@@ -47,10 +47,13 @@ class ChatbotController < ApplicationController
 					when "bomb"
 						bomb = Bomb.new
 						bomb.start(channel_id)
+					"開始拉~~\n請輸入我猜+心中所想的數字\n例如:我猜484\n來看看誰這麼Lucky阿~"
 				end
 			else
 			"您還有遊戲進行中"
-			end	
+			end
+		else 
+			return nil	
 		end
 	end
 
