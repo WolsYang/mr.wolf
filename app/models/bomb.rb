@@ -1,12 +1,4 @@
 class Bomb < ApplicationRecord
-    def channal_id
-      @channel_id 
-    end
-
-    def code
-      @code
-    end
-
     def play(channel_id, user_number = 0, now_max = 10000, now_min = 1)
     	@channel_id = channel_id
         @code = rand(1..now_max-1)
@@ -54,4 +46,13 @@ class Bomb < ApplicationRecord
           number = 999999
       end
     end 
+
+    def channal_id
+      @channel_id 
+    end
+
+    def code
+      @code
+    end
+
 end
