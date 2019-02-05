@@ -81,9 +81,9 @@ class ChatbotController < ApplicationController
 			puts bomb
 			puts bomb.code
 			user_number = bomb.guess(received_text)
-			puts bomb.code
-			puts bomb.play(user_number)
-			result = bomb.play(user_number)
+			puts user_number
+			puts bomb.play(channel_id, user_number)
+			result = bomb.play(channel_id, user_number)
 		else
 			return nil
 		end	
