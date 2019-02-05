@@ -41,6 +41,4 @@ class Bomb < ApplicationRecord
         end
   	  	number.to_i
   	end 
-
-  	der
 end
