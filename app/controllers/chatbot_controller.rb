@@ -50,7 +50,7 @@ class ChatbotController < ApplicationController
 					when "porker"
 					when "bomb"
 						bomb = Bomb.new
-						bomb.start
+						bomb.start(channel_id)
 						puts bomb.channel_id
 						puts "存檔成功"
 				end
