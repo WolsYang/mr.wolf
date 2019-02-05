@@ -7770,3 +7770,4 @@ Completed 200 OK in 95ms (Views: 43.0ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mBomb Update (2.8ms)[0m  [1m[33mUPDATE "bombs" SET "now_min" = ?, "updated_at" = ? WHERE "bombs"."id" = ?[0m  [["now_min", 2], ["updated_at", "2019-02-05 15:48:34.663449"], ["id", 8]]
   [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBomb Load (0.2ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]

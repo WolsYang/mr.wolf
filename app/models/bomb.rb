@@ -29,7 +29,7 @@ class Bomb < ApplicationRecord
 
     #判斷用戶回傳的字串
     def self.guess(text)
-      	size = text.size > 5 ? 5 : text.size
+      	size = text.size > 6 ? 6 : text.size
       	number = 99999
       	#超過5個字元一定會超出範圍
         (2...size).each do |n|

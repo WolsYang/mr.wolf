@@ -71,7 +71,7 @@ class ChatbotController < ApplicationController
 						puts '在bomb裡'
 						bomb = Bomb.new
 						bomb.start(channel_id)
-					"開始拉~~\n請輸入我猜+心中所想的數字\n例如:我猜4841\n來看看誰這麼Lucky阿~"
+					"開始拉~~範圍是 1 ~ 10000\n請輸入我猜+心中所想的數字\n例如:我猜4841\n來看看誰這麼Lucky阿~"
 				end
 			#else
 			#	"您還有遊戲進行中"
