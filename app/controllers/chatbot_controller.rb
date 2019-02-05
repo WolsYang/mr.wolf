@@ -52,18 +52,20 @@ class ChatbotController < ApplicationController
 	end
 
 	def game_keyword_reply(channel_id, received_text)
+		puts received_text
 		channel = Channel.find_by(channel_id: channel_id)
 		if received_text[0...6] == '我要玩遊戲'	
 			"玩遊戲囉"
 		elsif channel.now_gaming == "Bomb" && received_text[0...2] == '我猜'
 			user_number = Bomb.guess(received_text)
 			Bomb.play(user_number, channel_id)
-		elsif received_text[0...2] == 'WY遊戲'
+		elsif received_text[0...4] == 'WY遊戲'
 			puts "在遊戲裡"
 			#檢查是否有其他遊戲進行中
 			#if channel.now_gaming == "No"
 				channel.update(now_gaming: received_text[4...8])
 				case received_text
+					puts '在case裡'
 					when "porker"
 						#還沒做
 					when "WY遊戲bomb3345678"
