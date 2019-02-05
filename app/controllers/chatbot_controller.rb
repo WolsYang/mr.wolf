@@ -49,7 +49,8 @@ class ChatbotController < ApplicationController
 				case chooise
 					when "porker"
 					when "bomb"
-						bomb = Bomb.create(channel_id: channel_id)
+						bomb = Bomb.new
+						bomb.start
 						puts bomb.channel_id
 						puts "存檔成功"
 				end
