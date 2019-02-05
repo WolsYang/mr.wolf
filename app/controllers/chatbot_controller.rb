@@ -26,7 +26,7 @@ class ChatbotController < ApplicationController
 				reply_text = game_keyword_reply(channel_id, text)
 				#reply_text = received_text(event, channel_id)
 				puts "2222"
-				response = reply_to_line_with_text(reply_text)
+				response = reply_to_line(reply_text)
 				puts "333"
 				# 回應200
 				head :ok
