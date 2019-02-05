@@ -32,7 +32,7 @@ class Bomb < ApplicationRecord
       	size = text.size > 5 ? 5 : text.size
       	number = 99999
       	#超過5個字元一定會超出範圍
-        (2...size).each do |n|
+        (2..size).each do |n|
           	unless text[n].match(%r{[0-9]}).nil? 
             	number = text[2..n]
           	else
