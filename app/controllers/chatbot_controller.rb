@@ -36,6 +36,7 @@ class ChatbotController < ApplicationController
 			message['text'] unless message.nil?	
 		#按鈕回傳的訊息
 		elsif event['type'] == "postback"
+			puts event['postback']['data']
 			chooise = event['postback']['data']
 		end
 	end
@@ -58,10 +59,12 @@ class ChatbotController < ApplicationController
 			user_number = Bomb.guess(received_text)
 			Bomb.play(user_number, channel_id)
 		elsif received_text[0...2] == 'WY遊戲'
+			puts "在遊戲裡"
 			#檢查是否有其他遊戲進行中
 			#if channel.now_gaming == "No"
 				channel.update(now_gaming: received_text[4...8])
 				case received_text
+					puts "在when裡"
 					when "porker"
 						#還沒做
 					when "WY遊戲bomb3345678"
