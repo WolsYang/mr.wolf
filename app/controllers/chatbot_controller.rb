@@ -72,7 +72,7 @@ class ChatbotController < ApplicationController
 			else
 				"您還有遊戲進行中"
 			end
-		elsif 			
+		else 			
 			return nil
 		end	
 	end
