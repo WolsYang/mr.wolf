@@ -7751,3 +7751,22 @@ Completed 200 OK in 95ms (Views: 43.0ms | ActiveRecord: 0.0ms)
   [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1"], ["LIMIT", 1]]
   [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1"], ["LIMIT", 1]]
   [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1"], ["LIMIT", 1]]
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mChannel Create (1.2ms)[0m  [1m[32mINSERT INTO "channels" ("channel_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["channel_id", "1111"], ["created_at", "2019-02-05 15:46:25.088615"], ["updated_at", "2019-02-05 15:46:25.088615"]]
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mChannel Update (0.9ms)[0m  [1m[33mUPDATE "channels" SET "updated_at" = ?, "now_gaming" = ? WHERE "channels"."id" = ?[0m  [["updated_at", "2019-02-05 15:46:25.102605"], ["now_gaming", "Bomb"], ["id", 4]]
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBomb Create (0.8ms)[0m  [1m[32mINSERT INTO "bombs" ("channel_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["channel_id", "1111"], ["created_at", "2019-02-05 15:46:25.115598"], ["updated_at", "2019-02-05 15:46:25.115598"]]
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBomb Update (0.8ms)[0m  [1m[33mUPDATE "bombs" SET "now_min" = ?, "now_max" = ?, "code" = ?, "updated_at" = ? WHERE "bombs"."id" = ?[0m  [["now_min", 1], ["now_max", 10000], ["code", 7598], ["updated_at", "2019-02-05 15:46:25.126591"], ["id", 8]]
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBomb Update (2.8ms)[0m  [1m[33mUPDATE "bombs" SET "now_min" = ?, "updated_at" = ? WHERE "bombs"."id" = ?[0m  [["now_min", 2], ["updated_at", "2019-02-05 15:48:34.663449"], ["id", 8]]
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m

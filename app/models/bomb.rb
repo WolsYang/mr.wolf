@@ -3,14 +3,13 @@ class Bomb < ApplicationRecord
 		now_max = 10000
 		now_min = 1
 		user_number = 0
-		now_id = channel_id
 		code = rand(1..now_max-1)
 		Channel.find_or_create_by(channel_id: channel_id).update(now_gaming: "Bomb")
-		Bomb.find_or_create_by(channel_id: channel_id).update(user_number: 0, now_max: now_max, now_min: now_min, code: code, channel_id: channel_id)
+		Bomb.find_or_create_by(channel_id: channel_id).update(user_number: user_number, now_max: now_max, now_min: now_min, code: code)
 	end
 
     def play(user_number, channel_id, bomb = @bomb)
-      #bomb = Bomb.find_by(channel_id: channel_id)
+      bomb = Bomb.find_by(channel_id: channel_id)
       if bomb.now_min < user_number && user_number < bomb.now_max
           if user_number == bomb.code
             bomb.destroy

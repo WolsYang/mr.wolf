@@ -51,7 +51,7 @@ class ChatbotController < ApplicationController
 					when "bomb"
 						bomb = Bomb.new
 						bomb.start(channel_id)
-						puts bomb.channel_id
+						puts bomb.channel_id.to_s
 						puts "存檔成功"
 				end
 			#else
