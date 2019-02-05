@@ -2458,3 +2458,33 @@ Completed 200 OK in 95ms (Views: 43.0ms | ActiveRecord: 0.0ms)
   [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
   [1m[36mBomb Load (0.4ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "333"], ["LIMIT", 1]]
   [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "333"], ["LIMIT", 1]]
+  [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "333"], ["LIMIT", 1]]
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "333"], ["LIMIT", 1]]
+  [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "333"], ["LIMIT", 1]]
+  [1m[36mChannel Load (0.1ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "333"], ["LIMIT", 1]]
+  [1m[36mBomb Load (0.2ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" = ? LIMIT ?[0m  [["channel_id", "333"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBomb Create (2.9ms)[0m  [1m[32mINSERT INTO "bombs" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-02-05 05:44:20.166278"], ["updated_at", "2019-02-05 05:44:20.166278"]]
+  [1m[35m (15.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBomb Create (2.7ms)[0m  [1m[32mINSERT INTO "bombs" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-02-05 06:00:12.369158"], ["updated_at", "2019-02-05 06:00:12.369158"]]
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBomb Load (0.2ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBomb Update (2.8ms)[0m  [1m[33mUPDATE "bombs" SET "now_max" = ?, "now_min" = ?, "code" = ?, "updated_at" = ? WHERE "bombs"."id" = ?[0m  [["now_max", 10000], ["now_min", 1], ["code", 1530], ["updated_at", "2019-02-05 06:00:30.242449"], ["id", 1]]
+  [1m[35m (14.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBomb Load (0.3ms)[0m  [1m[34mSELECT  "bombs".* FROM "bombs" WHERE "bombs"."channel_id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mChannel Load (0.3ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "wewer"], ["LIMIT", 1]]
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "wewer"], ["LIMIT", 1]]
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "wewer"], ["LIMIT", 1]]
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "123"], ["LIMIT", 1]]
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT  "channels".* FROM "channels" WHERE "channels"."channel_id" = ? LIMIT ?[0m  [["channel_id", "123"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mChannel Create (2.7ms)[0m  [1m[32mINSERT INTO "channels" ("channel_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["channel_id", "123"], ["created_at", "2019-02-05 07:20:55.411473"], ["updated_at", "2019-02-05 07:20:55.411473"]]
+  [1m[35m (21.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mChannel Update (0.8ms)[0m  [1m[33mUPDATE "channels" SET "updated_at" = ?, "now_gaming" = ? WHERE "channels"."id" = ?[0m  [["updated_at", "2019-02-05 07:20:55.439498"], ["now_gaming", "Bomb"], ["id", 1]]
+  [1m[35m (13.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBomb Create (1.1ms)[0m  [1m[32mINSERT INTO "bombs" ("channel_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["channel_id", "123"], ["created_at", "2019-02-05 07:20:55.457496"], ["updated_at", "2019-02-05 07:20:55.457496"]]
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m

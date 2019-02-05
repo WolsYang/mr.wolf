@@ -49,10 +49,9 @@ class ChatbotController < ApplicationController
 				case chooise
 					when "porker"
 					when "bomb"
-						bomb = Bomb.new
-						bomb.play(channel_id)
+						bomb = Bomb.create(channel_id: channel_id)
 						puts bomb.channel_id
-						bomb.save
+						puts "存檔成功"
 				end
 			#else
 			"您還有遊戲進行中"
@@ -77,7 +76,7 @@ class ChatbotController < ApplicationController
 		elsif channel.now_gaming == "bomb" && received_text[0...2] == '我猜'
 			puts "in 我猜" 
 			bomb = Bomb.find_by(channel_id: channel_id)
-			puts bomb
+			puts bomb.channel_id
 			puts bomb.code
 			user_number = bomb.guess(received_text)
 			puts user_number
