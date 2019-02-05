@@ -59,8 +59,8 @@ class ChatbotController < ApplicationController
 			Bomb.play(user_number, channel_id)
 		elsif received_text[0...2] == 'WY遊戲'
 			#檢查是否有其他遊戲進行中
-			if channel.now_gaming == "No"
-				channel.update(now_gaming: received_text)
+			#if channel.now_gaming == "No"
+				channel.update(now_gaming: received_text[4...8])
 				case received_text
 					when "porker"
 						#還沒做
@@ -69,9 +69,9 @@ class ChatbotController < ApplicationController
 						bomb.start(channel_id)
 					"開始拉~~\n請輸入我猜+心中所想的數字\n例如:我猜484\n來看看誰這麼Lucky阿~"
 				end
-			else
-				"您還有遊戲進行中"
-			end
+			#else
+			#	"您還有遊戲進行中"
+			#end
 		else 			
 			return nil
 		end	
