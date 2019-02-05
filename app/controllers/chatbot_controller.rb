@@ -65,10 +65,10 @@ class ChatbotController < ApplicationController
 			#if channel.now_gaming == "No"
 				channel.update(now_gaming: received_text[4...8])
 				case received_text
-					puts '在case裡'
 					when "porker"
 						#還沒做
 					when "WY遊戲bomb3345678"
+						puts '在bomb裡'
 						bomb = Bomb.new
 						bomb.start(channel_id)
 					"開始拉~~\n請輸入我猜+心中所想的數字\n例如:我猜4841\n來看看誰這麼Lucky阿~"
