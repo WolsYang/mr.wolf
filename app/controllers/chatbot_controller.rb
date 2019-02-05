@@ -63,8 +63,7 @@ class ChatbotController < ApplicationController
 			#檢查是否有其他遊戲進行中
 			#if channel.now_gaming == "No"
 				channel.update(now_gaming: received_text[4...8])
-				case received_text[4...8]
-					puts '在when裡'
+				case received_text
 					when "porker"
 						#還沒做
 					when "WY遊戲bomb3345678"
