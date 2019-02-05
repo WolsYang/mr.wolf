@@ -40,19 +40,19 @@ class ChatbotController < ApplicationController
 			message['text'] unless message.nil?	
 		#回傳按鈕
 		elsif event['type'] == "postback"
-			puts "in postback"
 			chooise = event['postback']['data']
-			id = channel_id
 			puts id
 			channel = Channel.find_by(channel_id: channel_id)
 			puts channel_id.to_s
 			#if channel.now_gaming == "no"
 				channel.update(now_gaming: event['postback']['data'])
+				puts channel.now_gaming
 				case chooise
 					when "porker"
 					when "bomb"
 						bomb = Bomb.new
 						bomb.play(channel_id)
+						puts bomb.channel_id
 						bomb.save
 				end
 			#else
