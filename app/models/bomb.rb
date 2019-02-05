@@ -1,13 +1,4 @@
 class Bomb < ApplicationRecord
-    def initialize(channel_id)
-      super
-        @now_max = 10000
-        @now_min = 1
-        @code = rand(1..@now_max-1)
-        @user_number = 0
-        @channel_id = channel_id
-    end
-
     def channal_id
       @channel_id 
     end
@@ -16,7 +7,11 @@ class Bomb < ApplicationRecord
       @code
     end
 
-    def play(user_number = @user_number, now_max = @now_max, now_min = @now_min, code = @code)
+    def play(channel_id, user_number = 0, now_max = 10000, now_min = 1)
+    	@channel_id = channel_id
+        @code = rand(1..now_max-1)
+        @user_number = user_number
+        @channel_id = channel_id
       bomb = Bomb.find_by(channel_id: @channel_id)
       channel = Channel.find_by(channel_id: @channel_id)
       if now_min < user_number && user_number < now_max
