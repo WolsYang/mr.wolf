@@ -22,8 +22,7 @@ class ChatbotController < ApplicationController
 			text = received_text(event, channel_id)
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
-				
-				reply_text = received_text(event, channel_id)
+				reply_text = return received_text(event, channel_id) unless condition
 				reply_text = game_keyword_reply(channel_id, text)
 				response = reply_to_line(reply_text)
 				# 回應200
@@ -39,22 +38,6 @@ class ChatbotController < ApplicationController
 		#按鈕回傳的訊息
 		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
-			channel = Channel.find_by(channel_id: channel_id)
-			#檢查是否有其他遊戲進行中
-			if channel.now_gaming == "No"
-				channel.update(now_gaming: event['postback']['data'])
-				case chooise
-					when "porker"
-					when "bomb"
-						bomb = Bomb.new
-						bomb.start(channel_id)
-					"開始拉~~\n請輸入我猜+心中所想的數字\n例如:我猜484\n來看看誰這麼Lucky阿~"
-				end
-			else
-			"您還有遊戲進行中"
-			end
-		else 
-			return nil	
 		end
 	end
 
@@ -75,7 +58,22 @@ class ChatbotController < ApplicationController
 		elsif channel.now_gaming == "Bomb" && received_text[0...2] == '我猜'
 			user_number = Bomb.guess(received_text)
 			Bomb.play(user_number, channel_id)
-		else
+		elsif received_text[0...2] == 'WY遊戲'
+			#檢查是否有其他遊戲進行中
+			if channel.now_gaming == "No"
+				channel.update(now_gaming: received_text)
+				case received_text
+					when "porker"
+						#還沒做
+					when "WY遊戲bomb3345678"
+						bomb = Bomb.new
+						bomb.start(channel_id)
+					"開始拉~~\n請輸入我猜+心中所想的數字\n例如:我猜484\n來看看誰這麼Lucky阿~"
+				end
+			else
+				"您還有遊戲進行中"
+			end
+		elsif 			
 			return nil
 		end	
 	end
@@ -97,7 +95,7 @@ class ChatbotController < ApplicationController
         	  			{
             			"type": "postback",
            				"label": "終極密碼",
-            			"data": "bomb",
+            			"data": "WY遊戲bomb3345678",
             			"dataText": "玩玩玩玩玩玩玩"
           				}
       				]
