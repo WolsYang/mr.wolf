@@ -1,5 +1,5 @@
 class Bomb < ApplicationRecord
-	def start(channel_id)
+	def self.start(channel_id)
 		now_max = 10000
 		now_min = 1
 		user_number = 0
@@ -29,12 +29,12 @@ class Bomb < ApplicationRecord
 
     #判斷用戶回傳的字串
     def self.guess(text)
-      	size = text.size > 6 ? 6 : text.size
+      	size = text.size > 4 ? 4 : text.size
       	number = 99999
       	#超過5個字元一定會超出範圍
-        (2...size).each do |n|
-          	unless text[n].match(%r{[0-9]}).nil? 
-            	number = text[2..n]
+        (0...size).each do |n|
+          	unless text[n].match(%r{[0-9]|\s}).nil? 
+            	number = text[0..n]
           	else
             	break
           	end
