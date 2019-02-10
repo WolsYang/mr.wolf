@@ -56,6 +56,12 @@ class ShootTheGate < ApplicationRecord
         #puts @now_max + "@now_max"
         #puts @now_min[2] + "@now_min[2]"
         #puts @now_max[2] + "@now_max[2]"
+        if ShootTheGate.find_by(channel_id: channel_id).cards.size < 3
+          porker = Poker.shuffle(1)
+          cards.update(cards: porker)
+          self.shoot( "射", bet, channel_id)
+        end
+          ShootTheGate.shoot(received_text: received_text, channel_id: channel_id)
         card3 = ShootTheGate.find_by(channel_id: channel_id).cards.delete_at(0)
         user_number = ShootTheGate.to_number(card3)
         if number2 > number1#門柱排序 case when條件需要照順序
