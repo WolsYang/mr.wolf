@@ -20,8 +20,8 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 			text = received_text(event)
-			userID = params['events']['source']["userId"]
-			puts userID
+			#userID = params['events']['source']["userId"]
+			#puts userID
 			puts params['events']
 			puts params['events']['source']
 			puts params['events']['source']["userId"]
