@@ -26,7 +26,7 @@ class ChatbotController < ApplicationController
 				reply_text = game_keyword_reply(channel_id, text)
 				response = get_uer_profile(userID)#reply_to_line(reply_text)
 				profiile = line.get_profile(userID)
-				puts profiile.display_name
+				puts profiile
 				# 回應200
 				head :ok
 		end
