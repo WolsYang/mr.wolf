@@ -25,7 +25,7 @@ class ChatbotController < ApplicationController
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
 				response = get_uer_profile(userID)#reply_to_line(reply_text)
-				profiile = line.get_profile(user_id)
+				profiile = line.get_profile(user_ID)
 				puts profiile.display_name
 				# 回應200
 				head :ok
