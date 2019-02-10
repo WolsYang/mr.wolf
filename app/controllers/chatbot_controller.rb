@@ -23,7 +23,7 @@ class ChatbotController < ApplicationController
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
-				response = get_uer_profile("Uf6d33a17cf0bce9a91e285c7beabc22")#reply_to_line(reply_text)
+				response = get_uer_profile(params['events']['source']["userID"])#reply_to_line(reply_text)
 				# 回應200
 				head :ok
 		end
