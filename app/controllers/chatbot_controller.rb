@@ -20,11 +20,11 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 			text = received_text(event)
+			puts params['events']
+			puts params['events'][0]
+			puts params['events'][0]['source']
 			userID = params['events'][0]['source']['userId']
 			puts userID
-			puts params['events']
-			puts params['events']['source']
-			puts params['events']['source']["userId"]
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
