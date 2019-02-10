@@ -22,6 +22,9 @@ class ChatbotController < ApplicationController
 			text = received_text(event)
 			userID = params['events']['source']["userID"]
 			puts userID
+			puts params['events']
+			puts params['events']['source']
+			puts params['events']['source']["userID"]
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
