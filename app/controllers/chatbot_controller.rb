@@ -20,15 +20,12 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 			text = received_text(event)
-			puts params['events']
-			puts params['events'][0]
-			puts params['events'][0]['source']
-			userID = params['events'][0]['source']['userId']
 			puts userID
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
 				response = get_uer_profile(userID)#reply_to_line(reply_text)
+				puts profiile.display_name
 				# 回應200
 				head :ok
 		end
@@ -130,7 +127,7 @@ class ChatbotController < ApplicationController
 		def get_uer_profile(user_id)
 			puts user_id
 			puts "測試"
-			line.get_profile(user_id)
+			profiile = line.get_profile(user_id)
 		end
 		
 	# Line bot api 初始化
