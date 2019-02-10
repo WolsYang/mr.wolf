@@ -19,7 +19,7 @@ class ChatbotController < ApplicationController
 	#	記錄對話 save_to_received(channel_id, received_text), save_to_reply(channel_id, reply_text)
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
-			text = received_text(event, channel_id)
+			text = received_text(event)
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
