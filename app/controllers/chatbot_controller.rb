@@ -20,7 +20,7 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 			text = received_text(event)
-			userID = params['events']['type']['source']["userID"]
+			userID = params['events']['source']["userID"]
 			puts userID
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
