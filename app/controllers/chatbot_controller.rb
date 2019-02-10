@@ -58,7 +58,7 @@ class ChatbotController < ApplicationController
 			"玩遊戲囉"
 		#elsif received_text[0...6] == '我要玩遊戲'
 			#	"您還有遊戲進行中"
-		elsif channel.now_gaming == "Bomb" &&　received_text.match(%r{\D}).nil? == true
+		elsif channel.now_gaming == "Bomb" && received_text.match(%r{\D}).nil? == true
 			user_number = Bomb.guess(received_text)
 			Bomb.play(user_number, channel_id)
 		elsif channel.now_gaming == "Shoot" 
