@@ -22,13 +22,17 @@ class ChatbotController < ApplicationController
 			text = received_text(event)
 				#記錄頻道				
 				reply_text = game_keyword_reply(channel_id, text)
-<<<<<<< HEAD
-				response = reply_to_line(reply_text) 
-=======
 				response = get_uer_profile(userID)#reply_to_line(reply_text)
 				profiile = line.get_profile(userID)
-				puts profiile.display_name
->>>>>>> parent of d2d7038... Update chatbot_controller.rb
+				case response
+				when Net::HTTPSuccess then
+				  contact = JSON.parse(response.body)
+				  p contact['displayName']
+				  p contact['pictureUrl']
+				  p contact['statusMessage']
+				else
+				  p "#{response.code} #{response.body}"
+				end
 				# 回應200
 				head :ok
 		end
