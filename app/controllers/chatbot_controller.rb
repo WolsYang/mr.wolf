@@ -138,13 +138,11 @@ class ChatbotController < ApplicationController
 		end	
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
 		line.reply_message(reply_token, message)
-
 	end
 	
 	#取得用戶名稱
 		def get_uer_profile(userID = nil)
-			return nil if userID.nil?
-			profile = line.get_profile(userID)
+		profile = line.get_profile(userID)
 			case profile
 				when Net::HTTPSuccess then
 					contact = JSON.parse(response.body)#, :quirks_mode => true)
@@ -164,6 +162,4 @@ class ChatbotController < ApplicationController
 			config.channel_token ='VsnoSZR++5ejxl+LTwHVL8bHnEVi9xDozwQ5ajtK9t+BtGEn/Jt54fDBMFq0dO93rFJp7bwnz4ta0k/3DVqpReRlTFJSoEl+IG8S4CO+ucvA0j/rZ8Lsc/tjWRzLWCdFgR3BKOJNn8HdxOXZpw19mAdB04t89/1O/w1cDnyilFU='
 		}
 	end
-
-
 end
