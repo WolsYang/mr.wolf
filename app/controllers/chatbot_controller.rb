@@ -139,10 +139,10 @@ class ChatbotController < ApplicationController
 	end
 	
 	#取得用戶名稱
-	def get_user_name(event)
-		return nil unless event['message']['text']
+	def get_user_name(event, received_text)
+		return nil unless event['message']['text'] == "+1"
 		p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-		line.get_profile(params['events'][0]['source']['userId'])
+		line.get_profile(received_text)
 	end
 
 	# Line bot api 初始化
