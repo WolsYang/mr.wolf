@@ -17,20 +17,25 @@ class ChatbotController < ApplicationController
 	#	推擠 (ECHO) echo2(channel_id, received_text) if  reply_text.nil?
 	#	記錄對話 save_to_received(channel_id, received_text), save_to_reply(channel_id, reply_text)
 	#	傳送訊息給LINE reply_to_line(reply_text)
-		#if params['events']['message']['text'] == "+1"
-			profile = line.get_profile(params['events'][0]['source']['userId'])
-			case profile
-				when Net::HTTPSuccess then
-					contact = JSON.parse(response.body)
-					p contact['displayName']
-					p contact['pictureUrl']
-					p contact['statusMessage']
-			else
-				p "#{response.code} #{response.body}"
-			end
+		#channel = Channel.find_or_create_by(channel_id: channel_id)
+		params['events'].each do |event|
+		text = received_text(event)
+		profile = line.get_profile(params['events'][0]['source']['userId'])
+		case profile
+			when Net::HTTPSuccess then
+				contact = JSON.parse(response.body)
+				p contact['displayName']
+				p contact['pictureUrl']
+				p contact['statusMessage']
+		else
+			p "#{response.code} #{response.body}"
+		end
+			#記錄頻道				
+			reply_text = game_keyword_reply(channel_id, text)
+			response = #reply_to_line(reply_text)
 			# 回應200
 			head :ok
-	
+		end			
 	end
 
 	# 取得對方說的話
