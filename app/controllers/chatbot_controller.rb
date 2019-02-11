@@ -133,6 +133,8 @@ class ChatbotController < ApplicationController
 	#取得用戶名稱
 	def get_user_name(userId = nil)
 		return nil if userId.nil? 
+		p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+		line.get_profile(userId)
 	end
 
 	# Line bot api 初始化
