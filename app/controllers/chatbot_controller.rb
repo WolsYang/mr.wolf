@@ -139,8 +139,8 @@ class ChatbotController < ApplicationController
 	end
 	
 	#取得用戶名稱
-	def get_user_name(event, received_text)
-		return nil unless event['message']['text'] == "+1"
+	def get_user_name(received_text)
+		return nil unless params['events']['message']['text'] == "+1"
 		p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		line.get_profile(received_text)
 	end
