@@ -24,17 +24,8 @@ class ChatbotController < ApplicationController
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
-				response = get_uer_profile(userID)#reply_to_line(reply_text)
-				profiile = line.get_profile(userID)
-				case profiile
-				when Net::HTTPSuccess then
-				  contact = JSON.parse(response.body)
-				  p contact['displayName']
-				  p contact['pictureUrl']
-				  p contact['statusMessage']
-				else
-				  p "#{response.code} #{response.body}"
-				end
+				response = #reply_to_line(reply_text)
+
 				# 回應200
 				head :ok
 		end
@@ -49,6 +40,17 @@ class ChatbotController < ApplicationController
 		elsif event['type'] == "postback"
 			puts event['postback']['data']
 			chooise = event['postback']['data']
+		elsif event['type'] == "message" && event['message'] == "+1"
+			profiile = line.get_profile(userID)
+			case profiile
+			when Net::HTTPSuccess then
+			  contact = JSON.parse(response.body)
+			  p contact['displayName']
+			  p contact['pictureUrl']
+			  p contact['statusMessage']
+			else
+			  p "#{response.code} #{response.body}"
+			end
 		end
 	end
 
