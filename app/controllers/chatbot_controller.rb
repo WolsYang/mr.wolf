@@ -138,12 +138,13 @@ class ChatbotController < ApplicationController
 			profile = line.get_profile(params['events'][0]['source']['userId'])
 			case profile
 				when Net::HTTPSuccess then
-				contact = JSON.parse(response.body)
-				p contact['displayName']
-				p contact['pictureUrl']
-				p contact['statusMessage']
+					p JSON.parse(response.body)
+					contact = JSON.parse(response.body)
+					p contact['displayName']
+					p contact['pictureUrl']
+					p contact['statusMessage']
 				else
-				p "#{response.code} #{response.body}"
+					p "#{response.code} #{response.body}"
 			end
 		end
 		
