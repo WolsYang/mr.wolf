@@ -141,19 +141,7 @@ class ChatbotController < ApplicationController
 	end
 	
 	#取得用戶名稱
-		def get_uer_profile(userID = nil)
-		profile = line.get_profile(userID)
-			case profile
-				when Net::HTTPSuccess then
-					contact = JSON.parse(response.body)#, :quirks_mode => true)
-					p contact['displayName']
-					p contact['pictureUrl']
-					p contact['statusMessage']
-				else
-					p "#{response.code} #{response.body}"
-			end
-		end
-		
+
 	# Line bot api 初始化
 	def line
 		return @line unless @line.nil?
