@@ -23,8 +23,18 @@ class ChatbotController < ApplicationController
 			text = received_text(event)
 				#記錄頻道				
 				reply_text = game_keyword_reply(channel_id, text)
-				response = get_uer_profile(userID)|| reply_to_line(reply_text) 
-				response 
+				response = reply_to_line(reply_text) 
+				profile = line.get_profile(params['events'][0]['source']['userId'])
+				case profile
+					when Net::HTTPSuccess then
+						contact = JSON.parse(response.body)#, :quirks_mode => true)
+						p contact['displayName']
+						p contact['pictureUrl']
+						p contact['statusMessage']
+					else
+						p "#{response.code} #{response.body}"
+				end
+			end
 				# 回應200
 				head :ok
 		end
