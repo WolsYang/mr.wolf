@@ -20,19 +20,20 @@ class ChatbotController < ApplicationController
 		#channel = Channel.find_or_create_by(channel_id: channel_id)
 		params['events'].each do |event|
 		text = received_text(event)
-		profile = line.get_profile(params['events'][0]['source']['userId'])
-		case profile
-			when Net::HTTPSuccess then
-				contact = JSON.parse(response.body)
-				p contact['displayName']
-				p contact['pictureUrl']
-				p contact['statusMessage']
-		else
-			p "#{response.code} #{response.body}"
-		end
+		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
 			response = #reply_to_line(reply_text)
+			profile = line.get_profile(params['events'][0]['source']['userId'])
+			case profile
+				when Net::HTTPSuccess then
+					contact = JSON.parse(response.body)
+					p contact['displayName']
+					p contact['pictureUrl']
+					p contact['statusMessage']
+			else
+				p "#{response.code} #{response.body}"
+			end
 			# 回應200
 			head :ok
 		end			
