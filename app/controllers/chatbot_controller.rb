@@ -30,8 +30,6 @@ class ChatbotController < ApplicationController
 			  p contact['displayName']
 			  p contact['pictureUrl']
 			  p contact['statusMessage']
-			else
-			  p "#{response.code} #{response.body}"
 			end
 			# 回應200
 			head :ok
