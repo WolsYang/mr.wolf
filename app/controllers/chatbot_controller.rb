@@ -25,7 +25,6 @@ class ChatbotController < ApplicationController
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
 				response = #reply_to_line(reply_text)
-
 				# 回應200
 				head :ok
 		end
@@ -34,23 +33,30 @@ class ChatbotController < ApplicationController
 	# 取得對方說的話
 	def received_text(event)
 		if event['type'] == "message"
-			message = event['message']
-			message['text'] unless message.nil?	
+			p " message"
+			#統計+1數
+			case event['message']
+				when "+1"
+					p "+1"
+					profiile = line.get_profile(userID)
+					case profiile
+					when Net::HTTPSuccess then
+					  contact = JSON.parse(response.body)
+					  p contact['displayName']
+					  p contact['pictureUrl']
+					  p contact['statusMessage']
+					else
+					  p "#{response.code} #{response.body}"
+					end
+				else
+					p "普通"
+					message = event['message']
+					message['text'] unless message.nil?	
+			end
 		#按鈕回傳的訊息
 		elsif event['type'] == "postback"
 			puts event['postback']['data']
 			chooise = event['postback']['data']
-		elsif event['type'] == "message" && event['message'] == "+1"
-			profiile = line.get_profile(userID)
-			case profiile
-			when Net::HTTPSuccess then
-			  contact = JSON.parse(response.body)
-			  p contact['displayName']
-			  p contact['pictureUrl']
-			  p contact['statusMessage']
-			else
-			  p "#{response.code} #{response.body}"
-			end
 		end
 	end
 
