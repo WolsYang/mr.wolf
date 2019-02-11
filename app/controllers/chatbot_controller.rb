@@ -20,7 +20,6 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 			text = received_text(event)
-			userID = params['events'][0]['source']['userId']
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
@@ -38,7 +37,7 @@ class ChatbotController < ApplicationController
 			case event['message']['text']
 				when "+1"
 					p "在+1這"
-					profiile = line.get_profile(userID)
+					profiile = line.get_profile(params['events'][0]['source']['userId'])
 					case profiile
 					when Net::HTTPSuccess then
 					  contact = JSON.parse(response.body)
