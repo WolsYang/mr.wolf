@@ -23,14 +23,13 @@ class ChatbotController < ApplicationController
 		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
-			if get_user_name(text).nil?
-				puts "失敗敗敗敗敗敗敗敗敗敗敗敗"
-				response = reply_to_line(reply_text)
+			unless params['events'][0]['message']['text'] == "+1"
+				puts "成功功功功功功功功功功功功功"
+				response = reply_to_line(reply_text) 
 			else
-				puts "成功~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+				puts "失敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗"
 				response = get_user_name(text)
 			end
-			puts response
 			case response
 			when Net::HTTPSuccess then
 			  contact = JSON.parse(response.body)
