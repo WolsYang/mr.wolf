@@ -25,6 +25,7 @@ class ChatbotController < ApplicationController
 			reply_text = game_keyword_reply(channel_id, text)
 			unless params['events'][0]['message']['text'] == "+1"
 				puts "成功功功功功功功功功功功功功"
+				puts reply_text
 				response = reply_to_line(reply_text) 
 			else
 				puts "失敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗"
@@ -77,7 +78,8 @@ class ChatbotController < ApplicationController
 		puts received_text
 		puts "@#$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 		channel = Channel.find_or_create_by(channel_id: channel_id)
-		puts channel
+		puts channel.now_gaming
+		puts received_text[0...5]
 		if received_text[0...5] == '我要玩遊戲'	&& channel.now_gaming == "No"
 			puts "成功了成功了成功了成功了成功了成功了成功了成功了成功了成功了成功了"
 			"玩遊戲囉"
