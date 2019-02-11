@@ -46,7 +46,7 @@ class ChatbotController < ApplicationController
 			case event['message']['text']
 				when "+1"
 					p "在+1這"
-					contact = JSON.parse(response.body)
+					contact = JSON.parse(response.body.to_json)
 					p contact['displayName']
 				else
 					p "普通"
