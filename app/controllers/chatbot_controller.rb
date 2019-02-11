@@ -24,8 +24,10 @@ class ChatbotController < ApplicationController
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
 			if get_user_name(text).nil?
+				puts "失敗敗敗敗敗敗敗敗敗敗敗敗"
 				response = reply_to_line(reply_text)
 			else
+				puts "成功~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 				response = get_user_name(text)
 			end
 			puts response
