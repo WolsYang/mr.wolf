@@ -69,7 +69,7 @@ class ChatbotController < ApplicationController
 
 	def game_keyword_reply(channel_id, received_text)
 		puts received_text
-		channel = Channel.find_by(channel_id: channel_id)
+		channel = Channel.find_or_create_by(channel_id: channel_id)
 		if received_text[0...6] == '我要玩遊戲'	&& channel.now_gaming == "No"
 			"玩遊戲囉"
 		#elsif received_text[0...6] == '我要玩遊戲'
@@ -88,7 +88,6 @@ class ChatbotController < ApplicationController
 					"開始拉~~範圍是 1 ~ 10000\n請輸入心中所想的整數\n例如:4841\n若是猜到密碼炸彈就引爆啦\n來看看誰這麼Lucky阿~"
 				when "shoo"
 					channel.update(now_gaming: received_text[4...8])
-					Channel.find_or_create_by(channel_id: channel_id).update(now_gaming: "Shoot")
 					ShootTheGate.shoot(received_text: received_text, channel_id: channel_id)
 					"開始拉~~輸入\"抽\"抽取門柱\n輸入\"射\"抽取射門牌\n若射門牌數字介於門柱牌數字中間就贏啦~\n輸入\"重抽\"換一副牌重新開始"			
 			end

@@ -11,7 +11,7 @@ class ShootTheGate < ApplicationRecord
     end
   end
 
-  def self.shoot(recevided_text , bet = 0, channel_id)
+  def self.shoot(recevided_text, bet = 0, channel_id)
     cards = ShootTheGate.find_or_create_by(channel_id: channel_id)
     if recevided_text =~ /^小賭怡情\d*/
       basic_bet = 10#底注

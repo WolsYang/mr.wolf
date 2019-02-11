@@ -7833,3 +7833,61 @@ Migrating to AddCardsArrayToShootTheGate (20190208120736)
   ↳ bin/rails:4
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeColumnNameAtShootTheGate (20190208155919)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashoot_the_gates" ("id" integer NOT NULL PRIMARY KEY, "card1" varchar DEFAULT NULL, "now_min" varchar DEFAULT NULL, "stakes" integer DEFAULT 0, "gambling" varchar DEFAULT 'No', "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "cards" text DEFAULT '--- []
+')[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashoot_the_gates" ("id","card1","now_min","stakes","gambling","channel_id","created_at","updated_at","cards")
+                     SELECT "id","now_max","now_min","stakes","gambling","channel_id","created_at","updated_at","cards" FROM "shoot_the_gates"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "shoot_the_gates"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "shoot_the_gates" ("id" integer NOT NULL PRIMARY KEY, "card1" varchar DEFAULT NULL, "now_min" varchar DEFAULT NULL, "stakes" integer DEFAULT 0, "gambling" varchar DEFAULT 'No', "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "cards" text DEFAULT '--- []
+')[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "shoot_the_gates" ("id","card1","now_min","stakes","gambling","channel_id","created_at","updated_at","cards")
+                     SELECT "id","card1","now_min","stakes","gambling","channel_id","created_at","updated_at","cards" FROM "ashoot_the_gates"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "ashoot_the_gates"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ashoot_the_gates" ("id" integer NOT NULL PRIMARY KEY, "card1" varchar DEFAULT NULL, "card2" varchar DEFAULT NULL, "stakes" integer DEFAULT 0, "gambling" varchar DEFAULT 'No', "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "cards" text DEFAULT '--- []
+')[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ashoot_the_gates" ("id","card1","card2","stakes","gambling","channel_id","created_at","updated_at","cards")
+                     SELECT "id","card1","now_min","stakes","gambling","channel_id","created_at","updated_at","cards" FROM "shoot_the_gates"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:4
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "shoot_the_gates"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "shoot_the_gates" ("id" integer NOT NULL PRIMARY KEY, "card1" varchar DEFAULT NULL, "card2" varchar DEFAULT NULL, "stakes" integer DEFAULT 0, "gambling" varchar DEFAULT 'No', "channel_id" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "cards" text DEFAULT '--- []
+')[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "shoot_the_gates" ("id","card1","card2","stakes","gambling","channel_id","created_at","updated_at","cards")
+                     SELECT "id","card1","card2","stakes","gambling","channel_id","created_at","updated_at","cards" FROM "ashoot_the_gates"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ashoot_the_gates"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190208155919"]]
+  ↳ bin/rails:4
+  [1m[35m (31.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to RemoveCards1N2FromShootTheGate (20190210084828)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190210084828"]]
+  ↳ bin/rails:4
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4

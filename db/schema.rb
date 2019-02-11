@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_120736) do
+ActiveRecord::Schema.define(version: 2019_02_10_084828) do
 
   create_table "bombs", force: :cascade do |t|
     t.integer "now_min", default: 0
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2019_02_08_120736) do
   end
 
   create_table "shoot_the_gates", force: :cascade do |t|
-    t.string "now_max"
-    t.string "now_min"
+    t.string "card1"
+    t.string "card2"
     t.integer "stakes", default: 0
     t.string "gambling", default: "No"
     t.string "channel_id"
