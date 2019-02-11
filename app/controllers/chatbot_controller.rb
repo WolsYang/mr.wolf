@@ -23,8 +23,16 @@ class ChatbotController < ApplicationController
 		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
-			@response = get_user_name(text)|| reply_to_line(reply_text)
-
+			response = get_user_name(text)|| reply_to_line(reply_text)
+			case response
+			when Net::HTTPSuccess then
+			  contact = JSON.parse(response.body)
+			  p contact['displayName']
+			  p contact['pictureUrl']
+			  p contact['statusMessage']
+			else
+			  p "#{response.code} #{response.body}"
+			end
 			# 回應200
 			head :ok
 		end			
@@ -32,15 +40,6 @@ class ChatbotController < ApplicationController
 
 	# 取得對方說的話
 	def received_text(event)
-		case @response
-		when Net::HTTPSuccess then
-		  contact = JSON.parse(response.body)
-		  p contact['displayName']
-		  p contact['pictureUrl']
-		  p contact['statusMessage']
-		else
-		  p "#{response.code} #{response.body}"
-		end
 		if event['type'] == "message"
 			p " message"
 			#統計+1數
