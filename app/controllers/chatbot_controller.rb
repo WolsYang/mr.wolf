@@ -23,7 +23,7 @@ class ChatbotController < ApplicationController
 		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
-			response = get_user_name(text)|| reply_to_line(reply_text)
+			response = get_user_name(event)|| reply_to_line(reply_text)
 			case response
 			when Net::HTTPSuccess then
 			  contact = JSON.parse(response.body)
@@ -139,10 +139,10 @@ class ChatbotController < ApplicationController
 	end
 	
 	#取得用戶名稱
-	def get_user_name(userId = nil)
-		return nil if userId.nil? 
+	def get_user_name(event)
+		return nil unless event['message']['text']
 		p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-		line.get_profile(userId)
+		line.get_profile(params['events'][0]['source']['userId'})
 	end
 
 	# Line bot api 初始化
