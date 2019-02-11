@@ -23,9 +23,9 @@ class ChatbotController < ApplicationController
 				#記錄頻道				
 				reply_text = game_keyword_reply(channel_id, text)
 				response = #reply_to_line(reply_text)
-			end
-		# 回應200
-		head :ok
+				# 回應200
+				head :ok
+			end	
 	end
 
 	# 取得對方說的話
