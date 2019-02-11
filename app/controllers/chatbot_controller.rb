@@ -138,8 +138,7 @@ class ChatbotController < ApplicationController
 			profile = line.get_profile(params['events'][0]['source']['userId'])
 			case profile
 				when Net::HTTPSuccess then
-					p JSON.parse(response.body)
-					contact = JSON.parse(response.body)
+					contact = JSON.parse(response.body, :quirks_mode => true)
 					p contact['displayName']
 					p contact['pictureUrl']
 					p contact['statusMessage']
