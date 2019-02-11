@@ -72,7 +72,7 @@ class ChatbotController < ApplicationController
 		puts "@#$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 		channel = Channel.find_or_create_by(channel_id: channel_id)
 		puts channel
-		if received_text[0...6] == '我要玩遊戲'	&& channel.now_gaming == "No"
+		if received_text[0...5] == '我要玩遊戲'	&& channel.now_gaming == "No"
 			puts "成功了成功了成功了成功了成功了成功了成功了成功了成功了成功了成功了"
 			"玩遊戲囉"
 		#elsif received_text[0...6] == '我要玩遊戲'
