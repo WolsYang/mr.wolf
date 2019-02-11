@@ -24,15 +24,15 @@ class ChatbotController < ApplicationController
 				reply_text = game_keyword_reply(channel_id, text)
 				response = #reply_to_line(reply_text)
 				profiile = line.get_profile(params['events'][0]['source']['userId'])
-				case response
-				when Net::HTTPSuccess then
-				  contact = JSON.parse(response.body)
-				  p contact['displayName']
-				  p contact['pictureUrl']
-				  p contact['statusMessage']
-				else
-				  p "#{response.code} #{response.body}"
-				end
+				#case response
+				#when Net::HTTPSuccess then
+				#  contact = JSON.parse(response.body)
+				#  p contact['displayName']
+				#  p contact['pictureUrl']
+				#  p contact['statusMessage']
+				#else
+				#  p "#{response.code} #{response.body}"
+				#end
 				# 回應200
 				head :ok
 		end
@@ -46,7 +46,8 @@ class ChatbotController < ApplicationController
 			case event['message']['text']
 				when "+1"
 					p "在+1這"
-					userID =params['events'][0]['source']['userId']
+					contact = JSON.parse(response.body)
+					p contact['displayName']
 				else
 					p "普通"
 					message = event['message']
