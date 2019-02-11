@@ -17,22 +17,24 @@ class ChatbotController < ApplicationController
 	#	推擠 (ECHO) echo2(channel_id, received_text) if  reply_text.nil?
 	#	記錄對話 save_to_received(channel_id, received_text), save_to_reply(channel_id, reply_text)
 	#	傳送訊息給LINE reply_to_line(reply_text)
-		channel = Channel.find_or_create_by(channel_id: channel_id)
-		params['events'].each do |event|
+		if event['message']['text'] == "+1"
+			profiile = line.get_profile(params['events'][0]['source']['userId'])
+			#case response
+			#when Net::HTTPSuccess then
+			contact = JSON.parse(response.body)
+			p contact['displayName']
+			p contact['pictureUrl']
+			p contact['statusMessage']
+			else
+			  p "#{response.code} #{response.body}"
+			end
+		else
+			channel = Channel.find_or_create_by(channel_id: channel_id)
+			params['events'].each do |event|
 			text = received_text(event)
 				#記錄頻道				
 				reply_text = game_keyword_reply(channel_id, text)
 				response = #reply_to_line(reply_text)
-				profiile = line.get_profile(params['events'][0]['source']['userId'])
-				#case response
-				#when Net::HTTPSuccess then
-				  contact = JSON.parse(response.body)
-				 p contact['displayName']
-				#  p contact['pictureUrl']
-				#  p contact['statusMessage']
-				#else
-				#  p "#{response.code} #{response.body}"
-				#end
 				# 回應200
 				head :ok
 		end
@@ -46,8 +48,7 @@ class ChatbotController < ApplicationController
 			case event['message']['text']
 				when "+1"
 					p "在+1這"
-					contact = JSON.parse(response.body.to_json)
-					p contact['displayName']
+					p webhook
 				else
 					p "普通"
 					message = event['message']
