@@ -22,8 +22,8 @@ class ChatbotController < ApplicationController
 			text = received_text(event)
 				#記錄頻道				
 				reply_text = game_keyword_reply(channel_id, text)
-				response = get_uer_profile(userID)#reply_to_line(reply_text)
-				profiile = line.get_profile(userID)
+				response = #reply_to_line(reply_text)
+				profiile = line.get_profile(params['events'][0]['source']['userId'])
 				case response
 				when Net::HTTPSuccess then
 				  contact = JSON.parse(response.body)
