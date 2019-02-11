@@ -18,10 +18,13 @@ class ChatbotController < ApplicationController
 	#	推擠 (ECHO) echo2(channel_id, received_text) if  reply_text.nil?
 	#	記錄對話 save_to_received(channel_id, received_text), save_to_reply(channel_id, reply_text)
 	#	傳送訊息給LINE reply_to_line(reply_text)
+				
+
+
+		channel = Channel.find_or_create_by(channel_id: channel_id)
 		params['events'].each do |event|
 			text = received_text(event)
-				#記錄頻道
-				channel = Channel.find_or_create_by(channel_id: channel_id)
+				#記錄頻道				
 				reply_text = game_keyword_reply(channel_id, text)
 				response = reply_to_line(reply_text)
 				# 回應200
@@ -37,16 +40,7 @@ class ChatbotController < ApplicationController
 			case event['message']['text']
 				when "+1"
 					p "在+1這"
-					profiile = line.get_profile(params['events'][0]['source']['userId'])
-					case profiile
-					when Net::HTTPSuccess then
-					  contact = JSON.parse(response.body)
-					  p contact['displayName']
-					  p contact['pictureUrl']
-					  p contact['statusMessage']
-					else
-					  p "#{response.code} #{response.body}"
-					end
+					get_uer_profile
 				else
 					p "普通"
 					message = event['message']
@@ -140,10 +134,17 @@ class ChatbotController < ApplicationController
 	end
 	
 	#取得用戶名稱
-		def get_uer_profile(user_id)
-			puts user_id
-			puts "測試"
-			profiile = line.get_profile(user_id)
+		def get_uer_profile
+			profile = line.get_profile(params['events'][0]['source']['userId'])
+			case profile
+				when Net::HTTPSuccess then
+				contact = JSON.parse(response.body)
+				p contact['displayName']
+				p contact['pictureUrl']
+				p contact['statusMessage']
+				else
+				p "#{response.code} #{response.body}"
+			end
 		end
 		
 	# Line bot api 初始化
