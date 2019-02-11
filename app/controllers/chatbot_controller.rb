@@ -23,7 +23,11 @@ class ChatbotController < ApplicationController
 		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
-			response = get_user_name(text) ||reply_to_line(reply_text)
+			if get_user_name(text).nil?
+				response = reply_to_line(reply_text)
+			else
+				response = get_user_name(text)
+			end
 			puts response
 			case response
 			when Net::HTTPSuccess then
