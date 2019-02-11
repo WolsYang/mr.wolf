@@ -69,8 +69,11 @@ class ChatbotController < ApplicationController
 
 	def game_keyword_reply(channel_id, received_text)
 		puts received_text
+		puts "@#$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 		channel = Channel.find_or_create_by(channel_id: channel_id)
+		puts channel
 		if received_text[0...6] == '我要玩遊戲'	&& channel.now_gaming == "No"
+			puts "成功了成功了成功了成功了成功了成功了成功了成功了成功了成功了成功了"
 			"玩遊戲囉"
 		#elsif received_text[0...6] == '我要玩遊戲'
 			#	"您還有遊戲進行中"
