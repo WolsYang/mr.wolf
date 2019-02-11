@@ -26,7 +26,15 @@ class ChatbotController < ApplicationController
 				reply_text = game_keyword_reply(channel_id, text)
 				response = get_uer_profile(userID)#reply_to_line(reply_text)
 				profiile = line.get_profile(userID)
-				puts line.get_profile(userID)
+				case profiile
+				when Net::HTTPSuccess then
+				  contact = JSON.parse(response.body)
+				  p contact['displayName']
+				  p contact['pictureUrl']
+				  p contact['statusMessage']
+				else
+				  p "#{response.code} #{response.body}"
+				end
 				# 回應200
 				head :ok
 		end
