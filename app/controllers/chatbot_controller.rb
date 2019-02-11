@@ -26,8 +26,8 @@ class ChatbotController < ApplicationController
 				profiile = line.get_profile(params['events'][0]['source']['userId'])
 				#case response
 				#when Net::HTTPSuccess then
-				#  contact = JSON.parse(response.body)
-				#  p contact['displayName']
+				  contact = JSON.parse(response.body)
+				 p contact['displayName']
 				#  p contact['pictureUrl']
 				#  p contact['statusMessage']
 				#else
