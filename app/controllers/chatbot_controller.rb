@@ -18,8 +18,8 @@ class ChatbotController < ApplicationController
 	#	記錄對話 save_to_received(channel_id, received_text), save_to_reply(channel_id, reply_text)
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		if params['events']['message']['text'] == "+1"
-			profiile = line.get_profile(params['events'][0]['source']['userId'])
-			case response
+			profile = line.get_profile(params['events'][0]['source']['userId'])
+			case profile
 				when Net::HTTPSuccess then
 					contact = JSON.parse(response.body)
 					p contact['displayName']
