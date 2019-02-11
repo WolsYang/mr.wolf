@@ -28,6 +28,7 @@ class ChatbotController < ApplicationController
 			case profile
 				when Net::HTTPSuccess then
 					contact = JSON.parse(response.body)
+					p params
 					p contact['displayName']
 					p contact['pictureUrl']
 					p contact['statusMessage']
