@@ -34,7 +34,6 @@ class ChatbotController < ApplicationController
 					else
 						p "#{response.code} #{response.body}"
 				end
-			end
 				# 回應200
 				head :ok
 		end
