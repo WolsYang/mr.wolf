@@ -23,18 +23,8 @@ class ChatbotController < ApplicationController
 		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
-			response = #reply_to_line(reply_text)
-			profile = line.get_profile(params['events'][0]['source']['userId'])
-			case profile
-				when Net::HTTPSuccess then
-					contact = JSON.parse(response.body)
-					p params
-					p contact['displayName']
-					p contact['pictureUrl']
-					p contact['statusMessage']
-			else
-				p "#{response.code} #{response.body}"
-			end
+			response = get_user_name(text)|| reply_to_line(reply_text)
+
 			# 回應200
 			head :ok
 		end			
@@ -48,7 +38,7 @@ class ChatbotController < ApplicationController
 			case event['message']['text']
 				when "+1"
 					p "在+1這"
-					p webhook
+					params['events'][0]['source']['userId']
 				else
 					p "普通"
 					message = event['message']
@@ -141,6 +131,9 @@ class ChatbotController < ApplicationController
 	end
 	
 	#取得用戶名稱
+	def get_user_name(userId = nil)
+		return nil if userId.nil? 
+	end
 
 	# Line bot api 初始化
 	def line
