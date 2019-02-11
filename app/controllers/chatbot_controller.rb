@@ -24,7 +24,7 @@ class ChatbotController < ApplicationController
 				#記錄頻道
 				channel = Channel.find_or_create_by(channel_id: channel_id)
 				reply_text = game_keyword_reply(channel_id, text)
-				response = #reply_to_line(reply_text)
+				response = reply_to_line(reply_text)
 				# 回應200
 				head :ok
 		end
@@ -35,9 +35,9 @@ class ChatbotController < ApplicationController
 		if event['type'] == "message"
 			p " message"
 			#統計+1數
-			case event['message']
+			case event['message']['text']
 				when "+1"
-					p "+1"
+					p "在+1這"
 					profiile = line.get_profile(userID)
 					case profiile
 					when Net::HTTPSuccess then
