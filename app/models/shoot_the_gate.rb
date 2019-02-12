@@ -33,8 +33,8 @@ class ShootTheGate < ApplicationRecord
      
     case received_text
       when  "重抽"
-        porker = Poker.shuffle(1)
-        game.update(cards: porker)
+        poker = Poker.shuffle(1)
+        game.update(cards: poker)
         return  "射龍門開始啦~~~~~~~~~~~~請輸入 \"抽\" 繼續"
       when "抽"
         card1 = game.cards.delete_at(0)

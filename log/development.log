@@ -7891,3 +7891,21 @@ Migrating to RemoveCards1N2FromShootTheGate (20190210084828)
   ↳ bin/rails:4
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mShootTheGate Load (0.2ms)[0m  [1m[34mSELECT  "shoot_the_gates".* FROM "shoot_the_gates" WHERE "shoot_the_gates"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mShootTheGate Create (1.1ms)[0m  [1m[32mINSERT INTO "shoot_the_gates" ("channel_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["channel_id", "1111"], ["created_at", "2019-02-12 16:33:11.527996"], ["updated_at", "2019-02-12 16:33:11.527996"]]
+  [1m[35m (17.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mShootTheGate Load (0.2ms)[0m  [1m[34mSELECT  "shoot_the_gates".* FROM "shoot_the_gates" WHERE "shoot_the_gates"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mShootTheGate Update (2.6ms)[0m  [1m[33mUPDATE "shoot_the_gates" SET "updated_at" = ?, "cards" = ? WHERE "shoot_the_gates"."id" = ?[0m  [["updated_at", "2019-02-12 16:53:02.776659"], ["cards", "[\"紅心10\", \"方塊5 \", \"黑桃3 \", \"方塊9 \", \"黑桃A \", \"紅心Q \", \"梅花2 \", \"梅花8 \", \"黑桃7 \", \"紅心J \", \"紅心8 \", \"梅花A \", \"梅花7 \", \"紅心3 \", \"梅花K \", \"梅花Q \", \"黑桃5 \", \"紅心4 \", \"黑桃6 \", \"紅心A \", \"梅花9 \", \"紅心7 \", \"黑桃K \", \"黑桃10\", \"紅心6 \", \"方塊7 \", \"梅花10\", \"紅心9 \", \"紅心5 \", \"紅心K \", \"方塊3 \", \"黑桃4 \", \"方塊2 \", \"方塊K \", \"梅花6 \", \"黑桃9 \", \"梅花3 \", \"方塊8 \", \"梅花J \", \"紅心2 \", \"黑桃Q \", \"方塊6 \", \"方塊J \", \"黑桃2 \", \"方塊4 \", \"方塊A \", \"梅花5 \", \"方塊Q \", \"梅花4 \", \"黑桃8 \", \"黑桃J \", \"方塊10\"]"], ["id", 1]]
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m

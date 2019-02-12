@@ -1,4 +1,7 @@
 class Poker
+    def initialize
+    end
+    
     def self.cards(deck_of_cards)
       @deck = deck_of_cards.ceil#取整數 無條件進位
       (0...@deck*52).map { |i| Poker.suit(i + 1) + Poker.symbol(i + 1)}

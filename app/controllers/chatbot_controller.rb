@@ -94,9 +94,9 @@ class ChatbotController < ApplicationController
 					p received_text
 					p channel_id
 					p "=========================="	
-					porker = Poker.shuffle(1)
+					poker = Poker.shuffle(1)
 					game = ShootTheGate.find_or_create_by(channel_id: channel_id)
-					game.update(cards: porker)
+					game.update(cards: poker)
 					"開始拉~~輸入\"抽\"抽取門柱\n輸入\"射\"抽取射門牌\n若射門牌數字介於門柱牌數字中間就贏啦~\n輸入\"重抽\"換一副牌重新開始"			
 			end
 		else 			
