@@ -23,14 +23,16 @@ class ChatbotController < ApplicationController
 		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
-			if params['events'][0]['message']['text'] == "+1"
-				puts "成功功功功功功功功功功功功功"
-				response = get_user_name(text)
-			else
-				puts "失敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗"
-				
-				puts reply_text
-				response = reply_to_line(reply_text) 
+			case params['events'][0]['message']['text']
+				when "+1"
+					puts "成功功功功功功功功功功功功功"
+					response = get_user_name(text)
+				when nil
+					return nil 
+				else
+					puts "失敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗"
+					puts reply_text
+					response = reply_to_line(reply_text) 
 			end
 			case response
 			when Net::HTTPSuccess then
@@ -104,7 +106,7 @@ class ChatbotController < ApplicationController
 					p received_text
 					p channel_id
 					p "=========================="	
-					ShootTheGate.shoot(received_text: received_text, channel_id: channel_id)
+					ShootTheGate.shoot(received_text, channel_id)
 					"開始拉~~輸入\"抽\"抽取門柱\n輸入\"射\"抽取射門牌\n若射門牌數字介於門柱牌數字中間就贏啦~\n輸入\"重抽\"換一副牌重新開始"			
 			end
 		else 			
