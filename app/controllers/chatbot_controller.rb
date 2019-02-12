@@ -23,16 +23,13 @@ class ChatbotController < ApplicationController
 		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
-			case params['events'][0]['message']['text']
-				when "+1"
-					puts "成功功功功功功功功功功功功功"
-					response = get_user_name(text)
-				when nil
-					return nil 
-				else
-					puts "失敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗"
-					puts reply_text
-					response = reply_to_line(reply_text) 
+			if text == "+1"#統計+1數
+				puts "成功功功功功功功功功功功功功"
+				response = get_user_name(params['events'][0]['source']['userId'])
+			else
+				puts "失敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗"
+				puts reply_text
+				response = reply_to_line(reply_text) 
 			end
 			case response
 			when Net::HTTPSuccess then
@@ -49,18 +46,9 @@ class ChatbotController < ApplicationController
 	# 取得對方說的話
 	def received_text(event)
 		if event['type'] == "message"
-			p " message"
-			#統計+1數
-			case event['message']['text']
-				when "+1"
-					p "在+1這"
-					params['events'][0]['source']['userId']
-				else
-					p "普通"
-					message = event['message']
-					message['text'] unless message.nil?	
-			end
-		#按鈕回傳的訊息
+			message = event['message']
+			message['text'] unless message.nil?	
+			#按鈕回傳的訊息
 		elsif event['type'] == "postback"
 			puts event['postback']['data']
 			chooise = event['postback']['data']
@@ -154,10 +142,10 @@ class ChatbotController < ApplicationController
 	end
 	
 	#取得用戶名稱
-	def get_user_name(received_text)
-		return nil unless params['events'][0]['message']['text'] == "+1"
+	def get_user_name(userID)
+		#return nil unless params['events'][0]['message']['text'] == "+1"
 		p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-		line.get_profile(received_text)
+		line.get_profile(userID)
 	end
 
 	# Line bot api 初始化
