@@ -11,33 +11,26 @@ class ShootTheGate < ApplicationRecord
     end
   end
 
-  def self.shoot(recevided_text, channel_id, bet = 0)
+  def self.shoot(received_text, channel_id, basic_bet = 10)
     cards = ShootTheGate.find_or_create_by(channel_id: channel_id)
-    if recevided_text =~ /^小賭怡情\d*/
-      basic_bet = 10#底注
+    if received_text =~ /^小賭怡情\d*/
       players = recevided_text[4..5]
       cards.update(stakes: basic_bet*players, gambling: "Yes")
     end
 
-    if recevided_text =~ /^我賭\d*/ && cards.gambling == "Yes"
-      unless casds.stakes == 0
-        (2...recevided_text.size).each do |n|
-          unless recevided_text[n].match(%r{[0-9]|\s}).nil?
-            if bet.to_i  > casds.stakes
-              bet =casds.stakes#獎金池&最大注
-              break 
-            end
-            bet = recevided_text[2..n]
-            bet.to_i
-          end
+    if received_text =~ /^我賭\d*/ && cards.gambling == "Yes"
+      bet = basic_bet if received_text[2].nil?
+      return "獎金池沒了...請重新輸入關鍵字設定" if cards.stakes == 0
+      (2...received_text.size).each do |n|
+        unless received_text[n].match(%r{[0-9]|\s}).nil?
+          bet = received_text[2..n]
+          bet.to_i
         end
-      else
-        return "獎金池沒了...請重新輸入關鍵字設定"
-      end
-      self.shoot( "射", bet, channel_id)
+      bet = cards.stakes if bet.to_i > cards#獎金池&最大注 
+      self.shoot("射", channel_id, bet)
     end
      
-    case recevided_text
+    case received_text
       when  "重抽"
         porker = Poker.shuffle(1)
         cards.update(cards: porker)
@@ -56,12 +49,8 @@ class ShootTheGate < ApplicationRecord
         #puts @now_max + "@now_max"
         #puts @now_min[2] + "@now_min[2]"
         #puts @now_max[2] + "@now_max[2]"
-        if ShootTheGate.find_by(channel_id: channel_id).cards.size < 3
-          porker = Poker.shuffle(1)
-          cards.update(cards: porker)
-          self.shoot( "射", bet, channel_id)
-        end
-          ShootTheGate.shoot(received_text: received_text, channel_id: channel_id)
+        return "沒牌囉請輸\"重抽\""if ShootTheGate.find_by(channel_id: channel_id).cards.size < 3
+          ShootTheGate.shoot(received_text, channel_id)
         card3 = ShootTheGate.find_by(channel_id: channel_id).cards.delete_at(0)
         user_number = ShootTheGate.to_number(card3)
         if number2 > number1#門柱排序 case when條件需要照順序

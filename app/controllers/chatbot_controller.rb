@@ -80,7 +80,7 @@ class ChatbotController < ApplicationController
 			user_number = Bomb.guess(received_text)
 			Bomb.play(user_number, channel_id)
 		elsif channel.now_gaming == "shoot" 
-			ShootTheGate.shoot(received_text: received_text, channel_id: channel_id)
+			ShootTheGate.shoot(received_text, channel_id)
 		elsif received_text[0...4] == 'WY遊戲'
 			case received_text[4...8]
 				when "bomb"
