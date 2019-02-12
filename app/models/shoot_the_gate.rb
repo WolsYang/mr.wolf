@@ -37,10 +37,10 @@ class ShootTheGate < ApplicationRecord
         cards.update(cards: porker)
         return  "射龍門開始啦~~~~~~~~~~~~請輸入 \"抽\" 繼續"
       when "抽"
-        card1 = ShootTheGate.find_by(channel_id: channel_id).cards.delete_at(0)
+        card1 = cards.delete_at(0)
         cards.update(card1: card1)
         number1 = ShootTheGate.to_number(card1)
-        card2 = ShootTheGate.find_by(channel_id: channel_id).cards.delete_at(0)
+        card2 = cards.delete_at(0)
         cards.update(card1: card2)
         number2 = ShootTheGate.to_number(card2)
       when "射"
@@ -50,9 +50,8 @@ class ShootTheGate < ApplicationRecord
         #puts @now_max + "@now_max"
         #puts @now_min[2] + "@now_min[2]"
         #puts @now_max[2] + "@now_max[2]"
-        return "沒牌囉請輸\"重抽\""if ShootTheGate.find_by(channel_id: channel_id).cards.size < 3
-          ShootTheGate.shoot(received_text, channel_id)
-        card3 = ShootTheGate.find_by(channel_id: channel_id).cards.delete_at(0)
+        return "沒牌囉請輸\"重抽\""if cards.size < 3
+        card3 = cards.delete_at(0)
         user_number = ShootTheGate.to_number(card3)
         if number2 > number1#門柱排序 case when條件需要照順序
           number2, number1 = number1, number2
