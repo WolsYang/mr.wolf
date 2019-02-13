@@ -87,6 +87,17 @@ class ShootTheGate < ApplicationRecord
               "撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ"
             end           
           else
+            if number1 == number2
+              if game.gambling == "Yes"
+                result = game.stakes - bet
+                game.update(stakes: result)
+                puts "賭博"
+                card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s
+              else
+                puts user_number.to_s + "   user_number"
+                card3 +" \n進啦進啦~~!!!" + "您贏了" 
+              end
+            end
             if game.gambling == "Yes"
               result = game.stakes + bet
               game.update(stakes: result)
