@@ -11,7 +11,7 @@ class ShootTheGate < ApplicationRecord
     end
   end
 
-  def self.shoot(received_text, channel_id, basic_bet = 10)
+  def self.shoot(received_text, channel_id, bet = 0, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
     if received_text =~ /^小賭怡情\d*/
       players = received_text[4..5]
