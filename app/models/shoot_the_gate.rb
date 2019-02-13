@@ -41,7 +41,7 @@ class ShootTheGate < ApplicationRecord
         game.update(card1: card1)
         number1 = ShootTheGate.to_number(card1)
         card2 = game.cards.delete_at(0)
-        game.update(card1: card2)
+        game.update(card2: card2)
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
         game.update(cards: now_cards)
