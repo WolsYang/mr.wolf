@@ -27,7 +27,7 @@ class ShootTheGate < ApplicationRecord
         end
       end
       bet = game.stakes if bet.to_i > game.stakes #獎金池&最大注 
-      ShootTheGate.shoot("射", channel_id, bet.to_i)
+      bet.to_i
     end
      
     case received_text
