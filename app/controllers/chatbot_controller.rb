@@ -65,9 +65,17 @@ class ChatbotController < ApplicationController
 		channel = Channel.find_or_create_by(channel_id: channel_id)
 		if received_text[0...5] == '我要玩遊戲'	&& channel.now_gaming == "no"
 			"玩遊戲囉"
-		#elsif received_text[0...5] == '我要玩遊戲'
-			#	"您還有遊戲進行中"
-		elsif channel.now_gaming == "Bomb" && received_text.match(%r{\D}).nil? == true
+		elsif received_text[0...5] == '我要玩遊戲' && channel.now_gaming == "yes"
+			"您還有遊戲進行，若您想玩其他遊戲或結束目前遊戲，請輸入 \"結束所有遊戲\""
+		elsif received_text[0...7] == "結束所有遊戲"
+			case channel.now_gaming
+				when "bomb"
+					Bomb.find_or_create_by(channel_id: channel_id).destroy
+				when "shoot"
+					ShootTheGate.find_or_create_by(channel_id: channel_id).destroy
+			end
+			channel.update(now_gaming: "no")
+		elsif channel.now_gaming == "bomb" && received_text.match(%r{\D}).nil? == true
 			user_number = Bomb.guess(received_text)
 			Bomb.play(user_number, channel_id)
 		elsif channel.now_gaming == "shoot" 
@@ -104,7 +112,7 @@ class ChatbotController < ApplicationController
 		 		"altText": "不支援時的文字",
 				"template": {
 			    	"type": "buttons",
-				    "text": reply_text,
+				    "text": "小遊戲選單",
     	  			"actions": [
         	  			{
             			"type": "postback",

@@ -20,12 +20,14 @@ class ShootTheGate < ApplicationRecord
         \n開啟後可以輸入我賭+下注數字例如\"我賭20\"來下注\n若只輸入\"抽\"或是沒輸入下注數字則會使用 10(系統預設底注) 下注\n玩得開心:)"
       end
       players = received_text[4..5]
-      game.update(stakes: basic_bet*players.to_i, gambling: "Yes")
+      stakes = basic_bet*players.to_i
+      game.update(stakes: stakes, gambling: "Yes")
+      return "目前玩家 " + players + " 位" +"\n獎金池：" + stakes.to_s
     end
 
     if received_text =~ /^我賭\d*/ && game.gambling == "Yes"
       bet = basic_bet if received_text[2].nil?
-      return "獎金池沒了...請重新輸入關鍵字設定" if game.stakes == 0
+      return "獎金池沒了...請重新輸入\"小賭怡情\"設定" if game.stakes == 0
       (2...received_text.size).each do |n|
         unless received_text[n].match(%r{[0-9]|\s}).nil?
           bet = received_text[2..n]
@@ -42,6 +44,8 @@ class ShootTheGate < ApplicationRecord
         game.update(cards: poker)
         return  "射龍門開始啦~~~~~~~~~~~~請輸入 \"抽\" 繼續"
       when "抽"
+        return "您已經抽過門柱牌喔~" unless game.card1.nil?
+        return "您已經抽過門柱牌喔~" unless game.card2.nil?
         card1 = game.cards.delete_at(0)
         game.update(card1: card1)
         number1 = ShootTheGate.to_number(card1)
@@ -59,8 +63,10 @@ class ShootTheGate < ApplicationRecord
         puts game.card2
         return "沒牌囉請輸\"重抽\""if game.cards.size < 3
         card1 = game.card1
+        game.card1 = nil
         number1 = ShootTheGate.to_number(card1)
         card2 = game.card2
+        game.card2 = nil
         number2 = ShootTheGate.to_number(card2)
         card3 = game.cards.delete_at(0)
         user_number = ShootTheGate.to_number(card3)
