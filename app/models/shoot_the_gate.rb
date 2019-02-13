@@ -54,7 +54,7 @@ class ShootTheGate < ApplicationRecord
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
         game.update(cards: now_cards)
-        return "門柱==>" card1 + card2
+        return "門柱==>" + card1 + card2
       when "射"
         return "您還沒有抽門柱牌喔~" if game.card1.nil?
         return "您還沒有抽門柱牌喔~" if game.card2.nil?
