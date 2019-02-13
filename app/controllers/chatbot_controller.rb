@@ -24,19 +24,16 @@ class ChatbotController < ApplicationController
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
 			if text == "+1"#統計+1數
-				puts "成功功功功功功功功功功功功功"
 				response = get_user_name(params['events'][0]['source']['userId'])
 			else
-				puts "失敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗敗"
-				puts reply_text
 				response = reply_to_line(reply_text) 
 			end
 			case response
 			when Net::HTTPSuccess then
 			  contact = JSON.parse(response.body)
 			  p contact['displayName']
-			  p contact['pictureUrl']
-			  p contact['statusMessage']
+			#  p contact['pictureUrl']
+			#  p contact['statusMessage']
 			end
 			# 回應200
 			head :ok
@@ -50,7 +47,6 @@ class ChatbotController < ApplicationController
 			message['text'] unless message.nil?	
 			#按鈕回傳的訊息
 		elsif event['type'] == "postback"
-			puts event['postback']['data']
 			chooise = event['postback']['data']
 		end
 	end
@@ -66,13 +62,8 @@ class ChatbotController < ApplicationController
 	end
 
 	def game_keyword_reply(channel_id, received_text)
-		puts received_text
-		puts "@#$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 		channel = Channel.find_or_create_by(channel_id: channel_id)
-		puts channel.now_gaming
-		puts received_text[0...5]
 		if received_text[0...5] == '我要玩遊戲'	&& channel.now_gaming == "no"
-			puts "成功了成功了成功了成功了成功了成功了成功了成功了成功了成功了成功了"
 			"玩遊戲囉"
 		#elsif received_text[0...5] == '我要玩遊戲'
 			#	"您還有遊戲進行中"
@@ -85,7 +76,6 @@ class ChatbotController < ApplicationController
 			case received_text[4...8]
 				when "bomb"
 					channel.update(now_gaming: received_text[4...8])
-					puts '在bomb裡'
 					Bomb.start(channel_id)
 					"開始拉~~範圍是 1 ~ 10000\n請輸入心中所想的整數\n例如:4841\n若是猜到密碼炸彈就引爆啦\n來看看誰這麼Lucky阿~"
 				when "shoo"
@@ -93,7 +83,8 @@ class ChatbotController < ApplicationController
 					poker = Poker.shuffle(1)
 					game = ShootTheGate.find_or_create_by(channel_id: channel_id)
 					game.update(cards: poker)
-					"開始拉~~輸入\"抽\"抽取門柱\n輸入\"射\"抽取射門牌\n若射門牌數字介於門柱牌數字中間就贏啦~\n輸入\"重抽\"換一副牌重新開始\n輸入\"小賭怡情\"來點小驚喜"			
+					"開始拉~~輸入\"抽\"抽取門柱\n輸入\"射\"抽取射門牌\n若射門牌數字介於門柱牌數字中間就贏啦~\n輸入\"重抽\"換一副牌重新開始\n輸入\"小賭怡情\"來點小驚喜
+					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"			
 			end
 		else 			
 			return nil
@@ -142,7 +133,6 @@ class ChatbotController < ApplicationController
 	#取得用戶名稱
 	def get_user_name(userID)
 		#return nil unless params['events'][0]['message']['text'] == "+1"
-		p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		line.get_profile(userID)
 	end
 

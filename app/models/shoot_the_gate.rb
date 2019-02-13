@@ -11,8 +11,9 @@ class ShootTheGate < ApplicationRecord
     end
   end
 
-  def self.shoot(received_text, channel_id, bet = 0, basic_bet = 10)
+  def self.shoot(received_text, channel_id, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
+    bet = basic_bet
     if received_text =~ /^小賭怡情\d*/
       if received_text[4].nil?
         return "請輸入\"小賭怡情+玩家數量\"來開啟計算籌碼功能\n例如\"小賭怡情5\"代表有5位玩家，則目前底注為 5*10(系統預設底注)=50 
@@ -51,7 +52,8 @@ class ShootTheGate < ApplicationRecord
         game.update(cards: now_cards)
         return card1+card2
       when "射"
-        puts "抽" 
+        return "您還沒有抽門柱牌喔~" if game.card1.nil?
+        return "您還沒有抽門柱牌喔~" if game.card2.nil?
         puts game.cards.size
         puts game.card1
         puts game.card2
@@ -67,27 +69,22 @@ class ShootTheGate < ApplicationRecord
         if number2 > number1#門柱排序 case when條件需要照順序
           number2, number1 = number1, number2
         end
-        #result = 0 #這局贏錢的結果 沒賭的話預設是0
-        puts user_number.to_s + "   user_number"
+
         case user_number
           when number2+1...number1-1 
             if game.gambling == "Yes"
               result = game.stakes - bet
               game.update(stakes: result)
-              puts "賭博"
               card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s
             else
-              puts user_number.to_s + "   user_number"
               card3 +" \n進啦進啦~~!!!" + "您贏了" 
             end
           when number1, number2
             if game.gambling == "Yes"
               result = game.stakes + (bet*2)
               game.update(stakes: result)
-              puts "賭博撞柱"
               card3 +" \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸" + (bet*2).to_s + "\n目前獎金池" + +result.to_s
             else
-              puts user_number.to_s + "   user_number"
               "撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ"
             end           
           else
@@ -106,10 +103,8 @@ class ShootTheGate < ApplicationRecord
               if game.gambling == "Yes"
                 result = game.stakes + bet
                 game.update(stakes: result)
-                puts "賭博撞柱"
                 card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
               else
-                puts user_number.to_s + "   user_number"
                 card3 +" \n界外球 您輸啦" 
               end            
           #  end
