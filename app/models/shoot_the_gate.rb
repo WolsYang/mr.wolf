@@ -14,6 +14,10 @@ class ShootTheGate < ApplicationRecord
   def self.shoot(received_text, channel_id, bet = 0, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
     if received_text =~ /^小賭怡情\d*/
+      if received_text[4].nil?
+        return "請輸入\"小賭怡情+玩家數量\"來開啟計算籌碼功能\n例如\"小賭怡情5\"代表有5位玩家，則目前底注為 5*10(系統預設底注)=50 
+        \n開啟後可以輸入我賭+下注數字例如\"我賭20\"來下注\n若只輸入\"抽\"或是沒輸入下注數字則會使用 10(系統預設底注) 下注\n玩得開心:)"
+      end
       players = received_text[4..5]
       game.update(stakes: basic_bet*players.to_i, gambling: "Yes")
     end

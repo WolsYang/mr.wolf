@@ -90,14 +90,10 @@ class ChatbotController < ApplicationController
 					"開始拉~~範圍是 1 ~ 10000\n請輸入心中所想的整數\n例如:4841\n若是猜到密碼炸彈就引爆啦\n來看看誰這麼Lucky阿~"
 				when "shoo"
 					channel.update(now_gaming: received_text[4...9])
-					p "=========================="
-					p received_text
-					p channel_id
-					p "=========================="	
 					poker = Poker.shuffle(1)
 					game = ShootTheGate.find_or_create_by(channel_id: channel_id)
 					game.update(cards: poker)
-					"開始拉~~輸入\"抽\"抽取門柱\n輸入\"射\"抽取射門牌\n若射門牌數字介於門柱牌數字中間就贏啦~\n輸入\"重抽\"換一副牌重新開始"			
+					"開始拉~~輸入\"抽\"抽取門柱\n輸入\"射\"抽取射門牌\n若射門牌數字介於門柱牌數字中間就贏啦~\n輸入\"重抽\"換一副牌重新開始\n輸入\"小賭怡情\"來點小驚喜"			
 			end
 		else 			
 			return nil
