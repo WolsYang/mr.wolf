@@ -19,30 +19,21 @@ class ChatbotController < ApplicationController
 		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
-			if text == "+1"#統計+1數
+			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
-			else
+			#else
 				response = reply_to_line(reply_text) 
-			end
-			#取得用戶資料後的回傳
-			case response
-			when Net::HTTPSuccess then
-			  contact = JSON.parse(response.body)
-			#  p contact['displayName']
-			#  p contact['pictureUrl']
-			#  p contact['statusMessage']
-			end
+			#end
 			# 回應200
 			head :ok
-			p "測試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試"
 		end			
 	end
 
 	# 取得對方說的話
 	def received_text(event)
 		if event['type'] == "message"
+			return get_user_name(params['events'][0]['source']['userId']) if event['message']['text'] == "+1"
 			message = event['message']
-			get_user_name(params['events'][0]['source']['userId'])
 			message['text'] unless message.nil?	
 			#按鈕回傳的訊息
 		elsif event['type'] == "postback"
@@ -65,7 +56,8 @@ class ChatbotController < ApplicationController
 		if received_text[0...5] == '我要玩遊戲'	&& channel.now_gaming == "no"
 			"玩遊戲囉"
 		elsif received_text[0...5] == '我要玩遊戲' 
-			"您還有遊戲進行，若您想玩其他遊戲或結束目前遊戲\n請輸入 \"結束所有遊戲\""
+			"您還有遊戲進行，若您想玩其他遊戲或結束目前遊戲
+			\n請輸入 \"結束所有遊戲\""
 		elsif received_text[0...7] == "結束所有遊戲"
 			case channel.now_gaming
 				when "bomb"
@@ -85,14 +77,23 @@ class ChatbotController < ApplicationController
 				when "bomb"
 					channel.update(now_gaming: received_text[4...8])
 					Bomb.start(channel_id)
-					"開始拉~~範圍是 1 ~ 10000\n請輸入心中所想的整數\n例如:4841\n1.若是猜到密碼炸彈就引爆啦
-					\n2.若是沒有猜道則縮小範圍 例如: 1 ~ 4841 或 4841 ~ 1000\n來看看誰這麼Lucky阿~"
+					"開始拉~~範圍是 1 ~ 10000
+					\n請輸入心中所想的整數
+					\n例如:4841
+					\n1.若是猜到密碼炸彈就引爆啦
+					\n2.若是沒有猜道則縮小範圍 例如: 1 ~ 4841 或 4841 ~ 1000
+					\n來看看誰這麼Lucky阿~"
 				when "shoo"
 					channel.update(now_gaming: received_text[4...9])
 					poker = Poker.shuffle(1)
 					game = ShootTheGate.find_or_create_by(channel_id: channel_id)
 					game.update(cards: poker)
-					"遊戲開始拉~~\n1.先輸入\"抽\"抽取 門柱牌\n2.再輸入\"射\"抽取 射門牌\n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~\n輸入\"重抽\"換一副牌重新開始\n輸入\"小賭怡情\"來點小驚喜
+					"遊戲開始拉~~\"A\" ~ \"Q\"分別對應 1 ~ 13 只看 數字 不看 花色 
+					\n1.先輸入\"抽\"抽取 門柱牌
+					\n2.再輸入\"射\"抽取 射門牌
+					\n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~
+					\n輸入\"重抽\"換一副牌重新開始
+					\n輸入\"小賭怡情\"來點小驚喜
 					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"			
 			end
 		else 			
@@ -117,14 +118,12 @@ class ChatbotController < ApplicationController
         	  			{
             			"type": "postback",
            				"label": "終極密碼",
-            			"data": "WY遊戲bomb3345678",
-            			"dataText": "玩玩玩玩玩玩玩"
+            			"data": "WY遊戲bomb3345678"
           				},
           				{
             			"type": "postback",
            				"label": "射龍門",
-            			"data": "WY遊戲shoot3345678",
-            			"dataText": "玩玩玩玩玩玩玩"
+            			"data": "WY遊戲shoot3345678"
           				}
       				]
   				}
@@ -143,6 +142,7 @@ class ChatbotController < ApplicationController
 	def get_user_name(userID)
 		#return nil unless params['events'][0]['message']['text'] == "+1"
 		response = line.get_profile(userID)
+		#取得客戶資料後回傳
 		case response
 		when Net::HTTPSuccess then
 		  contact = JSON.parse(response.body)
@@ -157,7 +157,10 @@ class ChatbotController < ApplicationController
 		return @line unless @line.nil?
 		@line = Line::Bot::Client.new{|config|
 			config.channel_secret = '1634ed3b33c15e2cf579018b98920968'
-			config.channel_token ='VsnoSZR++5ejxl+LTwHVL8bHnEVi9xDozwQ5ajtK9t+BtGEn/Jt54fDBMFq0dO93rFJp7bwnz4ta0k/3DVqpReRlTFJSoEl+IG8S4CO+ucvA0j/rZ8Lsc/tjWRzLWCdFgR3BKOJNn8HdxOXZpw19mAdB04t89/1O/w1cDnyilFU='
+			config.channel_token ='VsnoSZR++5ejxl+LTwHVL8bHnEVi9xDozwQ5ajtK9t+BtGEn
+			/Jt54fDBMFq0dO93rFJp7bwnz4ta0k
+			/3DVqpReRlTFJSoEl+IG8S4CO+ucvA0j
+			/rZ8Lsc/tjWRzLWCdFgR3BKOJNn8HdxOXZpw19mAdB04t89/1O/w1cDnyilFU='
 		}
 	end
 end

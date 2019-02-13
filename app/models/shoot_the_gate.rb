@@ -54,14 +54,14 @@ class ShootTheGate < ApplicationRecord
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
         game.update(cards: now_cards)
-        return card1+card2
+        return "門柱==>" card1 + card2
       when "射"
         return "您還沒有抽門柱牌喔~" if game.card1.nil?
         return "您還沒有抽門柱牌喔~" if game.card2.nil?
         puts game.cards.size
         puts game.card1
         puts game.card2
-        return "沒牌囉請輸\"重抽\""if game.cards.size < 3
+        return "沒牌囉請輸入\"重抽\""if game.cards.size < 3
         card1 = game.card1
         game.card1 = nil
         number1 = ShootTheGate.to_number(card1)
@@ -81,17 +81,17 @@ class ShootTheGate < ApplicationRecord
             if game.gambling == "Yes"
               result = game.stakes - bet
               game.update(stakes: result)
-              card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s
+              "您的牌" + card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s
             else
-              card3 +" \n進啦進啦~~!!!" + "您贏了" 
+              "您的牌" + card3 +" \n進啦進啦~~!!!" + "您贏了" 
             end
           when number1, number2
             if game.gambling == "Yes"
               result = game.stakes + (bet*2)
               game.update(stakes: result)
-              card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸" + (bet*2).to_s + "\n目前獎金池" + +result.to_s
+              "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸" + (bet*2).to_s + "\n目前獎金池" + +result.to_s
             else
-              card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ"
+              "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ"
             end           
           else
           # 另一種玩法 門柱一樣 除了撞柱都贏
@@ -109,9 +109,9 @@ class ShootTheGate < ApplicationRecord
               if game.gambling == "Yes"
                 result = game.stakes + bet
                 game.update(stakes: result)
-                card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
+                "您的牌" + card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
               else
-                card3 +" \n界外球 您輸啦" 
+                "您的牌" + card3 +" \n界外球 您輸啦" 
               end            
           #  end
         end
