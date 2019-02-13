@@ -10,14 +10,10 @@ class ChatbotController < ApplicationController
   	#* Return on success: reply_text, reply_image
  	#* Return on failure(exceptions):
   	#* Dependance :
-	#	查天氣 get_weather(received_text)
 	#	記錄頻道 Channel.find_or_create_by(channel_id: channel_id)
-	#	學說話 learn(channel_id, received_text)
-	#	關鍵字回覆 keyword_reply(channel_id, received_text) if reply_text.nil?
-	#	推擠 (ECHO) echo2(channel_id, received_text) if  reply_text.nil?
-	#	記錄對話 save_to_received(channel_id, received_text), save_to_reply(channel_id, reply_text)
+	#	關鍵字回覆 game_keyword_reply(channel_id, received_text)
+	#	取得用戶名稱 get_user_name(userID)
 	#	傳送訊息給LINE reply_to_line(reply_text)
-		#channel = Channel.find_or_create_by(channel_id: channel_id)
 		params['events'].each do |event|
 		text = received_text(event)
 		puts params['events'][0]['source']['userId']
@@ -28,6 +24,7 @@ class ChatbotController < ApplicationController
 			else
 				response = reply_to_line(reply_text) 
 			end
+			#取得用戶資料後的回傳
 			case response
 			when Net::HTTPSuccess then
 			  contact = JSON.parse(response.body)
@@ -37,6 +34,7 @@ class ChatbotController < ApplicationController
 			end
 			# 回應200
 			head :ok
+			p "測試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試試"
 		end			
 	end
 
@@ -66,7 +64,7 @@ class ChatbotController < ApplicationController
 		if received_text[0...5] == '我要玩遊戲'	&& channel.now_gaming == "no"
 			"玩遊戲囉"
 		elsif received_text[0...5] == '我要玩遊戲' 
-			"您還有遊戲進行，若您想玩其他遊戲或結束目前遊戲，請輸入 \"結束所有遊戲\""
+			"您還有遊戲進行，若您想玩其他遊戲或結束目前遊戲\n請輸入 \"結束所有遊戲\""
 		elsif received_text[0...7] == "結束所有遊戲"
 			case channel.now_gaming
 				when "bomb"
@@ -75,6 +73,7 @@ class ChatbotController < ApplicationController
 					ShootTheGate.find_or_create_by(channel_id: channel_id).destroy
 			end
 			channel.update(now_gaming: "no")
+			">\"<掰掰~"
 		elsif channel.now_gaming == "bomb" && received_text.match(%r{\D}).nil? == true
 			user_number = Bomb.guess(received_text)
 			Bomb.play(user_number, channel_id)
