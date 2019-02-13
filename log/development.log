@@ -7909,3 +7909,183 @@ Migrating to RemoveCards1N2FromShootTheGate (20190210084828)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mShootTheGate Update (2.6ms)[0m  [1m[33mUPDATE "shoot_the_gates" SET "updated_at" = ?, "cards" = ? WHERE "shoot_the_gates"."id" = ?[0m  [["updated_at", "2019-02-12 16:53:02.776659"], ["cards", "[\"紅心10\", \"方塊5 \", \"黑桃3 \", \"方塊9 \", \"黑桃A \", \"紅心Q \", \"梅花2 \", \"梅花8 \", \"黑桃7 \", \"紅心J \", \"紅心8 \", \"梅花A \", \"梅花7 \", \"紅心3 \", \"梅花K \", \"梅花Q \", \"黑桃5 \", \"紅心4 \", \"黑桃6 \", \"紅心A \", \"梅花9 \", \"紅心7 \", \"黑桃K \", \"黑桃10\", \"紅心6 \", \"方塊7 \", \"梅花10\", \"紅心9 \", \"紅心5 \", \"紅心K \", \"方塊3 \", \"黑桃4 \", \"方塊2 \", \"方塊K \", \"梅花6 \", \"黑桃9 \", \"梅花3 \", \"方塊8 \", \"梅花J \", \"紅心2 \", \"黑桃Q \", \"方塊6 \", \"方塊J \", \"黑桃2 \", \"方塊4 \", \"方塊A \", \"梅花5 \", \"方塊Q \", \"梅花4 \", \"黑桃8 \", \"黑桃J \", \"方塊10\"]"], ["id", 1]]
   [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mShootTheGate Load (0.2ms)[0m  [1m[34mSELECT  "shoot_the_gates".* FROM "shoot_the_gates" WHERE "shoot_the_gates"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[36mShootTheGate Load (0.2ms)[0m  [1m[34mSELECT  "shoot_the_gates".* FROM "shoot_the_gates" WHERE "shoot_the_gates"."channel_id" = ? LIMIT ?[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (2756.2ms)[0m  [1m[35mCREATE DATABASE "mr_wolf" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE DATABASE "mr_wolf" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35m (32.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (23.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2872242921019038945)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateKeywordMappings (20181113180332)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (24.7ms)[0m  [1m[35mCREATE TABLE "keyword_mappings" ("id" bigserial primary key, "keyword" character varying, "message" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181113180332_create_keyword_mappings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181113180332"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to CreateReceiveds (20181121054056)
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (24.5ms)[0m  [1m[35mCREATE TABLE "receiveds" ("id" bigserial primary key, "channel_id" character varying, "text" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181121054056_create_receiveds.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181121054056"]]
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to CreateReplies (20181121055530)
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (18.5ms)[0m  [1m[35mCREATE TABLE "replies" ("id" bigserial primary key, "channel_id" character varying, "text" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181121055530_create_replies.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181121055530"]]
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to AddChannelIdToKeywordReply (20181121070335)
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "keyword_mappings" ADD "channel_id" character varying[0m
+  ↳ db/migrate/20181121070335_add_channel_id_to_keyword_reply.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181121070335"]]
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to DeviseCreateUsers (20181123061934)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (32.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:5
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:39
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/migrate/20181123061934_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181123061934"]]
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to CreateChannels (20181123182754)
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (24.6ms)[0m  [1m[35mCREATE TABLE "channels" ("id" bigserial primary key, "channel_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181123182754_create_channels.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181123182754"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to AddGameStatusTochenelId (20190203122012)
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "channels" ADD "bomb" boolean DEFAULT FALSE[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "channels" ADD "dice" boolean DEFAULT FALSE[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "channels" ADD "porker" boolean DEFAULT FALSE[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "channels" ADD "wolf" boolean DEFAULT FALSE[0m
+  ↳ db/migrate/20190203122012_add_game_status_tochenel_id.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190203122012"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to CreateBombs (20190203172323)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE TABLE "bombs" ("id" bigserial primary key, "now_min" integer DEFAULT 0, "now_max" integer, "user_number" integer DEFAULT 0, "code" integer, "channel_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190203172323_create_bombs.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190203172323"]]
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to RemoveGameColumAndAddGameStatus (20190204133956)
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "channels" DROP COLUMN "bomb"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "channels" DROP COLUMN "dice"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "channels" DROP COLUMN "porker"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "channels" DROP COLUMN "wolf"[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:6
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "channels" ADD "now_gaming" character varying DEFAULT 'no'[0m
+  ↳ db/migrate/20190204133956_remove_game_colum_and_add_game_status.rb:7
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190204133956"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to CreateShootTheGates (20190206131630)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (19.7ms)[0m  [1m[35mCREATE TABLE "shoot_the_gates" ("id" bigserial primary key, "now_max" character varying, "now_min" character varying, "stakes" integer DEFAULT 0, "gambling" character varying DEFAULT 'No', "channel_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190206131630_create_shoot_the_gates.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190206131630"]]
+  ↳ bin/rails:4
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to AddCardsArrayToShootTheGate (20190208120736)
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "shoot_the_gates" ADD "cards" text[] DEFAULT '{}'[0m
+  ↳ db/migrate/20190208120736_add_cards_array_to_shoot_the_gate.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190208120736"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to ChangeColumnNameAtShootTheGate (20190208155919)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "shoot_the_gates" RENAME COLUMN "now_max" TO "card1"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "shoot_the_gates" RENAME COLUMN "now_min" TO "card2"[0m
+  ↳ db/migrate/20190208155919_change_column_name_at_shoot_the_gate.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190208155919"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to RemoveCards1N2FromShootTheGate (20190210084828)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190210084828"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-02-13 05:15:59.709041"], ["updated_at", "2019-02-13 05:15:59.709041"]]
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2872242921019038945)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mShootTheGate Load (0.6ms)[0m  [1m[34mSELECT  "shoot_the_gates".* FROM "shoot_the_gates" WHERE "shoot_the_gates"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShootTheGate Create (0.8ms)[0m  [1m[32mINSERT INTO "shoot_the_gates" ("channel_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["channel_id", "1111"], ["created_at", "2019-02-13 05:38:17.539569"], ["updated_at", "2019-02-13 05:38:17.539569"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShootTheGate Update (1.8ms)[0m  [1m[33mUPDATE "shoot_the_gates" SET "updated_at" = $1, "cards" = $2 WHERE "shoot_the_gates"."id" = $3[0m  [["updated_at", "2019-02-13 05:38:34.551629"], ["cards", "{方塊10,\"梅花8 \",\"黑桃9 \",\"方塊6 \",\"梅花6 \",黑桃10,\"方塊A \",\"紅心Q \",\"方塊5 \",\"梅花2 \",\"紅心A \",\"紅心7 \",\"紅心K \",\"方塊Q \",\"黑桃4 \",\"紅心J \",\"黑桃A \",\"梅花7 \",\"方塊2 \",\"梅花9 \",\"方塊8 \",梅花10,\"黑桃6 \",\"梅花3 \",\"紅心6 \",\"方塊K \",\"紅心5 \",\"紅心8 \",\"方塊7 \",\"方塊4 \",\"紅心4 \",\"梅花Q \",\"梅花J \",\"梅花K \",\"方塊9 \",\"紅心2 \",\"方塊3 \",\"梅花5 \",\"黑桃K \",\"黑桃8 \",\"梅花4 \",\"紅心9 \",\"方塊J \",紅心10,\"黑桃5 \",\"紅心3 \",\"黑桃7 \",\"黑桃Q \",\"黑桃2 \",\"梅花A \",\"黑桃3 \",\"黑桃J \"}"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m

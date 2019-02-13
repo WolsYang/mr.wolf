@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_02_10_084828) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bombs", force: :cascade do |t|
     t.integer "now_min", default: 0
     t.integer "now_max"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_084828) do
     t.string "channel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "cards", default: "--- []\n"
+    t.text "cards", default: [], array: true
   end
 
   create_table "users", force: :cascade do |t|
