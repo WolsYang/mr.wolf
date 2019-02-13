@@ -20,7 +20,7 @@ class ChatbotController < ApplicationController
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
 			if text == "+1"#統計+1數
-				response = get_user_name(params['events'][0]['source']['userId'])
+				#response = get_user_name(params['events'][0]['source']['userId'])
 			else
 				response = reply_to_line(reply_text) 
 			end
@@ -28,7 +28,7 @@ class ChatbotController < ApplicationController
 			case response
 			when Net::HTTPSuccess then
 			  contact = JSON.parse(response.body)
-			  p contact['displayName']
+			#  p contact['displayName']
 			#  p contact['pictureUrl']
 			#  p contact['statusMessage']
 			end
@@ -42,6 +42,7 @@ class ChatbotController < ApplicationController
 	def received_text(event)
 		if event['type'] == "message"
 			message = event['message']
+			get_user_name(params['events'][0]['source']['userId'])
 			message['text'] unless message.nil?	
 			#按鈕回傳的訊息
 		elsif event['type'] == "postback"
@@ -141,7 +142,14 @@ class ChatbotController < ApplicationController
 	#取得用戶名稱
 	def get_user_name(userID)
 		#return nil unless params['events'][0]['message']['text'] == "+1"
-		line.get_profile(userID)
+		response = line.get_profile(userID)
+		case response
+		when Net::HTTPSuccess then
+		  contact = JSON.parse(response.body)
+		  p contact['displayName']
+		#  p contact['pictureUrl']
+		#  p contact['statusMessage']
+		end
 	end
 
 	# Line bot api 初始化
