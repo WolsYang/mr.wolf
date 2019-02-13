@@ -77,13 +77,14 @@ class ChatbotController < ApplicationController
 				when "bomb"
 					channel.update(now_gaming: received_text[4...8])
 					Bomb.start(channel_id)
-					"開始拉~~範圍是 1 ~ 10000\n請輸入心中所想的整數\n例如:4841\n若是猜到密碼炸彈就引爆啦\n來看看誰這麼Lucky阿~"
+					"開始拉~~範圍是 1 ~ 10000\n請輸入心中所想的整數\n例如:4841\n1.若是猜到密碼炸彈就引爆啦
+					\n2.若是沒有猜道則縮小範圍 例如: 1 ~ 4841 或 4841 ~ 1000\n來看看誰這麼Lucky阿~"
 				when "shoo"
 					channel.update(now_gaming: received_text[4...9])
 					poker = Poker.shuffle(1)
 					game = ShootTheGate.find_or_create_by(channel_id: channel_id)
 					game.update(cards: poker)
-					"開始拉~~輸入\"抽\"抽取門柱\n輸入\"射\"抽取射門牌\n若射門牌數字介於門柱牌數字中間就贏啦~\n輸入\"重抽\"換一副牌重新開始\n輸入\"小賭怡情\"來點小驚喜
+					"遊戲開始拉~~\n1.先輸入\"抽\"抽取 門柱牌\n2.再輸入\"射\"抽取 射門牌\n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~\n輸入\"重抽\"換一副牌重新開始\n輸入\"小賭怡情\"來點小驚喜
 					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"			
 			end
 		else 			
