@@ -109,7 +109,7 @@ class ChatbotController < ApplicationController
 		if reply_text == '玩遊戲囉'			
 			message = {
   				"type": "template",
-		 		"altText": "不支援時的文字",
+		 		"altText": "小遊戲選單",
 				"template": {
 			    	"type": "buttons",
 				    "text": "小遊戲選單",

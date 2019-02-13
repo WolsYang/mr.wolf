@@ -16,8 +16,8 @@ class ShootTheGate < ApplicationRecord
     bet = basic_bet
     if received_text =~ /^小賭怡情\d*/
       if received_text[4].nil?
-        return "請輸入\"小賭怡情+玩家數量\"來開啟計算籌碼功能\n例如\"小賭怡情5\"代表有5位玩家，則目前底注為 5*10(系統預設底注)=50 
-        \n開啟後可以輸入我賭+下注數字例如\"我賭20\"來下注\n若只輸入\"抽\"或是沒輸入下注數字則會使用 10(系統預設底注) 下注\n玩得開心:)"
+        return "請輸入\"小賭怡情+玩家數量\"來開啟計算籌碼功能\n例如 有五位玩家就輸入 \"小賭怡情5\" ，\n獎金池就會等於 = 玩家數 5 * 10(系統預設底注)
+        \n成功設定後可以輸入我賭+下注數字 例如 \"我賭20\" 代表抽一張牌並下注20\n若輸入 \"抽\" 或是 只輸入\"我賭\"則會使用 10(系統預設底注) 下注\n玩得開心:)"
       end
       players = received_text[4..5]
       stakes = basic_bet*players.to_i
@@ -89,9 +89,9 @@ class ShootTheGate < ApplicationRecord
             if game.gambling == "Yes"
               result = game.stakes + (bet*2)
               game.update(stakes: result)
-              card3 +" \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸" + (bet*2).to_s + "\n目前獎金池" + +result.to_s
+              card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸" + (bet*2).to_s + "\n目前獎金池" + +result.to_s
             else
-              "撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ"
+              card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ"
             end           
           else
           # 另一種玩法 門柱一樣 除了撞柱都贏
