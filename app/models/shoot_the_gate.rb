@@ -45,6 +45,7 @@ class ShootTheGate < ApplicationRecord
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
         game.update(cards: now_cards)
+        return car1+card2
       when "射"
         puts "抽" 
         puts game.cards.size
