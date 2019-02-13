@@ -97,16 +97,17 @@ class ShootTheGate < ApplicationRecord
                 puts user_number.to_s + "   user_number"
                 card3 +" \n進啦進啦~~!!!" + "您贏了" 
               end
-            end
-            if game.gambling == "Yes"
-              result = game.stakes + bet
-              game.update(stakes: result)
-              puts "賭博撞柱"
-              card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
             else
-              puts user_number.to_s + "   user_number"
-              card3 +" \n界外球 您輸啦" 
-            end            
+              if game.gambling == "Yes"
+                result = game.stakes + bet
+                game.update(stakes: result)
+                puts "賭博撞柱"
+                card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
+              else
+                puts user_number.to_s + "   user_number"
+                card3 +" \n界外球 您輸啦" 
+              end            
+            end
         end
       else
         return nil
