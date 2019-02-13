@@ -58,6 +58,8 @@ class ShootTheGate < ApplicationRecord
         number2 = ShootTheGate.to_number(card2)
         card3 = game.cards.delete_at(0)
         user_number = ShootTheGate.to_number(card3)
+        now_cards = game.cards
+        game.update(cards: now_cards)
         if number2 > number1#門柱排序 case when條件需要照順序
           number2, number1 = number1, number2
         end
@@ -69,17 +71,17 @@ class ShootTheGate < ApplicationRecord
               result = game.stakes - bet
               game.update(stakes: result)
               puts "賭博"
-              "進啦進啦~~贏錢啦!!!" + "您贏" + bet.to_s + "目前獎金池" + result.to_s
+              card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s
             else
               puts user_number.to_s + "   user_number"
-              "進啦進啦~~!!!" + "您贏了" 
+              card3 +" \n進啦進啦~~!!!" + "您贏了" 
             end
           when number1, number2
             if game.gambling == "Yes"
               result = game.stakes + (bet*2)
               game.update(stakes: result)
               puts "賭博撞柱"
-              "撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "您輸" + (bet*2).to_s + "目前獎金池" + +result.to_s
+              card3 +" \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸" + (bet*2).to_s + "\n目前獎金池" + +result.to_s
             else
               puts user_number.to_s + "   user_number"
               "撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ"
@@ -89,10 +91,10 @@ class ShootTheGate < ApplicationRecord
               result = game.stakes + bet
               game.update(stakes: result)
               puts "賭博撞柱"
-              "界外球 賠錢拉~~~"+ "您輸" + bet.to_s + "目前獎金池" + +result.to_s
+              card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
             else
               puts user_number.to_s + "   user_number"
-              "界外球 您輸啦" 
+              card3 +" \n界外球 您輸啦" 
             end            
         end
       else
