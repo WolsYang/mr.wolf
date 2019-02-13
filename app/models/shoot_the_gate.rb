@@ -14,7 +14,7 @@ class ShootTheGate < ApplicationRecord
   def self.shoot(received_text, channel_id, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
     if received_text =~ /^小賭怡情\d*/
-      players = recevided_text[4..5]
+      players = receivded_text[4..5]
       game.update(stakes: basic_bet*players, gambling: "Yes")
     end
 
@@ -87,17 +87,18 @@ class ShootTheGate < ApplicationRecord
               "撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ"
             end           
           else
-            if number1 == number2
-              if game.gambling == "Yes"
-                result = game.stakes - bet
-                game.update(stakes: result)
-                puts "賭博"
-                card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s
-              else
-                puts user_number.to_s + "   user_number"
-                card3 +" \n進啦進啦~~!!!" + "您贏了" 
-              end
-            else
+          # 另一種玩法 門柱一樣 除了撞柱都贏
+          #  if number1 == number2
+          #    if game.gambling == "Yes"
+          #      result = game.stakes - bet
+          #      game.update(stakes: result)
+          #      puts "賭博"
+          #      card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s
+          #    else
+          #      puts user_number.to_s + "   user_number"
+          #      card3 +" \n進啦進啦~~!!!" + "您贏了" 
+          #    end
+          #  else
               if game.gambling == "Yes"
                 result = game.stakes + bet
                 game.update(stakes: result)
@@ -107,7 +108,7 @@ class ShootTheGate < ApplicationRecord
                 puts user_number.to_s + "   user_number"
                 card3 +" \n界外球 您輸啦" 
               end            
-            end
+          #  end
         end
       else
         return nil
