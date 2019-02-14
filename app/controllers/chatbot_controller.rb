@@ -32,9 +32,13 @@ class ChatbotController < ApplicationController
 	# 取得對方說的話
 	def received_text(event)
 		if event['type'] == "message"
-			return get_user_name(params['events'][0]['source']['userId']) if event['message']['text'] == "+1"
-			message = event['message']
-			message['text'] unless message.nil?	
+			case event['message']['text']
+				when "+1"
+					get_user_name(params['events'][0]['source']['userId'])
+				else
+					message = event['message']
+					message['text'] unless message.nil?	
+			end
 			#按鈕回傳的訊息
 		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
