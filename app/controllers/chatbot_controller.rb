@@ -35,6 +35,8 @@ class ChatbotController < ApplicationController
 			case event['message']['text']
 				when "+1"
 					get_user_name(params['events'][0]['source']['userId'])
+					message = event['message']
+					message['text'] unless message.nil?	
 				else
 					message = event['message']
 					message['text'] unless message.nil?	
@@ -112,8 +114,67 @@ class ChatbotController < ApplicationController
 		reply_token = params['events'][0]['replyToken']	
 		# 設定回覆訊息類型
 		if reply_text == '玩遊戲囉'			
-			message = {:type=>"template", :altText=>"this is a carousel template", :template=>{:type=>"carousel", :columns=>[{:title=>"kill", :text=>"number0", :actions=>[{:type=>"postback", :label=>1, :data=>"A"}, {:type=>"postback", :label=>2, :data=>"B"}, {:type=>"postback", :label=>3, :data=>"C"}]}, {:title=>"kill", :text=>"number1", :actions=>[{:type=>"postback", :label=>4, :data=>"D"}, {:type=>"postback", :label=>5, :data=>"E"}, {:type=>"postback", :label=>6, :data=>"F"}]}, {:title=>"kill", :text=>"number2", :actions=>[{:type=>"postback", :label=>7, :data=>"G"}, {:type=>"postback", :label=>8, :data=>"H"}, {:type=>"postback", :label=>9, :data=>"I"}]}, {:title=>"kill", :text=>"number3", :actions=>[{:type=>"postback", :label=>10, :data=>"J"}, {:type=>"postback", :label=>11, :data=>"K"}, {:type=>"postback", :label=>"nobody", :data=>"nobody"}]}]}}
-
+			message = message = {
+				"type": "template",
+				"altText": "在不支援顯示樣板的地方顯示的文字",
+				"template": {
+				  "type": "carousel",
+				  "columns": [
+					{
+					  "title": "更粗的標題",
+					  "text": "第一組標題",
+					  "defaultAction": {
+						"type": "message",
+						"label": "點到圖片或標題",
+						"text": "0"
+					  },
+					  "actions": [
+						{
+						  "type": "message",
+						  "label": "第一個按鈕",
+						  "text": "1"
+						},
+						{
+						  "type": "message",
+						  "label": "第二個按鈕",
+						  "text": "2"
+						},
+						{
+						  "type": "message",
+						  "label": "第三個按鈕",
+						  "text": "3"
+						}
+					  ]
+					},
+					{
+					  "title": "更粗的標題",
+					  "text": "第二組標題",
+					  "defaultAction": {
+						"type": "message",
+						"label": "點到圖片或標題",
+						"text": "0"
+					  },
+					  "actions": [
+						{
+						  "type": "message",
+						  "label": "第一個按鈕",
+						  "text": "1"
+						},
+						{
+						  "type": "message",
+						  "label": "第二個按鈕",
+						  "text": "2"
+						},
+						{
+						  "type": "message",
+						  "label": "第三個按鈕",
+						  "text": "3"
+						}
+					  ]
+					}
+				  ]
+				}
+			  }
 		else
 			message = {
 				type: 'text',
