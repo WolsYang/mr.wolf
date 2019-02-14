@@ -114,67 +114,26 @@ class ChatbotController < ApplicationController
 		reply_token = params['events'][0]['replyToken']	
 		# 設定回覆訊息類型
 		if reply_text == '玩遊戲囉'			
-			message = {
+			message = 			{
 				"type": "template",
-				"altText": "在不支援顯示樣板的地方顯示的文字",
-				"template": {
-				  "type": "carousel",
-				  "columns": [
-					{
-					  "title": "更粗的標題",
-					  "text": "第一組標題",
-					  "defaultAction": {
-						"type": "message",
-						"label": "點到圖片或標題",
-						"text": "0"
-					  },
-					  "actions": [
+			   "altText": "小遊戲選單",
+			  "template": {
+				  "type": "buttons",
+				  "text": "小遊戲選單",
+					"actions": [
 						{
-						  "type": "message",
-						  "label": "第一個按鈕",
-						  "text": "1"
+					  "type": "postback",
+						 "label": "終極密碼",
+					  "data": "WY遊戲bomb3345678"
 						},
 						{
-						  "type": "message",
-						  "label": "第二個按鈕",
-						  "text": "2"
-						},
-						{
-						  "type": "message",
-						  "label": "第三個按鈕",
-						  "text": "3"
+					  "type": "postback",
+						 "label": "射龍門",
+					  "data": "WY遊戲shoot3345678"
 						}
-					  ]
-					},
-					{
-					  "title": "更粗的標題",
-					  "text": "第二組標題",
-					  "defaultAction": {
-						"type": "message",
-						"label": "點到圖片或標題",
-						"text": "0"
-					  },
-					  "actions": [
-						{
-						  "type": "message",
-						  "label": "第一個按鈕",
-						  "text": "1"
-						},
-						{
-						  "type": "message",
-						  "label": "第二個按鈕",
-						  "text": "2"
-						},
-						{
-						  "type": "message",
-						  "label": "第三個按鈕",
-						  "text": "3"
-						}
-					  ]
-					}
-				  ]
+					]
 				}
-			  }
+		  }
 		else
 			message = {
 				type: 'text',
