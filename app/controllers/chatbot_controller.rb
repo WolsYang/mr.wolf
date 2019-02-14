@@ -114,7 +114,7 @@ class ChatbotController < ApplicationController
 		reply_token = params['events'][0]['replyToken']	
 		# 設定回覆訊息類型
 		if reply_text == '玩遊戲囉'			
-			message = message = {
+			message = {
 				"type": "template",
 				"altText": "在不支援顯示樣板的地方顯示的文字",
 				"template": {
