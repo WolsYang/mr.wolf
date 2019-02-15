@@ -22,19 +22,7 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
-			message = {
-				type: 'text',
-				text: 'hello'
-			  }
-			response = line.push_message("Uf6d33a17cf0bce9a91e285c7beabc220", message)
-			case response
-			when Net::HTTPSuccess then
-
-			else
-			  p "#{response.code} #{response.body}"
-			end
-			p ".............................................................."
-			#response = reply_to_line(reply_text) 
+			response = reply_to_line(reply_text) 
 			#end
 			# 回應200
 			head :ok
@@ -156,6 +144,14 @@ class ChatbotController < ApplicationController
 		line.reply_message(reply_token, message)
 	end
 	
+	#主動發訊息
+	def push_to_line(userID, text)
+		message = {
+			type: 'text',
+			text: text
+		  }
+		line.push_message(userID, message)
+		end
 	#取得用戶名稱
 	def get_user_name(userID)
 		#return nil unless params['events'][0]['message']['text'] == "+1"
