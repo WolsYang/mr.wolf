@@ -36,6 +36,7 @@ class ChatbotController < ApplicationController
 				when "+1"
 					get_user_name(params['events'][0]['source']['userId'])
 					message = event['message']
+					client.push_message(params['events'][0]['source']['userId'], message)
 					message['text'] unless message.nil?	
 				else
 					message = event['message']
@@ -94,7 +95,7 @@ class ChatbotController < ApplicationController
 					poker = Poker.shuffle(1)
 					game = ShootTheGate.find_or_create_by(channel_id: channel_id)
 					game.update(cards: poker)
-					"遊戲開始拉~~\"A\" ~ \"Q\"分別對應 1 ~ 13 只看 數字 不看 花色 
+					"遊戲開始拉~~\"A\" ~ \"K\"分別對應 1 ~ 13 只看 數字 不看 花色 
 					\n1.先輸入\"抽\"抽取 門柱牌
 					\n2.再輸入\"射\"抽取 射門牌
 					\n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~
