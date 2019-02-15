@@ -24,7 +24,7 @@ class ChatbotController < ApplicationController
 			#else
 			line.push_message(params['events'][0]['source']['userId'], reply_text)
 			p ".............................................................."
-				response = reply_to_line(reply_text) 
+			response = reply_to_line(reply_text) 
 			#end
 			# 回應200
 			head :ok
@@ -105,7 +105,7 @@ class ChatbotController < ApplicationController
 					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"			
 			end
 		else 			
-			return nil
+			return "nilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnil"
 		end	
 	end
 
