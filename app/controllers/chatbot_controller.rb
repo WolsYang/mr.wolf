@@ -22,6 +22,8 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
+			line.push_message(params['events'][0]['source']['userId'], reply_text)
+			p ".............................................................."
 				response = reply_to_line(reply_text) 
 			#end
 			# 回應200
@@ -36,7 +38,6 @@ class ChatbotController < ApplicationController
 				when "+1"
 					get_user_name(params['events'][0]['source']['userId'])
 					message = event['message']
-					line.push_message(params['events'][0]['source']['userId'], message)
 					message['text'] unless message.nil?	
 				else
 					message = event['message']
