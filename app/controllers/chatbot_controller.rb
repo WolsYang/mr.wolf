@@ -23,7 +23,15 @@ class ChatbotController < ApplicationController
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
 			response = line.push_message("Uf6d33a17cf0bce9a91e285c7beabc220", reply_text)
-			p response
+			case response
+			when Net::HTTPSuccess then
+			  contact = JSON.parse(response.body)
+			  p contact['displayName']
+			  p contact['pictureUrl']
+			  p contact['statusMessage']
+			else
+			  p "#{response.code} #{response.body}"
+			end
 			p ".............................................................."
 			#response = reply_to_line(reply_text) 
 			#end
