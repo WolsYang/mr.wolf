@@ -36,7 +36,7 @@ class ChatbotController < ApplicationController
 				when "+1"
 					get_user_name(params['events'][0]['source']['userId'])
 					message = event['message']
-					client.push_message(params['events'][0]['source']['userId'], message)
+					line.push_message(params['events'][0]['source']['userId'], message)
 					message['text'] unless message.nil?	
 				else
 					message = event['message']
