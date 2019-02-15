@@ -22,9 +22,10 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
-			line.push_message("Uf6d33a17cf0bce9a91e285c7beabc220", reply_text)
+			response = line.push_message("Uf6d33a17cf0bce9a91e285c7beabc220", reply_text)
+			p response
 			p ".............................................................."
-			response = reply_to_line(reply_text) 
+			#response = reply_to_line(reply_text) 
 			#end
 			# 回應200
 			head :ok
