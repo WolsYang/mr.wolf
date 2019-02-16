@@ -103,7 +103,7 @@ class ChatbotController < ApplicationController
 					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"			
 			end
 		else 			
-			return "nilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnil"
+			return nil
 		end	
 	end
 

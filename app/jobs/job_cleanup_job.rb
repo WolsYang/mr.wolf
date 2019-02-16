@@ -2,6 +2,6 @@ class JobCleanupJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    # Do something later
+    JobCleanupJob
   end
 end
