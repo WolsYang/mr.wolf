@@ -22,7 +22,7 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
-			RecordPlayerWorker.set( wait: 5.minutes ).perform_later
+			RecordPlayerWorker.perform_at(5.minutes.from_now)
 			response = reply_to_line(reply_text) 
 			#end
 			# 回應200
