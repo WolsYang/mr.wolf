@@ -1,7 +1,7 @@
 class RecordPlayerWorker
   include Sidekiq::Worker
 
-  def perform()
+  def perform(line)
     p 'SUCEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSS'
     message = {
 			type: 'text',
