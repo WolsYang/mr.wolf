@@ -88,6 +88,7 @@ GEM
     ffi (1.10.0-x64-mingw32)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hiredis (0.6.3)
     i18n (1.5.3)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -217,11 +218,13 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   duktape
+  hiredis
   jbuilder (~> 2.5)
   line-bot-api
   pg (~> 0.21.0)
   puma (~> 3.11)
   rails (~> 5.2.1)
+  redis
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq
@@ -234,4 +237,4 @@ RUBY VERSION
    ruby 2.4.5p335
 
 BUNDLED WITH
-   1.17.1
+   2.0.1

@@ -22,6 +22,7 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
+			RecordPlayerWorker.set( wait: 5.minutes ).perform_later
 			response = reply_to_line(reply_text) 
 			#end
 			# 回應200
@@ -151,7 +152,7 @@ class ChatbotController < ApplicationController
 			text: text
 		  }
 		line.push_message(userID, message)
-		end
+	end
 	#取得用戶名稱
 	def get_user_name(userID)
 		#return nil unless params['events'][0]['message']['text'] == "+1"

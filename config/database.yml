@@ -13,7 +13,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: mr_wolf
-  pool: 25
+  pool: 5
   username: wols
   password: admin
 
@@ -24,7 +24,7 @@ test:
   adapter: postgresql
   encoding: unicode
   database: mr_wolf
-  pool: 25
+  pool: 5
   username: wols
   password: admin
 
@@ -32,6 +32,6 @@ production:
   adapter: postgresql
   encoding: unicode
   database: mr_wolf
-  pool: 25
+  pool: 5
   username: wols
   password: admin
