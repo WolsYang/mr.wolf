@@ -22,7 +22,7 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
-			RecordPlayerWorker.perform_at(1.minutes.from_now, push_to_line(params['events'][0]['source']['userId'], "sSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS") )
+			
 			response = reply_to_line(reply_text) 
 			#end
 			# 回應200
@@ -48,14 +48,14 @@ class ChatbotController < ApplicationController
 		end
 	end
 
-	# 訊息來源ID
-	def channel_id
-		source = params['events'][0]['source']
-		source['groupId'] ||source['roomId'] ||source['userId']
-		#原始長這樣
-		#return source['groupID'] unless source['groupID'].nil?
-		#return source['roomID'] unless source['roomID'].nil?
-		#source['userID']
+	def count_player(channel_id)
+		channel = Channel.find_or_create_by(channel_id: channel_id)
+		redis = Redis.new
+		userid = params['events'][0]['source']['userId']
+		user_name = get_user_name(userid)
+		player = userid[0...11] + username
+		redis.rpush("channel_id",player)
+		RecordPlayerWorker.perform_at(1.minutes.from_now, push_to_line(params['events'][0]['source']['userId'], "sSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS") )
 	end
 
 	def game_keyword_reply(channel_id, received_text)
@@ -93,15 +93,18 @@ class ChatbotController < ApplicationController
 				when "shoo"
 					channel.update(now_gaming: received_text[4...9])
 					poker = Poker.shuffle(1)
-					game = ShootTheGate.find_or_create_by(channel_id: channel_id)
-					game.update(cards: poker)
+					gate = ShootTheGate.find_or_create_by(channel_id: channel_id)
+					gate.update(cards: poker)
 					"遊戲開始拉~~\"A\" ~ \"K\"分別對應 1 ~ 13 只看 數字 不看 花色 
 					\n1.先輸入\"抽\"抽取 門柱牌
 					\n2.再輸入\"射\"抽取 射門牌
 					\n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~
 					\n輸入\"重抽\"換一副牌重新開始
 					\n輸入\"小賭怡情\"來點小驚喜
-					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"			
+					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"	
+				when "wolf"		
+					channel.update(now_gaming: received_text[4...8])
+					RecordPlayerWorker.perform_at(1.minutes.from_now, channel)
 			end
 		else 			
 			return nil
@@ -131,6 +134,11 @@ class ChatbotController < ApplicationController
 					  	"type": "postback",
 						"label": "射龍門",
 					  	"data": "WY遊戲shoot3345678"
+						},
+						{
+					  	"type": "postback",
+						"label": "天黑請閉眼",
+					  	"data": "WY遊戲wolf3345678"
 						}
 					]
 				}
@@ -153,6 +161,7 @@ class ChatbotController < ApplicationController
 		  }
 		line.push_message(userID, message)
 	end
+
 	#取得用戶名稱
 	def get_user_name(userID)
 		#return nil unless params['events'][0]['message']['text'] == "+1"
@@ -176,7 +185,15 @@ class ChatbotController < ApplicationController
 		}
 	end
 
-	def ps
-		p'SSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+	
+	# 訊息來源ID
+	def channel_id
+		source = params['events'][0]['source']
+		source['groupId'] ||source['roomId'] ||source['userId']
+		#原始長這樣
+		#return source['groupID'] unless source['groupID'].nil?
+		#return source['roomID'] unless source['roomID'].nil?
+		#source['userID']
 	end
+
 end
