@@ -105,6 +105,7 @@ class ChatbotController < ApplicationController
 				when "wolf"		
 					channel.update(now_gaming: received_text[4...8])
 					RecordPlayerWorker.perform_at(5.minutes.from_now, channel)
+					p channel
 					return nil
 			end
 		else 			
