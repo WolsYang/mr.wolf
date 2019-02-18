@@ -1,7 +1,7 @@
 require 'line/bot'
 class RecordPlayerWorker
   include Sidekiq::Worker
-  sidekiq_options retry：false
+ 
 
   def perform(line)
     p 'SUCEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSS'
