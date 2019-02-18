@@ -50,3 +50,4 @@ build-iPhoneSimulator/
 .rvmrc
 log/development.log
 Gemfile.lock
+log/development.log
