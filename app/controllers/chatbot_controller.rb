@@ -22,7 +22,7 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
-			RecordPlayerWorker.perform_at(1.minutes.from_now, line )
+			RecordPlayerWorker.perform_at(1.minutes.from_now, ps)
 			response = reply_to_line(reply_text) 
 			#end
 			# 回應200
@@ -174,5 +174,9 @@ class ChatbotController < ApplicationController
 			config.channel_secret = '1634ed3b33c15e2cf579018b98920968'
 			config.channel_token ='VsnoSZR++5ejxl+LTwHVL8bHnEVi9xDozwQ5ajtK9t+BtGEn/Jt54fDBMFq0dO93rFJp7bwnz4ta0k/3DVqpReRlTFJSoEl+IG8S4CO+ucvA0j/rZ8Lsc/tjWRzLWCdFgR3BKOJNn8HdxOXZpw19mAdB04t89/1O/w1cDnyilFU='
 		}
+	end
+
+	def ps
+		p'SSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
 	end
 end
