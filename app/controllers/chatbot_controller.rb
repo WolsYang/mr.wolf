@@ -106,6 +106,10 @@ class ChatbotController < ApplicationController
 		reply_token = params['events'][0]['replyToken']	
 		# 設定回覆訊息類型
 		if reply_text == '玩遊戲囉'			
+			message2 = {
+				type: 'text',
+				text: "EEEEEEEEEEEEEEEEEEEEEEEEEE"
+			}
 			message = {
 				"type": "template",
 			    "altText": "小遊戲選單",
@@ -130,16 +134,8 @@ class ChatbotController < ApplicationController
 						}
 					]
 				}
-			}
-		elsif channel.now_gaming == "kill" 
-			message2 = {
-				type: 'text',
-				text: "EEEEEEEEEEEEEEEEEEEEEEEEEE"
-			}
-			message = {
-				type: 'text',
-				text: "reply_text"
-			},message2
+			},message2 = {
+		#elsif channel.now_gaming == "kill" 
 		else
 			message = {
 				type: 'text',

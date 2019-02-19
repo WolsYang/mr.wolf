@@ -31,7 +31,7 @@ class Killer < ApplicationRecord
             Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
             reply_text = "最後的玩家已成為了待宰羔羊，殺手贏了．．．"
         end
-        
+
     end
 
     def self.chooise(has_vote, channel_id)
@@ -43,7 +43,6 @@ class Killer < ApplicationRecord
             kill.update(players: kill.players)
             reply_text = "天亮了...玩家" + has_vote[33..-1] + "已經被殺手殺死"
         end
-        list_message(channel_id, reply_text)
     end
 
     def self.is_vote(has_vote, channel_id, player)
