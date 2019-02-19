@@ -23,7 +23,7 @@ class Killer < ApplicationRecord
         if day_or_night == 1 && player == kill.killer
             redis.set("for_counting", 0)#每回合頭投票的比較基準值，遊戲回合夜晚時歸０
             Killer.chooise(has_vote, channel_id)
-        elsif day_or_night == 0 && kill.players.find{|i| i[0...33] == player} =/= nil
+        elsif day_or_night == 0 && kill.players.find{|i| i[0...33] == player} != nil
             Killer.is_vote(player, channel_id, has_vote)
             Killer.vote(channel_id)
         elsif kill.players.size <= 2
@@ -90,7 +90,7 @@ class Killer < ApplicationRecord
     def self.columns(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         columns = []
-        column_number = (kill.players.to_i/3.0).ceil 
+        column_number = (kill.players.size/3.0).ceil 
         (0...column_number).each do |n|
           columns[n] = {
             "title": "kill",
