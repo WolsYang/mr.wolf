@@ -29,19 +29,21 @@ class Killer < ApplicationRecord
         elsif kill.players.size <= 2
             kill.destroy
             Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
-            "最後的玩家已成為了待宰羔羊，殺手贏了．．．"
+            reply_text = "最後的玩家已成為了待宰羔羊，殺手贏了．．．"
         end
+        
     end
 
     def self.chooise(has_vote, channel_id)
         kill = Killer.find_by(channel_id: channel_id)
-        if has_vote ==  kill.killer
-            "生命誠可貴，想一想您可以不必自殺，再挑一個吧"
+        if has_vote == kill.killer
+            reply_text = "生命誠可貴，想一想您可以不必自殺，再挑一個吧"
         else
             kill.players.delete(has_vote)
             kill.update(players: kill.players)
-            "天亮了...玩家" + has_vote[33..-1] + "已經被殺手殺死"
+            reply_text = "天亮了...玩家" + has_vote[33..-1] + "已經被殺手殺死"
         end
+        list_message(channel_id, reply_text)
     end
 
     def self.is_vote(has_vote, channel_id, player)
@@ -116,6 +118,20 @@ class Killer < ApplicationRecord
         end
         return actions
       end
-
-
+     
+    def self.list_message(channel_id, reply_text)
+        message = {
+            type: 'text',
+            text: reply_text
+        },
+        {
+            "type": "template",
+            "altText": "this is a carousel template",
+            "template": {
+            "type": "carousel",
+            "columns": columns(channel_id) 
+            }
+        }
+        return message.to_jason
+    end
 end

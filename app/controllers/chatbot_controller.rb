@@ -22,7 +22,6 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
-			
 			response = reply_to_line(reply_text, channel_id) 
 			#end
 			# 回應200
@@ -91,7 +90,7 @@ class ChatbotController < ApplicationController
 					gate.update(cards: poker)
 					ShootTheGate.rule
 				when "kill"		
-					channel.update(now_gaming: received_text[4...8])
+					channel.update(now_gaming: received_text[4...8],)
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
@@ -132,29 +131,15 @@ class ChatbotController < ApplicationController
 					]
 				}
 			},
-			{
-				type: 'text',
-				text: "reply_text"
-			}
-		elsif reply_text =="@!#$%#^%$T&%Y*"
-			message = {
-				"type": "template",
-				"altText": "this is a carousel template",
-				"template": {
-						"type": "carousel",
-						"columns": Killer.columns(channel_id) || nil
-				}
-			}
+			{:type=>"template", :altText=>"this is a carousel template", :template=>{:type=>"carousel", :columns=>"[{\"title\":\"kill\",\"text\":\"number0\",\"actions\":[{\"type\":\"postback\",\"label\":1,\"data\":\"A\"},{\"type\":\"postback\",\"label\":2,\"data\":\"B\"},{\"type\":\"postback\",\"label\":3,\"data\":\"C\"}]},{\"title\":\"kill\",\"text\":\"number1\",\"actions\":[{\"type\":\"postback\",\"label\":4,\"data\":\"D\"},{\"type\":\"postback\",\"label\":5,\"data\":\"E\"},{\"type\":\"postback\",\"label\":6,\"data\":\"F\"}]},{\"title\":\"kill\",\"text\":\"number2\",\"actions\":[{\"type\":\"postback\",\"label\":7,\"data\":\"G\"},{\"type\":\"postback\",\"label\":8,\"data\":\"H\"},{\"type\":\"postback\",\"label\":9,\"data\":\"I\"}]},{\"title\":\"kill\",\"text\":\"number3\",\"actions\":[{\"type\":\"postback\",\"label\":10,\"data\":\"J\"},{\"type\":\"postback\",\"label\":11,\"data\":\"K\"},{\"type\":\"postback\",\"label\":\"nobody\",\"data\":\"nobody\"}]}]"}}
+		elsif channel.now_gaming == "kill" 
+			reply_text
 		else
 			message = {
 				type: 'text',
 				text: reply_text
 			}
 		end	
-		message2 = {
-			type: 'text',
-			text: "reply_text"
-		}
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
 		line.reply_message(reply_token, message)
 	end
