@@ -132,7 +132,7 @@ class ChatbotController < ApplicationController
 				}
 			}
 			if true
-				message = ,{
+				message = \,{
 					type: 'text',
 					text: "text"
 					}
