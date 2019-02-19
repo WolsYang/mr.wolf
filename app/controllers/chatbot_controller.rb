@@ -78,7 +78,6 @@ class ChatbotController < ApplicationController
 					has_vote = params['events'][0]['postback']['data']
 					Killer.round(player, channel_id, has_vote)
 			end
-
 		elsif received_text[0...4] == 'WY遊戲'
 			case received_text[4...8]
 				when "bomb"
@@ -104,7 +103,7 @@ class ChatbotController < ApplicationController
 					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"	
 				when "kill"		
 					channel.update(now_gaming: received_text[4...8])
-					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id))
+					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
 		else 			
