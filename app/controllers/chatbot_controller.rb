@@ -130,13 +130,15 @@ class ChatbotController < ApplicationController
 						}
 					]
 				}
-			}
-			if true
-				message = \,{
+			},{
 					type: 'text',
 					text: "text"
 					}
-				end
+					,{
+						type: 'text',
+						text: nil
+						}
+
 #		elsif channel.now_gaming == "kill" 
 #			reply_text
 		else
