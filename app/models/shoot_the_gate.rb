@@ -1,4 +1,14 @@
 class ShootTheGate < ApplicationRecord
+    def self.rule
+      "遊戲開始拉~~\"A\" ~ \"K\"分別對應 1 ~ 13 只看 數字 不看 花色 
+      \n1.先輸入\"抽\"抽取 門柱牌
+      \n2.再輸入\"射\"抽取 射門牌
+      \n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~
+      \n輸入\"重抽\"換一副牌重新開始
+      \n輸入\"小賭怡情\"來點小驚喜
+      \n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"	
+    end
+
   def self.to_number(symbol)
     case symbol[2]
       when "A";  1

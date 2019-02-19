@@ -83,24 +83,13 @@ class ChatbotController < ApplicationController
 				when "bomb"
 					channel.update(now_gaming: received_text[4...8])
 					Bomb.start(channel_id)
-					"開始拉~~範圍是 1 ~ 10000
-					\n請輸入心中所想的整數
-					\n例如:4841
-					\n1.若是猜到密碼炸彈就引爆啦
-					\n2.若是沒有猜道則縮小範圍 例如: 1 ~ 4841 或 4841 ~ 1000
-					\n來看看誰這麼Lucky阿~"
+					Bomb.rule
 				when "shoo"
 					channel.update(now_gaming: received_text[4...9])
 					poker = Poker.shuffle(1)
 					gate = ShootTheGate.find_or_create_by(channel_id: channel_id)
 					gate.update(cards: poker)
-					"遊戲開始拉~~\"A\" ~ \"K\"分別對應 1 ~ 13 只看 數字 不看 花色 
-					\n1.先輸入\"抽\"抽取 門柱牌
-					\n2.再輸入\"射\"抽取 射門牌
-					\n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~
-					\n輸入\"重抽\"換一副牌重新開始
-					\n輸入\"小賭怡情\"來點小驚喜
-					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"	
+					ShootTheGate.rule
 				when "kill"		
 					channel.update(now_gaming: received_text[4...8])
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
@@ -142,6 +131,10 @@ class ChatbotController < ApplicationController
 						}
 					]
 				}
+			},
+			{
+				type: 'text',
+				text: "reply_text"
 			}
 		elsif reply_text =="@!#$%#^%$T&%Y*"
 			message = {
@@ -149,12 +142,8 @@ class ChatbotController < ApplicationController
 				"altText": "this is a carousel template",
 				"template": {
 						"type": "carousel",
-						"columns": Killer.columns(channel_id)
+						"columns": Killer.columns(channel_id) || nil
 				}
-			},
-			{
-				type: 'text',
-				text: "reply_text"
 			}
 		else
 			message = {

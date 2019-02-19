@@ -1,4 +1,13 @@
 class Bomb < ApplicationRecord
+	def self.rule
+		"開始拉~~範圍是 1 ~ 10000
+		\n請輸入心中所想的整數
+		\n例如:4841
+		\n1.若是猜到密碼炸彈就引爆啦
+		\n2.若是沒有猜道則縮小範圍 例如: 1 ~ 4841 或 4841 ~ 1000
+		\n來看看誰這麼Lucky阿~"
+	end
+
 	def self.start(channel_id)
 		now_max = 10000
 		now_min = 1
