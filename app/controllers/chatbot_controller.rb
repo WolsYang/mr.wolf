@@ -33,15 +33,8 @@ class ChatbotController < ApplicationController
 	# 取得對方說的話
 	def received_text(event)
 		if event['type'] == "message"
-			case event['message']['text']
-				when "+1"
-					get_user_name(params['events'][0]['source']['userId'])
 					message = event['message']
 					message['text'] unless message.nil?	
-				else
-					message = event['message']
-					message['text'] unless message.nil?	
-			end
 			#按鈕回傳的訊息
 		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
@@ -49,13 +42,7 @@ class ChatbotController < ApplicationController
 	end
 
 	def count_player(channel_id)
-		channel = Channel.find_or_create_by(channel_id: channel_id)
-		redis = Redis.new
-		userid = params['events'][0]['source']['userId']
-		user_name = get_user_name(userid)
-		player = userid[0...11] + username
-		redis.rpush("channel_id",player)
-		RecordPlayerWorker.perform_at(1.minutes.from_now, push_to_line(params['events'][0]['source']['userId'], "sSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS") )
+			RecordPlayerWorker.perform_at(1.minutes.from_now,  )
 	end
 
 	def game_keyword_reply(channel_id, received_text)
@@ -79,6 +66,19 @@ class ChatbotController < ApplicationController
 			Bomb.play(user_number, channel_id)
 		elsif channel.now_gaming == "shoot" 
 			ShootTheGate.shoot(received_text, channel_id)
+		elsif  channel.now_gaming == "kill"
+				kill = Killer.find_or_create_by(channel_id: channel_id)
+				user_id = params['events'][0]['source']['userId']
+				user_name = get_user_name(userId)
+				player = Killer.to_gameid(user_id, user_name)
+			if kill.game_beging == true & received_text == "+1"
+				#判斷player是否已存在
+				redis.rpush(channel_id, player)
+			elsif params['events'][0]['type'] == "postback"
+					has_vote = params['events'][0]['postback']['data']
+					Killer.round(player, channel_id, has_vote)
+			end
+
 		elsif received_text[0...4] == 'WY遊戲'
 			case received_text[4...8]
 				when "bomb"
@@ -102,11 +102,10 @@ class ChatbotController < ApplicationController
 					\n輸入\"重抽\"換一副牌重新開始
 					\n輸入\"小賭怡情\"來點小驚喜
 					\n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"	
-				when "wolf"		
+				when "kill"		
 					channel.update(now_gaming: received_text[4...8])
-					RecordPlayerWorker.perform_at(5.minutes.from_now, channel_id)
-					p channel
-					return nil
+					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id))
+					Killer.rule
 			end
 		else 			
 			return nil
@@ -140,19 +139,32 @@ class ChatbotController < ApplicationController
 						{
 					  	"type": "postback",
 						"label": "天黑請閉眼",
-					  	"data": "WY遊戲wolf3345678"
+					  	"data": "WY遊戲kill3345678"
 						}
 					]
 				}
-		  }
+			}
+		elsif
+			message = {
+				"type": "template",
+				"altText": "this is a carousel template",
+				"template": {
+						"type": "carousel",
+						"columns": Killer.columns(channel_id)
+				}
+			}
 		else
 			message = {
 				type: 'text',
 				text: reply_text
 			}
 		end	
+		message2 = {
+			type: 'text',
+			text: "reply_text"
+		}
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
-		line.reply_message(reply_token, message)
+		line.reply_message(reply_token, message, message2 =nil)
 	end
 	
 	#主動發訊息
