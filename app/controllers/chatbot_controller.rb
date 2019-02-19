@@ -143,7 +143,7 @@ class ChatbotController < ApplicationController
 					]
 				}
 			}
-		elsif
+		elsif reply_text =="@!#$%#^%$T&%Y*"
 			message = {
 				"type": "template",
 				"altText": "this is a carousel template",
