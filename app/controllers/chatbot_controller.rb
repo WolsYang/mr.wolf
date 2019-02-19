@@ -101,7 +101,7 @@ class ChatbotController < ApplicationController
 	end
 
 	#傳送訊息到LINE
-	def reply_to_line(reply_text)
+	def reply_to_line(reply_text, channel_id)
 		return nil if reply_text.nil?
 		# 取得reply token
 		reply_token = params['events'][0]['replyToken']	
