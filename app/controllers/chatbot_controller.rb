@@ -71,7 +71,7 @@ class ChatbotController < ApplicationController
 				user_id = params['events'][0]['source']['userId']
 				user_name = get_user_name(userId)
 				player = Killer.to_gameid(user_id, user_name)
-			if kill.game_beging == true & received_text == "+1"
+			if kill.game_beging & received_text == "+1"
 				#判斷player是否已存在
 				redis.rpush(channel_id, player)
 			elsif params['events'][0]['type'] == "postback"
