@@ -130,14 +130,12 @@ class ChatbotController < ApplicationController
 						}
 					]
 				}
-			},{
-					type: 'text',
-					text: "text"
-					}
-					,{
-						type: 'text',
-						text: nil
-						}
+			},
+			{
+			type: 'text',
+			text: "text"
+			}
+					
 
 #		elsif channel.now_gaming == "kill" 
 #			reply_text
