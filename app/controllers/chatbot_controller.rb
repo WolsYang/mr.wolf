@@ -133,7 +133,7 @@ class ChatbotController < ApplicationController
 			},
 			{
 			type: 'text',
-			text: "text"
+			text: ""
 			}
 					
 
