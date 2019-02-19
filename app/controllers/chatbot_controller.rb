@@ -151,6 +151,10 @@ class ChatbotController < ApplicationController
 						"type": "carousel",
 						"columns": Killer.columns(channel_id)
 				}
+			},
+			{
+				type: 'text',
+				text: "reply_text"
 			}
 		else
 			message = {
@@ -163,7 +167,7 @@ class ChatbotController < ApplicationController
 			text: "reply_text"
 		}
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
-		line.reply_message(reply_token, message, message2 =nil)
+		line.reply_message(reply_token, message)
 	end
 	
 	#主動發訊息
