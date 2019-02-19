@@ -23,7 +23,7 @@ class ChatbotController < ApplicationController
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
 			
-			response = reply_to_line(reply_text) 
+			response = reply_to_line(reply_text, channel_id) 
 			#end
 			# 回應200
 			head :ok
