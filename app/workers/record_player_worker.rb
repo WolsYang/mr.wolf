@@ -13,8 +13,12 @@ end
 
 class JustWait
 	include Sidekiq::Worker 
-	
-	def perform(channel_id, text)
-		push_to_line(channel_id, text)
+
+	def perform(channel_id, text, line)
+			message = {
+			type: 'text',
+			text: text
+		  }
+		line.push_message(channel_id, message)
   end
 end
