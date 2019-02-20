@@ -134,7 +134,7 @@ class ChatbotController < ApplicationController
 						}
 					]
 				}
-			},message2 = {
+			},message2 
 		#elsif channel.now_gaming == "kill" 
 		else
 			message = {
