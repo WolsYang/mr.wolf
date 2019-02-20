@@ -70,8 +70,7 @@ class ChatbotController < ApplicationController
 			if kill.game_begin 
 				p "+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1"
 				#判斷player是否已存在
-				pp = REDIS.rpush(channel_id, player) if received_text == "+1"
-				p REDIS.get(channel_id)
+				REDIS.rpush(channel_id, player) if received_text == "+1"
 				return nil
 			elsif params['events'][0]['type'] == "postback"
 					has_vote = params['events'][0]['postback']['data']
