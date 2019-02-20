@@ -20,15 +20,15 @@ class Killer < ApplicationRecord
 
     def self.to_gameid(user_id, user_name)
         #REDIS = Redis.new
-        player = ";" + user_id + user_name + ";"
+        player = ";" + user_id + user_name + ";"#因為編碼會錯誤 所以用兩個分號刮起來,然後就可以解析了
         player.to_s
     end
 
-    def self.round(player, channel_id, has_vote)
+    def self.rounds(player, channel_id, has_vote)
         kill = Killer.find_by(channel_id: channel_id)
-        round = kill.round +1
-        kill.update(round: round)
-        day_or_night = round % 2 #night:1 , day:0
+        rounds = kill.round +1
+        kill.update(round: rounds)
+        day_or_night = rounds % 2 #night:1 , day:0
         if day_or_night == 1 && player == kill.killer
             REDIS.set("for_counting", 0)#每回合頭投票的比較基準值，遊戲回合夜晚時歸０
             Killer.chooise(has_vote, channel_id)

@@ -71,7 +71,7 @@ class ChatbotController < ApplicationController
 				return nil
 			elsif params['events'][0]['type'] == "postback"
 					has_vote = params['events'][0]['postback']['data']
-					Killer.round(player, channel_id, has_vote)
+					Killer.rounds(player, channel_id, has_vote)
 			end
 		elsif received_text[0...4] == 'WY遊戲'
 			case received_text[4...8]
