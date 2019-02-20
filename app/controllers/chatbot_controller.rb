@@ -69,7 +69,7 @@ class ChatbotController < ApplicationController
 				user_id = params['events'][0]['source']['userId']
 				user_name = get_user_name(user_id)
 				player = Killer.to_gameid(user_id, user_name)
-				p killkill.game_begin.to_s
+				p kill.game_begin.to_s
 			if kill.game_begin & received_text == "+1"
 				p "+1+1+1+1+1+1+1+1+1+1+1+1"
 				#判斷player是否已存在
