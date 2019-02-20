@@ -11,7 +11,7 @@ class Killer < ApplicationRecord
     end
 
     def self.to_gameid(user_id, user_name)
-        redis = Redis.new
+        #REDIS = Redis.new
         player = user_id + user_name
     end
 
@@ -21,7 +21,7 @@ class Killer < ApplicationRecord
         kill.update(round: round)
         day_or_night = round % 2 #night:1 , day:0
         if day_or_night == 1 && player == kill.killer
-            redis.set("for_counting", 0)#每回合頭投票的比較基準值，遊戲回合夜晚時歸０
+            REDIS.set("for_counting", 0)#每回合頭投票的比較基準值，遊戲回合夜晚時歸０
             Killer.chooise(has_vote, channel_id)
         elsif day_or_night == 0 && kill.players.find{|i| i[0...33] == player} != nil
             Killer.is_vote(player, channel_id, has_vote)
@@ -47,32 +47,32 @@ class Killer < ApplicationRecord
 
     def self.is_vote(has_vote, channel_id, player)
         kill = Killer.find_by(channel_id: channel_id)
-        redis = Redis.new
+        #REDIS = Redis.new
         players = kill.players 
-        if redis.get(player).nil?
-            redis.set(player, 1000)#1000代表已經投票
-            redis.incr(has_vote)
-            redis.incr(channel_id)
+        if REDIS.get(player).nil?
+            REDIS.set(player, 1000)#1000代表已經投票
+            REDIS.incr(has_vote)
+            REDIS.incr(channel_id)
         end
     end
 
     def self.vote(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
-        redis = Redis.new
+        #REDIS = Redis.new
         players = kill.players 
-        if redis.get(channel_id) == kill.players.size
-            #把redis規0還要把排程刪除
+        if REDIS.get(channel_id) == kill.players.size
+            #把REDIS規0還要把排程刪除
             #統計得票結果,並歸0
             (0...players.size).each do |n|
-                if redis.get("for_counting").to_i < redis.get(players(n)).to_i
-                    max_vote = redis.get(players(n))
-                    redis.set("for_counting", max_vote)
+                if REDIS.get("for_counting").to_i < REDIS.get(players(n)).to_i
+                    max_vote = REDIS.get(players(n))
+                    REDIS.set("for_counting", max_vote)
                     vote_result = players[n]
-                elsif redis.get("for_counting").to_i = redis.get(players(n)).to_i
-                    same_vote = redis.get(players(n))
+                elsif REDIS.get("for_counting").to_i = REDIS.get(players(n)).to_i
+                    same_vote = REDIS.get(players(n))
                     vote_result = "no body die"
                 end
-                redis.set(players[n], 0)
+                REDIS.set(players[n], 0)
             end
             if vote_result == kill.killer
                 kill.destroy

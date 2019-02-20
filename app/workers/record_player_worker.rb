@@ -3,8 +3,8 @@ class RecordPlayerWorker
   include Sidekiq::Worker
  
 	def perform(channel_id)
-		redis= Redis.new
-		players = redis.get(channel_id)
+		#redis= Redis.new
+		players = REDIS.get(channel_id)
 		kill = Killer.find_by(channel_id: channel_id)
 		kill.update(players: players, killer: players.shuffle[1])
 		text = "遊戲開始啦 ~ 
