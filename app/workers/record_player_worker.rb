@@ -14,7 +14,7 @@ end
 class JustWait
 	include Sidekiq::Worker 
 	
-	def perform(channel_id, Killer.start_n_rule)
-		push_to_line(channel_id, Killer.start_n_rule)
+	def perform(channel_id, text)
+		push_to_line(channel_id, text)
   end
 end
