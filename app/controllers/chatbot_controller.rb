@@ -163,13 +163,14 @@ class ChatbotController < ApplicationController
 		#return nil unless params['events'][0]['message']['text'] == "+1"
 		response = line.get_profile(userID)
 		#取得客戶資料後回傳
-		case response
-		when Net::HTTPSuccess then
-		  contact = JSON.parse(response.body)
+		#case response
+		#when Net::HTTPSuccess then
+		contact = JSON.parse(response.body)
 		#  p contact['displayName']
 		#  p contact['pictureUrl']
 		#  p contact['statusMessage']
 		end
+		return contact['displayName']
 	end
 
 	# Line bot api 初始化
