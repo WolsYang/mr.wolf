@@ -169,7 +169,7 @@ class ChatbotController < ApplicationController
 		#  p contact['displayName']
 		#  p contact['pictureUrl']
 		#  p contact['statusMessage']
-		end
+		#end
 		return contact['displayName']
 	end
 
