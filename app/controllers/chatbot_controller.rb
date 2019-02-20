@@ -16,7 +16,6 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 		text = received_text(event)
-		puts params['events'][0]['source']['userId']
 			#記錄頻道				
 			reply_text = game_keyword_reply(channel_id, text)
 			#if text == "+1"#統計+1數
@@ -70,6 +69,7 @@ class ChatbotController < ApplicationController
 				user_id = params['events'][0]['source']['userId']
 				user_name = get_user_name(user_id)
 				player = Killer.to_gameid(user_id, user_name)
+				p killkill.game_begin.to_s
 			if kill.game_begin & received_text == "+1"
 				p "+1+1+1+1+1+1+1+1+1+1+1+1"
 				#判斷player是否已存在
@@ -91,7 +91,9 @@ class ChatbotController < ApplicationController
 					gate.update(cards: poker)
 					ShootTheGate.rule
 				when "kill"		
-					channel.update(now_gaming: received_text[4...8],)
+					channel.update(now_gaming: received_text[4...8])
+					kill = Killer.find_by(channel_id: channel_id)
+					kill.update(game_begin: true)
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
@@ -164,7 +166,7 @@ class ChatbotController < ApplicationController
 		case response
 		when Net::HTTPSuccess then
 		  contact = JSON.parse(response.body)
-		  p contact['displayName']
+		#  p contact['displayName']
 		#  p contact['pictureUrl']
 		#  p contact['statusMessage']
 		end

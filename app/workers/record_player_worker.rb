@@ -6,7 +6,7 @@ class RecordPlayerWorker
 		#redis= Redis.new
 		players = REDIS.get(channel_id)
 		kill = Killer.find_by(channel_id: channel_id)
-		kill.update(players: players, killer: players.shuffle[1])
+		kill.update(players: players, killer: players.shuffle[1], game_begin: false)
 		text = "遊戲開始啦 ~ 
 					\n1.接下來將會從玩家中隨機挑出一名殺手
 					\n2.殺手在天黑時選取欲殺害的玩家
