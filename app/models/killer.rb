@@ -88,7 +88,7 @@ class Killer < ApplicationRecord
         end
     end
 
-    def self.columns(channel_id)
+    def self.columns(channel_id = nil)
         kill = Killer.find_by(channel_id: channel_id)
         columns = []
         column_number = (kill.players.size/3.0).ceil 
