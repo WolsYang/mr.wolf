@@ -78,7 +78,7 @@ class Killer < ApplicationRecord
                 kill.destroy
                 Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
                 vote_result[33..-1] + "是殺手" +"\n殺手已被處死，玩家勝利啦！\n遊戲結束"
-            elsif vote_result = "no body die"
+            elsif vote_result == "no body die"
                 "最高投票超過1位...沒人死亡"
             else         
                 players.delete(player)
