@@ -5,7 +5,7 @@ class RecordPlayerWorker
 	def perform(channel_id)
 		#redis= Redis.new
 		players = REDIS.lrange(channel_id,0,-1)
-		players = players.force_encoding('utf-8')
+		players = players.each do
 		kill = Killer.find_by(channel_id: channel_id)
 		kill.update(players: players, killer: players.shuffle[1], game_begin: false)
 		text = "遊戲開始啦 ~ 
@@ -13,5 +13,7 @@ class RecordPlayerWorker
 					\n2.殺手在天黑時選取欲殺害的玩家
 					\n3.天亮時其餘玩家可投票誰是殺手，得票最高的玩家會被處決
 					\n4.如果最後僅剩一位玩，殺手就贏得這個遊戲囉～"
+
+		#players = REDIS.lrange("C374ff998b7a0bd4ef3b0fcd711e082ef",0,-1)
   end
 end
