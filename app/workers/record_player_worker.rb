@@ -5,6 +5,7 @@ class RecordPlayerWorker
 	def perform(channel_id)
 		#redis= Redis.new
 		players = REDIS.lrange(channel_id,0,-1)
+		players = players.force_encoding('utf-8')
 		kill = Killer.find_by(channel_id: channel_id)
 		kill.update(players: players, killer: players.shuffle[1], game_begin: false)
 		text = "遊戲開始啦 ~ 
