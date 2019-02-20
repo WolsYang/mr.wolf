@@ -10,6 +10,14 @@ class Killer < ApplicationRecord
         \n＊＊＊1分鐘後遊戲正式開始＊＊＊ "
     end
 
+    def self.start_n_rule
+        text = "遊戲開始啦 ~ 
+            \n1.接下來將會從玩家中隨機挑出一名殺手
+            \n2.殺手在天黑時選取欲殺害的玩家
+            \n3.天亮時其餘玩家可投票誰是殺手，得票最高的玩家會被處決
+            \n4.如果最後僅剩一位玩，殺手就贏得這個遊戲囉～"
+    end
+
     def self.to_gameid(user_id, user_name)
         #REDIS = Redis.new
         player = ";" + user_id + user_name + ";"
@@ -24,7 +32,7 @@ class Killer < ApplicationRecord
         if day_or_night == 1 && player == kill.killer
             REDIS.set("for_counting", 0)#每回合頭投票的比較基準值，遊戲回合夜晚時歸０
             Killer.chooise(has_vote, channel_id)
-        elsif day_or_night == 0 && kill.players.find{|i| i[0...33] == player} != nil
+        elsif day_or_night == 0 && kill.players.find{|i| i[1...34] == player} != nil
             Killer.is_vote(player, channel_id, has_vote)
             Killer.vote(channel_id)
         elsif kill.players.size <= 2
@@ -78,13 +86,13 @@ class Killer < ApplicationRecord
             if vote_result == kill.killer
                 kill.destroy
                 Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
-                vote_result[33..-1] + "是殺手" +"\n殺手已被處死，玩家勝利啦！\n遊戲結束"
+                vote_result[34...-1] + "是殺手" +"\n殺手已被處死，玩家勝利啦！\n遊戲結束"
             elsif vote_result == "no body die"
                 "最高投票超過1位...沒人死亡"
             else         
                 players.delete(player)
                 kill.update(players: vote_result )
-                "玩家" + vote_result[33..-1] + "已被表決處死"+ "\n殺手依然逍遙法外"
+                "玩家" + vote_result[34...-1] + "已被表決處死"+ "\n殺手依然逍遙法外"
             end
         end
     end

@@ -21,7 +21,7 @@ class ChatbotController < ApplicationController
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
 			#else
-			response = reply_to_line(reply_text, channel_id) 
+			response = reply_to_line(reply_text) 
 			#end
 			# 回應200
 			head :ok
@@ -65,10 +65,7 @@ class ChatbotController < ApplicationController
 				user_id = params['events'][0]['source']['userId']
 				user_name = get_user_name(user_id)
 				player = Killer.to_gameid(user_id, user_name)
-				p player.class.to_s
-				p channel_id.class.to_s
 			if kill.game_begin 
-				p "+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1"
 				#判斷player是否已存在
 				REDIS.rpush(channel_id, player) if received_text == "+1"
 				return nil
@@ -93,6 +90,7 @@ class ChatbotController < ApplicationController
 					kill = Killer.find_by(channel_id: channel_id)
 					kill.update(game_begin: true)
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
+					RecordPlayerWorker.perform_at(1.minutes.from_now, reply_to_line(Killer.start_n_rule))
 					Killer.rule
 			end
 		else 			
@@ -101,16 +99,12 @@ class ChatbotController < ApplicationController
 	end
 
 	#傳送訊息到LINE
-	def reply_to_line(reply_text, channel_id)
+	def reply_to_line(reply_text)
 		return nil if reply_text.nil?
 		# 取得reply token
 		reply_token = params['events'][0]['replyToken']	
 		# 設定回覆訊息類型
 		if reply_text == '玩遊戲囉'			
-			message2 = {
-				type: 'text',
-				text: "EEEEEEEEEEEEEEEEEEEEEEEEEE"
-			}
 			message = {
 				"type": "template",
 			    "altText": "小遊戲選單",
@@ -135,7 +129,7 @@ class ChatbotController < ApplicationController
 						}
 					]
 				}
-			},message2 
+			} 
 		#elsif channel.now_gaming == "kill" 
 		else
 			message = {
