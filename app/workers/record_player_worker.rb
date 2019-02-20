@@ -11,14 +11,4 @@ class RecordPlayerWorker
   end
 end
 
-class JustWait
-	include Sidekiq::Worker 
 
-	def perform(channel_id, text, line)
-			message = {
-			type: 'text',
-			text: text
-		  }
-		line.push_message(channel_id, message)
-  end
-end
