@@ -89,8 +89,7 @@ class ChatbotController < ApplicationController
 					channel.update(now_gaming: received_text[4...8])
 					kill = Killer.find_by(channel_id: channel_id)
 					kill.update(game_begin: true)
-					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
-					RecordPlayerWorker.perform_at(1.minutes.from_now, reply_to_line(Killer.start_n_rule))
+					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id, reply_to_line(Killer.start_n_rule))
 					Killer.rule
 			end
 		else 			
