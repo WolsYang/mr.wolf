@@ -12,8 +12,9 @@ class RecordPlayerWorker
 end
 
 class JustWait
-  include Sidekiq::Worker
- 
-	def perform()
+	include Sidekiq::Worker 
+	
+	def perform(channel_id, Killer.start_n_rule)
+		push_to_line(channel_id, Killer.start_n_rule)
   end
 end
