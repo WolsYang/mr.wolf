@@ -69,11 +69,13 @@ class ChatbotController < ApplicationController
 				user_id = params['events'][0]['source']['userId']
 				user_name = get_user_name(user_id)
 				player = Killer.to_gameid(user_id, user_name)
-				p kill.game_begin.to_s
+				p player
 			if kill.game_begin 
 				p "+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1"
 				#判斷player是否已存在
-				REDIS.rpush(channel_id, player) if received_text == "+1"
+				pp = REDIS.rpush(channel_id, player) if received_text == "+1"
+				p REDIS.get(channel_id)
+				return nil
 			elsif params['events'][0]['type'] == "postback"
 					has_vote = params['events'][0]['postback']['data']
 					Killer.round(player, channel_id, has_vote)
