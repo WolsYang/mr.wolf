@@ -39,10 +39,6 @@ class ChatbotController < ApplicationController
 		end
 	end
 
-	def count_player(channel_id)
-			RecordPlayerWorker.perform_at(1.minutes.from_now,  )
-	end
-
 	def game_keyword_reply(channel_id, received_text)
 		channel = Channel.find_or_create_by(channel_id: channel_id)
 		if received_text[0...5] == '我要玩遊戲'	&& channel.now_gaming == "no"
@@ -69,7 +65,8 @@ class ChatbotController < ApplicationController
 				user_id = params['events'][0]['source']['userId']
 				user_name = get_user_name(user_id)
 				player = Killer.to_gameid(user_id, user_name)
-				p player
+				p player.class.to_s
+				p channel_id.class.to_s
 			if kill.game_begin 
 				p "+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1"
 				#判斷player是否已存在

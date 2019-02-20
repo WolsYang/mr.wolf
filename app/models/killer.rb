@@ -13,6 +13,7 @@ class Killer < ApplicationRecord
     def self.to_gameid(user_id, user_name)
         #REDIS = Redis.new
         player = user_id + user_name
+        player.to_s
     end
 
     def self.round(player, channel_id, has_vote)
