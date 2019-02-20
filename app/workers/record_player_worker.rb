@@ -8,6 +8,12 @@ class RecordPlayerWorker
 		REDIS.del(channel_id)
 		kill = Killer.find_by(channel_id: channel_id)
 		kill.update(players: players, killer: players.shuffle[1], game_begin: false)
-		
+  end
+end
+
+class JustWait
+  include Sidekiq::Worker
+ 
+	def perform()
   end
 end
