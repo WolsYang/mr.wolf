@@ -28,6 +28,9 @@ class ChatbotController < ApplicationController
 		end			
 	end
 
+	def try
+		p "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+	end
 	# 取得對方說的話
 	def received_text(event)
 		if event['type'] == "message"
