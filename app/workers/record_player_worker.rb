@@ -8,7 +8,7 @@ class RecordPlayerWorker
 		REDIS.del(channel_id)
 		kill = Killer.find_by(channel_id: channel_id)
 		kill.update(players: players, killer: players.shuffle[1], game_begin: false)
-		ChatbotController.try
+		ChatbotController.new.push_to_line(channel_id, Killer.start_n_rule)
   end
 end
 

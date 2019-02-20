@@ -28,7 +28,7 @@ class ChatbotController < ApplicationController
 		end			
 	end
 
-	def try
+	def self.try
 		p "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 	end
 	# 取得對方說的話
