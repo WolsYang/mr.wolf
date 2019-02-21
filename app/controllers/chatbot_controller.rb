@@ -94,8 +94,8 @@ class ChatbotController < ApplicationController
 					channel.update(now_gaming: received_text[4...8])
 					kill = Killer.find_or_create_by(channel_id: channel_id)
 					kill.update(game_begin: true)
-					jid = KillRoundWorker.perform_at(1.minutes.from_now)
-					REDIS.set("aabbcc", jid.provider_job_id)
+					jid = KillRoundWorker.delay_for(1.minutes).perform
+					#REDIS.set("aabbcc", jid.provider_job_id)
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
