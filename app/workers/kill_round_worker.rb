@@ -3,7 +3,7 @@ class KillRoundWorker
    
       def perform
           return if cancelled?
-          p "+++++++++++++++++++++++++++++++++++++++"
+          p "+++++++++++++++++++++>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<++++++++++++++++++"
       end
   
       def cancelled? (jid = 0)
