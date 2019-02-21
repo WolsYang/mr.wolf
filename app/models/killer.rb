@@ -114,7 +114,7 @@ class Killer < ApplicationRecord
         (0...column_number).each do |n|
           columns[n] = {
             "title": "kill",
-            "text": "第 "+ n.to_s +" 頁",
+            "text": "第 #{n.to_s} 頁",
             "actions": actions[n..n+2]
           }
         end
