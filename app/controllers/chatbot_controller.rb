@@ -133,9 +133,9 @@ class ChatbotController < ApplicationController
 					]
 				}
 			} 
-		elsif channel.now_gaming == "kill" 
+		#elsif channel.now_gaming == "kill" 
 			#KILLER內執行好
-			reply_text
+		#	reply_text
 		else
 			message = {
 				type: 'text',
