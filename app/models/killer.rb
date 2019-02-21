@@ -96,4 +96,36 @@ class Killer < ApplicationRecord
             end
         end
     end
+     
+    def self.player_list(channel_id, reply_text)
+        kill = Killer.find_by(channel_id: channel_id)
+        column_number = (kill.players.size/3.0).ceil 
+        columns = [0...column_number]
+        actions = [0...column_number*3] #line要求每個按鈕菜單數量都一樣
+        (0...column_number*3).each do |n|
+            player = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n] #三元運算
+            player_name = ( kill.players[n].nil? ) "沒有這個人" : kill.players[n][33..-1]#三元運算
+          actions[n] = {
+                "type": "postback",
+                "label": player_name,
+                "data": player
+            }
+        end
+        (0...column_number).each do |n|
+          columns[n] = {
+            "title": "kill",
+            "text": "第 "+ n.to_s +" 頁",
+            "actions": actions[n..n+2]
+          }
+        end
+        {
+            "type": "template",
+            "altText": "this is a carousel template",
+            "template": {
+            "type": "carousel",
+            "columns": columns
+            }
+        }
+        return message.to_jason
+    end
 end

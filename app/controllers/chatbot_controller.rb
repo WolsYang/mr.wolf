@@ -90,8 +90,9 @@ class ChatbotController < ApplicationController
 					ShootTheGate.rule
 				when "kill"		
 					channel.update(now_gaming: received_text[4...8])
-					kill = Killer.find_by(channel_id: channel_id)
+					kill = Killer.find_or_create_by(channel_id: channel_id)
 					kill.update(game_begin: true)
+					KillRoundWorker.perform_at(1.minutes.from_now)
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
@@ -132,7 +133,9 @@ class ChatbotController < ApplicationController
 					]
 				}
 			} 
-		#elsif channel.now_gaming == "kill" 
+		elsif channel.now_gaming == "kill" 
+			#KILLER內執行好
+			reply_text
 		else
 			message = {
 				type: 'text',

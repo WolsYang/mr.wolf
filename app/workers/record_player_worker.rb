@@ -1,4 +1,3 @@
-require 'line/bot'
 class RecordPlayerWorker
   include Sidekiq::Worker
  
@@ -11,5 +10,6 @@ class RecordPlayerWorker
 		ChatbotController.new.push_to_line(channel_id, Killer.start_n_rule)
   end
 end
+
 
 
