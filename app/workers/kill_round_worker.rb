@@ -1,7 +1,7 @@
 class KillRoundWorker
     include Sidekiq::Worker
    
-      def perform()
+      def perform
           return if cancelled?
           p "+++++++++++++++++++++++++++++++++++++++"
       end
