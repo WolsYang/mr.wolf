@@ -72,7 +72,7 @@ class ChatbotController < ApplicationController
 				#判斷player是否已存在
 				REDIS.rpush(channel_id, player) if received_text == "+1"
 				jid = REDIS.get("aabbcc")
-				KillRoundWorker.cancelled? (jid)
+				KillRoundWorker.cancelle(jid)
 				return nil
 			elsif params['events'][0]['type'] == "postback"
 					has_vote = params['events'][0]['postback']['data']
