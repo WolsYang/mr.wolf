@@ -6,7 +6,7 @@ class KillRoundWorker
           p "+++++++++++++++++++++++++++++++++++++++"
       end
   
-      def cancelled? (jid)
+      def cancelled? (jid = 0)
       Sidekiq.redis {|c| c.exists("cancelled-#{jid}") }
       end
   end
