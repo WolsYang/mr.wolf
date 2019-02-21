@@ -104,7 +104,7 @@ class Killer < ApplicationRecord
         actions = [0...column_number*3] #line要求每個按鈕菜單數量都一樣
         (0...column_number*3).each do |n|
             player = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n] #三元運算
-            player_name = ( kill.players[n].nil? ) "沒有這個人" : kill.players[n][33..-1]#三元運算
+            player_name = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n][33..-1]#三元運算
           actions[n] = {
                 "type": "postback",
                 "label": player_name,
