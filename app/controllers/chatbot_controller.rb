@@ -71,6 +71,8 @@ class ChatbotController < ApplicationController
 			if kill.game_begin 
 				#判斷player是否已存在
 				REDIS.rpush(channel_id, player) if received_text == "+1"
+				jid = REDIS.get("aabbcc")
+				KillRoundWorker.cancelled? (jid)
 				return nil
 			elsif params['events'][0]['type'] == "postback"
 					has_vote = params['events'][0]['postback']['data']
@@ -92,7 +94,8 @@ class ChatbotController < ApplicationController
 					channel.update(now_gaming: received_text[4...8])
 					kill = Killer.find_or_create_by(channel_id: channel_id)
 					kill.update(game_begin: true)
-					KillRoundWorker.perform_at(1.minutes.from_now)
+					jid = KillRoundWorker.perform_at(1.minutes.from_now).provider_job_id
+					REDIS.set("aabbcc", jid)
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
