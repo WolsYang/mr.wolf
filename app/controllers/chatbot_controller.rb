@@ -89,6 +89,8 @@ class ChatbotController < ApplicationController
 					channel.update(now_gaming: received_text[4...8])
 					kill = Killer.find_or_create_by(channel_id: channel_id)
 					kill.update(game_begin: true)
+					p "=================================================="
+					p channel_id
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
@@ -183,7 +185,7 @@ class ChatbotController < ApplicationController
 					},
 					{
 						"type": "postback",
-					"label": "天黑請閉眼",
+					"label": "天黑請閉眼(測試中)",
 						"data": "WY遊戲kill3345678"
 					}
 				]
