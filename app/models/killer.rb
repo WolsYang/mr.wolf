@@ -27,7 +27,7 @@ class Killer < ApplicationRecord
         reply_text = Killer.reply_message(text, Killer.player_list(channel_id))
         p reply_text 
         p "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-        p reply_text.class
+        p Killer.player_list(channel_id)t.class
         p Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者").class
         p killer
         p killer[11...44]
