@@ -158,7 +158,7 @@ class Killer < ApplicationRecord
         return message.to_json
     end
 
-    def self.reply_message(reply_ext, player_list = nil)
+    def self.reply_message(reply_text, player_list = nil)
         if player_list.nil?
             message = {
 			    type: 'text',
