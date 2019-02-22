@@ -126,6 +126,7 @@ class ChatbotController < ApplicationController
 		unless now_gaming.nil? #殺手遊戲的回傳比較特別
 			p "成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功"
 			message = text 
+			p message
 			p message.class
 		end
 			p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"

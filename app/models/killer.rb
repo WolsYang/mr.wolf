@@ -23,13 +23,14 @@ class Killer < ApplicationRecord
             \n3.天亮時其餘玩家可投票誰是殺手，得票最高的玩家會被處決
             \n4.如果最後僅剩一位玩，殺手就贏得這個遊戲囉～"
             p channel_id + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
-            p killer[10...43] + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-        reply_text = Killer.reply_message(text, Killer.player_list(channel_id)) 
+            p killer[11...44] + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+        reply_text = Killer.reply_message(text, Killer.player_list(channel_id)).to_json
         p reply_text 
         p "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
         p reply_text.class
         p Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者").class
-        ChatbotController.new.push_to_line(killer[10...43], Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者"))
+        p [10...43]
+        ChatbotController.new.push_to_line(killer[11...44], Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者"))
         ChatbotController.new.push_to_line(channel_id, reply_text , "bomb")
     end
     #合併LINE USER ID 和使用者顯示名稱 + 並加上 channel_id 前10碼 避免用戶同時在其他地方玩遊戲
@@ -82,7 +83,7 @@ class Killer < ApplicationRecord
             #kill.players.delete(has_vote)
             kill.update(players: kill.players, round: kill.round+1)
             REDIS.del(has_vote)#刪除被殺玩家
-            reply_text = "天亮了...玩家" + has_vote[43...-1] + "已經被殺手殺死"
+            reply_text = "天亮了...玩家" + has_vote[44...-1] + "已經被殺手殺死"
             Killer.reply_message(reply_text)
         #end
     end
@@ -117,7 +118,7 @@ class Killer < ApplicationRecord
         end
         if vote_result == kill.killer
             Killer.game_end(channel_id)
-            reply_text = "天黑了" + vote_result[43...-1] + "是殺手" +"\n殺手已被處死，玩家勝利啦！\n遊戲結束"
+            reply_text = "天黑了" + vote_result[44...-1] + "是殺手" +"\n殺手已被處死，玩家勝利啦！\n遊戲結束"
             Killer.reply_message(reply_text)
         elsif vote_result == "no body die"
             reply_text = "天黑了 最高投票超過1位...沒人死亡\n殺手請選擇下一位受害者....`"
@@ -125,7 +126,7 @@ class Killer < ApplicationRecord
         else         
             players.delete(vote_result)
             kill.update(players: players)
-            reply_text = "天黑了 玩家" + vote_result[43...-1] + "已被表決處死"+ "\n殺手依然逍遙法外\n殺手請選擇下一位受害者...."
+            reply_text = "天黑了 玩家" + vote_result[44...-1] + "已被表決處死"+ "\n殺手依然逍遙法外\n殺手請選擇下一位受害者...."
             Killer.reply_message(reply_text, player_list)
         end
     end
@@ -137,7 +138,7 @@ class Killer < ApplicationRecord
         actions = [0...column_number*3] #line要求每個按鈕菜單數量都一樣
         (0...column_number*3).each do |n|
             player = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n] #三元運算
-            player_name = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n][43..-1]#三元運算
+            player_name = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n][44..-1]#三元運算
           actions[n] = {
                 "type": "postback",
                 "label": player_name,
