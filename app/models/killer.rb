@@ -17,7 +17,7 @@ class Killer < ApplicationRecord
         kill = Killer.find_by(channel_id: channel_id)
         killer = players.shuffle[1]
 		kill.update(players: players, killer: killer , game_begin: false, round: rounds)
-        text = "遊戲開始啦 ~ 參與的玩家有#{player.size}位
+        text = "遊戲開始啦 ~ 參與的玩家有#{players.size}位
             \n1.接下來將會從玩家中隨機挑出一名殺手
             \n2.殺手在天黑時選取欲殺害的玩家
             \n3.天亮時其餘玩家可投票誰是殺手，得票最高的玩家會被處決
