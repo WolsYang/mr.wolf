@@ -16,8 +16,7 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 		text = received_text(event)
-			#記錄頻道	
-			ChatbotController.new.push_to_line(channel_id, Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者"), "bomb")			
+			#記錄頻道		
 			reply_text = game_keyword_reply(channel_id, text)
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])
@@ -123,12 +122,13 @@ class ChatbotController < ApplicationController
 	end
 	
 	#主動發訊息
-	def push_to_line(userID, text, now_gaming = nil)
-		unless now_gaming.nil? #殺手遊戲的回傳比較特別
+	def push_to_line(userID, text, second_message= nil)
+		unless second_message= nil #殺手遊戲的回傳比較特別
 			p "成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功"
-			message = text 
-			p message
-			p message.class
+			message = {
+				type: 'text',
+				text: text
+				},second_message
 		else
 			p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 		message = {

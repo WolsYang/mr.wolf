@@ -17,7 +17,7 @@ class Killer < ApplicationRecord
         kill = Killer.find_by(channel_id: channel_id)
         killer = players.shuffle[1]
 		kill.update(players: players, killer: killer , game_begin: false, round: rounds)
-        text = "遊戲開始啦 ~ 
+        text = "遊戲開始啦 ~ 參與的玩家有#{player.size}位
             \n1.接下來將會從玩家中隨機挑出一名殺手
             \n2.殺手在天黑時選取欲殺害的玩家
             \n3.天亮時其餘玩家可投票誰是殺手，得票最高的玩家會被處決
@@ -31,8 +31,8 @@ class Killer < ApplicationRecord
         p Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者").class
         p killer
         p killer[11...44]
-        ChatbotController.new.push_to_line(killer[11...44], Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者"))
-        ChatbotController.new.push_to_line(channel_id, reply_text , "bomb")
+        ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+        ChatbotController.new.push_to_line(channel_id, text, Killer.player_list(channel_id))
     end
     #合併LINE USER ID 和使用者顯示名稱 + 並加上 channel_id 前10碼 避免用戶同時在其他地方玩遊戲
     def self.to_gameid(user_id, user_name, channel_id)
@@ -51,7 +51,7 @@ class Killer < ApplicationRecord
 
     def self.rounds(player, channel_id, has_vote)
         kill = Killer.find_by(channel_id: channel_id)
-        day_or_night = rounds % 2 #night:1 , day:0
+        day_or_night = kill.round % 2 #night:1 , day:0
         if day_or_night == 1 && player == kill.killer
             for_counting = "for_counting" + channel_id.to_s
             REDIS.set("for_counting", 0)#每回合每人投票數的比較基準值，遊戲回合夜晚時歸0
@@ -169,7 +169,7 @@ class Killer < ApplicationRecord
             p "有有有有有有有有有有有有有有有有有有有有有有有有有有有有"
             message = {
 			    type: 'text',
-			    text: "reply_text"
+			    text: reply_text
             }
         else  
             p "無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無"
