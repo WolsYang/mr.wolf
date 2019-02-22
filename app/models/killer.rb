@@ -24,7 +24,7 @@ class Killer < ApplicationRecord
             \n4.如果最後僅剩一位玩，殺手就贏得這個遊戲囉～"
             p channel_id + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
             p killer[11...44] + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-        reply_text = Killer.reply_message(text, Killer.player_list(channel_id)).to_json
+        reply_text = Killer.reply_message(text, Killer.player_list(channel_id))
         p reply_text 
         p "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
         p reply_text.class
