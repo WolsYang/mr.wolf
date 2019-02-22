@@ -16,7 +16,8 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 		text = received_text(event)
-			#記錄頻道				
+			#記錄頻道	
+			ChatbotController.new.push_to_line(killer[11...44], Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者"))			
 			reply_text = game_keyword_reply(channel_id, text)
 			#if text == "+1"#統計+1數
 				#response = get_user_name(params['events'][0]['source']['userId'])

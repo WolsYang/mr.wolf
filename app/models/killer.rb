@@ -168,7 +168,7 @@ class Killer < ApplicationRecord
             p "有有有有有有有有有有有有有有有有有有有有有有有有有有有有"
             message = {
 			    type: 'text',
-			    text: reply_text
+			    text: "reply_text"
             }
         else  
             p "無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無"
