@@ -22,7 +22,10 @@ class Killer < ApplicationRecord
             \n2.殺手在天黑時選取欲殺害的玩家
             \n3.天亮時其餘玩家可投票誰是殺手，得票最高的玩家會被處決
             \n4.如果最後僅剩一位玩，殺手就贏得這個遊戲囉～"
-        ChatbotController.new.push_to_line(channel_id, text)
+            p channel_id + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
+            p killer[10...43]
+        reply_text = Killer.reply_message(text, player_list)   
+        ChatbotController.new.push_to_line(channel_id, reply_text , bomb)
         ChatbotController.new.push_to_line(killer[10...43], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
     end
     #合併LINE USER ID 和使用者顯示名稱 + 並加上 channel_id 前10碼 避免用戶同時在其他地方玩遊戲
