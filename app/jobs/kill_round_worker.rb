@@ -2,7 +2,7 @@ class KillRoundWorker < ActiveJob::Base
     # Set the Queue as Default
     queue_as :default
 
-    def perform(channel_id)
+    def perform(channel_id = nil)
     return if cancelled?
       p "+++++++++++++++++++++>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<++++++++++++++++++"
       replytext = Killer.vote(channel_id)
