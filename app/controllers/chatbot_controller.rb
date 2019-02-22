@@ -117,12 +117,17 @@ class ChatbotController < ApplicationController
 			}
 		end	
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
+		p message
 		line.reply_message(reply_token, message)
 	end
 	
 	#主動發訊息
 	def push_to_line(userID, text, now_gaming = nil)
-		message = text unless now_gaming.nil? #殺手遊戲的回傳比較特別
+		unless now_gaming.nil? #殺手遊戲的回傳比較特別
+			p "成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功"
+			message = text 
+		end
+			p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 		message = {
 			type: 'text',
 			text: text
