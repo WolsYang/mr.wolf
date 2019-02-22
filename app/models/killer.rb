@@ -29,7 +29,8 @@ class Killer < ApplicationRecord
         p "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
         p reply_text.class
         p Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者").class
-        p [10...43]
+        p killer
+        p killer[11...44]
         ChatbotController.new.push_to_line(killer[11...44], Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者"))
         ChatbotController.new.push_to_line(channel_id, reply_text , "bomb")
     end
