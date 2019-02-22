@@ -155,7 +155,7 @@ class Killer < ApplicationRecord
             "columns": columns
             }
         }
-        return message.to_jason
+        return message.to_json
     end
 
     def self.reply_message(replyt_ext, player_list = nil)
