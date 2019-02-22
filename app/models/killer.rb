@@ -174,7 +174,7 @@ class Killer < ApplicationRecord
             message = {
 			    type: 'text',
 			    text: reply_text
-            }, Killer.payer_list(channel_id) 
+            }, player_list
         end
     end
 end
