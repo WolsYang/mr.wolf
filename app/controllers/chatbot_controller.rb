@@ -28,9 +28,6 @@ class ChatbotController < ApplicationController
 		end			
 	end
 
-	def self.try
-		p "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-	end
 	# 取得對方說的話
 	def received_text(event)
 		if event['type'] == "message"
@@ -67,16 +64,14 @@ class ChatbotController < ApplicationController
 				kill = Killer.find_or_create_by(channel_id: channel_id)
 				user_id = params['events'][0]['source']['userId']
 				user_name = get_user_name(user_id)
-				player = Killer.to_gameid(user_id, user_name)
+				player = Killer.to_gameid(user_id, user_name, channel_id)
 			if kill.game_begin 
-				#判斷player是否已存在
 				REDIS.rpush(channel_id, player) if received_text == "+1"
-				jid = REDIS.get("aabbcc")
-				KillRoundWorker.cancelle(jid)
 				return nil
 			elsif params['events'][0]['type'] == "postback"
-					has_vote = params['events'][0]['postback']['data']
-					Killer.rounds(player, channel_id, has_vote)
+				#投票按鈕回傳事件
+				has_vote = params['events'][0]['postback']['data']
+				Killer.rounds(player, channel_id, has_vote)
 			end
 		elsif received_text[0...4] == 'WY遊戲'
 			case received_text[4...8]
@@ -94,8 +89,6 @@ class ChatbotController < ApplicationController
 					channel.update(now_gaming: received_text[4...8])
 					kill = Killer.find_or_create_by(channel_id: channel_id)
 					kill.update(game_begin: true)
-					jid = KillRoundWorker.perform_at(1.minutes.from_now)
-					REDIS.set("aabbcc", jid)
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
@@ -111,34 +104,10 @@ class ChatbotController < ApplicationController
 		reply_token = params['events'][0]['replyToken']	
 		# 設定回覆訊息類型
 		if reply_text == '玩遊戲囉'			
-			message = {
-				"type": "template",
-			    "altText": "小遊戲選單",
-			    "template": {
-				  	"type": "buttons",
-				 	 "text": "小遊戲選單",
-					"actions": [
-						{
-					    "type": "postback",
-						"label": "終極密碼",
-					  	"data": "WY遊戲bomb3345678"
-						},
-						{
-					  	"type": "postback",
-						"label": "射龍門",
-					  	"data": "WY遊戲shoot3345678"
-						},
-						{
-					  	"type": "postback",
-						"label": "天黑請閉眼",
-					  	"data": "WY遊戲kill3345678"
-						}
-					]
-				}
-			} 
+			message = game_menu
 		#elsif channel.now_gaming == "kill" 
 			#KILLER內執行好
-		#	reply_text
+		#	message = reply_text
 		else
 			message = {
 				type: 'text',
@@ -150,7 +119,8 @@ class ChatbotController < ApplicationController
 	end
 	
 	#主動發訊息
-	def push_to_line(userID, text)
+	def push_to_line(userID, text, now_gaming = nil)
+		message = text unless now_gaming.nil? #殺手遊戲的回傳比較特別
 		message = {
 			type: 'text',
 			text: text
@@ -193,4 +163,31 @@ class ChatbotController < ApplicationController
 		#source['userID']
 	end
 
+	def game_menu
+		{
+			"type": "template",
+				"altText": "小遊戲選單",
+				"template": {
+					"type": "buttons",
+					"text": "小遊戲選單",
+				"actions": [
+					{
+						"type": "postback",
+					"label": "終極密碼",
+						"data": "WY遊戲bomb3345678"
+					},
+					{
+						"type": "postback",
+					"label": "射龍門",
+						"data": "WY遊戲shoot3345678"
+					},
+					{
+						"type": "postback",
+					"label": "天黑請閉眼",
+						"data": "WY遊戲kill3345678"
+					}
+				]
+			}
+		} 
+	end
 end
