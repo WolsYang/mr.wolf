@@ -156,11 +156,16 @@ class Killer < ApplicationRecord
     end
 
     def self.reply_message(replyt_ext, player_list = nil)
-        message = {
-			type: 'text',
-			text: reply_text
-        }
-        return message if player_list.nil?
-        message,player_list 
+        if player_list.nil?
+            message = {
+			    type: 'text',
+			    text: reply_text
+            }
+        else  message 
+            message = {
+			    type: 'text',
+			    text: reply_text
+            }, player_list 
+        end
     end
 end
