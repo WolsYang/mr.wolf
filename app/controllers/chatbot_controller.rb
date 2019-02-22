@@ -129,12 +129,13 @@ class ChatbotController < ApplicationController
 			message = text 
 			p message
 			p message.class
-		end
+		else
 			p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 		message = {
 			type: 'text',
 			text: text
-		  }
+			}
+		end
 		line.push_message(userID, message)
 	end
 
