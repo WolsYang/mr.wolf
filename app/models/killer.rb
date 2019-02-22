@@ -26,7 +26,9 @@ class Killer < ApplicationRecord
             p killer[10...43] + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
         reply_text = Killer.reply_message(text, Killer.player_list(channel_id)) 
         p reply_text 
-        ChatbotController.new.push_to_line(killer[10...43], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+        p "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+        p reply_text.class
+        ChatbotController.new.push_to_line(killer[10...43], Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者"))
         ChatbotController.new.push_to_line(channel_id, reply_text , "bomb")
     end
     #合併LINE USER ID 和使用者顯示名稱 + 並加上 channel_id 前10碼 避免用戶同時在其他地方玩遊戲
@@ -161,11 +163,13 @@ class Killer < ApplicationRecord
 
     def self.reply_message(reply_text, player_list = nil)
         if player_list.nil?
+            p "有有有有有有有有有有有有有有有有有有有有有有有有有有有有"
             message = {
 			    type: 'text',
 			    text: reply_text
             }
         else  
+            p "無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無"
             message = {
 			    type: 'text',
 			    text: reply_text
