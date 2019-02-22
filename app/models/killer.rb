@@ -25,8 +25,8 @@ class Killer < ApplicationRecord
             p channel_id + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
             p killer[10...43] + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
         reply_text = Killer.reply_message(text, player_list(channel_id))  
-        ChatbotController.new.push_to_line(channel_id, reply_text , bomb)
         ChatbotController.new.push_to_line(killer[10...43], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+        ChatbotController.new.push_to_line(channel_id, reply_text , bomb)
     end
     #合併LINE USER ID 和使用者顯示名稱 + 並加上 channel_id 前10碼 避免用戶同時在其他地方玩遊戲
     def self.to_gameid(user_id, user_name, channel_id)
