@@ -54,8 +54,8 @@ class ShootTheGate < ApplicationRecord
         game.update(cards: poker)
         return  "射龍門開始啦~~~~~~~~~~~~請輸入 \"抽\" 繼續"
       when "抽"
-        return "您已經抽過門柱牌喔~" unless game.card1.nil?
-        return "您已經抽過門柱牌喔~" unless game.card2.nil?
+        return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card1.nil?
+        return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card2.nil?
         card1 = game.cards.delete_at(0)
         game.update(card1: card1)
         number1 = ShootTheGate.to_number(card1)
@@ -66,12 +66,12 @@ class ShootTheGate < ApplicationRecord
         game.update(cards: now_cards)
         return "門柱==>" + card1 + card2
       when "射"
-        return "您還沒有抽門柱牌喔~" if game.card1.nil?
-        return "您還沒有抽門柱牌喔~" if game.card2.nil?
+        return "您還沒有抽門柱牌喔~\n請輸入 抽 抽取門柱牌" if game.card1.nil?
+        return "您還沒有抽門柱牌喔~\n請輸入 抽 抽取門柱牌" if game.card2.nil?
         puts game.cards.size
         puts game.card1
         puts game.card2
-        return "沒牌囉請輸入\"重抽\""if game.cards.size < 3
+        return "沒牌囉請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
         card1 = game.card1
         game.card1 = nil
         number1 = ShootTheGate.to_number(card1)

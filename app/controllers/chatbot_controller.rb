@@ -18,11 +18,7 @@ class ChatbotController < ApplicationController
 		text = received_text(event)
 			#記錄頻道		
 			reply_text = game_keyword_reply(channel_id, text)
-			#if text == "+1"#統計+1數
-				#response = get_user_name(params['events'][0]['source']['userId'])
-			#else
 			response = reply_to_line(reply_text) 
-			#end
 			# 回應200
 			head :ok
 		end			
@@ -36,6 +32,8 @@ class ChatbotController < ApplicationController
 			#按鈕回傳的訊息
 		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
+		elsif event['type'] == "join"
+			reply_to_line(welcome_message_to_group_or_room)
 		end
 	end
 
@@ -172,6 +170,14 @@ class ChatbotController < ApplicationController
 		#return source['groupID'] unless source['groupID'].nil?
 		#return source['roomID'] unless source['roomID'].nil?
 		#source['userID']
+	end
+
+	def welcome_message_to_group_or_room
+		"來了~我來了~請輸入\"我要玩遊戲\" 來呼叫選單
+		\n目前還在持續修正中，且因為使用免費伺服器無法持續待機
+		\n若有回應較慢的情況請多多包涵
+		\n若有資料庫重置的情況會導致遊戲資料遺失，請麻煩再重新選擇一次遊戲喔　：）
+		\n如果有任建議或發現bug的話歡迎 寄mail : caniculawolf@hotmail.com 感謝您 : )"
 	end
 
 	def game_menu
