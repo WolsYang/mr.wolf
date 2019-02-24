@@ -45,7 +45,7 @@ class Killer < ApplicationRecord
         kill = Killer.find_by(channel_id: channel_id)
         Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
         for_counting = "for_counting" + channel_id.to_s
-        REDIS.del(for_counting , 0)
+        REDIS.del(for_counting)
         kill.destroy
     end
 
