@@ -50,6 +50,8 @@ class ChatbotController < ApplicationController
 					Bomb.find_or_create_by(channel_id: channel_id).destroy
 				when "shoot"
 					ShootTheGate.find_or_create_by(channel_id: channel_id).destroy
+				when "kill"
+					Killer.game_end(channel_id)
 			end
 			channel.update(now_gaming: "no")
 			">\"<掰掰~"
