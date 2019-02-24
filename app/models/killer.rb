@@ -45,7 +45,9 @@ class Killer < ApplicationRecord
         kill = Killer.find_by(channel_id: channel_id)
         Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
         for_counting = "for_counting" + channel_id.to_s
+        REDIS.del(channel_id)
         REDIS.del(for_counting)
+        REDIS.del("jid"+channel_id)
         kill.destroy
     end
 
@@ -58,10 +60,10 @@ class Killer < ApplicationRecord
             kill.players.each {|n| REDIS.set(player, 0)}#夜晚玩家投票數值歸0
             Killer.killer_chooise(has_vote, channel_id)
         elsif day_or_night == 0 
-            if REDIS.get(jid).nil?#第一個投票時開始計算
+            if REDIS.get("jid"+channel_id).nil?#第一個投票時開始計算
                 job = KillRoundWorker.set(wait: 3.minutes).perform_later(channel_id)#超過20分鐘沒人投票
                 jid = job.provider_job_id 
-                REDIS.set(jid, jid)
+                REDIS.set("jid"+channel_id, jid)
             end
             Killer.check_vote(player, channel_id, has_vote)
             replytext = Killer.vote(channel_id) if REDIS.get(channel_id) == kill.players.size #都投完票才開始計算結果 減輕資料庫負擔
@@ -104,14 +106,15 @@ class Killer < ApplicationRecord
         kill = Killer.find_by(channel_id: channel_id)
         kill.update(players: kill.players, round: kill.round+1)
         players = kill.players 
+        for_counting = "for_counting" + channel_id.to_s
         #把REDIS規0還要把排程刪除
         #統計得票結果,並歸0
         (0...players.size).each do |n|
-            if REDIS.get("for_counting").to_i < REDIS.get(players(n)).to_i
+            if REDIS.get(for_counting).to_i < REDIS.get(players(n)).to_i
                 max_vote = REDIS.get(players(n))
-                REDIS.set("for_counting", max_vote)
+                REDIS.set(for_counting, max_vote)
                 vote_result = players[n]
-            elsif REDIS.get("for_counting").to_i = REDIS.get(players(n)).to_i
+            elsif REDIS.get(for_counting).to_i = REDIS.get(players(n)).to_i
                 same_vote = REDIS.get(players(n))
                 vote_result = "no body die"
             end
