@@ -11,7 +11,7 @@ gem 'rails', '~> 5.2.1'
 gem 'redis'
 
 gem 'sidekiq'
-gem 'sidekiq-status'
+#gem 'sidekiq-status'#刪除排程工作用
 
 gem 'pg', '~> 0.21.0'
 

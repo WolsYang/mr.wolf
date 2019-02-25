@@ -27,9 +27,9 @@ class ChatbotController < ApplicationController
 	# 取得對方說的話
 	def received_text(event)
 		if event['type'] == "message"
-					message = event['message']
-					message['text'] unless message.nil?	
-			#按鈕回傳的訊息
+			message = event['message']
+			message['text'] unless message.nil?	
+		#按鈕回傳的訊息
 		elsif event['type'] == "postback"
 			chooise = event['postback']['data']
 		elsif event['type'] == "join"
@@ -68,10 +68,15 @@ class ChatbotController < ApplicationController
 			if kill.game_begin 
 				REDIS.rpush(channel_id, player) if received_text == "+1"
 				return nil
-			elsif params['events'][0]['type'] == "postback"
-				#投票按鈕回傳事件
-				has_vote = params['events'][0]['postback']['data']
+			elsif received_text[0] == '@'
+				has_vote = received_text[1...-1] 
+				p has_vote
 				Killer.rounds(player, channel_id, has_vote)
+			#投票按鈕回傳事件
+			elsif event['type'] == "postback"
+				vote_result =  params['events'][0]['postback']['data']
+				vote_result = vote_result.to_a unless vote_result = "no"
+				Killer.killer_chooise(vote_result, channel_id)
 			end
 		elsif received_text[0...4] == 'WY遊戲'
 			case received_text[4...8]

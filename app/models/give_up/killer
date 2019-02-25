@@ -18,19 +18,20 @@ class Killer < ApplicationRecord
     end
     #遊戲開始的設定
     def self.start_n_rule(channel_id)
-        rounds = 0
+        rounds = 1
 		players = REDIS.lrange(channel_id,0,-1)
 		REDIS.del(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         killer = players.shuffle[1]
-        kill.update(players: players, killer: killer , game_begin: false, round: rounds)
-        ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+		kill.update(players: players, killer: killer , game_begin: false, round: rounds)
         text = "遊戲開始啦 ~ 參與的玩家有#{players.size}位
             \n1.接下來將會從玩家中隨機挑出一名殺手
-            \n2.玩家可以透過TAG玩家來投票，例如　　@王小明
-            \n3.當所有人都投完票以後，系統會提示誰的得票數最高，而殺手可以透過選擇按鈕來決定要不要殺這位玩家
-            \n4.若最高得票數有兩位則兩位都會死亡，若是最高得票數的是殺手則判定殺手輸了這場遊戲
-            \n4.如果最後僅剩一位玩家，殺手就贏得這個遊戲囉～"
+            \n2.殺手在天黑時選取欲殺害的玩家
+            \n3.天亮時其餘玩家可投票誰是殺手，得票最高的玩家會被處決
+            \n4.如果最後僅剩一位玩，殺手就贏得這個遊戲囉～"
+        reply_text = Killer.reply_message(text, Killer.player_list(channel_id))
+        ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+        ChatbotController.new.push_to_line(channel_id, text, Killer.player_list(channel_id))
     end
     #合併LINE USER ID 和使用者顯示名稱 + 並加上 channel_id 前10碼 避免用戶同時在其他地方玩遊戲
     def self.to_gameid(user_id, user_name, channel_id)
@@ -41,7 +42,7 @@ class Killer < ApplicationRecord
 
     def self.game_end(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
-        Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
+        Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
         for_counting = "for_counting" + channel_id.to_s
         REDIS.del(channel_id)
         REDIS.del(for_counting)
@@ -52,16 +53,18 @@ class Killer < ApplicationRecord
     def self.rounds(player, channel_id, has_vote)
         kill = Killer.find_by(channel_id: channel_id)
         day_or_night = kill.round % 2 #night:1 , day:0
-        voted_player = kill.players.detect{|i| i[44...-1] == has_vote}
         if day_or_night == 1 && player == kill.killer
-            Killer.killer_chooise(voted_player, channel_id)
+            for_counting = "for_counting" + channel_id.to_s
+            REDIS.set("for_counting", 0)#每回合每人投票數的比較基準值，遊戲回合夜晚時歸0
+            kill.players.each {|n| REDIS.set(player, 0)}#夜晚玩家投票數值歸0
+            Killer.killer_chooise(has_vote, channel_id)
         elsif day_or_night == 0 
             if REDIS.get("jid"+channel_id).nil?#第一個投票時開始計算
                 job = KillRoundWorker.set(wait: 3.minutes).perform_later(channel_id)#超過20分鐘沒人投票
                 jid = job.provider_job_id 
                 REDIS.set("jid"+channel_id, jid)
             end
-            Killer.check_vote(player, channel_id, voted_player)
+            Killer.check_vote(player, channel_id, has_vote)
             replytext = Killer.vote(channel_id) if REDIS.get(channel_id) == kill.players.size #都投完票才開始計算結果 減輕資料庫負擔
             # menu + reply_text
         elsif kill.players.size <= 2
@@ -72,121 +75,69 @@ class Killer < ApplicationRecord
 
     end
     #殺手選擇殺的人
-    def self.killer_chooise(vote_result, channel_id)
+    def self.killer_chooise(has_vote, channel_id)
         kill = Killer.find_by(channel_id: channel_id)
-        #if voted_player == kill.killer
+        #if has_vote == kill.killer
         #    reply_text = "生命誠可貴，想一想您可以不必自殺，再挑一個吧"
-        #else          
-            # REDIS.del(voted_player)#刪除被殺玩家
-        if vote_result == "no"
-            reply_text = "殺手放了條生路"
-            kill.update(round: kill.round+1)
-        else
-            players = kill.players - vote_result 
-            (0...vote_result).each do |n|
-                n = kill.players.index(vote_result[n])#測試自己殺自己用
-                kill.players.delete_at(n)#測試自己殺自己用
-                died_player = vote_result[n][44...-1].to_s + " "
-            end
-        kill.update(players: players, round: kill.round+1) 
-        reply_text = "天亮了...玩家" + died_player + "已經被殺手殺死"
-        end
-        Killer.reply_message(reply_text)
+        #else
+            #killed_player = kill.players.detect{|i| i[44...-1] == has_vote}
+            n = kill.players.find_index{|i| i[44...-1] == has_vote}#測試自己殺自己用
+            kill.players.delete_at(n)#測試自己殺自己用
+            #kill.players.delete(has_vote)
+            kill.update(players: kill.players, round: kill.round+1)           
+            # REDIS.del(has_vote)#刪除被殺玩家
+            reply_text = "天亮了...玩家" + has_vote[44...-1] + "已經被殺手殺死"
+            Killer.reply_message(reply_text)
         #end
     end
     #檢查是否投果票和投誰?
-    def self.check_vote(voted_player, channel_id, player)
+    def self.check_vote(has_vote, channel_id, player)
         kill = Killer.find_by(channel_id: channel_id)
         players = kill.players #不用redis 避免佔據記憶體或伺服器關機資料不見
         unless players.index(player).nil? #投票玩家是否有參與遊戲
             return if  REDIS.get(player) < 1000 #超過1000代表已經投票
             REDIS.set(player, 1000) 
-            REDIS.incr(voted_player)#被投票玩家投票數+1
+            REDIS.incr(has_vote)#被投票玩家投票數+1
             REDIS.incr(channel_id)#紀錄已投票玩家數量
         end
     end
     #投票處決
     def self.vote(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
-        kill.update(round: kill.round+1)
-        max_vote = 0 
-        same_vote = 0
-        jid = REDIS.get("jid"+channel_id)
+        kill.update(players: kill.players, round: kill.round+1)
+        players = kill.players 
+        for_counting = "for_counting" + channel_id.to_s
         KillRoundWorker.cancel!(jid)
-        vote_result = []
-        same_vote_result = []
         #Sidekiq::Status.unschedule job_identifier
         #把REDIS規0還要把排程刪除
         #統計得票結果,並歸0
         (0...players.size).each do |n|
-            player_vote_number = REDIS.get(players(n))-1000 if REDIS.get(players(n)) > 1000
-            if max_vote < REDIS.get(players(n))
+            if REDIS.get(for_counting).to_i < REDIS.get(players(n)).to_i
                 max_vote = REDIS.get(players(n))
-                same_vote_result = []
-                vote_result = []
-                vote_result << players[n]
-            elsif max_vote == REDIS.get(players(n)).to_i
-                same_vote_result << players[n]
+                REDIS.set(for_counting, max_vote)
+                vote_result = players[n]
+            elsif REDIS.get(for_counting).to_i = REDIS.get(players(n)).to_i
+                same_vote = REDIS.get(players(n))
+                vote_result = "no body die"
             end
-            REDIS.set(players[n], 0)#投票數歸零
+            REDIS.set(players[n], 0)
         end
-        vote_result += same_vote_result
         if vote_result == kill.killer
             Killer.game_end(channel_id)
-            reply_text =  vote_result[44...-1] + "是兇手" +"\n兇手已被處死，玩家勝利啦！\n遊戲結束"
+            reply_text = "天黑了" + vote_result[44...-1] + "是殺手" +"\n殺手已被處死，玩家勝利啦！\n遊戲結束"
             Killer.reply_message(reply_text)
-        else
-            died_player = ""
-            (0...vote_result).each do |n|
-                died_player = vote_result[n][44...-1].to_s + " "
-            end
-            reply_text = "玩家" + died_player +"已被表決處死 \n但他不是兇手...真正的凶手可以選擇要不要殺他滅口"
-            Killer.reply_message(reply_text, "confirm", vote_result)
+        elsif vote_result == "no body die"
+            reply_text = "天黑了 最高投票超過1位...沒人死亡\n殺手請選擇下一位受害者....`"
+            Killer.reply_message(reply_text, player_list)
+        else         
+            players.delete(vote_result)
+            kill.update(players: players)
+            reply_text = "天黑了 玩家" + vote_result[44...-1] + "已被表決處死"+ "\n殺手依然逍遙法外\n殺手請選擇下一位受害者...."
+            Killer.reply_message(reply_text, player_list)
         end
     end
-
-    def self.reply_message(reply_text, confirm = nil, vote_result = nil)
-        if confirm.nil?
-        message = {
-            type: 'text',
-            text: reply_text
-        }
-        #elsif player_list.nil?
-        #message = {
-        #    type: 'text',
-        #    text: reply_text
-        #}
-        else  
-            message = {
-			    type: 'text',
-			    text: reply_text
-            },
-            {
-                "type": "template",
-                "altText": "要滅口嗎?",
-                "template": {
-                    "type": "confirm",
-                    "text": "挑一個吧?",
-                    "actions": [
-                        {
-                          "type": "postback",
-                          "label": "滅口",
-                          "data": vote_result.to_s
-                        },
-                        {
-                          "type": "postback",
-                          "label": "放他條生路",
-                          "data": "no"
-                        }
-                    ]
-                }
-              }
-        end
-    end
-
      #剩餘玩家名單按鈕
     def self.player_list(channel_id)
-        #line 要求 每個選單的3個action要長一樣 意思是每個 columns的actions[n..n+2]都一樣 所以這個功能目前是寫錯的  但英為沒有作用了 暫不修改也不刪除
         kill = Killer.find_by(channel_id: channel_id)
         column_number = (kill.players.size/3.0).ceil 
         columns = [0...column_number]
@@ -219,4 +170,17 @@ class Killer < ApplicationRecord
         return message#.to_json
     end
 
+    def self.reply_message(reply_text, player_list = nil)
+        if player_list.nil?
+            message = {
+			    type: 'text',
+			    text: reply_text
+            }
+        else  
+            message = {
+			    type: 'text',
+			    text: reply_text
+            }, player_list
+        end
+    end
 end
