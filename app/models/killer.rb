@@ -22,15 +22,7 @@ class Killer < ApplicationRecord
             \n2.殺手在天黑時選取欲殺害的玩家
             \n3.天亮時其餘玩家可投票誰是殺手，得票最高的玩家會被處決
             \n4.如果最後僅剩一位玩，殺手就贏得這個遊戲囉～"
-            p channel_id + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
-            p killer[11...44] + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
         reply_text = Killer.reply_message(text, Killer.player_list(channel_id))
-        p reply_text 
-        p "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-        p Killer.player_list(channel_id).class
-        p Killer.reply_message("你是殺手,你唯一且必須的任務就是殺光所有生還者").class
-        p killer
-        p killer[11...44]
         ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
         ChatbotController.new.push_to_line(channel_id, text, Killer.player_list(channel_id))
     end
@@ -145,6 +137,7 @@ class Killer < ApplicationRecord
         (0...column_number*3).each do |n|
             player = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n] #三元運算
             player_name = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n][44...-1]#三元運算
+            p player_name
           actions[n] = {
                 "type": "postback",
                 "label": player_name,
@@ -171,13 +164,11 @@ class Killer < ApplicationRecord
 
     def self.reply_message(reply_text, player_list = nil)
         if player_list.nil?
-            p "有有有有有有有有有有有有有有有有有有有有有有有有有有有有"
             message = {
 			    type: 'text',
 			    text: reply_text
             }
         else  
-            p "無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無無"
             message = {
 			    type: 'text',
 			    text: reply_text
