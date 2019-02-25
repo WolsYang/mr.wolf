@@ -24,7 +24,7 @@ class Killer < ApplicationRecord
         p players
         p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		REDIS.del(channel_id)
-        kill = Killer.find_by(channel_id: channel_id)
+        kill = Killer.find_or_create_by(channel_id: channel_id)
         killer = players.shuffle[1]
         kill.update(players: players, killer: killer , game_begin: false, round: rounds)
         text = "遊戲開始啦 ~ 參與的玩家有#{players.size}位
