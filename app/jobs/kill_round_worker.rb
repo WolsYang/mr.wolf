@@ -2,7 +2,7 @@ class KillRoundWorker < ActiveJob::Base
     # Set the Queue as Default
     queue_as :default
 
-    def perform(channel_id = nil)
+    def perform(channel_id = nil, jid = nil)
     return if cancelled?
       p "+++++++++++++++++++++>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<++++++++++++++++++"
       replytext = Killer.vote(channel_id)
@@ -11,11 +11,12 @@ class KillRoundWorker < ActiveJob::Base
     end
 
     def cancelled?
-    Sidekiq.redis {|c| c.exists("cancelled-#{jid}") }
+      Sidekiq.redis {|c| c.exists("cancelled-#{@jid}") }
     end
 
     def self.cancel!(jid)
-    Sidekiq.redis {|c| c.setex("cancelled-#{jid}", 86400, 1) }
+      @jid = jid
+      Sidekiq.redis {|c| c.setex("cancelled-#{jid}", 86400, 1) }
     end
     #KillRoundWorker.set(wait: 1.minutes).perform_later.provider_job_id
     #KillRoundWorker.cancel!(jid)

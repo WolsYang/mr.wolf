@@ -11,6 +11,8 @@ gem 'rails', '~> 5.2.1'
 gem 'redis'
 
 gem 'sidekiq'
+gem 'sidekiq-status'
+
 gem 'pg', '~> 0.21.0'
 
 # Use Puma as the app server

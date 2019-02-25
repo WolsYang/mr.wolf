@@ -107,6 +107,8 @@ class Killer < ApplicationRecord
         kill.update(players: kill.players, round: kill.round+1)
         players = kill.players 
         for_counting = "for_counting" + channel_id.to_s
+        KillRoundWorker.cancel!(jid)
+        #Sidekiq::Status.unschedule job_identifier
         #把REDIS規0還要把排程刪除
         #統計得票結果,並歸0
         (0...players.size).each do |n|

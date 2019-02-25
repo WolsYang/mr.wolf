@@ -8269,3 +8269,5 @@ Migrating to AddRoundToKiller (20190219044317)
 [ActiveJob] Enqueued KillRoundWorker (Job ID: 533aec63-dde6-49e2-ad93-7d9649428968) to Sidekiq(default) at 2019-02-21 13:09:28 UTC
 [ActiveJob] Enqueued KillRoundWorker (Job ID: 29d5e112-454e-4caa-8354-4cf30dc903e9) to Sidekiq(default) at 2019-02-21 13:24:08 UTC
 [ActiveJob] Enqueued KillRoundWorker (Job ID: 5ec805e5-7f71-49ca-9f9f-a30c216c0eed) to Sidekiq(default) at 2019-02-21 13:24:54 UTC
+[ActiveJob] Enqueued KillRoundWorker (Job ID: 2035f2cb-4533-46cc-803f-7e6d6ccf2ffa) to Sidekiq(default) at 2019-02-25 07:15:24 UTC with arguments: "yes123"
+[ActiveJob] Enqueued KillRoundWorker (Job ID: bf866e2f-6f63-47cc-847e-64b7aa626f2c) to Sidekiq(default) at 2019-02-25 07:36:35 UTC with arguments: "yes123"
