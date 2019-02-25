@@ -2,11 +2,10 @@ class KillRoundWorker < ActiveJob::Base
     # Set the Queue as Default
     queue_as :default
 
-    def perform(channel_id = nil, jid = nil)
+    def perform(channel_id = nil, player = nil)
     return if cancelled?
       p "+++++++++++++++++++++>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<++++++++++++++++++"
       kill = Killer.find_or_create_by(channel_id: channel_id)
-      
       REDIS.set(channel_id, kill.players.size) 
       Killer.rounds(player, channel_id)
       #replytext = Killer.vote(channel_id)
