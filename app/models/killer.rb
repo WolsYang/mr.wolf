@@ -8,11 +8,12 @@
 class Killer < ApplicationRecord
     def self.rule
         "遊戲開始啦 ~ 
-        \n1.接下來將會從玩家中隨機挑出一名殺手，其餘玩家為平民
-        \n2.殺手在天黑時選取欲殺害的平民
-        \n3.天亮時存活的玩家包含殺手有２０分鐘可以討論並投票誰是兇手，死掉的玩家也能參與討論，但不能投票
-        \n4.得票最高的玩家會被處決，若有兩人得票數(不包含0票)一樣則沒有人死亡
-        \n5.如果最後僅剩一位平民，殺手就贏得這個遊戲囉～
+        \n1.接下來將會從玩家中隨機挑出一名兇手，其餘玩家為平民
+        \n2.玩家可以透過TAG玩家送出來投票，例如　@王小明 \n 請注意 如果是XXX@王小明 或 @王小明XXX 這種有多餘的字的戲通都會判定投票失敗喔
+        \n3.存活的玩家包含殺手有２０分鐘可以討論並投票誰是兇手，死掉的玩家也能參與討論，但不能投票\n 第一回合沒有任何線索，只能靠大家憑直覺猜啦
+        \n4.當所有人都投完票以後，系統會提示誰的得票數最高，而殺手可以透過選擇按鈕來決定要不要殺這位玩家
+        \n5.若最高得票數有兩位則兩位都會死亡，若是最高得票數的是殺手則判定殺手輸了這場遊戲
+        \n6.如果最後僅剩一位玩家，殺手就贏得這個遊戲囉～
         \n＊＊＊請要參與的玩家於1分鐘內輸入 +1 ＊＊＊
         \n＊＊＊1分鐘後遊戲正式開始＊＊＊ "
     end
@@ -24,13 +25,14 @@ class Killer < ApplicationRecord
         kill = Killer.find_by(channel_id: channel_id)
         killer = players.shuffle[1]
         kill.update(players: players, killer: killer , game_begin: false, round: rounds)
-        ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
         text = "遊戲開始啦 ~ 參與的玩家有#{players.size}位
-            \n1.接下來將會從玩家中隨機挑出一名殺手
-            \n2.玩家可以透過TAG玩家來投票，例如　　@王小明
+            \n1.接下來將會從玩家中隨機挑出一名兇手
+            \n2.玩家可以透過TAG玩家送出來投票，例如　@王小明 \n 請注意 如果是XXX@王小明 或 @王小明XXX 這種有多餘的字的戲通都會判定投票失敗喔
             \n3.當所有人都投完票以後，系統會提示誰的得票數最高，而殺手可以透過選擇按鈕來決定要不要殺這位玩家
             \n4.若最高得票數有兩位則兩位都會死亡，若是最高得票數的是殺手則判定殺手輸了這場遊戲
-            \n4.如果最後僅剩一位玩家，殺手就贏得這個遊戲囉～"
+            \n5.如果最後僅剩一位玩家，殺手就贏得這個遊戲囉～"
+        ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+        ChatbotController.new.push_to_line(channel_id, text)
     end
     #合併LINE USER ID 和使用者顯示名稱 + 並加上 channel_id 前10碼 避免用戶同時在其他地方玩遊戲
     def self.to_gameid(user_id, user_name, channel_id)

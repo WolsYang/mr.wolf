@@ -69,11 +69,11 @@ class ChatbotController < ApplicationController
 				REDIS.rpush(channel_id, player) if received_text == "+1"
 				return nil
 			elsif received_text[0] == '@'
-				has_vote = received_text[1...-1] 
+				has_vote = received_text[1..-1] 
 				p has_vote
 				Killer.rounds(player, channel_id, has_vote)
 			#投票按鈕回傳事件
-			elsif event['type'] == "postback"
+			elsif params['events'][0]['type'] == "postback"
 				vote_result =  params['events'][0]['postback']['data']
 				vote_result = vote_result.to_a unless vote_result = "no"
 				Killer.killer_chooise(vote_result, channel_id)
