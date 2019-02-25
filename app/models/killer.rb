@@ -112,6 +112,7 @@ class Killer < ApplicationRecord
     end
     #投票處決
     def self.vote(channel_id)
+        p "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
         kill = Killer.find_by(channel_id: channel_id)
         players = Killer.players
         p players
