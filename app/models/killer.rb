@@ -110,6 +110,7 @@ class Killer < ApplicationRecord
     #投票處決
     def self.vote(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
+        players = Killer.players
         kill.update(round: kill.round+1)
         max_vote = 0 
         same_vote = 0
