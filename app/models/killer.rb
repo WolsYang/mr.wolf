@@ -53,7 +53,7 @@ class Killer < ApplicationRecord
         kill.destroy
     end
 
-    def self.rounds(player, channel_id, has_vote)
+    def self.rounds(player, channel_id, has_vote = nil)
         kill = Killer.find_by(channel_id: channel_id)
         day_or_night = kill.round % 2 #night:1 , day:0
         voted_player = kill.players.detect{|i| i[44...-1] == has_vote}
