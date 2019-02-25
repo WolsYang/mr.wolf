@@ -20,7 +20,8 @@ class Killer < ApplicationRecord
     #遊戲開始的設定
     def self.start_n_rule(channel_id)
         rounds = 0
-		players = REDIS.lrange(channel_id,0,-1)
+        players = REDIS.lrange(channel_id,0,-1)
+        p players
 		REDIS.del(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         killer = players.shuffle[1]
@@ -114,6 +115,8 @@ class Killer < ApplicationRecord
     def self.vote(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         players = Killer.players
+        p players
+        p ">>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<"
         kill.update(round: kill.round+1)
         max_vote = 0 
         same_vote = 0
