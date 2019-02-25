@@ -54,14 +54,17 @@ class Killer < ApplicationRecord
     end
 
     def self.rounds(player, channel_id, has_vote = nil)
+        p "roundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsrounds"
+        p REDIS.get(channel_id) unless REDIS.get(channel_id).nil?
         kill = Killer.find_by(channel_id: channel_id)
+        p kill.players.size unless kill.players.size.nil?
         day_or_night = kill.round % 2 #night:1 , day:0
         voted_player = kill.players.detect{|i| i[44...-1] == has_vote}
         if day_or_night == 1 && player == kill.killer
             Killer.killer_chooise(voted_player, channel_id)
         elsif day_or_night == 0 
             if REDIS.get("jid"+channel_id).nil?#第一個投票時開始計算
-                job = KillRoundWorker.set(wait: 3.minutes).perform_later(channel_id, player)#超過20分鐘沒人投票
+                job = KillRoundWorker.set(wait: 1.minutes).perform_later(channel_id, player)#超過20分鐘沒人投票
                 jid = job.provider_job_id 
                 REDIS.set("jid"+channel_id, jid)
             end
