@@ -137,12 +137,12 @@ class Killer < ApplicationRecord
         (0...column_number*3).each do |n|
             player = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n] #三元運算
             player_name = ( kill.players[n].nil? ) ? "沒有這個人" : kill.players[n][44...-1]#三元運算
-            p player_name
           actions[n] = {
                 "type": "postback",
                 "label": player_name,
                 "data": player
             }
+            p actions[n]
         end
         (0...column_number).each do |n|
           columns[n] = {

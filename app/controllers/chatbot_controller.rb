@@ -89,8 +89,6 @@ class ChatbotController < ApplicationController
 					channel.update(now_gaming: received_text[4...8])
 					kill = Killer.find_or_create_by(channel_id: channel_id)
 					kill.update(game_begin: true)
-					p "=================================================="
-					p channel_id
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 			end
@@ -124,13 +122,11 @@ class ChatbotController < ApplicationController
 	#主動發訊息
 	def push_to_line(userID, text, second_message= nil)
 		unless second_message.nil? #殺手遊戲的回傳比較特別
-			p "成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功成功"
 			message = {
 				type: 'text',
 				text: text
 				},second_message
 		else
-			p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 		message = {
 			type: 'text',
 			text: text
