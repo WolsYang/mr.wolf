@@ -22,6 +22,7 @@ class Killer < ApplicationRecord
         rounds = 0
         players = REDIS.lrange(channel_id,0,-1)
         p players
+        p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		REDIS.del(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         killer = players.shuffle[1]
@@ -103,9 +104,7 @@ class Killer < ApplicationRecord
         players = kill.players #不用redis 避免佔據記憶體或伺服器關機資料不見
         unless players.index(player).nil? #投票玩家是否有參與遊戲
             REDIS.set(player, 1000) if  REDIS.get(player).nil?
-            if REDIS.get(player) < 1000 #超過1000代表已經投票
-                count = REDIS.get(player)
-                REDIS.set(player, count + 1000) 
+            if REDIS.get(player).to_i < 1000 #超過1000代表已經投票
                 REDIS.incr(voted_player)#被投票玩家投票數+1
                 REDIS.incr(channel_id)#紀錄已投票玩家數量
             end
@@ -128,13 +127,14 @@ class Killer < ApplicationRecord
         #把REDIS規0還要把排程刪除
         #統計得票結果,並歸0
         (0...players.size).each do |n|
-            player_vote_number = REDIS.get(players(n))-1000 if REDIS.get(players(n)) > 1000
-            if max_vote < REDIS.get(players(n))
-                max_vote = REDIS.get(players(n))
+            player_number = REDIS.get(players(n)).to_i
+            player_vote_number = player_number -1000 if REDIS.get(players(n)) > 1000
+            if max_vote < player_number
+                max_vote = player_number
                 same_vote_result = []
                 vote_result = []
                 vote_result << players[n]
-            elsif max_vote == REDIS.get(players(n)).to_i
+            elsif max_vote == player_number
                 same_vote_result << players[n]
             end
             REDIS.set(players[n], 0)#投票數歸零
