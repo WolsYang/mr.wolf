@@ -189,7 +189,7 @@ class Killer < ApplicationRecord
         else  
             message = {
 			    type: 'text',
-			    text: reply_text
+			    text: "reply_text"
             }
         end
     end
