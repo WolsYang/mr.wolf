@@ -157,7 +157,7 @@ class ChatbotController < ApplicationController
                         }
                     ]
                 }
-              #}
+              }
 		end
 		line.push_message(userID, message)
 	end
