@@ -5,12 +5,12 @@ class KillRoundWorker < ActiveJob::Base
     def perform(channel_id = nil, player = nil)
     return if cancelled?
       p "+++++++++++++++++++++>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<++++++++++++++++++"
-      kill = Killer.find_or_create_by(channel_id: channel_id)
-      REDIS.set(channel_id, kill.players.size.to_s) 
-      Killer.rounds(player, channel_id)
-      #replytext = Killer.vote(channel_id)
+      #kill = Killer.find_or_create_by(channel_id: channel_id)
+      #REDIS.set(channel_id, kill.players.size.to_s) 
+      #Killer.rounds(player, channel_id)
+      replytext = Killer.vote(channel_id)
       #超過20分鐘沒人投票
-      #ChatbotController.new.push_to_line(channel_id, replytext, "kill")
+      ChatbotController.new.push_to_line(channel_id, replytext)
     end
 
     def cancelled?
