@@ -118,27 +118,7 @@ class ChatbotController < ApplicationController
 			message = {
 				type: 'text',
 				text: reply_text
-			}
-		end	
-		# 傳送訊息 一個方法的回傳值是最後一行的結果
-		p message
-		line.reply_message(reply_token, message)
-	end
-	
-	#主動發訊息
-	def push_to_line(userID, text, message= nil)
-		unless message.nil? #殺手遊戲的回傳比較特別
-			text
-			#message = {
-			#	type: 'text',
-			#	text: text
-			#	},second_message
-		else
-		message = #{
-			#type: 'text',
-			#text: text
-			#}, 
-			{
+			},			{
                 "type": "template",
                 "altText": "要滅口嗎?",
                 "template": {
@@ -158,6 +138,25 @@ class ChatbotController < ApplicationController
                     ]
                 }
               }
+		end	
+		# 傳送訊息 一個方法的回傳值是最後一行的結果
+		p message
+		line.reply_message(reply_token, message)
+	end
+	
+	#主動發訊息
+	def push_to_line(userID, text, message= nil)
+		unless message.nil? #殺手遊戲的回傳比較特別
+			text
+			#message = {
+			#	type: 'text',
+			#	text: text
+			#	},second_message
+		else
+		message = {
+			type: 'text',
+			text: text
+			}
 		end
 		line.push_message(userID, message)
 	end
