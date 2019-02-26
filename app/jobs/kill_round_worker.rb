@@ -17,6 +17,7 @@ class KillRoundWorker < ActiveJob::Base
     end
 
     def cancelled?
+      p "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
       Sidekiq.redis {|c| c.exists("cancelled-#{@jid}") }
     end
 
