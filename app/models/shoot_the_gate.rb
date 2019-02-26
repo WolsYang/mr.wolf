@@ -38,9 +38,7 @@ class ShootTheGate < ApplicationRecord
       bet = basic_bet if received_text[2].nil?
       return "獎金池沒了...請重新輸入\"小賭怡情\"設定" if game.stakes == 0
       (2...received_text.size).each do |n|
-        unless received_text[n].match(%r{[0-9]|\s}).nil?
-          bet = received_text[2..n]
-        end
+        bet = received_text[2..n] unless received_text[n].match(%r{[0-9]|\s}).nil?
       end
       bet = game.stakes if bet.to_i > game.stakes #獎金池&最大注 
       bet = bet.to_i
@@ -49,9 +47,8 @@ class ShootTheGate < ApplicationRecord
       bet = basic_bet if received_text[1].nil?
       return "獎金池沒了...請重新輸入\"小賭怡情\"設定" if game.stakes == 0
       (1...received_text.size).each do |n|
-        unless received_text[n].match(%r{[0-9]|\s}).nil?
-          bet = received_text[1..n]
-        end
+        bet = received_text[1..n] unless received_text[n].match(%r{[0-9]|\s}).nil?
+      end
       bet = game.stakes if bet.to_i > game.stakes #獎金池&最大注 
       bet = bet.to_i
       received_text = "射"
