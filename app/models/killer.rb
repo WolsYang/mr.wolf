@@ -166,8 +166,9 @@ class Killer < ApplicationRecord
             (0...vote_result.size).each do |n|
                 died_player = vote_result[n][44...-1].to_s + " "
             end
-            reply_text = "玩家" + died_player +"已被表決處死 \n但他不是兇手...真正的凶手可以選擇要不要殺他滅口"
-            Killer.reply_message(reply_text, "confirm", vote_result)
+            text = "玩家" + died_player +"已被表決處死 \n但他不是兇手...真正的凶手可以選擇要不要殺他滅口"
+            replay_text = Killer.reply_message(text, "confirm", vote_result)
+            ChatbotController.new.push_to_line(channel_id, replay_text, "kill")
         end
     end
 
@@ -189,10 +190,10 @@ class Killer < ApplicationRecord
             },
             {
                 "type": "template",
-                "altText": "要滅口嗎?",
+                "altText": "兇手的選擇",
                 "template": {
                     "type": "confirm",
-                    "text": "挑一個吧?",
+                    "text": "兇手大人,請您選一個吧",
                     "actions": [
                         {
                           "type": "postback",

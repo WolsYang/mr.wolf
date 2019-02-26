@@ -118,26 +118,7 @@ class ChatbotController < ApplicationController
 			message = {
 				type: 'text',
 				text: reply_text
-			},			{
-                "type": "template",
-                "altText": "要滅口嗎?",
-                "template": {
-                    "type": "confirm",
-                    "text": "挑一個吧?",
-                    "actions": [
-                        {
-                          "type": "postback",
-                          "label": "滅口",
-                          "data": "vote_result.to_s"
-                        },
-                        {
-                          "type": "postback",
-                          "label": "放他條生路",
-                          "data": "no"
-                        }
-                    ]
-                }
-              }
+			}
 		end	
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
 		p message
