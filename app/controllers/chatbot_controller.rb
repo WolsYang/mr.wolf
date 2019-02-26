@@ -125,7 +125,7 @@ class ChatbotController < ApplicationController
 	
 	#主動發訊息
 	def push_to_line(userID, text, message= nil)
-		unless second_message.nil? #殺手遊戲的回傳比較特別
+		unless message.nil? #殺手遊戲的回傳比較特別
 			text
 			#message = {
 			#	type: 'text',
