@@ -8271,3 +8271,26 @@ Migrating to AddRoundToKiller (20190219044317)
 [ActiveJob] Enqueued KillRoundWorker (Job ID: 5ec805e5-7f71-49ca-9f9f-a30c216c0eed) to Sidekiq(default) at 2019-02-21 13:24:54 UTC
 [ActiveJob] Enqueued KillRoundWorker (Job ID: 2035f2cb-4533-46cc-803f-7e6d6ccf2ffa) to Sidekiq(default) at 2019-02-25 07:15:24 UTC with arguments: "yes123"
 [ActiveJob] Enqueued KillRoundWorker (Job ID: bf866e2f-6f63-47cc-847e-64b7aa626f2c) to Sidekiq(default) at 2019-02-25 07:36:35 UTC with arguments: "yes123"
+  [1m[36mKiller Load (9.2ms)[0m  [1m[34mSELECT  "killers".* FROM "killers" WHERE "killers"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mKiller Create (48.2ms)[0m  [1m[32mINSERT INTO "killers" ("channel_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["channel_id", "1111"], ["created_at", "2019-02-26 10:44:16.310490"], ["updated_at", "2019-02-26 10:44:16.310490"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mKiller Load (0.5ms)[0m  [1m[34mSELECT  "killers".* FROM "killers" WHERE "killers"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[36mKiller Load (0.5ms)[0m  [1m[34mSELECT  "killers".* FROM "killers" WHERE "killers"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[36mKiller Load (0.3ms)[0m  [1m[34mSELECT  "killers".* FROM "killers" WHERE "killers"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mKiller Update (2.5ms)[0m  [1m[33mUPDATE "killers" SET "killer" = $1, "players" = $2, "updated_at" = $3, "round" = $4 WHERE "killers"."id" = $5[0m  [["killer", "a"], ["players", "{a,b,c,d}"], ["updated_at", "2019-02-26 10:48:21.012045"], ["round", 0], ["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mKiller Load (0.5ms)[0m  [1m[34mSELECT  "killers".* FROM "killers" WHERE "killers"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mKiller Update (0.3ms)[0m  [1m[33mUPDATE "killers" SET "round" = $1, "updated_at" = $2 WHERE "killers"."id" = $3[0m  [["round", 1], ["updated_at", "2019-02-26 10:48:25.449454"], ["id", 2]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mKiller Load (0.5ms)[0m  [1m[34mSELECT  "killers".* FROM "killers" WHERE "killers"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mKiller Update (0.5ms)[0m  [1m[33mUPDATE "killers" SET "round" = $1, "updated_at" = $2 WHERE "killers"."id" = $3[0m  [["round", 2], ["updated_at", "2019-02-26 10:49:34.114019"], ["id", 2]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mKiller Load (0.4ms)[0m  [1m[34mSELECT  "killers".* FROM "killers" WHERE "killers"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[36mKiller Load (0.5ms)[0m  [1m[34mSELECT  "killers".* FROM "killers" WHERE "killers"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "1111"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mKiller Update (0.3ms)[0m  [1m[33mUPDATE "killers" SET "round" = $1, "updated_at" = $2 WHERE "killers"."id" = $3[0m  [["round", 3], ["updated_at", "2019-02-26 10:50:17.504973"], ["id", 2]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
