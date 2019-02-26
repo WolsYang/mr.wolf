@@ -155,6 +155,7 @@ class Killer < ApplicationRecord
             reply_text =  vote_result[44...-1] + "是兇手" +"\n兇手已被處死，玩家勝利啦！\n遊戲結束"
             Killer.reply_message(reply_text)
         else
+            p "結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果"
             died_player = ""
             (0...vote_result).each do |n|
                 died_player = vote_result[n][44...-1].to_s + " "

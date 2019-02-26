@@ -124,12 +124,13 @@ class ChatbotController < ApplicationController
 	end
 	
 	#主動發訊息
-	def push_to_line(userID, text, second_message= nil)
+	def push_to_line(userID, text, message= nil)
 		unless second_message.nil? #殺手遊戲的回傳比較特別
-			message = {
-				type: 'text',
-				text: text
-				},second_message
+			text
+			#message = {
+			#	type: 'text',
+			#	text: text
+			#	},second_message
 		else
 		message = {
 			type: 'text',

@@ -9,8 +9,10 @@ class KillRoundWorker < ActiveJob::Base
       #REDIS.set(channel_id, kill.players.size.to_s) 
       #Killer.rounds(player, channel_id)
       replytext = Killer.vote(channel_id)
+      p replytext
+      p "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
       #超過20分鐘沒人投票
-      ChatbotController.new.push_to_line(channel_id, replytext)
+      ChatbotController.new.push_to_line(channel_id, replytext, "kill")
     end
 
     def cancelled?
