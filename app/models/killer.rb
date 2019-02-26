@@ -111,7 +111,8 @@ class Killer < ApplicationRecord
         players = kill.players #不用redis 避免佔據記憶體或伺服器關機資料不見
         unless players.index(player).nil? #投票玩家是否有參與遊戲
             p "nilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnilnil"
-            REDIS.set(player, 1000) if  REDIS.get(player).nil?
+            p "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD" if REDIS.get(player).nil?
+            REDIS.set(player, 1000) if REDIS.get(player).nil?
             if REDIS.get(player).to_i < 1000 #超過1000代表已經投票
                 REDIS.incr(voted_player)#被投票玩家投票數+1
                 REDIS.incr(channel_id)#紀錄已投票玩家數量
