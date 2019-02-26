@@ -123,7 +123,7 @@ class Killer < ApplicationRecord
     def self.vote(channel_id)
         p "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
         kill = Killer.find_by(channel_id: channel_id)
-        players = Killer.players
+        players = kill.players
         p players
         p ">>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<"
         kill.update(round: kill.round+1)
