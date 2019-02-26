@@ -46,7 +46,7 @@ class Killer < ApplicationRecord
     def self.game_end(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
-        kill.players.each {|i| REDIS.del(n)}
+        kill.players.each {|i| REDIS.del(i)}
         REDIS.del(channel_id)
         REDIS.del("jid"+channel_id)
         kill.destroy
