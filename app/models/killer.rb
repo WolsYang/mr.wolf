@@ -19,21 +19,26 @@ class Killer < ApplicationRecord
     end
     #遊戲開始的設定
     def self.start_n_rule(channel_id)
-        rounds = 0
-        players = REDIS.lrange(channel_id,0,-1)
-        p players
-        p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-		REDIS.del(channel_id)
-        kill = Killer.find_or_create_by(channel_id: channel_id)
-        killer = players.shuffle[1]
-        kill.update(players: players, killer: killer , game_begin: false, round: rounds)
-        text = "遊戲開始啦 ~ 參與的玩家有#{players.size}位
-            \n1.接下來將會從玩家中隨機挑出一名兇手
-            \n2.玩家可以透過TAG玩家送出來投票，例如　@王小明 \n 請注意 如果是XXX@王小明 或 @王小明XXX 這種有多餘的字的戲通都會判定投票失敗喔
-            \n3.當所有人都投完票以後，系統會提示誰的得票數最高，而殺手可以透過選擇按鈕來決定要不要殺這位玩家，若最高得票數有多位，殺手則可以一次選擇要不要殺全部
-            \n4.若最高得票數有兩位則兩位都會死亡，若是最高得票數的是殺手則判定殺手輸了這場遊戲
-            \n5.如果最後僅剩一位玩家，殺手就贏得這個遊戲囉～"
-        ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+        if REDIS.lrange(channel_id,0,-1).size < 3
+            text = "遊戲人數不足，遊戲無法啟動"
+            Killer.game_end
+        else
+            rounds = 0
+            players = REDIS.lrange(channel_id,0,-1)
+            p players
+            p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+            REDIS.del(channel_id)
+            kill = Killer.find_or_create_by(channel_id: channel_id)
+            killer = players.shuffle[1]
+            kill.update(players: players, killer: killer , game_begin: false, round: rounds)
+            text = "遊戲開始啦 ~ 參與的玩家有#{players.size}位
+                \n1.接下來將會從玩家中隨機挑出一名兇手
+                \n2.玩家可以透過TAG玩家送出來投票，例如　@王小明 \n 請注意 如果是XXX@王小明 或 @王小明XXX 這種有多餘的字的戲通都會判定投票失敗喔
+                \n3.當所有人都投完票以後，系統會提示誰的得票數最高，而殺手可以透過選擇按鈕來決定要不要殺這位玩家，若最高得票數有多位，殺手則可以一次選擇要不要殺全部
+                \n4.若最高得票數有兩位則兩位都會死亡，若是最高得票數的是殺手則判定殺手輸了這場遊戲
+                \n5.如果最後僅剩一位玩家，殺手就贏得這個遊戲囉～"
+            ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+        end
         ChatbotController.new.push_to_line(channel_id, text)
     end
     #合併LINE USER ID 和使用者顯示名稱 + 並加上 channel_id 前10碼 避免用戶同時在其他地方玩遊戲
@@ -46,7 +51,7 @@ class Killer < ApplicationRecord
     def self.game_end(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
-        kill.players.each {|i| p i}
+        kill.players.each {|i| p i} 
         kill.players.each {|i| REDIS.del(i)}
         REDIS.del(channel_id)
         REDIS.del("jid"+channel_id)
