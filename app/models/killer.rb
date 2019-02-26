@@ -21,7 +21,7 @@ class Killer < ApplicationRecord
     def self.start_n_rule(channel_id)
         if REDIS.lrange(channel_id,0,-1).size < 3
             text = "遊戲人數不足，遊戲無法啟動"
-            Killer.game_end
+            Killer.game_end(channel_id)
         else
             rounds = 0
             players = REDIS.lrange(channel_id,0,-1)
