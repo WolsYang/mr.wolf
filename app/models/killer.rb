@@ -163,7 +163,7 @@ class Killer < ApplicationRecord
         else
             p "結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果"
             died_player = ""
-            (0...vote_result).each do |n|
+            (0...vote_result.size).each do |n|
                 died_player = vote_result[n][44...-1].to_s + " "
             end
             reply_text = "玩家" + died_player +"已被表決處死 \n但他不是兇手...真正的凶手可以選擇要不要殺他滅口"
