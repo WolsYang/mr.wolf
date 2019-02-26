@@ -10,11 +10,10 @@ class KillRoundWorker < ActiveJob::Base
       #kill = Killer.find_or_create_by(channel_id: channel_id)
       #REDIS.set(channel_id, kill.players.size.to_s) 
       #Killer.rounds(player, channel_id)
-      replytext = Killer.vote(channel_id)
-      p replytext
+      Killer.vote(channel_id)
       p "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
       #超過20分鐘沒人投票
-      ChatbotController.new.push_to_line(channel_id, replytext, "kill")
+      #ChatbotController.new.push_to_line(channel_id, replytext, "kill")
     end
 
     #KillRoundWorker.set(wait: 1.minutes).perform_later.provider_job_id
