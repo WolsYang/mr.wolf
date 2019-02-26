@@ -1,13 +1,13 @@
 class ShootTheGate < ApplicationRecord
-    def self.rule
-      "遊戲開始拉~~\"A\" ~ \"K\"分別對應 1 ~ 13 只看 數字 不看 花色 
-      \n1.先輸入\"抽\"抽取 門柱牌
-      \n2.再輸入\"射\"抽取 射門牌
-      \n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~
-      \n輸入\"重抽\"換一副牌重新開始
-      \n輸入\"小賭怡情\"來點小驚喜
-      \n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"	
-    end
+  def self.rule
+    "遊戲開始拉~~\"A\" ~ \"K\"分別對應 1 ~ 13 只看 數字 不看 花色 
+    \n1.先輸入\"抽\"抽取 門柱牌
+    \n2.再輸入\"射\"抽取 射門牌
+    \n3.若 射門牌 數字介於 門柱牌 數字中間代表進球您就贏啦~
+    \n輸入\"重抽\"換一副牌重新開始
+    \n輸入\"小賭怡情\"來點小驚喜
+    \n P.S. 記得先輸入\"抽\"抽取門柱，再輸入\"射\"抽取射門牌，直接射的話就只能用上一個人的門柱了QQ"	
+  end
 
   def self.to_number(symbol)
     case symbol[2]
@@ -34,7 +34,6 @@ class ShootTheGate < ApplicationRecord
       game.update(stakes: stakes, gambling: "Yes")
       return "目前玩家 " + players + " 位" +"\n獎金池：" + stakes.to_s
     end
-
     if received_text =~ /^我賭\d*/ && game.gambling == "Yes"
       bet = basic_bet if received_text[2].nil?
       return "獎金池沒了...請重新輸入\"小賭怡情\"設定" if game.stakes == 0
@@ -57,7 +56,6 @@ class ShootTheGate < ApplicationRecord
       bet = bet.to_i
       received_text = "射"
     end
-
     case received_text
       when  "重抽"
         poker = Poker.shuffle(1)
@@ -95,7 +93,6 @@ class ShootTheGate < ApplicationRecord
         if number2 > number1#門柱排序 case when條件需要照順序
           number2, number1 = number1, number2
         end
-
         case user_number
           when number2+1...number1-1 
             if game.gambling == "Yes"
@@ -126,13 +123,13 @@ class ShootTheGate < ApplicationRecord
           #      card3 +" \n進啦進啦~~!!!" + "您贏了" 
           #    end
           #  else
-              if game.gambling == "Yes"
-                result = game.stakes + bet
-                game.update(stakes: result)
-                "您的牌" + card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
-              else
-                "您的牌" + card3 +" \n界外球 您輸啦" 
-              end            
+          if game.gambling == "Yes"
+            result = game.stakes + bet
+            game.update(stakes: result)
+            "您的牌" + card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
+          else
+            "您的牌" + card3 +" \n界外球 您輸啦" 
+          end            
           #  end
         end
       else
