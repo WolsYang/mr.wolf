@@ -175,6 +175,7 @@ class Killer < ApplicationRecord
     end
 
     def self.reply_message(reply_text, confirm = nil, vote_result = nil)
+        p "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
         if confirm.nil?
         message = {
             type: 'text',
@@ -200,7 +201,7 @@ class Killer < ApplicationRecord
                         {
                           "type": "postback",
                           "label": "滅口",
-                          "data": vote_result.to_s
+                          "data": "vote_result.to_s"
                         },
                         {
                           "type": "postback",
