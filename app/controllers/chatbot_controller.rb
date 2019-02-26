@@ -134,10 +134,11 @@ class ChatbotController < ApplicationController
 			#	text: text
 			#	},second_message
 		else
-		message = {
-			type: 'text',
-			text: text
-			},            {
+		message = #{
+			#type: 'text',
+			#text: text
+			#}, 
+			{
                 "type": "template",
                 "altText": "要滅口嗎?",
                 "template": {
@@ -156,7 +157,7 @@ class ChatbotController < ApplicationController
                         }
                     ]
                 }
-              }
+              #}
 		end
 		line.push_message(userID, message)
 	end
@@ -209,23 +210,23 @@ class ChatbotController < ApplicationController
 			"type": "template",
 				"altText": "小遊戲選單",
 				"template": {
-					"type": "buttons",
-					"text": "小遊戲選單",
+				"type": "buttons",
+				"text": "小遊戲選單",
 				"actions": [
 					{
-						"type": "postback",
+					"type": "postback",
 					"label": "終極密碼",
-						"data": "WY遊戲bomb3345678"
+					"data": "WY遊戲bomb3345678"
 					},
 					{
-						"type": "postback",
+					"type": "postback",
 					"label": "射龍門",
-						"data": "WY遊戲shoot3345678"
+					"data": "WY遊戲shoot3345678"
 					},
 					{
-						"type": "postback",
+					"type": "postback",
 					"label": "天黑請閉眼(測試中)",
-						"data": "WY遊戲kill3345678"
+					"data": "WY遊戲kill3345678"
 					}
 				]
 			}
