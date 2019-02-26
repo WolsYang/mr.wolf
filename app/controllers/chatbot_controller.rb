@@ -66,6 +66,8 @@ class ChatbotController < ApplicationController
 				user_name = get_user_name(user_id)
 				player = Killer.to_gameid(user_id, user_name, channel_id)
 			if kill.game_begin 
+				p player.class
+				p channel_id.class
 				REDIS.rpush(channel_id, player) if received_text == "+1"
 				return nil
 			elsif received_text[0] == '@'
