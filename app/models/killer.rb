@@ -46,6 +46,7 @@ class Killer < ApplicationRecord
     def self.game_end(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
+        kill.players.each {|i| p i}
         kill.players.each {|i| REDIS.del(i)}
         REDIS.del(channel_id)
         REDIS.del("jid"+channel_id)
@@ -121,6 +122,7 @@ class Killer < ApplicationRecord
                 REDIS.incr(channel_id)#紀錄已投票玩家數量
                 p player
                 p REDIS.get(player).to_i
+                p "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
             end
         end
     end
