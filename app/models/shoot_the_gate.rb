@@ -43,7 +43,7 @@ class ShootTheGate < ApplicationRecord
       bet = game.stakes if bet.to_i > game.stakes #獎金池&最大注 
       bet = bet.to_i
       received_text = "射"
-    elsif received_text =~ /^抽\d*/ && game.gambling == "Yes"
+    elsif received_text =~ /^射\d*/ && game.gambling == "Yes"
       bet = basic_bet if received_text[1].nil?
       return "獎金池沒了...請重新輸入\"小賭怡情\"設定" if game.stakes == 0
       (1...received_text.size).each do |n|
