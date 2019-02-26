@@ -3,6 +3,7 @@ class KillRoundWorker < ActiveJob::Base
     queue_as :default
 
     def perform(channel_id = nil, player = nil)
+      p "+++++++++++++++++++++>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<++++++++++++++++++"
     return if cancelled?
       p "+++++++++++++++++++++>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<++++++++++++++++++"
       #kill = Killer.find_or_create_by(channel_id: channel_id)
