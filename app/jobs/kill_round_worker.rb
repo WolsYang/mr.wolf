@@ -6,7 +6,7 @@ class KillRoundWorker < ActiveJob::Base
     return if cancelled?
       p "+++++++++++++++++++++>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<++++++++++++++++++"
       kill = Killer.find_or_create_by(channel_id: channel_id)
-      REDIS.set(channel_id, kill.players.size) 
+      REDIS.set(channel_id, kill.players.size.to_s) 
       Killer.rounds(player, channel_id)
       #replytext = Killer.vote(channel_id)
       #超過20分鐘沒人投票

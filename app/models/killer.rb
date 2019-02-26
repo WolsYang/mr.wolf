@@ -54,9 +54,9 @@ class Killer < ApplicationRecord
 
     def self.rounds(player, channel_id, has_vote = nil)
         p "roundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsrounds"
-        p REDIS.get(channel_id) unless REDIS.get(channel_id).nil?
+        p REDIS.get(channel_id) #unless REDIS.get(channel_id).nil?
         kill = Killer.find_by(channel_id: channel_id)
-        p kill.players.size unless kill.players.size.nil?
+        p kill.players.size #unless kill.players.size.nil?
         p "daydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydayday"
         p kill.round
         day_or_night = kill.round % 2 #night:1 , day:0
