@@ -130,8 +130,7 @@ class Killer < ApplicationRecord
         kill.update(round: kill.round+1)
         max_vote = 0 
         same_vote = 0
-        jid = REDIS.get("jid"+channel_id.to_s)
-        KillRoundWorker.cancel!(jid)
+        REDIS.del("jid"+channel_id)#取消排程工作
         vote_result = []
         same_vote_result = []
         #Sidekiq::Status.unschedule job_identifier
