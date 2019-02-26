@@ -122,14 +122,14 @@ class Killer < ApplicationRecord
     #投票處決
     def self.vote(channel_id)
         p "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
-        kill = Killer.find_by(channel_id: channel_id)
+        kill = Killer.find_or_create_by(channel_id: channel_id)
         players = kill.players
         p players
         p ">>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<"
         kill.update(round: kill.round+1)
         max_vote = 0 
         same_vote = 0
-        jid = REDIS.get("jid"+channel_id)
+        jid = REDIS.get("jid"+channel_id.to_s)
         KillRoundWorker.cancel!(jid)
         vote_result = []
         same_vote_result = []
@@ -137,7 +137,7 @@ class Killer < ApplicationRecord
         #把REDIS規0還要把排程刪除
         #統計得票結果,並歸0
         (0...players.size).each do |n|
-            player_number = REDIS.get(players(n)).to_i
+            player_number = REDIS.get(players[n]).to_i
             player_vote_number = player_number -1000 if REDIS.get(players[n]) > 1000
             if max_vote < player_number
                 max_vote = player_number
