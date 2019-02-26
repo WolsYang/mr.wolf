@@ -46,9 +46,8 @@ class Killer < ApplicationRecord
     def self.game_end(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
-        for_counting = "for_counting" + channel_id.to_s
+        kill.players.each {|i| REDIS.del(n)}
         REDIS.del(channel_id)
-        REDIS.del(for_counting)
         REDIS.del("jid"+channel_id)
         kill.destroy
     end
@@ -107,6 +106,8 @@ class Killer < ApplicationRecord
     end
     #檢查是否投果票和投誰?
     def self.check_vote(voted_player, channel_id, player)
+        p "check_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_vote"
+        p REDIS.get(player).to_i
         kill = Killer.find_by(channel_id: channel_id)
         players = kill.players #不用redis 避免佔據記憶體或伺服器關機資料不見
         unless players.index(player).nil? #投票玩家是否有參與遊戲
