@@ -137,6 +137,7 @@ class Killer < ApplicationRecord
         #把REDIS規0還要把排程刪除
         #統計得票結果,並歸0
         (0...players.size).each do |n|
+            p players[n]
             player_number = REDIS.get(players[n]).to_i
             player_vote_number = player_number -1000 if REDIS.get(players[n]) > 1000
             if max_vote < player_number
