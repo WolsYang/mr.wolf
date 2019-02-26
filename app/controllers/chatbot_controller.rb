@@ -128,7 +128,7 @@ class ChatbotController < ApplicationController
 	#主動發訊息
 	def push_to_line(userID, text, message= nil)
 		unless message.nil? #殺手遊戲的回傳比較特別
-			text
+			message = text
 			#message = {
 			#	type: 'text',
 			#	text: text
@@ -137,27 +137,7 @@ class ChatbotController < ApplicationController
 		message = {
 			type: 'text',
 			text: text
-			},
-            {
-                "type": "template",
-                "altText": "兇手的選擇",
-                "template": {
-                    "type": "confirm",
-                    "text": "兇手大人,請您選一個吧",
-                    "actions": [
-                        {
-                          "type": "postback",
-                          "label": "滅口",
-                          "data": "vote_result.to_s"
-                        },
-                        {
-                          "type": "postback",
-                          "label": "放他條生路",
-                          "data": "no"
-                        }
-                    ]
-                }
-              }
+			}
 		end
 		line.push_message(userID, message)
 	end

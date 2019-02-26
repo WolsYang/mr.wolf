@@ -167,30 +167,45 @@ class Killer < ApplicationRecord
                 died_player = vote_result[n][44...-1].to_s + " "
             end
             text = "玩家" + died_player +"已被表決處死 \n但他不是兇手...真正的凶手可以選擇要不要殺他滅口"
-            reply_text = Killer.reply_message("text", "confirm", "vote_result")
+            reply_text = Killer.reply_message(text, vote_result, "confirm")
             p reply_text
             p "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
             ChatbotController.new.push_to_line(channel_id, reply_text, "kill")
         end
     end
 
-    def self.reply_message(reply_text, confirm = nil, vote_result = nil)
+    def self.reply_message(reply_text, vote_result = nil, confirm = nil)
         p "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
         if confirm.nil?
         message = {
             type: 'text',
             text: reply_text
         }
-        #elsif player_list.nil?
-        #message = {
-        #    type: 'text',
-        #    text: reply_text
-        #}
         else  
             message = {
 			    type: 'text',
-			    text: "reply_text"
-            }
+			    text: reply_text
+            },
+            {
+                 "type": "template",
+                "altText": "兇手的選擇",
+                "template": {
+                    "type": "confirm",
+                    "text": "兇手大人,請您選一個吧",
+                    "actions": [
+                        {
+                          "type": "postback",
+                          "label": "滅口",
+                          "data": "vote_result.to_s"
+                        },
+                        {
+                          "type": "postback",
+                          "label": "放他條生路",
+                          "data": "no"
+                        }
+                    ]
+                }
+              }
         end
     end
 
