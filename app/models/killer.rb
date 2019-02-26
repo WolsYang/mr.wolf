@@ -67,6 +67,7 @@ class Killer < ApplicationRecord
         elsif day_or_night == 0 
             p "票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票"
             if REDIS.get("jid"+channel_id).nil?#第一個投票時開始計算
+                p "計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時"
                 job = KillRoundWorker.set(wait: 1.minutes).perform_later(channel_id, player)#超過20分鐘沒人投票
                 jid = job.provider_job_id 
                 REDIS.set("jid"+channel_id, jid)
