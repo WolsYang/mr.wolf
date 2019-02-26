@@ -76,8 +76,8 @@ class ChatbotController < ApplicationController
 			#投票按鈕回傳事件
 			elsif params['events'][0]['type'] == "postback"
 				vote_result =  params['events'][0]['postback']['data']
-				vote_result = vote_result.to_a unless vote_result == "no"
-				Killer.killer_chooise(vote_result, channel_id)
+				#vote_result = vote_result.to_a 
+				Killer.killer_chooise(vote_result, channel_id) unless vote_result == "no"
 			end
 		elsif received_text[0...4] == 'WY遊戲'
 			case received_text[4...8]
