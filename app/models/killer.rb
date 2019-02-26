@@ -116,12 +116,13 @@ class Killer < ApplicationRecord
             p "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD" if REDIS.get(player).nil?
             p player
             p "========================================================================="
-            p REDIS.set(player, 1000) if REDIS.get(player).nil?
+            p 
             if REDIS.get(player).to_i < 1000 #超過1000代表已經投票
                 REDIS.incr(voted_player)#被投票玩家投票數+1
                 REDIS.incr(channel_id)#紀錄已投票玩家數量
                 p player
                 p REDIS.get(player).to_i
+                REDIS.incrby(player, 1000)
                 p "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
             end
         end
