@@ -137,7 +137,27 @@ class ChatbotController < ApplicationController
 		message = {
 			type: 'text',
 			text: text
-			}
+			},
+            {
+                "type": "template",
+                "altText": "兇手的選擇",
+                "template": {
+                    "type": "confirm",
+                    "text": "兇手大人,請您選一個吧",
+                    "actions": [
+                        {
+                          "type": "postback",
+                          "label": "滅口",
+                          "data": "vote_result.to_s"
+                        },
+                        {
+                          "type": "postback",
+                          "label": "放他條生路",
+                          "data": "no"
+                        }
+                    ]
+                }
+              }
 		end
 		line.push_message(userID, message)
 	end
