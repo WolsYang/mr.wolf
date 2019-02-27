@@ -25,8 +25,6 @@ class Killer < ApplicationRecord
         else
             rounds = 0
             players = REDIS.lrange(channel_id,0,-1)
-            p players
-            p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
             REDIS.del(channel_id)
             kill = Killer.find_or_create_by(channel_id: channel_id)
             killer = players.shuffle[1]
@@ -51,7 +49,6 @@ class Killer < ApplicationRecord
     def self.game_end(channel_id)
         kill = Killer.find_by(channel_id: channel_id)
         Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
-        kill.players.each {|i| p i} 
         kill.players.each {|i| REDIS.del(i)}
         REDIS.del(channel_id)
         REDIS.del("jid"+channel_id)
@@ -59,29 +56,19 @@ class Killer < ApplicationRecord
     end
 
     def self.rounds(player , channel_id , has_vote = nil, vote_result = nil)
-        p "roundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsrounds"
-        p REDIS.get(channel_id) #unless REDIS.get(channel_id).nil?
         kill = Killer.find_by(channel_id: channel_id)
-        p kill.players.size #unless kill.players.size.nil?
-        p "daydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydaydayday"
-        p kill.round
         day_or_night = kill.round % 2 #night:1 , day:0
         voted_player = kill.players.detect{|i| i[44...-1] == has_vote}
         if day_or_night == 1 && player == kill.killer
             Killer.killer_chooise(vote_result, channel_id)
         elsif day_or_night == 0 
-            p "票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票"
             if REDIS.get("jid"+channel_id).nil?#第一個投票時開始計算
-                p "計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時計時"
                 job = KillRoundWorker.set(wait: 1.minutes).perform_later(channel_id, player)#超過20分鐘沒人投票
                 jid = job.provider_job_id 
                 REDIS.set("jid"+channel_id, jid)
             end
             result = Killer.check_vote(player, channel_id, voted_player)
-            p REDIS.get(player).to_i
-            p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
             replytext = Killer.vote(channel_id) if REDIS.get(channel_id).to_i == kill.players.size #都投完票才開始計算結果 減輕資料庫負擔
-            # menu + reply_text
         elsif kill.players.size <= 2
             Killer.game_end(channel_id)
             reply_text = "最後的玩家已成為了待宰羔羊，殺手贏了．．．"
@@ -103,36 +90,28 @@ class Killer < ApplicationRecord
                 n = kill.players.index(vote_result[n])#測試自己殺自己用
                 kill.players.delete_at(n)#測試自己殺自己用
                 died_player = vote_result[n][44...-1].to_s + " "
-                p died_player
-                p "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
             end
         kill.update(players: players, round: kill.round+1) 
         reply_text = "天亮了...玩家 " + died_player + " 已經被殺手殺死\n其餘玩家請繼續討論並票選進行下一輪遊戲"
         end
-        #Killer.reply_message(reply_text)
+
     end
     #檢查是否投果票和投誰?
     def self.check_vote(voted_player, channel_id, player)
-        p "check_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_votecheck_vote"
         kill = Killer.find_by(channel_id: channel_id)
         players = kill.players #不用redis 避免佔據記憶體或伺服器關機資料不見
         unless players.index(player).nil? #投票玩家是否有參與遊戲
             if REDIS.get(player).to_i < 1000 #超過1000代表已經投票
                 REDIS.incr(voted_player)#被投票玩家投票數+1
                 REDIS.incr(channel_id)#紀錄已投票玩家數量
-                p REDIS.get(channel_id).to_i
-                p players.size
-                #REDIS.incrby(player, 1000)
+                REDIS.incrby(player, 1000)
             end
         end
     end
     #投票處決
     def self.vote(channel_id)
-        p "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
         kill = Killer.find_or_create_by(channel_id: channel_id)
         players = kill.players
-        p players
-        p ">>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<"
         kill.update(round: kill.round+1)
         max_vote = 0 
         same_vote = 0
@@ -143,7 +122,6 @@ class Killer < ApplicationRecord
         #把REDIS規0還要把排程刪除
         #統計得票結果,並歸0
         (0...players.size).each do |n|
-            p players[n]
             player_number = REDIS.get(players[n]).to_i
             player_vote_number = player_number -1000 if player_number > 1000
             if max_vote < player_number
@@ -174,7 +152,6 @@ class Killer < ApplicationRecord
     end
 
     def self.reply_message(reply_text, vote_result = nil, confirm = nil)
-        p "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
         if confirm.nil?
         message = {
             type: 'text',
@@ -223,7 +200,6 @@ class Killer < ApplicationRecord
                 "label": player_name,
                 "data": player
             }
-            p actions[n]
         end
         (0...column_number).each do |n|
           columns[n] = {

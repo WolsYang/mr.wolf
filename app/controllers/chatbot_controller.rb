@@ -69,9 +69,7 @@ class ChatbotController < ApplicationController
 				REDIS.rpush(channel_id, player) if received_text == "+1"
 				return nil
 			elsif received_text[0] == '@'
-				p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 				has_vote = received_text[1..-1] 
-				p has_vote
 				Killer.rounds(player, channel_id, has_vote)
 			#投票按鈕回傳事件
 			elsif params['events'][0]['type'] == "postback"
@@ -121,7 +119,6 @@ class ChatbotController < ApplicationController
 			}
 		end	
 		# 傳送訊息 一個方法的回傳值是最後一行的結果
-		p message
 		line.reply_message(reply_token, message)
 	end
 	
