@@ -80,7 +80,7 @@ class Killer < ApplicationRecord
             result = Killer.check_vote(player, channel_id, voted_player)
             p REDIS.get(player).to_i
             p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-            replytext = Killer.vote(channel_id) if REDIS.get(channel_id) == kill.players.size #都投完票才開始計算結果 減輕資料庫負擔
+            replytext = Killer.vote(channel_id) if REDIS.get(channel_id).to_i == kill.players.size #都投完票才開始計算結果 減輕資料庫負擔
             # menu + reply_text
         elsif kill.players.size <= 2
             Killer.game_end(channel_id)
@@ -120,6 +120,8 @@ class Killer < ApplicationRecord
             if REDIS.get(player).to_i < 1000 #超過1000代表已經投票
                 REDIS.incr(voted_player)#被投票玩家投票數+1
                 REDIS.incr(channel_id)#紀錄已投票玩家數量
+                p REDIS.get(channel_id).to_i
+                p players.size
                 #REDIS.incrby(player, 1000)
             end
         end
