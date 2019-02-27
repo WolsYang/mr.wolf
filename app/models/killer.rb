@@ -109,7 +109,7 @@ class Killer < ApplicationRecord
         kill.update(players: players, round: kill.round+1) 
         reply_text = "天亮了...玩家" + died_player + "已經被殺手殺死"
         end
-        Killer.reply_message(reply_text)
+        #Killer.reply_message(reply_text)
     end
     #檢查是否投果票和投誰?
     def self.check_vote(voted_player, channel_id, player)
