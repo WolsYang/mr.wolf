@@ -100,6 +100,7 @@ class Killer < ApplicationRecord
             reply_text = "殺手放了條生路"
             kill.update(round: kill.round+1)
         else
+            vote_result = vote_result[2...-2].split("\",\"")
             players = kill.players - vote_result 
             (0...vote_result).each do |n|
                 n = kill.players.index(vote_result[n])#測試自己殺自己用
@@ -196,7 +197,7 @@ class Killer < ApplicationRecord
                         {
                           "type": "postback",
                           "label": "滅口",
-                          "data": vote_result
+                          "data": vote_result.to_s
                         },
                         {
                           "type": "postback",
