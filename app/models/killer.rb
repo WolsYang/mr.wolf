@@ -102,7 +102,7 @@ class Killer < ApplicationRecord
         else
             vote_result = vote_result[2...-2].split("\",\"")
             players = kill.players - vote_result 
-            (0...vote_result).each do |n|
+            (0...vote_result.size).each do |n|
                 n = kill.players.index(vote_result[n])#測試自己殺自己用
                 kill.players.delete_at(n)#測試自己殺自己用
                 died_player = vote_result[n][44...-1].to_s + " "
