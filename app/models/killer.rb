@@ -94,8 +94,8 @@ class Killer < ApplicationRecord
         kill = Killer.find_by(channel_id: channel_id)
         died_player = ""
         if vote_result == "no"
-            reply_text = "殺手放了條生路"
             kill.update(round: kill.round+1)
+            reply_text = "殺手放了條生路\n其餘玩家請繼續討論並票選進行下一輪遊戲"
         else
             vote_result = vote_result[2...-2].split("\",\"")
             players = kill.players - vote_result 
