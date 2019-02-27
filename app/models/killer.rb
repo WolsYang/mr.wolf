@@ -92,10 +92,6 @@ class Killer < ApplicationRecord
     #殺手選擇殺的人
     def self.killer_chooise(vote_result, channel_id)
         kill = Killer.find_by(channel_id: channel_id)
-        #if voted_player == kill.killer
-        #    reply_text = "生命誠可貴，想一想您可以不必自殺，再挑一個吧"
-        #else          
-            # REDIS.del(voted_player)#刪除被殺玩家
         if vote_result == "no"
             reply_text = "殺手放了條生路"
             kill.update(round: kill.round+1)
@@ -106,12 +102,13 @@ class Killer < ApplicationRecord
                 n = kill.players.index(vote_result[n])#測試自己殺自己用
                 kill.players.delete_at(n)#測試自己殺自己用
                 died_player = vote_result[n][44...-1].to_s + " "
+                p died_player
+                p "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
             end
         kill.update(players: players, round: kill.round+1) 
         reply_text = "天亮了...玩家" + died_player + "已經被殺手殺死"
         end
         Killer.reply_message(reply_text)
-        #end
     end
     #檢查是否投果票和投誰?
     def self.check_vote(voted_player, channel_id, player)
