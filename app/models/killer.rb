@@ -92,6 +92,7 @@ class Killer < ApplicationRecord
     #殺手選擇殺的人
     def self.killer_chooise(vote_result, channel_id)
         kill = Killer.find_by(channel_id: channel_id)
+        died_player = ""
         if vote_result == "no"
             reply_text = "殺手放了條生路"
             kill.update(round: kill.round+1)
