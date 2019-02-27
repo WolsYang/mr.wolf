@@ -120,7 +120,7 @@ class Killer < ApplicationRecord
             if REDIS.get(player).to_i < 1000 #超過1000代表已經投票
                 REDIS.incr(voted_player)#被投票玩家投票數+1
                 REDIS.incr(channel_id)#紀錄已投票玩家數量
-                REDIS.incrby(player, 1000)
+                #REDIS.incrby(player, 1000)
             end
         end
     end
@@ -157,22 +157,18 @@ class Killer < ApplicationRecord
         vote_result += same_vote_result
         if vote_result.find{|i| i == kill.killer}
             Killer.game_end(channel_id)
-            reply_text =  kill.killer[44...-1] + "是兇手" +"\n兇手已被處死，玩家勝利啦！\n遊戲結束"
+            reply_text =  kill.killer[44...-1] + "就是兇手" +"\n兇手已被處死，玩家勝利啦！\n遊戲結束"
             ChatbotController.new.push_to_line(channel_id, reply_text)
             #Killer.reply_message(reply_text)
         else
-            p "結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果"
             died_player = ""
             (0...vote_result.size).each do |n|
                 died_player = vote_result[n][44...-1].to_s + " "
             end
             text = "玩家 " + died_player +" 已被表決處死 \n但他不是兇手...真正的凶手可以選擇要不要殺他滅口"
             reply_text = Killer.reply_message(text, vote_result, "confirm")
-            p reply_text
-            p "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
             ChatbotController.new.push_to_line(channel_id, reply_text, "kill")
         end
-        #ChatbotController.new.push_to_line(channel_id, reply_text, "kill")
     end
 
     def self.reply_message(reply_text, vote_result = nil, confirm = nil)
