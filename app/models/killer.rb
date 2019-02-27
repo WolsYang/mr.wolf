@@ -58,7 +58,7 @@ class Killer < ApplicationRecord
         kill.destroy
     end
 
-    def self.rounds(player, channel_id, has_vote = nil)
+    def self.rounds(player = nil, channel_id = nil, has_vote = nil, vote_result = nil)
         p "roundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsrounds"
         p REDIS.get(channel_id) #unless REDIS.get(channel_id).nil?
         kill = Killer.find_by(channel_id: channel_id)
@@ -68,7 +68,7 @@ class Killer < ApplicationRecord
         day_or_night = kill.round % 2 #night:1 , day:0
         voted_player = kill.players.detect{|i| i[44...-1] == has_vote}
         if day_or_night == 1 && player == kill.killer
-            Killer.killer_chooise(voted_player, channel_id)
+            Killer.killer_chooise(vote_result, channel_id)
         elsif day_or_night == 0 
             p "票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票票"
             if REDIS.get("jid"+channel_id).nil?#第一個投票時開始計算
@@ -107,7 +107,7 @@ class Killer < ApplicationRecord
                 p "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
             end
         kill.update(players: players, round: kill.round+1) 
-        reply_text = "天亮了...玩家" + died_player + "已經被殺手殺死"
+        reply_text = "天亮了...玩家" + died_player + "已經被殺手殺死\n其餘玩家請繼續討論並票選進行下一輪遊戲"
         end
         #Killer.reply_message(reply_text)
     end
