@@ -158,6 +158,7 @@ class Killer < ApplicationRecord
         if vote_result.find{|i| i == kill.killer}
             Killer.game_end(channel_id)
             reply_text =  kill.killer[44...-1] + "是兇手" +"\n兇手已被處死，玩家勝利啦！\n遊戲結束"
+            ChatbotController.new.reply_to_line(reply_text)
             #Killer.reply_message(reply_text)
         else
             p "結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果"
