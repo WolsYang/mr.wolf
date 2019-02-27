@@ -58,7 +58,7 @@ class Killer < ApplicationRecord
         kill.destroy
     end
 
-    def self.rounds(player = nil, channel_id = nil, has_vote = nil, vote_result = nil)
+    def self.rounds(player , channel_id , has_vote = nil, vote_result = nil)
         p "roundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsroundsrounds"
         p REDIS.get(channel_id) #unless REDIS.get(channel_id).nil?
         kill = Killer.find_by(channel_id: channel_id)
