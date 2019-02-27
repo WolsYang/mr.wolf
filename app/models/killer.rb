@@ -158,7 +158,7 @@ class Killer < ApplicationRecord
         if vote_result.find{|i| i == kill.killer}
             Killer.game_end(channel_id)
             reply_text =  kill.killer[44...-1] + "是兇手" +"\n兇手已被處死，玩家勝利啦！\n遊戲結束"
-            ChatbotController.new.reply_to_line(reply_text)
+            #ChatbotController.new.push_to_line(channel_id, reply_text, "kill")
             #Killer.reply_message(reply_text)
         else
             p "結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果結果"
@@ -170,8 +170,9 @@ class Killer < ApplicationRecord
             reply_text = Killer.reply_message(text, vote_result, "confirm")
             p reply_text
             p "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
-            ChatbotController.new.push_to_line(channel_id, reply_text, "kill")
+            #ChatbotController.new.push_to_line(channel_id, reply_text, "kill")
         end
+        ChatbotController.new.push_to_line(channel_id, reply_text, "kill")
     end
 
     def self.reply_message(reply_text, vote_result = nil, confirm = nil)
