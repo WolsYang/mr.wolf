@@ -107,7 +107,7 @@ class Killer < ApplicationRecord
                 p "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
             end
         kill.update(players: players, round: kill.round+1) 
-        reply_text = "天亮了...玩家" + died_player + "已經被殺手殺死\n其餘玩家請繼續討論並票選進行下一輪遊戲"
+        reply_text = "天亮了...玩家 " + died_player + " 已經被殺手殺死\n其餘玩家請繼續討論並票選進行下一輪遊戲"
         end
         #Killer.reply_message(reply_text)
     end
@@ -155,7 +155,7 @@ class Killer < ApplicationRecord
             REDIS.set(players[n], 0)#投票數歸零
         end
         vote_result += same_vote_result
-        if vote_result == kill.killer
+        if vote_result.find{|i| i == kill.killer}
             Killer.game_end(channel_id)
             reply_text =  vote_result[44...-1] + "是兇手" +"\n兇手已被處死，玩家勝利啦！\n遊戲結束"
             Killer.reply_message(reply_text)
