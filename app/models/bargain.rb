@@ -16,7 +16,9 @@ class Bargain < ApplicationRecord
       game = Bargain.find_by(channel_id: channel_id)
       if game.all_bid.find {|n| n == message}.nil? 
         p game.all_bid.min
+        puts game.all_bid.min.class
         p message
+        puts message.class
         if game.all_bid.min > message
           result = "恭喜您，您的出價 #{message} 元目前是最低價且唯一的那位喔"
         else
