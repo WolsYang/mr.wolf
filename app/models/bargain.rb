@@ -4,7 +4,7 @@ class Bargain < ApplicationRecord
     end
 
     def self.start(channel_id)
-      Bargain.find_or_create_by(channel_id: channel_id).update(all_bid: [0])
+      Bargain.find_or_create_by(channel_id: channel_id).update(all_bid: [99999999])
     end
 
     def self.game_end(channel_id)
@@ -17,7 +17,6 @@ class Bargain < ApplicationRecord
       all_bid = game.all_bid.map(&:to_i)
       if all_bid.find {|n| n == message}.nil? 
         if all_bid.min > message
-          puts "1111111111111111111111111111111"
           result = "恭喜您，您的出價 #{message} 元目前是最低價且唯一的那位喔"
         else
           puts "222222222222222222222222222222222222222"
