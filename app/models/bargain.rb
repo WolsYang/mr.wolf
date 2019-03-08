@@ -17,6 +17,7 @@ class Bargain < ApplicationRecord
       all_bid = game.all_bid.map(&:to_i)
       if all_bid.find {|n| n == message}.nil? 
         if all_bid.min > message
+          puts "1111111111111111111111111111111"
           result = "恭喜您，您的出價 #{message} 元目前是最低價且唯一的那位喔"
         else
           puts "222222222222222222222222222222222222222"
