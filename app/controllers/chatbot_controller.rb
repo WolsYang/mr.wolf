@@ -87,7 +87,8 @@ class ChatbotController < ApplicationController
 			end
 		elsif channel.now_gaming == "deal"
 			 if received_text.match(%r{\D}).nil? == true && received_text.to_i > 1
-				Bargain.check(channel_id, received_text.to_i)
+				message = received_text.to_i
+				Bargain.check(channel_id, message)
 			 end
 			Bargain.game_end(channel_id) if received_text == "結束遊戲"
 		elsif received_text[0...4] == 'WY遊戲'
