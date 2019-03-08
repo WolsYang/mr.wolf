@@ -31,11 +31,12 @@ class Killer < ApplicationRecord
             kill.update(players: players, killer: killer , game_begin: false, round: rounds)
             text = "遊戲開始啦 ~ 參與的玩家有#{players.size}位
                 \n1.接下來將會從玩家中隨機挑出一名兇手
-                \n2.玩家可以透過TAG玩家送出來投票，例如　@王小明 \n 請注意 如果是XXX@王小明 或 @王小明XXX 這種有多餘的字的戲通都會判定投票失敗喔
-                \n3.當所有人都投完票以後，系統會提示誰的得票數最高，而殺手可以透過選擇按鈕來決定要不要殺這位玩家，若最高得票數有多位，殺手則可以一次選擇要不要殺全部
-                \n4.若最高得票數有兩位則兩位都會死亡，若是最高得票數的是殺手則判定殺手輸了這場遊戲
-                \n5.如果最後僅剩一位玩家，殺手就贏得這個遊戲囉～"
-            ChatbotController.new.push_to_line(killer[11...44], "你是殺手,你唯一且必須的任務就是殺光所有生還者")
+                \n2.玩家可以透過TAG玩家送出來投票，例如　@王小明 \n 請注意 如果是XXX@王小明 或 @王小明XXX 這種有多餘的字的系統都會判定投票失敗喔
+                \n3.當所有人都投完票以後，系統會提示誰的得票數最高，從第一個投票開始超過\"20\"分鐘沒人投票的話會直接統計投票結果
+                \n4.而殺手可以透過選擇按鈕來決定要不要殺這位玩家，若最高得票數有多位，殺手則可以選擇要不要一次殺名單上的人
+                \n5.若最高得票數有兩位則兩位都會死亡，若是最高得票數的是殺手則判定殺手輸了這場遊戲
+                \n6.如果最後僅剩一位玩家，兇手就贏得這個遊戲囉～"
+            ChatbotController.new.push_to_line(killer[11...44], "你是兇手,你唯一且必須的任務就是殺光所有生還者")
         end
         ChatbotController.new.push_to_line(channel_id, text)
     end
@@ -63,7 +64,7 @@ class Killer < ApplicationRecord
             Killer.killer_chooise(vote_result, channel_id)
         elsif day_or_night == 0 
             if REDIS.get("jid"+channel_id).nil?#第一個投票時開始計算
-                job = KillRoundWorker.set(wait: 1.minutes).perform_later(channel_id, player)#超過20分鐘沒人投票
+                job = KillRoundWorker.set(wait: 20.minutes).perform_later(channel_id, player)#超過20分鐘沒人投票
                 jid = job.provider_job_id 
                 REDIS.set("jid"+channel_id, jid)
             end

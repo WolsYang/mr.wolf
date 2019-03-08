@@ -3,6 +3,12 @@ require 'net/http'
 require 'line/bot'
 class ChatbotController < ApplicationController
 	protect_from_forgery with: :null_session	#關閉CSRF
+	
+	#臨時測試用
+	def index
+		
+	end
+
 	#主程式
 	def webhook
 	#* Purpose : 判別回傳正確對話給客戶端(Any type)
@@ -60,7 +66,7 @@ class ChatbotController < ApplicationController
 			Bomb.play(user_number, channel_id)
 		elsif channel.now_gaming == "shoot" 
 			ShootTheGate.shoot(received_text, channel_id)
-		elsif  channel.now_gaming == "kill"
+		elsif channel.now_gaming == "kill"
 				kill = Killer.find_or_create_by(channel_id: channel_id)
 				user_id = params['events'][0]['source']['userId']
 				user_name = get_user_name(user_id)
@@ -77,24 +83,29 @@ class ChatbotController < ApplicationController
 				#vote_result = vote_result.to_a 
 				Killer.rounds(player, channel_id, nil, vote_result)
 			end
+		elsif channel.now_gaming == "deal"
+			Bargain.check(channel_id, received_text) if received_text.match(%r{\D}).nil? == true
+			Bargain.game_end(channel_id) if received_text == "結束遊戲"
 		elsif received_text[0...4] == 'WY遊戲'
+			channel.update(now_gaming: received_text[4..-1])
 			case received_text[4...8]
 				when "bomb"
-					channel.update(now_gaming: received_text[4...8])
 					Bomb.start(channel_id)
 					Bomb.rule
-				when "shoo"
-					channel.update(now_gaming: received_text[4...9])
+				when "shoo"			
 					poker = Poker.shuffle(1)
 					gate = ShootTheGate.find_or_create_by(channel_id: channel_id)
 					gate.update(cards: poker)
 					ShootTheGate.rule
 				when "kill"		
-					channel.update(now_gaming: received_text[4...8])
 					kill = Killer.find_or_create_by(channel_id: channel_id)
 					kill.update(game_begin: true)
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
+				when "deal"
+					p "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+					Bargain.start(channel_id)
+					Bargain.rule	
 			end
 		else 			
 			return nil
@@ -193,17 +204,22 @@ class ChatbotController < ApplicationController
 					{
 					"type": "postback",
 					"label": "終極密碼",
-					"data": "WY遊戲bomb3345678"
+					"data": "WY遊戲bomb"
 					},
 					{
 					"type": "postback",
 					"label": "射龍門",
-					"data": "WY遊戲shoot3345678"
+					"data": "WY遊戲shoot"
 					},
 					{
 					"type": "postback",
 					"label": "天黑請閉眼(測試中)",
-					"data": "WY遊戲kill3345678"
+					"data": "WY遊戲kill"
+					},
+					{
+					"type": "postback",
+					"label": "成為最小且唯一的那位吧!",
+					"data": "WY遊戲deal"
 					}
 				]
 			}
