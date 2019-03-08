@@ -58,6 +58,8 @@ class ChatbotController < ApplicationController
 					ShootTheGate.find_or_create_by(channel_id: channel_id).destroy
 				when "kill"
 					Killer.game_end(channel_id)
+				when "deal"
+					Bargain.game_end(channel_id)
 			end
 			channel.update(now_gaming: "no")
 			">\"<掰掰~"
@@ -84,8 +86,8 @@ class ChatbotController < ApplicationController
 				Killer.rounds(player, channel_id, nil, vote_result)
 			end
 		elsif channel.now_gaming == "deal"
-			 if received_text.match(%r{\D}).nil? == true && received_text > 1
-				Bargain.check(channel_id, received_text)
+			 if received_text.match(%r{\D}).nil? == true && received_text.to_i > 1
+				Bargain.check(channel_id, received_text.to_i)
 			 end
 			Bargain.game_end(channel_id) if received_text == "結束遊戲"
 		elsif received_text[0...4] == 'WY遊戲'
