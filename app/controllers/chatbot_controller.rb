@@ -84,7 +84,9 @@ class ChatbotController < ApplicationController
 				Killer.rounds(player, channel_id, nil, vote_result)
 			end
 		elsif channel.now_gaming == "deal"
-			Bargain.check(channel_id, received_text) if received_text.match(%r{\D}).nil? == true
+			 if received_text.match(%r{\D}).nil? == true && received_text > 1
+				Bargain.check(channel_id, received_text)
+			 end
 			Bargain.game_end(channel_id) if received_text == "結束遊戲"
 		elsif received_text[0...4] == 'WY遊戲'
 			channel.update(now_gaming: received_text[4..-1])
@@ -104,7 +106,6 @@ class ChatbotController < ApplicationController
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 				when "deal"
-					p "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 					Bargain.start(channel_id)
 					Bargain.rule	
 			end
