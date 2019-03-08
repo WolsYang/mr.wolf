@@ -23,8 +23,6 @@ class ChatbotController < ApplicationController
 		text = received_text(event)
 			#記錄頻道	
 			reply_text = game_keyword_reply(channel_id, text)
-			p reply_text
-			p "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp"
 			response = reply_to_line(reply_text) 
 			# 回應200
 			head :ok
@@ -88,9 +86,7 @@ class ChatbotController < ApplicationController
 			end
 		elsif channel.now_gaming == "deal"
 			Bargain.game_end(channel_id) if received_text == "結束遊戲"
-			puts "DDDDDDDDDDDDDDDDDDDDDDDD"
-			if received_text.match(%r{\D}).nil? == true && received_text.to_i > 1
-				puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+			if received_text.match(%r{\D}).nil? == true && received_text.to_i > 0
 				message = received_text.to_i
 				Bargain.check(channel_id, message)
 			end
