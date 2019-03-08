@@ -21,9 +21,10 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 		text = received_text(event)
-			#記錄頻道
-			p text		
+			#記錄頻道	
 			reply_text = game_keyword_reply(channel_id, text)
+			p reply_text
+			p "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp"
 			response = reply_to_line(reply_text) 
 			# 回應200
 			head :ok
@@ -86,11 +87,13 @@ class ChatbotController < ApplicationController
 				Killer.rounds(player, channel_id, nil, vote_result)
 			end
 		elsif channel.now_gaming == "deal"
-			 if received_text.match(%r{\D}).nil? == true && received_text.to_i > 1
+			Bargain.game_end(channel_id) if received_text == "結束遊戲"
+			puts "DDDDDDDDDDDDDDDDDDDDDDDD"
+			if received_text.match(%r{\D}).nil? == true && received_text.to_i > 1
+				puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 				message = received_text.to_i
 				Bargain.check(channel_id, message)
-			 end
-			Bargain.game_end(channel_id) if received_text == "結束遊戲"
+			end
 		elsif received_text[0...4] == 'WY遊戲'
 			channel.update(now_gaming: received_text[4..-1])
 			case received_text[4...8]

@@ -17,8 +17,10 @@ class Bargain < ApplicationRecord
       all_bid = game.all_bid.map(&:to_i)
       if all_bid.find {|n| n == message}.nil? 
         if all_bid.min > message
+          puts "1111111111111111111111111111111"
           result = "恭喜您，您的出價 #{message} 元目前是最低價且唯一的那位喔"
         else
+          puts "222222222222222222222222222222222222222"
           not_uniq = all_bid.select {|n| all_bid.count(n) > 1 }
           uniq_bid = all_bid - not_uniq
           uniq_bid << message
@@ -27,10 +29,13 @@ class Bargain < ApplicationRecord
           result = "你目前是 #{message} 元這個價位唯一的出價者，但不是最低的那一位，比您低的還有 #{x} 位"
         end
       else
+        puts "33333333333333333333333333333333333333333"
         result  = "您的出價 #{message} 元，跟人重複囉"
       end
       bid = all_bid << message
       game.update(all_bid: bid)
+      puts result
+      p "============================================="
       result
     end
 end
