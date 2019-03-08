@@ -6,7 +6,6 @@ class ChatbotController < ApplicationController
 	
 	#臨時測試用
 	def index
-		
 	end
 
 	#主程式
@@ -22,7 +21,8 @@ class ChatbotController < ApplicationController
 	#	傳送訊息給LINE reply_to_line(reply_text)
 		params['events'].each do |event|
 		text = received_text(event)
-			#記錄頻道		
+			#記錄頻道
+			p text		
 			reply_text = game_keyword_reply(channel_id, text)
 			response = reply_to_line(reply_text) 
 			# 回應200
@@ -100,6 +100,7 @@ class ChatbotController < ApplicationController
 				when "kill"		
 					kill = Killer.find_or_create_by(channel_id: channel_id)
 					kill.update(game_begin: true)
+					REDIS.rpush(channel_id, "player")
 					RecordPlayerWorker.perform_at(1.minutes.from_now, channel_id)
 					Killer.rule
 				when "deal"

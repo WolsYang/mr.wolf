@@ -19,12 +19,12 @@ class Killer < ApplicationRecord
     end
     #遊戲開始的設定
     def self.start_n_rule(channel_id)
-        if REDIS.lrange(channel_id,0,-1).size < 3
+        if REDIS.lrange(channel_id,1,-1).size < 3
             text = "遊戲人數不足，遊戲無法啟動"
             Killer.game_end(channel_id)
         else
             rounds = 0
-            players = REDIS.lrange(channel_id,0,-1)
+            players = REDIS.lrange(channel_id,1,-1)
             REDIS.del(channel_id)
             kill = Killer.find_or_create_by(channel_id: channel_id)
             killer = players.shuffle[1]
