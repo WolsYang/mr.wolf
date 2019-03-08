@@ -5,7 +5,7 @@ class Bargain < ApplicationRecord
 
     def self.start(channel_id)
       p "sssssssssssssssssssssssssssssssss"
-      Bargain.find_or_create_by(channel_id: channel_id)
+      Bargain.find_or_create_by(channel_id: channel_id).update(all_bid: [0])
     end
 
     def self.game_end(channel_id)
@@ -14,6 +14,7 @@ class Bargain < ApplicationRecord
     end
 
     def self.check(channel_id, message)
+      break if message < 1
       game = Bargain.find_by(channel_id: channel_id)
       if game.all_bid.find {|n| n == message}.nil? 
         if game.all_bid.min > message
