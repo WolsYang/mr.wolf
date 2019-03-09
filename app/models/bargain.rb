@@ -15,12 +15,14 @@ class Bargain < ApplicationRecord
     def self.check(channel_id, message)
       game = Bargain.find_by(channel_id: channel_id)
       all_bid = game.all_bid.map(&:to_i)
+      p all_bid
+      p 
       if all_bid.find {|n| n == message}.nil? 
-        if all_bid.min > message
+        not_uniq = all_bid.select {|n| all_bid.count(n) > 1 }
+        uniq_bid = all_bid - not_uniq
+        if uniq_bid.min > message
           result = "恭喜您，您的出價 #{message} 元目前是最低價且唯一的那位喔"
         else
-          not_uniq = all_bid.select {|n| all_bid.count(n) > 1 }
-          uniq_bid = all_bid - not_uniq
           uniq_bid << message
           x = uniq_bid.sort.index(message)
           #game.update(now_winner: user_name)
@@ -31,6 +33,7 @@ class Bargain < ApplicationRecord
       end
       bid = all_bid << message
       game.update(all_bid: bid)
+      p game.all_bid
       result
     end
 end
