@@ -3,10 +3,6 @@ require 'net/http'
 require 'line/bot'
 class ChatbotController < ApplicationController
 	protect_from_forgery with: :null_session	#關閉CSRF
-	
-	#臨時測試用
-	def index
-	end
 
 	#主程式
 	def webhook
@@ -84,7 +80,6 @@ class ChatbotController < ApplicationController
 				Killer.rounds(player, channel_id, nil, vote_result)
 			end
 		elsif channel.now_gaming == "deal"
-			Bargain.game_end(channel_id) if received_text == "結束遊戲"
 			if received_text.match(%r{\D}).nil? == true && received_text.to_i > 0
 				message = received_text.to_i
 				Bargain.check(channel_id, message)
