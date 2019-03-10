@@ -13,7 +13,6 @@ class Bomb < ApplicationRecord
 		now_min = 1
 		user_number = 0
 		code = rand(1..now_max-1)
-		Channel.find_or_create_by(channel_id: channel_id).update(now_gaming: "Bomb")
 		Bomb.find_or_create_by(channel_id: channel_id).update(user_number: user_number, now_max: now_max, now_min: now_min, code: code)
 	end
 
@@ -23,7 +22,7 @@ class Bomb < ApplicationRecord
         if bomb.now_min < user_number && user_number < bomb.now_max
             if user_number == bomb.code
                 bomb.destroy
-                Channel.find_by(channel_id: channel_id).update(now_gaming: "No")
+                Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
                 "恭喜你!!爆爆爆了\n不如請我喝一杯飲料吧:)"
             elsif user_number > bomb.code 
             	bomb.update(now_max: user_number)
