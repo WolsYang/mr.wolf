@@ -1,5 +1,5 @@
 class BargainController < ApplicationController
-    layout "liff"
+    
 
     def index
         "Bargain.start(channel_id)"
