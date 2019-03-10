@@ -17,7 +17,8 @@ class Bomb < ApplicationRecord
 		Bomb.find_or_create_by(channel_id: channel_id).update(user_number: user_number, now_max: now_max, now_min: now_min, code: code)
 	end
 
-    def self.play(user_number, channel_id)
+	def self.play(user_number, channel_id)
+		p "ppppppppppppppppppppppppppppppppppppppppppppp"
         bomb = Bomb.find_by(channel_id: channel_id)
         if bomb.now_min < user_number && user_number < bomb.now_max
             if user_number == bomb.code
@@ -37,7 +38,8 @@ class Bomb < ApplicationRecord
     end
 
     #判斷用戶回傳的字串
-    def self.guess(text)
+	def self.guess(text)
+		p "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
       	size = text.size > 4 ? 4 : text.size
       	number = 99999
       	#超過5個字元一定會超出範圍
