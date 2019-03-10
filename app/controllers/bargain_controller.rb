@@ -1,5 +1,5 @@
 class BargainController < ApplicationController
-    
+    protect_from_forgery with: :null_session	#關閉CSRF
 
     def index
         #Bargain.start(channel_id)
