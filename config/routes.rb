@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get '/bargain/end', to: 'bargain#game_end'
     get '/bargain/now', to: 'bargain#now_win_bid'
 
-    post '/bargin', to: 'bargain#new_bid'
+    post '/bargain', to: 'bargain#new_bid'
   end
 end
 
