@@ -2,8 +2,8 @@ class BargainController < ApplicationController
     
 
     def index
-        "Bargain.start(channel_id)"
-        "render :json => { :message => "Bargain.rule" }, :status => 400" 
+        #Bargain.start(channel_id)
+        render :json => { :message => "Bargain.rule" }, :status => 400 
     end
   
     def new_bid
