@@ -1,4 +1,4 @@
-class BargainController < ApplicationController
+class BargainController < ActionController::API
     skip_before_action :verify_authenticity_token
 
     def index
@@ -7,6 +7,7 @@ class BargainController < ApplicationController
     end
   
     def new_bid
+        #Parameters: {"bid"=>"11", "commit"=>"送出"}
         render :json => { :message =>"Bargain.check(channel_id, message)"}, :status => 400 
     end
 
