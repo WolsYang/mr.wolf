@@ -1,5 +1,5 @@
 class BargainController < ActionController::API
-    skip_before_action :verify_authenticity_token
+    #skip_before_action :verify_authenticity_token
 
     def index
         #Bargain.start(channel_id)
