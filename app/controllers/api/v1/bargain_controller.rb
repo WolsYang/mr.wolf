@@ -1,6 +1,4 @@
-class  Api::V1::BargainController < Api::V1::BaseController
-
-
+class Api::V1::BargainController < ApplicationController
     def index
         #Bargain.start(channel_id)
         render :json => { :message => "Bargain.rule" }, :status => 400 
@@ -17,5 +15,9 @@ class  Api::V1::BargainController < Api::V1::BaseController
   
     def game_end
         render :json => { :message => "Bargain.game_end(channel_id)"}, :status => 400 
+    end
+
+    def show
+        @bargain = Bargain.find(params[:id])
     end
 end
