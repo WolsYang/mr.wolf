@@ -1,12 +1,11 @@
-class Api::V1::BargainController < ApplicationController
+class Api::V1::BargainController < Api::V1::BaseController
     def index
-        #Bargain.start(channel_id)
-        render :json => { :message => "Bargain.rule" }, :status => 400 
+        #Bargain.start("for_api_test")
+        #render :json => { :message => Bargain.rule }, :status => 200 
     end
   
     def new_bid
-        #Parameters: {"bid"=>"11", "commit"=>"送出"}
-        render :json => { :message =>"Bargain.check(channel_id, message)"}, :status => 400 
+         render :json => { :message =>Bargain.check("for_api_test", params[:user_bid].to_i)}, :status => 200 
     end
 
     def now_win_bid
