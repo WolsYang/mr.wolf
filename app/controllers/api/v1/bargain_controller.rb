@@ -1,7 +1,6 @@
 class Api::V1::BargainController < Api::V1::BaseController
     def index
-        #Bargain.start("for_api_test")
-        #render :json => { :message => Bargain.rule }, :status => 200 
+        Bargain.start("for_api_test")
     end
   
     def new_bid

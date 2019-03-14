@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :bargain, only: [:show]
       
-        get '/bargain', to: 'bargain#index'
+        post '/bargain/start', to: 'bargain#index'
         get '/bargain/end', to: 'bargain#game_end'
         get '/bargain/now', to: 'bargain#now_win_bid'
 
