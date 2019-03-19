@@ -13,6 +13,7 @@ class Bargain < ApplicationRecord
 
     def self.game_end(channel_id)
       game = Bargain.find_by(channel_id: channel_id)
+      Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
       game.destroy
     end
 
