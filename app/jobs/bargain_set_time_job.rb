@@ -7,4 +7,4 @@ class BargainSetTimeJob < ApplicationJob
     Bargain.game_end(channel_id)
   end
 end
-#.set(wait: 20.minutes).perform_later(channel_id, player)
+#.set(wait: 20.minutes).perform_later(channel_id, player)gi

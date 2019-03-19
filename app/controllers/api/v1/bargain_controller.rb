@@ -4,7 +4,7 @@ class Api::V1::BargainController < Api::V1::BaseController
     end
   
     def new_bid
-         render :json => { :message =>Bargain.check(params[:channel_id], params[:user_bid].to_i),"user_name"}, :status => 200 
+         render :json => { :message =>Bargain.check(params[:channel_id], params[:user_bid].to_i, "user_name"}, :status => 200 
     end
 
     def now_win_bid
