@@ -16,18 +16,18 @@ class Bargain < ApplicationRecord
       game.destroy
     end
 
-    def self.check(channel_id, message)
+    def self.check(channel_id, message, user_name)
       game = Bargain.find_by(channel_id: channel_id)
       all_bid = game.all_bid.map(&:to_i)
       if all_bid.find {|n| n == message}.nil? 
         not_uniq = all_bid.select {|n| all_bid.count(n) > 1 }
         uniq_bid = all_bid - not_uniq
         if uniq_bid.min > message
+          game.update(now_win_bid: message, now_winner: user_name)
           result = "恭喜您，您的出價 #{message} 元目前是最低價且唯一的那位喔"
         else
           uniq_bid << message
-          x = uniq_bid.sort.index(message)
-          #game.update(now_winner: user_name)
+          x = uniq_bid.sort.index(message)    
           result = "你目前是 #{message} 元這個價位唯一的出價者，但不是最低的那一位，比您低的還有 #{x} 位"
         end
       else
@@ -37,6 +37,11 @@ class Bargain < ApplicationRecord
       game.update(all_bid: bid)
       p game.all_bid
       result
+    end
+
+    def self.time_up(channel_id)
+      game = Bargain.find_by(channel_id: channel_id)
+      result = "恭喜 #{game.now_winner} ,以 #{game.now_win_bid} 元得標"
     end
 
     def self.now_win_bid(channel_id)

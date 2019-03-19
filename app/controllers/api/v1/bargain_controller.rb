@@ -1,14 +1,14 @@
 class Api::V1::BargainController < Api::V1::BaseController
     def index
-        Bargain.start("for_api_test")
+        Bargain.start(params[:channel_id])
     end
   
     def new_bid
-         render :json => { :message =>Bargain.check("for_api_test", params[:user_bid].to_i)}, :status => 200 
+         render :json => { :message =>Bargain.check(params[:channel_id], params[:user_bid].to_i),"user_name"}, :status => 200 
     end
 
     def now_win_bid
-        render :json => { :message => "Bargain.now_win_bid(channel_id)"}, :status => 400 
+        render :json => { :message => "Bargain.find_by(channel_id: channel_id).now_win_bid"}, :status => 400 
     end
   
     def game_end

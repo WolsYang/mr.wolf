@@ -82,7 +82,8 @@ class ChatbotController < ApplicationController
         elsif channel.now_gaming == "deal"
             if received_text.match(%r{\D}).nil? == true && received_text.to_i > 0
                 message = received_text.to_i
-                Bargain.check(channel_id, message)
+                user_name = get_user_name(user_id)
+                Bargain.check(channel_id, message,user_name)
             end
         elsif received_text[0...4] == 'WY遊戲'
             channel.update(now_gaming: received_text[4..-1])
@@ -103,6 +104,7 @@ class ChatbotController < ApplicationController
                     Killer.rule
                 when "deal"
                     Bargain.start(channel_id)
+                    BargainSetTimeJob.set(wait: 3.minutes).perform_later(channel_id)
                     Bargain.rule	
             end
         else 			
