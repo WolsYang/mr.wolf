@@ -3,7 +3,7 @@ class Bargain < ApplicationRecord
         "請輸入純數字出價，例如　3
         \n接下來系統會回覆您的出價目前的狀態
         \n出價大於0,最小且唯一的的人勝利
-        \n結束這回合請輸入 \"結束所有遊戲\""
+        \n 2分鐘後系統會高知誰贏囉~"
     end
 
     def self.start(channel_id)
