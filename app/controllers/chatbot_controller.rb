@@ -82,8 +82,9 @@ class ChatbotController < ApplicationController
         elsif channel.now_gaming == "deal"
             if received_text.match(%r{\D}).nil? == true && received_text.to_i > 0
                 message = received_text.to_i
+                user_id = params['events'][0]['source']['userId']
                 user_name = get_user_name(user_id)
-                Bargain.check(channel_id, message,user_name)
+                Bargain.check(channel_id, message, user_name)
             end
         elsif received_text[0...4] == 'WY遊戲'
             channel.update(now_gaming: received_text[4..-1])
