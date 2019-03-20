@@ -7,7 +7,7 @@ class Api::V1::BargainController < Api::V1::BaseController
             bargain = Bargain.find_by(channel_id: channel_id)
             BargainSetTimeJob.set(wait: set_time.minutes).perform_later(channel_id)
         end
-             render :json => { :message => "#{bargain.min + set_time}:#{bargain.sec}"}, :status => 200 
+             render :json => { :message => "#{bargain.created_at.min + set_time}:#{bargain.created_at.sec}"}, :status => 200 
     end
   
     def new_bid
