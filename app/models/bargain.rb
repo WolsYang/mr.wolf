@@ -13,8 +13,8 @@ class Bargain < ApplicationRecord
 
     def self.game_end(channel_id)
       game = Bargain.find_by(channel_id: channel_id)
-      Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
       game.destroy
+      Channel.find_by(channel_id: channel_id).update(now_gaming: "no")
     end
 
     def self.check(channel_id, message, user_name)
