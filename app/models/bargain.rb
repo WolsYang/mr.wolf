@@ -42,7 +42,11 @@ class Bargain < ApplicationRecord
 
     def self.time_up(channel_id)
       game = Bargain.find_by(channel_id: channel_id)
-      result = "恭喜 #{game.now_winner} ,以 #{game.now_win_bid} 元得標"
+      if game.now_winner.nil? || game.now_win_bid.nil?
+        result = "沒人出價...流局囉"
+      else
+        result = "恭喜 #{game.now_winner} ,以 #{game.now_win_bid} 元得標"
+      end
     end
 
     def self.now_win_bid(channel_id)
