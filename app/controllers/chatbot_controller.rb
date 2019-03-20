@@ -170,8 +170,8 @@ class ChatbotController < ApplicationController
     def line
         return @line unless @line.nil?
         @line = Line::Bot::Client.new{|config|
-            config.channel_secret = '1634ed3b33c15e2cf579018b98920968'
-            config.channel_token ='VsnoSZR++5ejxl+LTwHVL8bHnEVi9xDozwQ5ajtK9t+BtGEn/Jt54fDBMFq0dO93rFJp7bwnz4ta0k/3DVqpReRlTFJSoEl+IG8S4CO+ucvA0j/rZ8Lsc/tjWRzLWCdFgR3BKOJNn8HdxOXZpw19mAdB04t89/1O/w1cDnyilFU='
+            config.channel_secret = LINE_CHANNEL_SECRET
+            config.channel_token = LINE_CHANNEL_TOKEN
         }
     end
 
