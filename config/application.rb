@@ -5,6 +5,10 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Dotenv::Railtie.load
+
+LINE_CHANNEL_SECRET = ENV['LINE_CHANNEL_SECRET']
+LINE_CHANNEL_TOKEN = ENV['LINE_CHANNEL_TOKEN']
 
 module Ironman
   class Application < Rails::Application
