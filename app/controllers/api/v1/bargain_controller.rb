@@ -1,5 +1,5 @@
 class Api::V1::BargainController < Api::V1::BaseController
-    def index(set_ime = 3)
+    def index(set_time = 3)
         channel_id = params[:channel_id]
         bargain = Bargain.find_by(channel_id: channel_id)
         if bargain.nil?#新開局
