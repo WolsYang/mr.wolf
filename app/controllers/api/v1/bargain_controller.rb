@@ -3,10 +3,11 @@ class Api::V1::BargainController < Api::V1::BaseController
         channel_id = params[:channel_id]
         bargain = Bargain.find_by(channel_id: channel_id)
         if bargain.nil?#新開局
+            Bargain.start(channel_id)
+            bargain = Bargain.find_by(channel_id: channel_id)
             BargainSetTimeJob.set(wait: set_time.minutes).perform_later(channel_id)
         end
-            Bargain.start(channel_id)
-            render :json => { :message => "#{bargain.min + set_time}:#{bargain.sec}"}, :status => 200 
+             render :json => { :message => "#{bargain.min + set_time}:#{bargain.sec}"}, :status => 200 
     end
   
     def new_bid
