@@ -10378,3 +10378,11 @@ Migrating to AddNowWinBidToBargain (20190319134527)
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
   [1m[36mBargain Load (8.8ms)[0m  [1m[34mSELECT  "bargains".* FROM "bargains" WHERE "bargains"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "channel_iddd"], ["LIMIT", 1]]
+  [1m[36mBargain Load (7.8ms)[0m  [1m[34mSELECT  "bargains".* FROM "bargains" WHERE "bargains"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "channel_id"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBargain Create (16.6ms)[0m  [1m[32mINSERT INTO "bargains" ("channel_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["channel_id", "channel_id"], ["created_at", "2019-03-20 16:05:17.199786"], ["updated_at", "2019-03-20 16:05:17.199786"]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBargain Load (0.5ms)[0m  [1m[34mSELECT  "bargains".* FROM "bargains" WHERE "bargains"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "channel_id"], ["LIMIT", 1]]
+  [1m[36mBargain Load (0.3ms)[0m  [1m[34mSELECT  "bargains".* FROM "bargains" WHERE "bargains"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "channel_id"], ["LIMIT", 1]]
+  [1m[36mBargain Load (0.3ms)[0m  [1m[34mSELECT  "bargains".* FROM "bargains" WHERE "bargains"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "FFFFFFFFFFchannel_id"], ["LIMIT", 1]]
+  [1m[36mBargain Load (0.4ms)[0m  [1m[34mSELECT  "bargains".* FROM "bargains" WHERE "bargains"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "channel_id"], ["LIMIT", 1]]

@@ -57,3 +57,4 @@ log/development.log
 log/development.log
 log/development.log
 .env
+*.log

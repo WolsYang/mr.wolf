@@ -1,10 +1,12 @@
 class Api::V1::BargainController < Api::V1::BaseController
-    def index
+    def index(sertime = 3)
         channel_id = params[:channel_id]
-        if Bargain.find_by(channel_id: channel_id).nil?#新開局
-            BargainSetTimeJob.set(wait: 3.minutes).perform_later(channel_id)
+        bargain = Bargain.find_by(channel_id: channel_id)
+        if bargain.nil?#新開局
+            BargainSetTimeJob.set(wait: set_time.minutes).perform_later(channel_id)
         end
             Bargain.start(channel_id)
+            render :json => { :message => "#{bargain.min + set_time}:#{bargain.sec}"}, :status => 200 
     end
   
     def new_bid
@@ -16,7 +18,7 @@ class Api::V1::BargainController < Api::V1::BaseController
     end
   
     def game_end
-        render :json => { :message => "Bargain.game_end(channel_id)"}, :status => 400 
+        render :json => { :message => Bargain.game_end(channel_id)}, :status => 200
     end
 
 end
