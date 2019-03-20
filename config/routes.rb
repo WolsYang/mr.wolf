@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #api
   namespace :api do
     namespace :v1 do
-      resources :bargain  
+
         post '/bargain/start', to: 'bargain#index'
         post '/bargain/end', to: 'bargain#game_end'
         post '/bargain/now', to: 'bargain#now_win'
