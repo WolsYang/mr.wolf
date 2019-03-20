@@ -10377,3 +10377,4 @@ Migrating to AddNowWinBidToBargain (20190319134527)
   ↳ bin/rails:4
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
+  [1m[36mBargain Load (8.8ms)[0m  [1m[34mSELECT  "bargains".* FROM "bargains" WHERE "bargains"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "channel_iddd"], ["LIMIT", 1]]

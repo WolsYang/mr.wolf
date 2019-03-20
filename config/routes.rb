@@ -4,12 +4,10 @@ Rails.application.routes.draw do
   #api
   namespace :api do
     namespace :v1 do
-      resources :bargain, only: [:show]
-      
+      resources :bargain  
         post '/bargain/start', to: 'bargain#index'
-        get '/bargain/end', to: 'bargain#game_end'
-        get '/bargain/now', to: 'bargain#now_win_bid'
-
+        post '/bargain/end', to: 'bargain#game_end'
+        post '/bargain/now', to: 'bargain#now_win'
         post '/bargain', to: 'bargain#new_bid'
 
     end
