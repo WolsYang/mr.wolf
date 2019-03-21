@@ -1,5 +1,5 @@
 class Api::V1::BargainController < Api::V1::BaseController
-    def index(set_time = 3)
+    def index(set_time = 3)#單位 分鐘
         channel_id = params[:channel_id]
         bargain = Bargain.find_by(channel_id: channel_id)
         if bargain.nil?#新開局
@@ -7,8 +7,8 @@ class Api::V1::BargainController < Api::V1::BaseController
             bargain = Bargain.find_by(channel_id: channel_id)
             BargainSetTimeJob.set(wait: set_time.minutes).perform_later(channel_id)
         end
-        p bargain.created_at.to_i
-        render :json => { :time => bargain.created_at.to_i}, :status => 200 
+        reciprocal = bargain.created_at.to_i + set_time*60 - Time.now.to_i 
+        render :json => { :time => reciprocal}, :status => 200 
     end
   
     def new_bid
