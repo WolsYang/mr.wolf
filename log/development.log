@@ -10507,3 +10507,7 @@ Migrating to ChangePlayerResultDefultInShootTheGate2 (20190402195915)
   ↳ bin/rails:4
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
+  [1m[36mShootTheGate Load (0.5ms)[0m  [1m[34mSELECT  "shoot_the_gates".* FROM "shoot_the_gates" WHERE "shoot_the_gates"."channel_id" = $1 LIMIT $2[0m  [["channel_id", "channel_id"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShootTheGate Update (0.7ms)[0m  [1m[33mUPDATE "shoot_the_gates" SET "updated_at" = $1, "player_result" = $2 WHERE "shoot_the_gates"."id" = $3[0m  [["updated_at", "2019-04-02 20:22:46.642861"], ["player_result", "{333,444,555}"], ["id", 3]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m

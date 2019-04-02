@@ -73,13 +73,13 @@ class ShootTheGate < ApplicationRecord
       when "抽"
         return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card1.nil? || game.card2.nil?
         puts game.cards.size
-        puts game.card1
-        puts game.card2
         card1 = game.cards.delete_at(0)
         number1 = ShootTheGate.to_number(card1)
         card2 = game.cards.delete_at(0)
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
+        puts game.card1
+        puts game.card2
         game.update(cards: now_cards, card1: card1, card2: card2)
         return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if card1 == card2
         return "門柱==>" + card1 + card2
@@ -93,6 +93,7 @@ class ShootTheGate < ApplicationRecord
 
   def self.shoot_result(received_text, game, bet, user_name)
     return "您還沒有抽門柱牌喔~\n請輸入 抽 抽取門柱牌" if game.card1.nil? || game.card2.nil?
+    puts "??????????????????????????????????????????????"
     puts game.cards.size
     puts game.card1
     puts game.card2
@@ -174,7 +175,7 @@ class ShootTheGate < ApplicationRecord
   def self.record_player_result(game, bet, user_name)
     puts game.player_result
     puts game.player_result[0]
-    player_result_index = game.player_result.find_index{|i| i[0] == user_name}.nil?
+    player_result_index = game.player_result.find_index{|i| i[0] == user_name}
     if player_result_index.nil?
       player_result =[user_name, bet, 1] #[名子,勝負,射了幾局]
       game.player_result << player_result
