@@ -72,17 +72,21 @@ class ShootTheGate < ApplicationRecord
         return  "射龍門開始啦~~~~~~~~~~~~請輸入 \"抽\" 繼續"
       when "抽"
         return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card1.nil? || game.card2.nil?
+        puts game.cards.size
+        puts game.card1
+        puts game.card2
         card1 = game.cards.delete_at(0)
-        game.update(card1: card1)
         number1 = ShootTheGate.to_number(card1)
         card2 = game.cards.delete_at(0)
-        game.update(card2: card2)
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
-        game.update(cards: now_cards)
+        game.update(cards: now_cards, card1: card1, card2: card2)
         return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if card1 == card2
         return "門柱==>" + card1 + card2
       else
+        puts game.cards.size
+        puts game.card1
+        puts game.card2
         return ShootTheGate.shoot_result(received_text, game, bet, user_name)
     end
   end
@@ -94,15 +98,13 @@ class ShootTheGate < ApplicationRecord
     puts game.card2
     return "沒牌囉請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
     card1 = game.card1
-    game.card1 = nil
     number1 = ShootTheGate.to_number(card1)
     card2 = game.card2
-    game.card2 = nil
     number2 = ShootTheGate.to_number(card2)
     card3 = game.cards.delete_at(0)
     user_number = ShootTheGate.to_number(card3)
     now_cards = game.cards
-    game.update(cards: now_cards)
+    game.update(cards: now_cards ,card1: nil, card2: nil)
     if number2 > number1#門柱排序 case when條件需要照順序
       number2, number1 = number1, number2
     end
@@ -118,14 +120,14 @@ class ShootTheGate < ApplicationRecord
       when "射"
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
           result = game.stakes - bet
-          player_result= ShootTheGate.record_player_result(game, bet)
+          player_result= ShootTheGate.record_player_result(game,  bet, user_name)
           game.update(stakes: result, player_result: player_result)
           result_text = "您的牌" + card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s
         elsif user_number > number2 && user_number < number1
           result_text = "您的牌" + card3 +" \n進啦進啦~~!!!" + "您贏了" 
         elsif game.gambling == "Yes"
           result = game.stakes + bet
-          player_result= ShootTheGate.record_player_result(game, -bet)
+          player_result= ShootTheGate.record_player_result(game, -bet, user_name)
           game.update(stakes: result, player_result: player_result)
           result_text = "您的牌" + card3 +" \n界外球 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s
         else
@@ -134,14 +136,14 @@ class ShootTheGate < ApplicationRecord
       when "上"  
         if user_number > number2 && game.gambling == "Yes"
           result = game.stakes - bet
-          player_result= ShootTheGate.record_player_result(game, bet)
+          player_result= ShootTheGate.record_player_result(game,  bet, user_name)
           game.update(stakes: result, player_result: player_result)
           result_text = "您的牌" + card3 +" \n恭喜猜對了~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s 
         elsif user_number > number2
           result_text = "您的牌" + card3 +" \n恭喜猜對了~~您贏了"
         elsif game.gambling == "Yes"
           result = game.stakes + bet
-          player_result= ShootTheGate.record_player_result(game, -bet)
+          player_result= ShootTheGate.record_player_result(game, -bet, user_name)
           game.update(stakes: result, player_result: player_result)
           result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s if game.gambling == "Yes"
         else
@@ -150,14 +152,14 @@ class ShootTheGate < ApplicationRecord
       when "下"
         if user_number < number2 && game.gambling == "Yes"
           result = game.stakes - bet
-          player_result= ShootTheGate.record_player_result(game, bet)
+          player_result= ShootTheGate.record_player_result(game,  bet, user_name)
           game.update(stakes: result, player_result: player_result)
           result_text = "您的牌" + card3 +" \n恭喜猜對了~~贏錢啦!!!" + "\n您贏" + bet.to_s + "\n目前獎金池" + result.to_s 
         elsif user_number > number2
           result_text = "您的牌" + card3 +" \n恭喜猜對了~~您贏了"
         elsif game.gambling == "Yes"
           result = game.stakes + bet
-          player_result= ShootTheGate.record_player_result(game, -bet)
+          player_result= ShootTheGate.record_player_result(game, -bet, user_name)
           game.update(stakes: result, player_result: player_result)
           result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸" + bet.to_s + "\n目前獎金池" + +result.to_s if game.gambling == "Yes"
         else
@@ -169,7 +171,7 @@ class ShootTheGate < ApplicationRecord
       result_text
   end
 
-  def self.record_player_result(game, bet)
+  def self.record_player_result(game, bet, user_name)
     puts game.player_result
     puts game.player_result[0]
     player_result_index = game.player_result.find_index{|i| i[0] == user_name}.nil?
