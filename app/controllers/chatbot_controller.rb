@@ -61,7 +61,9 @@ class ChatbotController < ApplicationController
             user_number = Bomb.guess(received_text)
             Bomb.play(user_number, channel_id)
         elsif channel.now_gaming == "shoot" 
-            ShootTheGate.shoot(received_text, channel_id)
+            user_id = params['events'][0]['source']['userId']
+            user_name = get_user_name(user_id)
+            ShootTheGate.shoot(received_text, channel_id, user_name)
         elsif channel.now_gaming == "kill"
                 kill = Killer.find_or_create_by(channel_id: channel_id)
                 user_id = params['events'][0]['source']['userId']
