@@ -24,10 +24,12 @@ class ShootTheGate < ApplicationRecord
   def self.shoot(received_text, channel_id, user_name, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
     bet = basic_bet
+    puts "in shoot"
     if received_text == "結果"
       return ShootTheGate.gambling_result(game)
     end
     if received_text =~ /^小賭怡情\d*/
+      puts "有近來"
       if received_text[4].nil?
         return "請輸入\"小賭怡情+獎金池數字\"來開啟計算籌碼功能
         \n例如 大家說好最開始獎金池總共100就輸入 \"小賭怡情100\" ，
