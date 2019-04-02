@@ -24,7 +24,7 @@ class ShootTheGate < ApplicationRecord
   def self.shoot(received_text, channel_id, user_name, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
     bet = basic_bet
-    if received_text == 結果
+    if received_text == "結果"
       return ShootTheGate.gambling_result(game)
     end
     if received_text =~ /^小賭怡情\d*/
