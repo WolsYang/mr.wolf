@@ -186,7 +186,8 @@ class ShootTheGate < ApplicationRecord
       message = "目前沒有人耶..."
     else 
       game.player_result.each do |n|
-      message +=  "玩家 : " + n[0] + " 籌碼數 : " + n[1] + " 參與局數 : " + n[2] +"\n"
+        message +=  "玩家 : " + n[0] + " 籌碼數 : " + n[1] + " 參與局數 : " + n[2] +"\n"
+      end
     end
     message
   end
