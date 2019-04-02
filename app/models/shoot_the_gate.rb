@@ -170,6 +170,8 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.record_player_result(game, bet)
+    puts game.player_result
+    puts game.player_result[0]
     player_result_index = game.player_result.find_index{|i| i[0] == user_name}.nil?
     if player_result.nil?
       player_result =[user_name, bet, 1] #[名子,勝負,射了幾局]
