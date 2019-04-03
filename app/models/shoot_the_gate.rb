@@ -63,6 +63,7 @@ class ShootTheGate < ApplicationRecord
       received_text = "射"  
       received_text = received_text[1] if game.card1 == game.card2
     end
+    return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
     case received_text
       when  "重抽"
         poker = Poker.shuffle(1)
@@ -85,7 +86,6 @@ class ShootTheGate < ApplicationRecord
 
   def self.shoot_result(received_text, game, bet, user_name)
     return "您還沒有抽門柱牌喔~\n請輸入 抽 抽取門柱牌" if game.card1.nil? || game.card2.nil?
-    return "沒牌囉請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
     card1 = game.card1
     number1 = ShootTheGate.to_number(card1)
     card2 = game.card2
@@ -99,6 +99,7 @@ class ShootTheGate < ApplicationRecord
     end
     if game.gambling == "Yes" && user_number == number2 || user_number == number1  
       puts "撞住"
+      received_text = ""
       result = game.stakes + (bet*2)
       player_result= ShootTheGate.record_player_result(game, -bet*2, user_name)
       game.update(stakes: result, player_result: player_result)
