@@ -40,7 +40,7 @@ class ShootTheGate < ApplicationRecord
         \n玩得開心 ^_^"
       end
       bet_pool = received_text[4..9]
-      game.player_result[0][1] += bet_pool#記錄總獎金池
+      game.player_result[0][1] = game.player_result[0][1].to_i + bet_pool#記錄總獎金池
       game.update(stakes: bet_pool, gambling: "Yes")
       return "目前" +"獎金池：" + bet_pool.to_s
     end
@@ -167,7 +167,7 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.record_player_result(game, bet, user_name)
-    game.player_result[0][2] += 1  #紀錄總局數
+    game.player_result[0][2] = game.player_result[0][2].to_i + 1  #紀錄總局數
     player_result_index = game.player_result.find_index{|i| i[0] == user_name}
     if player_result_index.nil?
       player_result =[user_name, bet, 1] #[名子,勝負,射了幾局]
