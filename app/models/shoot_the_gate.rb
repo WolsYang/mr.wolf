@@ -189,7 +189,7 @@ class ShootTheGate < ApplicationRecord
       message = "目前沒有人耶..."
     else 
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
-        uts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+        puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
         player = n[0].to_s
         bet = n[1].to_s
         game_number = n[2].to_s
