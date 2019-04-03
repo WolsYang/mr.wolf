@@ -171,7 +171,7 @@ class ShootTheGate < ApplicationRecord
       game.player_result << player_result
     else
       i = game.player_result[player_result_index]
-      player_result = [i[0], (i[1].to_i-bet).to_s, (i[2].to_i+1).to_s]
+      player_result = [i[0], i[1].to_i-bet, i[2].to_i+1]
       game.player_result[player_result_index] = player_result
     end
     game.player_result

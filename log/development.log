@@ -10511,3 +10511,35 @@ Migrating to ChangePlayerResultDefultInShootTheGate2 (20190402195915)
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[36mShootTheGate Update (0.7ms)[0m  [1m[33mUPDATE "shoot_the_gates" SET "updated_at" = $1, "player_result" = $2 WHERE "shoot_the_gates"."id" = $3[0m  [["updated_at", "2019-04-02 20:22:46.642861"], ["player_result", "{333,444,555}"], ["id", 3]]
   [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2872242921019038945)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangePlayerResultDefultInShootTheGate3 (20190403081546)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "shoot_the_gates" ALTER COLUMN "player_result" SET DEFAULT '{{0,0,0}}'[0m
+  ↳ db/migrate/20190403081546_change_player_result_defult_in__shoot_the_gate_3.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190403081546"]]
+  ↳ bin/rails:4
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to ChangePlayerResultDefultInShootTheGate4 (20190403100839)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "shoot_the_gates" ALTER COLUMN "player_result" SET DEFAULT '{{0,0,0}}'[0m
+  ↳ db/migrate/20190403100839_change_player_result_defult_in__shoot_the_gate_4.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190403100839"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2872242921019038945)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
