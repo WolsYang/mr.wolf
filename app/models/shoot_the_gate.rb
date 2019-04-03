@@ -40,6 +40,7 @@ class ShootTheGate < ApplicationRecord
         \n玩得開心 ^_^"
       end
       bet_pool = received_text[4..9]
+      game.player_result[0][1] += bet_pool#記錄總獎金池
       game.update(stakes: bet_pool, gambling: "Yes")
       return "目前" +"獎金池：" + bet_pool.to_s
     end
@@ -109,6 +110,7 @@ class ShootTheGate < ApplicationRecord
     end  
     puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
     puts received_text
+    puts result_text
     case received_text
       when "射"
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
@@ -165,7 +167,7 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.record_player_result(game, bet, user_name)
-    puts bet
+    game.player_result[0][2] += 1  #紀錄總局數
     player_result_index = game.player_result.find_index{|i| i[0] == user_name}
     if player_result_index.nil?
       player_result =[user_name, bet, 1] #[名子,勝負,射了幾局]
@@ -175,9 +177,6 @@ class ShootTheGate < ApplicationRecord
       player_result = [i[0], i[1].to_i-bet, i[2].to_i+1]
       game.player_result[player_result_index] = player_result
     end
-    puts "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
-    puts game.player_result
-    puts "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
     game.player_result
   end
 
@@ -188,9 +187,10 @@ class ShootTheGate < ApplicationRecord
     else 
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
         n = game.player_result[n]
-        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] +"\n"
+        bet_rate = ((game.player_result[0][1]-game.stakes)/game.player_result[0][2])* n[2]
+        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] + "[需貢獻獎金池] : " + bet_rate + "\n" 
       end
     end
-    message
+    "需貢獻獎金池 = (總獎金池-目前獎金池)*玩家參與局數 / 總局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
   end
 end
