@@ -68,13 +68,13 @@ class ShootTheGate < ApplicationRecord
       received_text = "射"  
       received_text = received_text[1] if game.card1 == game.card2
     end
-    return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
     case received_text
       when  "重抽"
         poker = Poker.shuffle(1)
         game.update(cards: poker)
         return  "射龍門開始啦~~~~~~~~~~~~請輸入 \"抽\" 繼續"
       when "抽"
+        return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
         return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card1.nil? || game.card2.nil?
         card1 = game.cards.delete_at(0)
         number1 = ShootTheGate.to_number(card1)
@@ -85,6 +85,7 @@ class ShootTheGate < ApplicationRecord
         return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if card1 == card2
         return "門柱==>" + card1 + card2
       when /^[射上下]/
+        return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
         return ShootTheGate.shoot_result(received_text, game, bet, user_name)
     end
   end
@@ -166,8 +167,6 @@ class ShootTheGate < ApplicationRecord
         else
           result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 您輸了"
         end
-      else
-        result_text =  nil
     end
     puts "??????????????????????????????????????????????????????"
     puts result_text
