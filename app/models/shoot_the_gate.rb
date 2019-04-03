@@ -171,7 +171,7 @@ class ShootTheGate < ApplicationRecord
       game.player_result << player_result
     else
       i = game.player_result[player_result_index]
-      player_result = [i[0], i[1]-bet, i[2]+1]
+      player_result = [i[0], i[1].to_i-bet, i[2].to_i+1]
       game.player_result[player_result_index] = player_result
     end
     game.player_result
@@ -183,7 +183,7 @@ class ShootTheGate < ApplicationRecord
       message = "目前沒有人耶..."
     else 
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
-        message +=  "玩家 : \"" + n[0] + "\" 籌碼數 : \"" + n[1] + "\" 參與局數 : \"" + n[2] +"\"\n"
+        message +=  "玩家 : \"@" + n[0] + "\" 籌碼數 : \"" + n[1] + "\" 參與局數 : \"" + n[2] +"\"\n"
       end
     end
     message
