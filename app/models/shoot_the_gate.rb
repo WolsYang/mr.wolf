@@ -42,7 +42,7 @@ class ShootTheGate < ApplicationRecord
       end
       bet_pool = received_text[4..9]
       game.update(stakes: bet_pool, gambling: "Yes")
-      return "目前" +"\n獎金池：" + bet_pool.to_s
+      return "目前" +"獎金池：" + bet_pool.to_s
     end
     if received_text =~ /^我賭\d*/ && game.gambling == "Yes"
       bet = basic_bet if received_text[2].nil?
@@ -105,7 +105,7 @@ class ShootTheGate < ApplicationRecord
     end
     if user_number == number2 || user_number == number1 && game.gambling == "Yes"
       result = game.stakes + (bet*2)
-      player_result= ShootTheGate.record_player_result(game, -bet*2)
+      player_result= ShootTheGate.record_player_result(game, -bet*2, user_name)
       game.update(stakes: result, player_result: player_result)
       result_text = "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸" + (bet*2).to_s + "\n目前獎金池" + +result.to_s if game.gambling == "Yes"
     elsif user_number == number2 || user_number == number1
