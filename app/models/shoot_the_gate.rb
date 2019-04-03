@@ -108,7 +108,7 @@ class ShootTheGate < ApplicationRecord
       result = game.stakes + (bet*2)
       player_result = ShootTheGate.record_player_result(game, -bet*2, user_name)
       game.update(stakes: result, player_result: player_result)
-      result_text = "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸 : " + (bet*2).to_s + "\n目前獎金池 : " + +result.to_s if game.gambling == "Yes"
+      result_text = "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸 : " + (bet*2).to_s + "\n目前獎金池 : " + +result.to_s
     elsif user_number == number2 || user_number == number1
       result_text = "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ" 
     end  
@@ -143,7 +143,7 @@ class ShootTheGate < ApplicationRecord
           result = game.stakes + bet
           player_result = ShootTheGate.record_player_result(game, -bet, user_name)
           game.update(stakes: result, player_result: player_result)
-          result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s if game.gambling == "Yes"
+          result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s 
         else
           result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 您輸了"
         end
@@ -159,7 +159,7 @@ class ShootTheGate < ApplicationRecord
           result = game.stakes + bet
           player_result= ShootTheGate.record_player_result(game, -bet, user_name)
           game.update(stakes: result, player_result: player_result)
-          result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s if game.gambling == "Yes"
+          result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s 
         else
           result_text = "您的牌" + card3 +" \nQ_Q 猜錯了 您輸了"
         end
