@@ -106,44 +106,44 @@ class ShootTheGate < ApplicationRecord
     if game.gambling == "Yes" && user_number == number2 || user_number == number1  
       puts "撞住"
       received_text = ""
-      result_text = ShootTheGate.reply_text(game, user_name, "lose", bet, 2)
+      result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet, 2)
       puts result_text
       puts "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
     elsif user_number == number2 || user_number == number1
-      result_text = ShootTheGate.reply_text(game, user_name, "lose", bet, 2)
+      result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet, 2)
     end  
     puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
     puts result_text
     case received_text
       when "射"
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
-          result_text = ShootTheGate.reply_text(game, user_name, "win", bet)
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "win", bet)
         elsif user_number > number2 && user_number < number1
-          result_text = ShootTheGate.reply_text(game, user_name, "win")
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "win")
         elsif game.gambling == "Yes"
-          result_text = ShootTheGate.reply_text(game, user_name, "lose", bet)
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet)
         else
-          result_text = ShootTheGate.reply_text(game, user_name, "lose")
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
         end
       when "上"  
         if user_number > number2 && game.gambling == "Yes"
-          result_text = ShootTheGate.reply_text(game, user_name, "win", bet)
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "win", bet)
         elsif user_number > number2
-          result_text = ShootTheGate.reply_text(game, user_name, "win")
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "win")
         elsif game.gambling == "Yes"
-          result_text = ShootTheGate.reply_text(game, user_name, "lose", bet)
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet)
         else
-          result_text = ShootTheGate.reply_text(game, user_name, "lose")
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
         end
       when "下"
         if user_number < number2 && game.gambling == "Yes"
-          result_text = ShootTheGate.reply_text(game, user_name, "win", bet)
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "win", bet)
         elsif user_number > number2
-          result_text = ShootTheGate.reply_text(game, user_name, "win")
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "win")
         elsif game.gambling == "Yes"
-          result_text = ShootTheGate.reply_text(game, user_name, "lose", bet)
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet)
         else
-          result_text = ShootTheGate.reply_text(game, user_name, "lose")
+          result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
         end
     end
     puts "??????????????????????????????????????????????????????"
@@ -179,7 +179,7 @@ class ShootTheGate < ApplicationRecord
     "需貢獻獎金池 = (總獎金池-目前獎金池)*玩家參與局數 / 總局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
   end
 
-  def self.reply_text(game, user_name, win_or_lose, bet = nil, rate = nil) #rate有值代表撞柱
+  def self.reply_text(game, user_name, card3, win_or_lose, bet = nil, rate = nil) #rate有值代表撞柱
     message=""
     bet = bet*2 unless rate.nil?
     result = game.stakes - bet
@@ -187,17 +187,17 @@ class ShootTheGate < ApplicationRecord
     game.update(stakes: result, player_result: player_result)
     if win_or_lose == "win" #玩家沒有贏兩倍這選項
       if bet.nil?
-        message = "\n您的牌" + game.card3 +" \n恭喜猜對了~~您贏了"
+        message = "\n您的牌" + card3 + "\n恭喜猜對了~~您贏了"
       elsif rate.nil?
-        message = "\n您的牌" + game.card3 +" \n進啦進啦~~贏錢啦!!!" + "\n您贏 : " + bet.to_s + "\n目前獎金池 : " + result.to_s
+        message = "\n您的牌" + card3 + "\n進啦進啦~~贏錢啦!!!" + "\n您贏 : " + bet.to_s + "\n目前獎金池 : " + result.to_s
       end
     else win_or_lose == "lose" 
       if bet.nil?
-        message = "\n您的牌" + game.card3 +" \nQ_Q 猜錯了 您輸了"
+        message = "\n您的牌" + card3 + "\nQ_Q 猜錯了 您輸了"
       elsif rate.nil?
-        message = "\n您的牌" + game.card3 +" \nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s 
+        message = "\n您的牌" + card3 + "\nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s 
       else
-        message = "\n您的牌" + game.card3 + "\n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸 : " + this_bet.to_s + "\n目前獎金池 : " + result.to_s
+        message = "\n您的牌" + card3 + "\n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~" + "\n您輸 : " + this_bet.to_s + "\n目前獎金池 : " + result.to_s
       end
     end
     "門柱==>" + game.card1 + game.card2 + message
