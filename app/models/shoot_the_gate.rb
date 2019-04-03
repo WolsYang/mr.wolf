@@ -177,6 +177,7 @@ class ShootTheGate < ApplicationRecord
     end
     puts "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
     puts game.player_result
+    puts "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
     game.player_result
   end
 
