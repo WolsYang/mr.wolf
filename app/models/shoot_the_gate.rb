@@ -42,6 +42,10 @@ class ShootTheGate < ApplicationRecord
       bet_pool = received_text[4..9]
       game.player_result[0][1] = game.player_result[0][1].to_i + bet_pool.to_i#記錄總獎金池
       game.update(stakes: bet_pool, gambling: "Yes")
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+      puts bet_pool.class
+      puts game.player_result[0][1].class
+      puts game.player_result[0][2].class
       return "目前" +"獎金池：" + bet_pool.to_s
     end
     if received_text =~ /^我賭\d*/ && game.gambling == "Yes"
