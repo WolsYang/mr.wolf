@@ -162,9 +162,6 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.record_player_result(game, bet, user_name)
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    puts game.player_result
-    puts game.player_result[0]
     player_result_index = game.player_result.find_index{|i| i[0] == user_name}
     if player_result_index.nil?
       player_result =[user_name, bet, 1] #[名子,勝負,射了幾局]
@@ -182,8 +179,8 @@ class ShootTheGate < ApplicationRecord
     if game.player_result.nil?
       message = "目前沒有人耶..."
     else 
-      game.player_result.each do |n|
-        message +=  "玩家 : " + n[0] + " 籌碼數 : " + n[1] + " 參與局數 : " + n[2] +"\n"
+      (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
+        message +=  "玩家 : \"" + n[0] + "\" 籌碼數 : \"" + n[1] + "\" 參與局數 : \"" + n[2] +"\"\n"
       end
     end
     message
