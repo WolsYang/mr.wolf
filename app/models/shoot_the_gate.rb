@@ -80,6 +80,11 @@ class ShootTheGate < ApplicationRecord
         return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if card1 == card2
         return "門柱==>" + card1 + card2
       when /^[射上下]/
+        puts game
+        puts bet
+        puts user_name
+        puts received_text
+        puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         return ShootTheGate.shoot_result(received_text, game, bet, user_name)
     end
   end
@@ -178,6 +183,7 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.gambling_result(game)
+    puts game.player_result
     message=""
     if game.player_result.nil?
       message = "目前沒有人耶..."
