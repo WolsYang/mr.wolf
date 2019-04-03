@@ -40,7 +40,7 @@ class ShootTheGate < ApplicationRecord
         \n玩得開心 ^_^"
       end
       bet_pool = received_text[4..9]
-      game.player_result[0][1] = game.player_result[0][1].to_i + bet_pool#記錄總獎金池
+      game.player_result[0][1] = game.player_result[0][1].to_i + bet_pool.to_i#記錄總獎金池
       game.update(stakes: bet_pool, gambling: "Yes")
       return "目前" +"獎金池：" + bet_pool.to_s
     end
