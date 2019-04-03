@@ -190,13 +190,8 @@ class ShootTheGate < ApplicationRecord
     else 
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
         puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-        player = n[0].to_s
-        bet = n[1].to_s
-        game_number = n[2].to_s
-        puts player
-        puts bet
-        puts game_number
-        message +=  "玩家 : " + player + " 籌碼數 :" + bet + " 參與局數 : " + game_number +"\n"
+        n = game.player_result[n]
+        message +=  "玩家 : " + n[0] + " 籌碼數 :" + n[1] + " 參與局數 : " + n[2] +"\n"
       end
     end
     message
