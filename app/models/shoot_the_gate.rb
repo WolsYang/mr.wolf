@@ -24,7 +24,6 @@ class ShootTheGate < ApplicationRecord
   def self.shoot(received_text, channel_id, user_name, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
     bet = basic_bet
-    puts "in shoot"
     if received_text == "結果"
       return ShootTheGate.gambling_result(game)
     end
@@ -80,11 +79,6 @@ class ShootTheGate < ApplicationRecord
         return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if card1 == card2
         return "門柱==>" + card1 + card2
       when /^[射上下]/
-        puts game
-        puts bet
-        puts user_name
-        puts received_text
-        puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         return ShootTheGate.shoot_result(received_text, game, bet, user_name)
     end
   end
@@ -103,7 +97,8 @@ class ShootTheGate < ApplicationRecord
     if number2 > number1#門柱排序 case when條件需要照順序
       number2, number1 = number1, number2
     end
-    if user_number == number2 || user_number == number1 && game.gambling == "Yes"
+    if game.gambling == "Yes" && user_number == number2 || user_number == number1  
+      puts "撞住"
       result = game.stakes + (bet*2)
       player_result= ShootTheGate.record_player_result(game, -bet*2, user_name)
       game.update(stakes: result, player_result: player_result)
@@ -111,9 +106,6 @@ class ShootTheGate < ApplicationRecord
     elsif user_number == number2 || user_number == number1
       result_text = "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ" 
     end   
-    puts game
-    puts bet
-    puts user_name
     case received_text
       when "射"
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
@@ -170,6 +162,7 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.record_player_result(game, bet, user_name)
+    puts bet
     player_result_index = game.player_result.find_index{|i| i[0] == user_name}
     if player_result_index.nil?
       player_result =[user_name, bet, 1] #[名子,勝負,射了幾局]
@@ -189,7 +182,7 @@ class ShootTheGate < ApplicationRecord
     else 
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
         n = game.player_result[n]
-        message +=  "玩家 : @" + n[0] + " 籌碼數 : \"" + n[1] + "\" 參與局數 : \"" + n[2] +"\"\n"
+        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] +"\n"
       end
     end
     message
