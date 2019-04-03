@@ -101,7 +101,7 @@ class ShootTheGate < ApplicationRecord
       puts "撞住"
       received_text = ""
       result = game.stakes + (bet*2)
-      player_result= ShootTheGate.record_player_result(game, -bet*2, user_name)
+      player_result = ShootTheGate.record_player_result(game, -bet*2, user_name)
       game.update(stakes: result, player_result: player_result)
       result_text = "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸 : " + (bet*2).to_s + "\n目前獎金池 : " + +result.to_s if game.gambling == "Yes"
     elsif user_number == number2 || user_number == number1
@@ -175,6 +175,8 @@ class ShootTheGate < ApplicationRecord
       player_result = [i[0], i[1].to_i-bet, i[2].to_i+1]
       game.player_result[player_result_index] = player_result
     end
+    puts "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+    puts game.player_result
     game.player_result
   end
 
