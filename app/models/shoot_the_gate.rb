@@ -85,7 +85,7 @@ class ShootTheGate < ApplicationRecord
         return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if card1 == card2
         return "門柱==>" + card1 + card2
       when /^[射上下]/
-        return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
+        return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 1
         return ShootTheGate.shoot_result(received_text, game, bet, user_name)
     end
   end
@@ -98,8 +98,6 @@ class ShootTheGate < ApplicationRecord
     number2 = ShootTheGate.to_number(card2)
     card3 = game.cards.delete_at(0)
     user_number = ShootTheGate.to_number(card3)
-    now_cards = game.cards
-    game.update(cards: now_cards ,card1: nil, card2: nil)
     if number2 > number1#門柱排序 case when條件需要照順序
       number2, number1 = number1, number2
     end
@@ -184,7 +182,8 @@ class ShootTheGate < ApplicationRecord
     bet = bet*2 unless rate.nil?
     result = game.stakes - bet
     player_result= ShootTheGate.record_player_result(game, bet, user_name)
-    game.update(stakes: result, player_result: player_result)
+    now_cards = game.cards #因為卡已經被抽起起來了 需要更新
+    game.update(stakes: result, player_result: player_result, cards: now_cards ,card1: nil, card2: nil )
     if win_or_lose == "win" #玩家沒有贏兩倍這選項
       if bet.nil?
         message = "\n您的牌" + card3 + "\n恭喜猜對了~~您贏了"
