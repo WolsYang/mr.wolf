@@ -106,6 +106,9 @@ class ShootTheGate < ApplicationRecord
     elsif user_number == number2 || user_number == number1
       result_text = "您的牌" + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ" 
     end   
+    puts game
+    puts bet
+    puts user_name
     case received_text
       when "射"
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
