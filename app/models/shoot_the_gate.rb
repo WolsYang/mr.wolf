@@ -110,13 +110,13 @@ class ShootTheGate < ApplicationRecord
       game.update(stakes: result, player_result: player_result)
       this_bet = bet*2
       result_text = "您的牌 " + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~"+ "\n您輸 : " + this_bet.to_s + "\n目前獎金池 : " + result.to_s
-      puts received_text
+      puts result_text
       puts "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
     elsif user_number == number2 || user_number == number1
       result_text = "您的牌 " + card3 + " \n撞柱柱柱柱柱柱柱柱柱!!!!輸了QQ" 
     end  
     puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-    puts received_text
+    puts result_text
     case received_text
       when "射"
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
