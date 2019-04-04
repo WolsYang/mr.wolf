@@ -239,6 +239,7 @@ class ShootTheGate < ApplicationRecord
         message = "\n您的牌" + card3 + "\n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~" + "\n您輸 : " + this_bet.to_s + "\n目前獎金池 : " + result.to_s
       end
     end
+    puts message
     "門柱==>" + game.card1 + game.card2 + message
   end
 end
