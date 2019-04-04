@@ -217,7 +217,7 @@ class ShootTheGate < ApplicationRecord
     puts game.card1
     puts game.card2
     bet = bet*2 unless rate.nil?
-    #result = game.stakes - bet
+    result = nil
     player_result= ShootTheGate.record_player_result(game, bet, user_name)
     now_cards = game.cards #因為卡已經被抽起起來了 需要更新
     puts card3
