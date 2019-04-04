@@ -125,6 +125,8 @@ class ShootTheGate < ApplicationRecord
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
         end
       when "下"
+        puts "ddddddddddddddddddddddddddddddddddddddddddddddd"
+        puts number2
         puts game.stakes
         puts bet
         if user_number < number2 && game.gambling == "Yes"
