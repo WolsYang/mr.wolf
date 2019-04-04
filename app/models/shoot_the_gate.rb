@@ -190,7 +190,7 @@ class ShootTheGate < ApplicationRecord
       if bet.nil?
         message = "\n您的牌=>" + card3 + "\nQ_Q 沒射進 您輸了"
       elsif rate.nil?
-        message = "\n您的牌=>" + card3 + "\nQ_Q 沒射進 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s 
+        message = "\n您的牌=>" + card3 + "\nQ_Q 沒射進 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " +result.to_s 
       else
         message = "\n您的牌=>" + card3 + "\n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~" + "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + result.to_s
       end
