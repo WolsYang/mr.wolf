@@ -135,7 +135,7 @@ class ShootTheGate < ApplicationRecord
           puts game.stakes
           puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win", bet)
-        elsif user_number > number2
+        elsif user_number < number2
           puts "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
           puts game.stakes
           puts bet
