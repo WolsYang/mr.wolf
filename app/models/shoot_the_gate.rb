@@ -84,10 +84,13 @@ class ShootTheGate < ApplicationRecord
         card2 = game.cards.delete_at(0)
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
+        if number2 > number1#門柱排序 條件需要照順序
+          card2, card1 = card1,card2
+        end
         game.update(cards: now_cards, card1: card1, card2: card2)
         puts game.card1
         puts game.card2
-        game = ShootTheGate.find_or_create_by(channel_id: channel_id)
+        #game = ShootTheGate.find_or_create_by(channel_id: channel_id)
         puts game.card1
         puts game.card2
         puts "抽......................................."
@@ -107,9 +110,6 @@ class ShootTheGate < ApplicationRecord
     number2 = ShootTheGate.to_number(card2)
     card3 = game.cards.delete_at(0)
     user_number = ShootTheGate.to_number(card3)
-    if number2 > number1#門柱排序 case when條件需要照順序
-      number2, number1 = number1, number2
-    end
     if game.gambling == "Yes" && user_number == number2 || user_number == number1  
       puts "撞住"
       received_text = ""
