@@ -81,7 +81,7 @@ class ShootTheGate < ApplicationRecord
           card2, card1 = card1,card2
         end
         game.update(cards: now_cards, card1: card1, card2: card2)
-        return "門柱==>" + card1 + card2 + "\n哇 [單柱無門] 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if number1 == number2
+        return "門柱==>" + card1 + card2 + "\n哇!! [單柱無門] 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if number1 == number2
         return "門柱==>" + card1 + card2
       when /^[射上下]/
         return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 1
@@ -132,6 +132,9 @@ class ShootTheGate < ApplicationRecord
         elsif user_number > number2
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win")
         elsif game.gambling == "Yes"
+          puts "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+          puts game.stakes
+          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet)
         else
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
@@ -169,6 +172,7 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.reply_text(game, user_name, card3, win_or_lose, bet = nil, rate = nil) #rate有值代表撞柱
+    puts "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
     message=""
     bet = bet*2 unless rate.nil?
     result = nil
@@ -177,6 +181,9 @@ class ShootTheGate < ApplicationRecord
     puts bet
     now_cards = game.cards #因為卡已經被抽起起來了 需要更新
     if win_or_lose == "win" #玩家沒有贏兩倍這選項
+      puts "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+      puts game.stakes
+      puts bet
       result = game.stakes - bet
       player_result = ShootTheGate.record_player_result(game, bet, user_name)
       if bet.nil?
@@ -185,6 +192,9 @@ class ShootTheGate < ApplicationRecord
         message = "\n您的牌 =>" + card3 + "\n進啦進啦~~贏錢啦!!!" + "\n您贏 : " + bet.to_s + "\n目前獎金池 : " + result.to_s
       end
     else win_or_lose == "lose" 
+      puts "LOLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+      puts game.stakes
+      puts bet
       result = game.stakes + bet
       player_result = ShootTheGate.record_player_result(game, -bet, user_name)
       if bet.nil?
