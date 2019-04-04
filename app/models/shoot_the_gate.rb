@@ -24,9 +24,6 @@ class ShootTheGate < ApplicationRecord
   def self.shoot(received_text, channel_id, user_name, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
     bet = basic_bet
-    puts game.card1
-    puts game.card2
-    puts "shooooooooooooooooooooooooooooooooooooooooot"
     if received_text == "結果"
       return ShootTheGate.gambling_result(game)
     end
@@ -45,10 +42,6 @@ class ShootTheGate < ApplicationRecord
       bet_pool = received_text[4..9]
       game.player_result[0][1] = game.player_result[0][1].to_i + bet_pool.to_i#記錄總獎金池
       game.update(stakes: bet_pool, gambling: "Yes")
-      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-      puts bet_pool.class
-      puts game.player_result[0][1].class
-      puts game.player_result[0][2].class
       return "目前" +"獎金池：" + bet_pool.to_s
     end
     if received_text =~ /^我賭\d*/ && game.gambling == "Yes"
@@ -88,12 +81,6 @@ class ShootTheGate < ApplicationRecord
           card2, card1 = card1,card2
         end
         game.update(cards: now_cards, card1: card1, card2: card2)
-        puts game.card1
-        puts game.card2
-        #game = ShootTheGate.find_or_create_by(channel_id: channel_id)
-        puts game.card1
-        puts game.card2
-        puts "抽......................................."
         return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if number1 == number2
         return "門柱==>" + card1 + card2
       when /^[射上下]/
@@ -111,50 +98,20 @@ class ShootTheGate < ApplicationRecord
     card3 = game.cards.delete_at(0)
     user_number = ShootTheGate.to_number(card3)
     if game.gambling == "Yes" && user_number == number2 || user_number == number1  
-      puts "撞住"
-      received_text = ""
+        received_text = ""
       result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet, 2)
-      puts result_text
-      puts "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
     elsif user_number == number2 || user_number == number1
       result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet, 2)
     end  
-    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-    puts result_text
     case received_text
       when "射"
-        puts "22222222222222222222222222222222222222222222222222222222222222"
-        puts game.card1
-        puts game.card2
-        puts card3
-        puts bet
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
-          puts "3333333333333333333333333333333333333333333333333333333333333333333333333333"
-          puts game.card1
-          puts game.card2
-          puts card3
-          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win", bet)
         elsif user_number > number2 && user_number < number1
-          puts "3333333333333333333333333333333333333333333333333333333333333333333333333333"
-          puts game.card1
-          puts game.card2
-          puts card3
-          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win")
         elsif game.gambling == "Yes"
-          puts "3333333333333333333333333333333333333333333333333333333333333333333333333333"
-          puts game.card1
-          puts game.card2
-          puts card3
-          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet)
         else
-          puts "3333333333333333333333333333333333333333333333333333333333333333333333333333"
-          puts game.card1
-          puts game.card2
-          puts card3
-          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
         end
       when "上"  
@@ -178,8 +135,6 @@ class ShootTheGate < ApplicationRecord
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
         end
     end
-    puts "??????????????????????????????????????????????????????"
-    puts result_text
     result_text
   end
 
@@ -198,8 +153,6 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.gambling_result(game)
-    puts game.player_result[0][1].to_i
-    puts game.player_result[0][2].to_i
     message=""
     if game.player_result.nil?
       message = "目前沒有人耶..."
@@ -207,27 +160,18 @@ class ShootTheGate < ApplicationRecord
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
         n = game.player_result[n]
         bet_rate = (game.player_result[0][1].to_i * n[2].to_i) /game.player_result[0][2].to_i
-        puts game.player_result[0][1].to_i
-        puts game.player_result[0][2].to_i
-        puts n[2].to_i
-        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] + "[需貢獻獎金池] : " + bet_rate.to_s + "\n" 
+        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] + "[需貢獻底注] : " + bet_rate.to_s + "\n" 
       end
     end
-    "需貢獻獎金池 = (總獎金池/總局數)*玩家參與局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
+    "需貢獻底注 = (總獎金池/總局數)*玩家參與局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
   end
 
   def self.reply_text(game, user_name, card3, win_or_lose, bet = nil, rate = nil) #rate有值代表撞柱
     message=""
-    puts "11111111111111111111111111111111111111111111111111"
-    puts game.card1
-    puts game.card2
     bet = bet*2 unless rate.nil?
     result = nil
     player_result= ShootTheGate.record_player_result(game, bet, user_name)
     now_cards = game.cards #因為卡已經被抽起起來了 需要更新
-    puts card3
-    puts bet
-    puts result
     if win_or_lose == "win" #玩家沒有贏兩倍這選項
       result = game.stakes - bet
       if bet.nil?
@@ -245,10 +189,6 @@ class ShootTheGate < ApplicationRecord
         message = "\n您的牌=>" + card3 + "\n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~" + "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + result.to_s
       end
     end
-    puts "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
-    puts game.card1
-    puts message.class
-    puts message
     message = "[門柱]==>" + game.card1 + game.card2 + message
     game.update(stakes: result, player_result: player_result, cards: now_cards ,card1: nil, card2: nil )
     return message
