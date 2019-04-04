@@ -85,6 +85,8 @@ class ShootTheGate < ApplicationRecord
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
         game.update(cards: now_cards, card1: card1, card2: card2)
+        puts game.card1
+        puts game.card2
         game = ShootTheGate.find_or_create_by(channel_id: channel_id)
         puts game.card1
         puts game.card2
@@ -211,6 +213,7 @@ class ShootTheGate < ApplicationRecord
 
   def self.reply_text(game, user_name, card3, win_or_lose, bet = nil, rate = nil) #rate有值代表撞柱
     message=""
+    puts "11111111111111111111111111111111111111111111111111"
     puts game.card1
     puts game.card2
     bet = bet*2 unless rate.nil?
@@ -218,7 +221,6 @@ class ShootTheGate < ApplicationRecord
     player_result= ShootTheGate.record_player_result(game, bet, user_name)
     now_cards = game.cards #因為卡已經被抽起起來了 需要更新
     game.update(stakes: result, player_result: player_result, cards: now_cards ,card1: nil, card2: nil )
-    puts "11111111111111111111111111111111111111111111111111"
     puts card3
     puts bet
     puts result
