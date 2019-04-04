@@ -114,6 +114,11 @@ class ShootTheGate < ApplicationRecord
     puts result_text
     case received_text
       when "射"
+        puts "22222222222222222222222222222222222222222222222222222222222222"
+        puts game.card1
+        puts game.card2
+        puts card3
+        puts bet
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win", bet)
         elsif user_number > number2 && user_number < number1
@@ -184,6 +189,7 @@ class ShootTheGate < ApplicationRecord
     player_result= ShootTheGate.record_player_result(game, bet, user_name)
     now_cards = game.cards #因為卡已經被抽起起來了 需要更新
     game.update(stakes: result, player_result: player_result, cards: now_cards ,card1: nil, card2: nil )
+    puts "11111111111111111111111111111111111111111111111111"
     puts game.card1
     puts game.card2
     puts card3
