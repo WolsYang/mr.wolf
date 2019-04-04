@@ -146,7 +146,7 @@ class ShootTheGate < ApplicationRecord
       game.player_result << player_result
     else
       i = game.player_result[player_result_index]
-      player_result = [i[0], i[1].to_i-bet, i[2].to_i+1]
+      player_result = [i[0], i[1].to_i+bet, i[2].to_i+1]
       game.player_result[player_result_index] = player_result
     end
     game.player_result
@@ -170,10 +170,11 @@ class ShootTheGate < ApplicationRecord
     message=""
     bet = bet*2 unless rate.nil?
     result = nil
-    player_result= ShootTheGate.record_player_result(game, bet, user_name)
+    player_result= 0
     now_cards = game.cards #因為卡已經被抽起起來了 需要更新
     if win_or_lose == "win" #玩家沒有贏兩倍這選項
       result = game.stakes - bet
+      player_result = ShootTheGate.record_player_result(game, bet, user_name)
       if bet.nil?
         message = "\n您的牌=>" + card3 + "\n恭喜猜對了~~您贏了"
       elsif rate.nil?
@@ -181,6 +182,7 @@ class ShootTheGate < ApplicationRecord
       end
     else win_or_lose == "lose" 
       result = game.stakes + bet
+      player_result = ShootTheGate.record_player_result(game, -bet, user_name)
       if bet.nil?
         message = "\n您的牌=>" + card3 + "\nQ_Q 沒射進 您輸了"
       elsif rate.nil?
