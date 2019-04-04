@@ -24,6 +24,9 @@ class ShootTheGate < ApplicationRecord
   def self.shoot(received_text, channel_id, user_name, basic_bet = 10)
     game = ShootTheGate.find_or_create_by(channel_id: channel_id)
     bet = basic_bet
+    puts game.card1
+    puts game.card2
+    puts "shooooooooooooooooooooooooooooooooooooooooot"
     if received_text == "結果"
       return ShootTheGate.gambling_result(game)
     end
@@ -82,6 +85,10 @@ class ShootTheGate < ApplicationRecord
         number2 = ShootTheGate.to_number(card2)
         now_cards = game.cards
         game.update(cards: now_cards, card1: card1, card2: card2)
+        game = ShootTheGate.find_or_create_by(channel_id: channel_id)
+        puts game.card1
+        puts game.card2
+        puts "抽......................................."
         return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if card1 == card2
         return "門柱==>" + card1 + card2
       when /^[射上下]/
@@ -120,12 +127,32 @@ class ShootTheGate < ApplicationRecord
         puts card3
         puts bet
         if user_number > number2 && user_number < number1 && game.gambling == "Yes"
+          puts "3333333333333333333333333333333333333333333333333333333333333333333333333333"
+          puts game.card1
+          puts game.card2
+          puts card3
+          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win", bet)
         elsif user_number > number2 && user_number < number1
+          puts "3333333333333333333333333333333333333333333333333333333333333333333333333333"
+          puts game.card1
+          puts game.card2
+          puts card3
+          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win")
         elsif game.gambling == "Yes"
+          puts "3333333333333333333333333333333333333333333333333333333333333333333333333333"
+          puts game.card1
+          puts game.card2
+          puts card3
+          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet)
         else
+          puts "3333333333333333333333333333333333333333333333333333333333333333333333333333"
+          puts game.card1
+          puts game.card2
+          puts card3
+          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
         end
       when "上"  
