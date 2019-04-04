@@ -220,7 +220,6 @@ class ShootTheGate < ApplicationRecord
     result = game.stakes - bet
     player_result= ShootTheGate.record_player_result(game, bet, user_name)
     now_cards = game.cards #因為卡已經被抽起起來了 需要更新
-    game.update(stakes: result, player_result: player_result, cards: now_cards ,card1: nil, card2: nil )
     puts card3
     puts bet
     puts result
@@ -239,7 +238,12 @@ class ShootTheGate < ApplicationRecord
         message = "\n您的牌" + card3 + "\n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~" + "\n您輸 : " + this_bet.to_s + "\n目前獎金池 : " + result.to_s
       end
     end
+    puts "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+    puts game.card1
+    puts message.class
     puts message
-    "門柱==>" + game.card1 + game.card2 + message
+    message = "門柱==>" + game.card1 + game.card2 + message
+    game.update(stakes: result, player_result: player_result, cards: now_cards ,card1: nil, card2: nil )
+    return message
   end
 end
