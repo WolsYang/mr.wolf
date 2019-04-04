@@ -217,32 +217,34 @@ class ShootTheGate < ApplicationRecord
     puts game.card1
     puts game.card2
     bet = bet*2 unless rate.nil?
-    result = game.stakes - bet
+    #result = game.stakes - bet
     player_result= ShootTheGate.record_player_result(game, bet, user_name)
     now_cards = game.cards #因為卡已經被抽起起來了 需要更新
     puts card3
     puts bet
     puts result
     if win_or_lose == "win" #玩家沒有贏兩倍這選項
+      result = game.stakes - bet
       if bet.nil?
-        message = "\n您的牌" + card3 + "\n恭喜猜對了~~您贏了"
+        message = "\n您的牌=>" + card3 + "\n恭喜猜對了~~您贏了"
       elsif rate.nil?
-        message = "\n您的牌" + card3 + "\n進啦進啦~~贏錢啦!!!" + "\n您贏 : " + bet.to_s + "\n目前獎金池 : " + result.to_s
+        message = "\n您的牌=>" + card3 + "\n進啦進啦~~贏錢啦!!!" + "\n您贏 : " + bet.to_s + "\n目前獎金池 : " + result.to_s
       end
     else win_or_lose == "lose" 
+      result = game.stakes + bet
       if bet.nil?
-        message = "\n您的牌" + card3 + "\nQ_Q 猜錯了 您輸了"
+        message = "\n您的牌=>" + card3 + "\nQ_Q 猜錯了 您輸了"
       elsif rate.nil?
-        message = "\n您的牌" + card3 + "\nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s 
+        message = "\n您的牌=>" + card3 + "\nQ_Q 猜錯了 賠錢拉~~~"+ "\n您輸 : " + bet.to_s + "\n目前獎金池 : " + +result.to_s 
       else
-        message = "\n您的牌" + card3 + "\n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~" + "\n您輸 : " + this_bet.to_s + "\n目前獎金池 : " + result.to_s
+        message = "\n您的牌=>" + card3 + "\n撞柱柱柱柱柱柱柱柱柱!!!!兩倍啦~" + "\n您輸 : " + this_bet.to_s + "\n目前獎金池 : " + result.to_s
       end
     end
     puts "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
     puts game.card1
     puts message.class
     puts message
-    message = "門柱==>" + game.card1 + game.card2 + message
+    message = "[門柱]==>" + game.card1 + game.card2 + message
     game.update(stakes: result, player_result: player_result, cards: now_cards ,card1: nil, card2: nil )
     return message
   end
