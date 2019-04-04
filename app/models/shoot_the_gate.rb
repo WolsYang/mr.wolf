@@ -198,6 +198,9 @@ class ShootTheGate < ApplicationRecord
   end
 
   def self.gambling_result(game)
+    puts game.player_result[0][1].to_i
+    puts game.stakes.to_i
+    puts game.player_result[0][2].to_i
     message=""
     if game.player_result.nil?
       message = "目前沒有人耶..."
