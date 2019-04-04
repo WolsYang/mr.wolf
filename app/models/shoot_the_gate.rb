@@ -206,7 +206,7 @@ class ShootTheGate < ApplicationRecord
     else 
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
         n = game.player_result[n]
-        bet_rate = (game.player_result[0][1].to_i/game.player_result[0][2].to_i)* n[2].to_i
+        bet_rate = (game.player_result[0][1].to_i * n[2].to_i /game.player_result[0][2].to_i)
         puts game.player_result[0][1].to_i
         puts game.player_result[0][2].to_i
         puts n[2].to_i
