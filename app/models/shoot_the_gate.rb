@@ -207,11 +207,11 @@ class ShootTheGate < ApplicationRecord
     else 
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
         n = game.player_result[n]
-        bet_rate = ((game.player_result[0][1].to_i - game.stakes.to_i)/game.player_result[0][2].to_i)* n[2].to_i
+        bet_rate = (game.player_result[0][1].to_i)game.player_result[0][2].to_i)* n[2].to_i
         message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] + "[需貢獻獎金池] : " + bet_rate.to_s + "\n" 
       end
     end
-    "需貢獻獎金池 = (總獎金池-目前獎金池)*玩家參與局數 / 總局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
+    "需貢獻獎金池 = (總獎金池/總局數)*玩家參與局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
   end
 
   def self.reply_text(game, user_name, card3, win_or_lose, bet = nil, rate = nil) #rate有值代表撞柱
