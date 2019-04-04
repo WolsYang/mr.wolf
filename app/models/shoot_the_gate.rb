@@ -160,7 +160,7 @@ class ShootTheGate < ApplicationRecord
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
         n = game.player_result[n]
         bet_rate = (game.player_result[0][1].to_i * n[2].to_i) /game.player_result[0][2].to_i
-        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] + "[需貢獻底注] : " + bet_rate.to_s + "\n" 
+        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] + " [需貢獻底注] : " + bet_rate.to_s + "\n" 
       end
     end
     "需貢獻底注 = (總獎金池/總局數)*玩家參與局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
