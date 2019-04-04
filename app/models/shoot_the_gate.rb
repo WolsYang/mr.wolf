@@ -71,7 +71,7 @@ class ShootTheGate < ApplicationRecord
         return  "射龍門開始啦~~~~~~~~~~~~請輸入 \"抽\" 繼續"
       when "抽"
         return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
-        return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card1.nil? || game.card2.nil?
+        #return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card1.nil? || game.card2.nil?
         card1 = game.cards.delete_at(0)
         number1 = ShootTheGate.to_number(card1)
         card2 = game.cards.delete_at(0)
@@ -160,10 +160,10 @@ class ShootTheGate < ApplicationRecord
       (1...game.player_result.size).each do |n| #game.player_result第一個直是預設的不用印
         n = game.player_result[n]
         bet_rate = (game.player_result[0][1].to_i * n[2].to_i) /game.player_result[0][2].to_i
-        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] + " [需貢獻底注] : " + bet_rate.to_s + "\n" 
+        message +=  "[玩家] : " + n[0] + " [籌碼數] : " + n[1] + " [參與局數] : " + n[2] + " [需繳交底注] : " + bet_rate.to_s + "\n" 
       end
     end
-    "需貢獻底注 = (總獎金池/總局數)*玩家參與局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
+    "需繳交底注 = (總獎金池/總局數)*玩家參與局數 \n" + "[總獎金池] : " + game.player_result[0][1] + "[總局數] : "+ game.player_result[0][2] +"\n" + message
   end
 
   def self.reply_text(game, user_name, card3, win_or_lose, bet = nil, rate = nil) #rate有值代表撞柱
