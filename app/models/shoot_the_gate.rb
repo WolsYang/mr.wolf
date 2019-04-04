@@ -129,9 +129,16 @@ class ShootTheGate < ApplicationRecord
         puts number2
         puts game.stakes
         puts bet
+        puts user_number
         if user_number < number2 && game.gambling == "Yes"
+          puts "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+          puts game.stakes
+          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win", bet)
         elsif user_number > number2
+          puts "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+          puts game.stakes
+          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "win")
         elsif game.gambling == "Yes"
           puts "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
@@ -139,6 +146,9 @@ class ShootTheGate < ApplicationRecord
           puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose", bet)
         else
+          puts "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+          puts game.stakes
+          puts bet
           result_text = ShootTheGate.reply_text(game, user_name, card3, "lose")
         end
     end
