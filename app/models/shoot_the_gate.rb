@@ -71,7 +71,7 @@ class ShootTheGate < ApplicationRecord
         return  "射龍門開始啦~~~~~~~~~~~~請輸入 \"抽\" 繼續"
       when "抽"
         return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 3
-        #return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card1.nil? || game.card2.nil?
+        return "您已經抽過門柱牌喔~\n請輸入 射 抽取射門牌" unless game.card1.nil? || game.card2.nil?
         card1 = game.cards.delete_at(0)
         number1 = ShootTheGate.to_number(card1)
         card2 = game.cards.delete_at(0)
