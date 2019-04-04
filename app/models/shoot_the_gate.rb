@@ -91,7 +91,7 @@ class ShootTheGate < ApplicationRecord
         puts game.card1
         puts game.card2
         puts "抽......................................."
-        return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if card1 == card2
+        return "門柱==>" + card1 + card2 + "哇 門柱一樣 請輸入 \"上\" 或 \"下\"來猜測下張牌的落點 " if number1 == number2
         return "門柱==>" + card1 + card2
       when /^[射上下]/
         return "沒牌囉\n請輸入\"重抽\"重新洗一付牌"if game.cards.size < 1
