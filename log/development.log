@@ -10543,3 +10543,31 @@ Migrating to ChangePlayerResultDefultInShootTheGate4 (20190403100839)
   ↳ bin/rails:4
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2872242921019038945)[0m
+  ↳ bin/rails:4
+  [1m[35m (9.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateCounters (20190529135008)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (118.2ms)[0m  [1m[35mCREATE TABLE "counters" ("id" bigserial primary key, "channel_id" character varying, "now_wait" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190529135008_create_counters.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190529135008"]]
+  ↳ bin/rails:4
+  [1m[35m (43.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (8.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2872242921019038945)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCounter Create (2.0ms)[0m  [1m[32mINSERT INTO "counters" ("channel_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["channel_id", "123"], ["created_at", "2019-05-29 14:24:58.316972"], ["updated_at", "2019-05-29 14:24:58.316972"]]
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCounter Update All (1.1ms)[0m  [1m[33mUPDATE "counters" SET "now_wait" = COALESCE("now_wait", 0) + 1 WHERE "counters"."id" = $1[0m  [["id", 1]]
+  [1m[36mCounter Update All (0.7ms)[0m  [1m[33mUPDATE "counters" SET "now_wait" = COALESCE("now_wait", 0) + 1 WHERE "counters"."id" = $1[0m  [["id", 1]]

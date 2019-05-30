@@ -19,6 +19,7 @@ class ChatbotController < ApplicationController
         text = received_text(event)
             #記錄頻道	
             reply_text = game_keyword_reply(channel_id, text)
+            reply_text = counter(channel_id, text)
             response = reply_to_line(reply_text) 
             # 回應200
             head :ok
@@ -113,6 +114,13 @@ class ChatbotController < ApplicationController
         else 			
             return nil
         end	
+    end
+
+    def counter(channel_id, received_text)
+        if received_text == "重設"
+            counter = Counter.find_or_create_by(channel_id: channel_id)
+            counter.destroy
+        end
     end
 
     #傳送訊息到LINE
