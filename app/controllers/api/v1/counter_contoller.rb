@@ -9,10 +9,14 @@ class Api::V1::CounterController < Api::V1::BaseController
     end
   
     def incr
+        channel_id = params[:channel_id]
+        counter = Counter.find_by(channel_id: channel_id)
         render :json => { :message=> "現在等待人數" + counter.now_wating}, :status => 200  
     end
 
     def deincr
+        channel_id = params[:channel_id]
+        counter = Counter.find_by(channel_id: channel_id)
         render :json => { :message=> "現在等待人數" + counter.now_wating}, :status => 200  
     end
 
