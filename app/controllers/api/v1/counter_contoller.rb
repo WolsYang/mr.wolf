@@ -1,4 +1,4 @@
-class Api::V1::CounterControllb < Api::V1::BaseController
+class Api::V1::CounterController < Api::V1::BaseController
     def index(set_star = 0)
         channel_id = params[:channel_id]
         counter = Counter.find_by(channel_id: channel_id)
