@@ -10,7 +10,7 @@ Rails.application.routes.draw do
         post '/bargain/now', to: 'bargain#now_win'
         post '/bargain', to: 'bargain#new_bid'
 
-        post '/counter/index', to: 'counter#index'
+        get '/counter/index', to: 'counter#index'
         post '/counter/incr', to: 'counter#incr'
         post '/counte/deincr', to: 'counter#deincr'
     end
