@@ -58,6 +58,10 @@ class ChatbotController < ApplicationController
             end
             channel.update(now_gaming: "no")
             ">\"<掰掰~"
+        elsif received_text[0...3] == '重設'   
+            counter = Counter.find_or_create_by(channel_id: channel_id)
+            counter.destroy
+            "計數器已重設"
         elsif channel.now_gaming == "bomb" && received_text.match(%r{\D}).nil? == true
             user_number = Bomb.guess(received_text)
             Bomb.play(user_number, channel_id)
@@ -114,13 +118,6 @@ class ChatbotController < ApplicationController
         else 			
             return nil
         end	
-    end
-
-    def counter(channel_id, received_text)
-        if received_text == "重設"
-            counter = Counter.find_or_create_by(channel_id: channel_id)
-            counter.destroy
-        end
     end
 
     #傳送訊息到LINE
