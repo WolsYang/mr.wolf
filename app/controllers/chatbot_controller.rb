@@ -19,7 +19,6 @@ class ChatbotController < ApplicationController
         text = received_text(event)
             #記錄頻道	
             reply_text = game_keyword_reply(channel_id, text)
-            reply_text = counter(channel_id, text)
             response = reply_to_line(reply_text) 
             # 回應200
             head :ok
